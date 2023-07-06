@@ -24,22 +24,17 @@
 
 ## 設計書
 
-- 機能一覧
-https://docs.google.com/spreadsheets/d/1xB_VbF1xzTttDybN7bOVm6l5Wq2XuzerVdZIANuzClQ/edit?usp=sharing
+[機能一覧](https://docs.google.com/spreadsheets/d/1xB_VbF1xzTttDybN7bOVm6l5Wq2XuzerVdZIANuzClQ/edit?usp=sharing)
 
-- 画面遷移図
-https://drive.google.com/file/d/12SnRoY9mpu7as7agOrWoqpRSFYKlzHmF/view?usp=drive_link
+[画面遷移図](https://drive.google.com/file/d/12SnRoY9mpu7as7agOrWoqpRSFYKlzHmF/view?usp=drive_link)
 
-- ワイヤーフレーム(顧客側:page1 管理者側:page2)　※閲覧にはfigmaの会員登録が必要です。
-https://www.figma.com/file/roeRUahKjeQkZs8lQquBrg/Tabekiro-uo?type=design&node-id=5%3A187&mode=design&t=gyYSW8DwNfCEUED0-1
-- ER図
-https://drive.google.com/file/d/1pRghO1FKPofY2i5EOShqvf2vc-4gBbV9/view?usp=drive_link
+[ワイヤーフレーム(顧客側:page1 管理者側:page2)](https://www.figma.com/file/roeRUahKjeQkZs8lQquBrg/Tabekiro-uo?type=design&node-id=5%3A187&mode=design&t=gyYSW8DwNfCEUED0-1) ※閲覧にはfigmaの会員登録が必要です。
 
-- テーブル定義書
-https://docs.google.com/spreadsheets/d/1A235kONsI7XAkMbp7-eXr6IIjCJ5Y1rmcjeQ3CKWNvk/edit?usp=sharing
+[ER図](https://drive.google.com/file/d/1pRghO1FKPofY2i5EOShqvf2vc-4gBbV9/view?usp=drive_link)
 
-- アプリケーション詳細設計書
-https://docs.google.com/spreadsheets/d/1AvM6cj21TKzerAOfxBnuOC09eEFcXxuFVbkQd1fMXJU/edit?usp=sharing
+[テーブル定義書](https://docs.google.com/spreadsheets/d/1A235kONsI7XAkMbp7-eXr6IIjCJ5Y1rmcjeQ3CKWNvk/edit?usp=sharing)
+
+[アプリケーション詳細設計書](https://docs.google.com/spreadsheets/d/1AvM6cj21TKzerAOfxBnuOC09eEFcXxuFVbkQd1fMXJU/edit?usp=sharing)
 ​
 ## 開発環境
 - OS：Linux(CentOS)

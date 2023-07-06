@@ -8,9 +8,9 @@
 
 ### テーマを選んだ理由
 
-　お魚が好きでよく釣りに行くのですが、釣れすぎてしまい処理に困ったり食べきれなかったりすることがありました。  
-　冷凍もいいのですが、やはりお刺身で食べなくてはもったいない！  
-　そんな時に欲しい方に新鮮な魚をお裾分けできるアプリがあったら一番鮮度の良い状態でお魚を食べてあげられると思いました。
+お魚が好きでよく釣りに行くのですが、釣れすぎてしまい処理に困ったり食べきれなかったりすることがありました。
+冷凍もいいのですが、やはりお刺身で食べなくてはもったいない！
+そんな時に欲しい方に新鮮な魚をお裾分けできるアプリがあったら一番鮮度の良い状態でお魚を食べてあげられると思いました。
 
 ### ターゲットユーザ
 
@@ -27,15 +27,15 @@
 - 機能一覧
 https://docs.google.com/spreadsheets/d/1xB_VbF1xzTttDybN7bOVm6l5Wq2XuzerVdZIANuzClQ/edit?usp=sharing
 
-- 画面遷移図  
+- 画面遷移図
 https://drive.google.com/file/d/12SnRoY9mpu7as7agOrWoqpRSFYKlzHmF/view?usp=drive_link
 
 - ワイヤーフレーム(顧客側:page1 管理者側:page2)　※閲覧にはfigmaの会員登録が必要です。
 https://www.figma.com/file/roeRUahKjeQkZs8lQquBrg/Tabekiro-uo?type=design&node-id=5%3A187&mode=design&t=gyYSW8DwNfCEUED0-1
-- ER図  
+- ER図
 https://drive.google.com/file/d/1pRghO1FKPofY2i5EOShqvf2vc-4gBbV9/view?usp=drive_link
 
-- テーブル定義書    
+- テーブル定義書
 https://docs.google.com/spreadsheets/d/1A235kONsI7XAkMbp7-eXr6IIjCJ5Y1rmcjeQ3CKWNvk/edit?usp=sharing
 
 - アプリケーション詳細設計書

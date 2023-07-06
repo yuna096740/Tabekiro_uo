@@ -1,45 +1,5 @@
 Rails.application.routes.draw do
 
-  namespace :admin do
-    get 'searches/index'
-  end
-  namespace :admin do
-    get 'members/index'
-    get 'members/show'
-  end
-  namespace :admin do
-    get 'reports/show'
-  end
-  namespace :admin do
-    get 'homes/top'
-  end
-  namespace :public do
-    get 'reports/new'
-  end
-  namespace :public do
-    get 'rooms/show'
-  end
-  namespace :public do
-    get 'tags/show'
-  end
-  namespace :public do
-    get 'searches/index'
-  end
-  namespace :public do
-    get 'posts/index'
-    get 'posts/show'
-    get 'posts/new'
-    get 'posts/edit'
-  end
-  namespace :public do
-    get 'members/index'
-    get 'members/show'
-    get 'members/edit'
-  end
-  namespace :public do
-    get 'homes/top'
-    get 'homes/about'
-  end
   devise_for :members, controllers: {
     registrations: "public/registrations",
     sessions:      "public/sessions",
@@ -49,5 +9,57 @@ Rails.application.routes.draw do
   devise_for :admin, skip: [:registrations, :passwords], controllers: {
     sessions: "admin/sessions"
   }
+
+  scope module: :public do
+    root to: 'homes#top'
+    get '/about' => 'homes#about', as: 'about'
+
+    resources :members, only: [:index, :show] do
+      resources :relationships, only: [:create, :destroy] do
+        collection do
+          get 'subscriber'
+          get 'subscribed'
+        end
+      end
+      collection do
+        get   'favorite'
+        get   'confirm'
+        patch 'quit'
+      end
+    end
+    get   'members/information' => 'members#edit'
+    patch 'members/information' => 'members#update'
+
+    resources :posts, only: [:index, :show, :new, :create, :edit, :update, :destroy] do
+      resources :post_comments, only: [:create, :destroy]
+      resource  :favorites,     only: [:create, :destroy]
+      collection do
+        get 'map'
+      end
+    end
+    resources :searches, only: [:index]
+    resources :tags,     only: [:show]
+    resources :rooms,    only: [:show, :create, :destroy]
+    resources :messages, only: [:create, :destroy]
+    resources :reports,  only: [:new, :create] do
+      collection do
+        get 'confirm'
+      end
+    end
+
+  end
+
+  namespace :admin do
+    get '/' => 'homes#top'
+
+    resources :members, only: [:index, :show, :update] do
+      member do
+        get 'report'
+      end
+    end
+    resources :searches, only: [:index]
+    resources :reports,  only: [:show, :update]
+  end
+
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

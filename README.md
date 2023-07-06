@@ -28,7 +28,8 @@
 
 [画面遷移図](https://drive.google.com/file/d/12SnRoY9mpu7as7agOrWoqpRSFYKlzHmF/view?usp=drive_link)
 
-[ワイヤーフレーム(顧客側:page1 管理者側:page2)](https://www.figma.com/file/roeRUahKjeQkZs8lQquBrg/Tabekiro-uo?type=design&node-id=5%3A187&mode=design&t=gyYSW8DwNfCEUED0-1) ※閲覧にはfigmaの会員登録が必要です。
+[ワイヤーフレーム(顧客側:page1 管理者側:page2)](https://www.figma.com/file/roeRUahKjeQkZs8lQquBrg/Tabekiro-uo?type=design&node-id=5%3A187&mode=design&t=gyYSW8DwNfCEUED0-1)
+※閲覧にはfigmaの会員登録が必要です。
 
 [ER図](https://drive.google.com/file/d/1pRghO1FKPofY2i5EOShqvf2vc-4gBbV9/view?usp=drive_link)
 

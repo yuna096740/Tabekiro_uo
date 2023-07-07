@@ -1,5 +1,5 @@
 <div class="container">
-  <div class="row">
+  <div class="row my-3">
     <div class="col-md-6">
       <h4>お裾分け準備</h4>
       <%= form_with model: @post do |f| %>
@@ -11,35 +11,45 @@
 
         <tr>
           <th>タイトル :</th>
-          <td><%= f.text_field :title %></td>
+          <td><%= f.text_field :title, placeholder: "入力してください", class:"form-control" %></td>
         </tr>
 
         <tr>
           <th>紹介 :</th>
-          <td><%= f.text_field :introduction %></td>
+          <td><%= f.text_area :introduction, rows: "3", placeholder: "入力してください", class:"form-control" %></td>
+        </tr>
+
+        <tr>
+          <th>お魚ジャンル :</th>
+          <td><%= f.collection_select :tag_id, @tags, :id, :name, { prompt: "選択してください" }, {class:"form-control col-6"} %></td>
         </tr>
 
         <tr>
           <th>期限 :</th>
-          <td><%= f.select :limit, *[1..10], {}, prompt:"個数選択" %></td>
+          <td><div class="d-flex"><%= f.select :limit, *[1..10], {}, class:"form-control col-6" %><p class="mt-3">時間</p></div></td>
         </tr>
 
         <tr>
-          <th></th>
-          <td><%= f.select :is_open, options_for_select([['公開', true],['下書き保存', false]]), {} %></td>
+          <th>ステータス :</th>
+          <td><%= f.select :is_open, options_for_select([['公開', true],['下書き保存', false]]), {class:"form-control col-6"} %></td>
         </tr>
       </table>
     </div>
 
-      <div class="col-md-4">
-        <input id="address" type="textbox" value="Tokyo">
-        <input type="button" value="search" onclick="codeAddress()">
-        <p>マーカー位置の調整ができます。<p>
+      <div class="col-md-6 mt-5">
         <div id="map"></div>
+        <p class="mt-1">
+          ※ 検索をするとピンが刺さります。<br>
+          ※ マーカー位置の調整ができます。
+        <p>
+
+        <div class="d-flex">
+          <input id="address" type="textbox" value="Tokyo" class="form-control col-8">
+          <input type="button" value="ピンを仮に刺す" onclick="codeAddress()" class="form-control ml-4 btn btn-info">
+        </div>
 
         <div class="actions">
-          <%= f.label :place_name, "地名" %>
-          <%= f.text_field :place_name %>
+          <%= f.text_field :place_name, placeholder: "登録する地名を入力", class:"form-control my-3" %>
 
           <%= f.hidden_field :latitude, :value => :latitude %>
           <%= f.hidden_field :longitube, :value => :longitube %>
@@ -96,8 +106,9 @@
             // })
           </script>
         </div>
-      <%= f.submit '投稿する' %>
-    <% end %>
-    </div>
+      </div>
+
+      <%= f.submit '投稿する', class:"btn btn-success mx-auto col-2 my-4" %>
+      <% end %>
   </div>
 </div>

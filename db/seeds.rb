@@ -17,3 +17,12 @@ Member.create(
   introduction: "お魚大好きです！",
   status:        0
   )
+
+Tag.create([
+  {name: '小魚'},
+  {name: '中型魚'},
+  {name: '大型魚'},
+  {name: '青魚'},
+  {name: '白身魚'},
+  {name: '赤身魚'}
+  ])

@@ -47,7 +47,7 @@ ActiveRecord::Schema.define(version: 2023_07_06_085548) do
     t.string "nickname", null: false
     t.string "introduction"
     t.integer "status", default: 0, null: false
-    t.integer "reason_for_quit_genre", null: false
+    t.integer "reason_for_quit_genre"
     t.string "reason_for_quit"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false

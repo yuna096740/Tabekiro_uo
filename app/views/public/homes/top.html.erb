@@ -1,2 +1,5 @@
 <h1>Public::Homes#top</h1>
 <p>Find me in app/views/public/homes/top.html.erb</p>
+<% if member_signed_in? %>
+  <%= link_to 'ログアウト', destroy_member_session_path, method: :delete %>
+<% end %>

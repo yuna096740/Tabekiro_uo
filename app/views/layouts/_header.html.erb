@@ -1,0 +1,52 @@
+<nav class="navbar navbar-expand-lg navbar-light pt-2">
+  <a class="navbar-brand" href="/"><h1 class="mx-4">LOGO</h1></a><br>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto pt-5">
+      <li class="nav-item active mx-3">
+        <%= link_to '通知', root_path, class:"nav-link" %>
+      </li>
+
+      <li class="nav-item active mx-3">
+        <%= link_to 'マイページ', members_path, class:"nav-link" %>
+      </li>
+
+      <li class="nav-item active mx-3">
+        <%= link_to 'マップ検索', map_posts_path, class:"nav-link" %>
+      </li>
+
+      <li class="nav-item active mx-3">
+        <%= link_to '投稿一覧', posts_path, class:"nav-link" %>
+      </li>
+
+      <li class="nav-item active mx-3">
+        <%= link_to '新規投稿', new_post_path, class:"nav-link" %>
+      </li>
+    </ul>
+    <div>
+
+    <form class="form-inline my-2 my-lg-0">
+      <input class="form-control mr-sm-2" type="search" placeholder="🐟 お魚を検索する" aria-label="Search">
+      <button class="btn btn-outline-info my-2 my-sm-0" type="submit">🔍</button>
+    </form>
+    <ul class="navbar-nav pt-1">
+      <li class="nav-item dropdown active">
+        <a class="nav-link dropdown-toggle ml-3" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          お魚ジャンル
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="#">青魚</a>
+          <a class="dropdown-item" href="#">白身魚</a>
+          <a class="dropdown-item" href="#">赤身魚</a>
+          <a class="dropdown-item" href="#">雑魚</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="#">大型魚</a>
+        </div>
+      </li>
+    </ul>
+    </div>
+  </div>
+</nav>

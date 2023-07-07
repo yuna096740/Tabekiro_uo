@@ -36,7 +36,7 @@ class DeviseCreateMembers < ActiveRecord::Migration[6.1]
       t.string  :nickname,              null: false
       t.string  :introduction
       t.integer :status,                null: false, default: 0
-      t.integer :reason_for_quit_genre, null: false
+      t.integer :reason_for_quit_genre
       t.string  :reason_for_quit
 
       t.timestamps null: false

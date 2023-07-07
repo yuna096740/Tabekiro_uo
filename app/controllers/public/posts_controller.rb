@@ -1,4 +1,5 @@
 class Public::PostsController < ApplicationController
+
   def index
   end
 
@@ -6,6 +7,7 @@ class Public::PostsController < ApplicationController
   end
 
   def new
+    @post = Post.new
   end
 
   def edit

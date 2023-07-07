@@ -1,2 +1,103 @@
-<h1>Public::Posts#new</h1>
-<p>Find me in app/views/public/posts/new.html.erb</p>
+<div class="container">
+  <div class="row">
+    <div class="col-md-6">
+      <h4>お裾分け準備</h4>
+      <%= form_with model: @post do |f| %>
+      <table class="table table-borderless">
+        <tr>
+          <th>画像 :</th>
+          <td><%= f.file_field :image %></td>
+        </tr>
+
+        <tr>
+          <th>タイトル :</th>
+          <td><%= f.text_field :title %></td>
+        </tr>
+
+        <tr>
+          <th>紹介 :</th>
+          <td><%= f.text_field :introduction %></td>
+        </tr>
+
+        <tr>
+          <th>期限 :</th>
+          <td><%= f.select :limit, *[1..10], {}, prompt:"個数選択" %></td>
+        </tr>
+
+        <tr>
+          <th></th>
+          <td><%= f.select :is_open, options_for_select([['公開', true],['下書き保存', false]]), {} %></td>
+        </tr>
+      </table>
+    </div>
+
+      <div class="col-md-4">
+        <input id="address" type="textbox" value="Tokyo">
+        <input type="button" value="search" onclick="codeAddress()">
+        <p>マーカー位置の調整ができます。<p>
+        <div id="map"></div>
+
+        <div class="actions">
+          <%= f.label :place_name, "地名" %>
+          <%= f.text_field :place_name %>
+
+          <%= f.hidden_field :latitude, :value => :latitude %>
+          <%= f.hidden_field :longitube, :value => :longitube %>
+
+          <script>
+            // もしmapが定義されていなかったら
+            if (typeof map == "undefined") {
+              let map;
+              let marker;
+              var geocoder;
+              var afterPinned;
+            }
+            function initMap(){
+              geocoder = new google.maps.Geocoder()
+
+              map = new google.maps.Map(document.getElementById('map'),{
+                center: { lat: 35.6803997, lng: 139.7690174 }, //Tokyo
+                zoom: 10,
+              });
+            }
+
+            afterPinned = false
+            //一度ピンを刺す処理を行なった後にcreateせず他ページにいき戻ってきた時の対策
+
+            function codeAddress(){
+              let inputAddress = document.getElementById('address').value;
+              geocoder.geocode( { 'address': inputAddress }, function(results, status) {
+                if (status == 'OK') {
+                  if (afterPinned == true) {
+                    marker.setMap(null);
+                  }
+                  map.setCenter(results[0].geometry.location);
+                    var marker = new google.maps.Marker({
+                      map: map,
+                      position: results[0].geometry.location,
+                      draggable: true
+                    });
+
+                  afterPinned = true
+                  // ピンは一本しか刺せない
+
+                  document.getElementById('latitude').value = results[0].geometry.location.lat();
+                  document.getElementById('longitube').value = results[0].geometry.location.lng();
+
+                  google.maps.event.addListener(marker, 'dragend', function(ev){
+                    document.getElementById('latitude').value = ev.latLng.lat();
+                    document.getElementById('longitube').value = ev.latLng.lng();
+                  });
+                } else {
+                  alert('該当する結果はありませんでした:' + status);
+                }
+              });
+            }
+            // })
+          </script>
+        </div>
+      <%= f.submit '投稿する' %>
+    <% end %>
+    </div>
+  </div>
+</div>

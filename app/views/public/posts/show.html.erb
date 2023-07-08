@@ -35,9 +35,9 @@
           <td></td>
         </tr>
       </table>
-      <div class="text-right">
+      <div class="text-center mb-5">
         <% if current_member %>
-          <%= link_to '編集する', edit_post_path(@post), class:"btn btn-success px-5" %>
+          <%= link_to '編集する', edit_post_path(@post), class:"btn btn-success px-5 mr-5" %>
           <%= link_to '削除する', post_path(@post), method: :delete, data: { confirm: "本当によろしいですか？"}, class:"btn btn-danger px-5" %>
         <% end %>
       </div>
@@ -63,6 +63,9 @@
           </tr>
         </thead>
       </table>
+      <div class="">
+        <%= link_to '取引する', root_path, class:"btn btn-light" %>
+      </div>
     </div>
   </div>
   <div class="row mt-3 mb-5">

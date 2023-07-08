@@ -1,9 +1,9 @@
 <div class="container">
-  <div class="row">
+  <div class="row mb-5">
     <% @posts.each do |post| %>
-      <div class="col-3">
+      <div class="col-4 mb-5">
         <%= link_to post_path(post) do %>
-          <%= image_tag post.post_image, size: "200x250" %>
+          <%= image_tag post.post_image, size: "350x300" %>
           <div class="text-dark"><%= post.title %></div>
         <% end %>
       </div>

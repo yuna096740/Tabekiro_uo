@@ -1,4 +1,5 @@
 class Public::MembersController < ApplicationController
+  
   def index
   end
 

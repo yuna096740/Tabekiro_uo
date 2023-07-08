@@ -1,2 +1,12 @@
-<h1>Public::Posts#index</h1>
-<p>Find me in app/views/public/posts/index.html.erb</p>
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <% @posts.each do |post| %>
+        <%= link_to post_path(post) do %>
+          <%= image_tag post.post_image, size: "200x250" %><br>
+          <%= post.title %>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+</div>

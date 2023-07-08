@@ -1,7 +1,31 @@
 <div class="container">
   <div class="row">
-    <div class="col">
-      
+    <div class="col-md-7">
+      <%= image_tag @post.post_image, size: "500x450" %>
+
+      <table class="table table-borderless">
+        <tr>
+          <th class="col-3">タイトル</th>
+          <td><%= @post.title %></td>
+          <td></td>
+        </tr>
+
+        <tr>
+          <th>紹介</th>
+          <td><%= @post.introduction %></td>
+          <td></td>
+        </tr>
+
+        <tr>
+          <th>期限</th>
+          <td><%= @post.limit %>時間</td>
+          <td><%= link_to '編集する', edit_post_path(@post) %></td>
+        </tr>
+      </table>
+    </div>
+
+    <div class="col-md-4 offset-1">
+
     </div>
   </div>
 </div>

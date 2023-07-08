@@ -29,8 +29,14 @@ class Public::PostsController < ApplicationController
     Post.find(params[:id]).update(post_params)
     redirect_to posts_path
   end
-  
+
+  def destroy
+    Post.find(params[:id]).destroy
+    redirect_to posts_path
+  end
+
   def map
+    @posts = Post.all
   end
 
   private

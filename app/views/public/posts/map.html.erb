@@ -1,0 +1,47 @@
+<div class="container mb-5">
+  <div class="row my-5">
+    <h4 class="mb-3">マップ検索</h4>
+    <div id="map" class="mapIndex mb-5"></div>
+  </div>
+</div>
+<script>
+  function initMap() {
+    let latlng = new google.maps.LatLng(35.6803997, 138.1950371);
+    let styles = [
+      {
+        stylers: [
+          { "saturation": 0 },
+          { "lightness": 0 }
+        ]
+      }
+    ];
+
+
+  let map = new google.maps.Map(document.getElementById('map'), {
+    zoom: 5.5,
+    styles: styles,
+    center: latlng
+  });
+  let transitLayer = new google.maps.TransitLayer();
+  transitLayer.setMap(map);
+
+  <% @posts.each do |post| %>
+    ( function(){
+      let markerLatLng = { lat: <%= post.latitude %>, lng: <%= post.longitube %> };
+      let marker = new google.maps.Marker({
+        position: markerLatLng,
+        map: map
+      });
+
+      let infowindow = new google.maps.InfoWindow({
+        position: markerLatLng,
+        content: "<a href='<%= post_path(post.id) %>' target='_blank'><%= post.title %></a>"
+      });
+      marker.addListener('click', function() {
+        infowindow.open(map, marker);
+      });
+    })();
+  <% end %>
+  }
+</script>
+<script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['API_KEY'] %>&libraries=places&callback=initMap" async defer></script>

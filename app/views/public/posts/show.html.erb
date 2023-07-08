@@ -1,6 +1,7 @@
 <div class="container my-5">
   <div class="row">
     <div class="col-md-9">
+      <h4>お裾分け詳細</h4>
       <div class="text-center">
         <%= image_tag @post.post_image, size: "400x350" %>
       </div>
@@ -17,8 +18,16 @@
         </tr>
 
         <tr>
-          <th>期限</th>
-          <td><%= @post.limit %>時間</td>
+          <th>取引期限</th>
+          <td id="timeLimit">
+            あと
+            <span class="hour"></span>時間
+            <span class="min"></span>分
+            <span class="sec"></span>秒です。
+          </td>
+          <td id="hideLimit">
+            取引は終了しました。
+          </td>
         </tr>
 
         <tr>
@@ -27,7 +36,10 @@
         </tr>
       </table>
       <div class="text-right">
-        <%= link_to '編集する', edit_post_path(@post), class:"btn btn-success px-5" %>
+        <% if current_member %>
+          <%= link_to '編集する', edit_post_path(@post), class:"btn btn-success px-5" %>
+          <%= link_to '削除する', post_path(@post), method: :delete, data: { confirm: "本当によろしいですか？"}, class:"btn btn-danger px-5" %>
+        <% end %>
       </div>
     </div>
 
@@ -60,6 +72,38 @@
   </div>
 </div>
 <script>
+  const elmHour = document.querySelector(".hour");
+  const elmMin  = document.querySelector(".min");
+  const elmSec  = document.querySelector(".sec");
+
+  const rewriteTime = () => {
+    const now = new Date();
+    //
+    const postCreatedAt = new Date("<%= @post.created_at.iso8601 %>");
+    const limit = <%= @post.limit %>
+    const limitTime = new Date(postCreatedAt.getTime() + limit * 60 * 60 * 1000);
+
+    const differ = limitTime.getTime() - now.getTime();
+
+    const sec = Math.floor(differ / 1000) % 60;
+    const min = Math.floor(differ / 1000 / 60) % 60;
+    const hour = Math.floor(differ / 1000 / 60 / 60);
+
+    elmHour.textContent = String(hour).padStart(2, "0");
+    elmMin.textContent = String(min).padStart(2, "0");
+    elmSec.textContent = String(sec).padStart(2, "0");
+
+    const timeLimit = document.getElementById("timeLimit");
+    const hideLimit =document.getElementById("hideLimit");
+    if ( differ < 0 ) {
+      timeLimit.style.display = "none";
+      hideLimit.style.display = "block";
+    }
+  };
+
+  setInterval(rewriteTime, 1000);
+
+
   if (typeof map == "undefined") {
     let map
     let marker

@@ -1,12 +1,12 @@
 <div class="container">
   <div class="row">
-    <div class="col">
-      <% @posts.each do |post| %>
+    <% @posts.each do |post| %>
+      <div class="col-3">
         <%= link_to post_path(post) do %>
-          <%= image_tag post.post_image, size: "200x250" %><br>
-          <%= post.title %>
+          <%= image_tag post.post_image, size: "200x250" %>
+          <div class="text-dark"><%= post.title %></div>
         <% end %>
-      <% end %>
-    </div>
+      </div>
+    <% end %>
   </div>
 </div>

@@ -13,7 +13,6 @@
   <body>
     <%= render 'layouts/header' %>
     <%= yield %>
-    <script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['API_KEY'] %>&libraries=places&callback=initMap" async defer></script>
     <%= render 'layouts/footer' %>
   </body>
 </html>

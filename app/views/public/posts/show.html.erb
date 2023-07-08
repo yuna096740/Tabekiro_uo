@@ -1,31 +1,81 @@
-<div class="container">
+<div class="container my-5">
   <div class="row">
-    <div class="col-md-7">
-      <%= image_tag @post.post_image, size: "500x450" %>
+    <div class="col-md-9">
+      <div class="text-center">
+        <%= image_tag @post.post_image, size: "400x350" %>
+      </div>
 
       <table class="table table-borderless">
         <tr>
-          <th class="col-3">タイトル</th>
+          <th class="col-2">タイトル</th>
           <td><%= @post.title %></td>
-          <td></td>
         </tr>
 
         <tr>
           <th>紹介</th>
           <td><%= @post.introduction %></td>
-          <td></td>
         </tr>
 
         <tr>
           <th>期限</th>
           <td><%= @post.limit %>時間</td>
-          <td><%= link_to '編集する', edit_post_path(@post) %></td>
+        </tr>
+
+        <tr>
+          <th></th>
+          <td></td>
         </tr>
       </table>
+      <div class="text-right">
+        <%= link_to '編集する', edit_post_path(@post), class:"btn btn-success px-5" %>
+      </div>
     </div>
 
-    <div class="col-md-4 offset-1">
+    <div class="col-md-3 mt-5">
+      <table class="table table-bordered">
+        <thead class="bg-light">
+          <tr>
+            <th>コメント数 :</th>
+          </tr>
+        </thead>
 
+        <tbody class="chat-height">
+          <tr>
+            <td></td>
+          </tr>
+        </tbody>
+
+        <thead>
+          <tr>
+            <th>コメント蘭:: <ボタン></th>
+          </tr>
+        </thead>
+      </table>
+    </div>
+  </div>
+  <div class="row mt-3 mb-5">
+    <div class="col-md-10 mx-auto mb-5">
+      <div id="map" class="mapShow"></div>
     </div>
   </div>
 </div>
+<script>
+  if (typeof map == "undefined") {
+    let map
+    let marker
+  }
+  function initMap(){
+    geocoder = new google.maps.Geocoder()
+
+    map = new google.maps.Map(document.getElementById('map'), {
+      center: { lat: <%= @post.latitude %>, lng: <%= @post.longitube %> },
+      zoom: 15,
+    });
+
+    marker = new google.maps.Marker({
+      position: { lat: <%= @post.latitude %>, lng: <%= @post.longitube %> },
+      map: map
+    });
+  }
+</script>
+<script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['API_KEY'] %>&libraries=places&callback=initMap" async defer></script>

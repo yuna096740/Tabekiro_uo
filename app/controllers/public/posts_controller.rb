@@ -22,13 +22,15 @@ class Public::PostsController < ApplicationController
 
   def edit
     @post = Post.find(params[:id])
-    #byebug
     @tags = Tag.all
   end
 
   def update
     Post.find(params[:id]).update(post_params)
     redirect_to posts_path
+  end
+  
+  def map
   end
 
   private

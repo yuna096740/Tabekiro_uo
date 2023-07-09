@@ -1,0 +1,37 @@
+<%= form_with model: [ post, comment ]  do |f| %>
+  <table class="table table-bordered">
+    <thead class="bg-light">
+      <tr>
+        <th>コメント数 :<%= comments.count %></th>
+      </tr>
+    </thead>
+
+    <tbody class="chat-height">
+      <tr>
+        <td>
+          <div class="chat-height messageDetails" id="scrollInner">
+            <% comments.each do |comment| %>
+              <div class="d-flex mt-2">
+                <%= link_to member_path(comment.member_id) do %>
+                  <%= image_tag comment.member.icon,size:"35x35", class:"rounded-circle mr-1" %>
+                <% end %>
+                <div class="bg-success text-light p-2 rounded-pill">
+                  <%= comment.comment %><br>
+                </div>
+              </div>
+            <% end %>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+
+    <thead>
+      <tr>
+        <th class="d-flex">
+          <%= f.text_field :comment, class:"form-control" %>
+          <%= f.submit '送信', class:"btn btn-success ml-3" %>
+        </th>
+      </tr>
+    </thead>
+  </table>
+<% end %>

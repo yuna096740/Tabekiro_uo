@@ -1,9 +1,9 @@
 <div class="container my-5">
   <div class="row">
-    <div class="col-md-9">
-      <h4>お裾分け詳細</h4>
+    <div class="col-md-7">
+      <h4 class="mb-4">お裾分け詳細</h4>
       <div class="text-center">
-        <%= image_tag @post.get_post_image(400,350) %>
+        <%= image_tag @post.get_post_image(600,350) %>
       </div>
 
       <table class="table table-borderless">
@@ -35,39 +35,21 @@
           <td></td>
         </tr>
       </table>
-      <div class="text-center mb-5">
-        <% if current_member %>
+      <div class="text-center mb-5 mt-3">
+        <% if @post.member == current_member %>
           <%= link_to '編集する', edit_post_path(@post), class:"btn btn-success px-5 mr-5" %>
           <%= link_to '削除する', post_path(@post), method: :delete, data: { confirm: "本当によろしいですか？"}, class:"btn btn-danger px-5" %>
+        <% else %>
+          <%= link_to '取引する', root_path, class:"btn btn-success px-5" %>
         <% end %>
       </div>
     </div>
 
-    <div class="col-md-3 mt-5">
-      <table class="table table-bordered">
-        <thead class="bg-light">
-          <tr>
-            <th>コメント数 :</th>
-          </tr>
-        </thead>
-
-        <tbody class="chat-height">
-          <tr>
-            <td></td>
-          </tr>
-        </tbody>
-
-        <thead>
-          <tr>
-            <th>コメント蘭:: <ボタン></th>
-          </tr>
-        </thead>
-      </table>
-      <div class="">
-        <%= link_to '取引する', root_path, class:"btn btn-light" %>
-      </div>
+    <div class="col-md-4 offset-1 mt-5">
+      <%= render 'public/post_comments/comment_bar', comment: @comment, comments: @comments, post: @post  %>
     </div>
   </div>
+
   <div class="row mt-3 mb-5">
     <div class="col-md-10 mx-auto mb-5">
       <div id="map" class="mapShow"></div>
@@ -75,9 +57,11 @@
   </div>
 </div>
 <script>
-  const elmHour = document.querySelector(".hour");
-  const elmMin  = document.querySelector(".min");
-  const elmSec  = document.querySelector(".sec");
+  //if (typeof elmHour == "undefined") {
+    // const elmHour = document.querySelector(".hour");
+    // const elmMin  = document.querySelector(".min");
+    // const elmSec  = document.querySelector(".sec");
+  //}
 
   const rewriteTime = () => {
     const now = new Date();
@@ -97,7 +81,7 @@
     elmSec.textContent = String(sec).padStart(2, "0");
 
     const timeLimit = document.getElementById("timeLimit");
-    const hideLimit =document.getElementById("hideLimit");
+    const hideLimit = document.getElementById("hideLimit");
     if ( differ < 0 ) {
       timeLimit.style.display = "none";
       hideLimit.style.display = "block";
@@ -105,6 +89,24 @@
   };
 
   setInterval(rewriteTime, 1000);
+
+
+
+
+
+
+  document.addEventListener("turbolinks:load", () => {
+    function scrollToEnd() {
+      const messageDetails = document.getElementById('scrollInner');
+      messageDetails.scrollTop = messageDetails.scrollHeight;
+    }
+    scrollToEnd()
+  })
+
+
+
+
+
 
 
   if (typeof map == "undefined") {

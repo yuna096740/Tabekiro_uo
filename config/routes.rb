@@ -27,8 +27,8 @@ Rails.application.routes.draw do
         patch 'quit'
       end
     end
-    get   'members/information' => 'members#edit'
-    patch 'members/information' => 'members#update'
+    get   'members/information/edit' => 'members#edit'
+    patch 'members/information'      => 'members#update'
 
     resources :posts, only: [:index, :show, :new, :create, :edit, :update, :destroy] do
       resources :post_comments, only: [:create, :destroy]

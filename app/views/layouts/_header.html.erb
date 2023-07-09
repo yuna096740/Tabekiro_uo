@@ -12,10 +12,6 @@
         </li>
 
         <li class="nav-item active mx-3">
-          <%= link_to 'マイページ', members_path, class:"nav-link" %>
-        </li>
-
-        <li class="nav-item active mx-3">
           <%= link_to 'マップ検索', map_posts_path, class:"nav-link" %>
         </li>
 
@@ -52,27 +48,36 @@
         </li>
       <% end %>
     </ul>
-    <div>
-
-    <form class="form-inline my-2 my-lg-0">
-      <input class="form-control mr-sm-2" type="search" placeholder="🐟 お魚を検索する" aria-label="Search">
-      <button class="btn btn-outline-dark my-2 my-sm-0" type="submit">🔍</button>
-    </form>
-    <ul class="navbar-nav pt-1">
-      <li class="nav-item dropdown active">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          お魚ジャンル
-        </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="#">青魚</a>
-          <a class="dropdown-item" href="#">白身魚</a>
-          <a class="dropdown-item" href="#">赤身魚</a>
-          <a class="dropdown-item" href="#">雑魚</a>
-          <div class="dropdown-divider"></div>
-          <a class="dropdown-item" href="#">大型魚</a>
-        </div>
-      </li>
-    </ul>
-    </div>
   </div>
+
+  <form class="form-inline pt-5 mx-3 my-lg-0">
+    <input class="form-control mr-sm-2" type="search" placeholder="🐟 お魚を検索する" aria-label="Search">
+    <button class="btn btn-outline-light my-2 my-sm-0" type="submit">🔍</button>
+  </form>
+
+  <ul class="navbar-nav pt-5">
+    <li class="nav-item dropdown active mr-4">
+      <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        お魚ジャンル
+      </a>
+      <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+        <% @tags.each do |tag| %>
+          <%= link_to tag.name, root_path, class:"dropdown-item" %>
+        <% end %>
+      </div>
+    </li>
+  </ul>
+  <% if member_signed_in? %>
+    <div class="text-right pt-2">
+      <a data-toggle="collapse" href="#headerIcon" role="button" aria-expanded="false" aria-controls="#headerIcon">
+        <%= image_tag current_member.get_icon(60,60), class:"rounded-circle mr-4" %>
+      </a>
+    </div>
+  <% end %>
 </nav>
+
+<div class="collapse" id="headerIcon">
+  <div class="p- m-5 bg-light text-right">
+    <%= link_to 'マイページ', members_path %>
+  </div>
+</div>

@@ -6,8 +6,8 @@
 
     <div class="col-md-6 ml-5 mt-3">
       <h2><%= @member.nickname %></h2>
-      <p class="mt-5">※過去の取引数: ◯回</p>
-      <p>※登録者数: ◯人</p>
+      <p class="mt-5">過去の取引数: ◯回</p>
+      <p>登録者数: ◯人</p>
       <%= link_to '＋SUBSCRIBE', root_path, class:"btn btn-danger px-5 mt-5" %><br>
       <%= link_to '通報する', root_path %>
     </div>
@@ -20,9 +20,9 @@
     </div>
   </div>
 
-  <div class="row">
+  <div class="row mb-5">
     <% @posts.each do |post| %>
-      <div class="col-md-3 text-center ">
+      <div class="col-md-3 mb-5 text-center ">
         <%= link_to post_path(post) do %>
           <%= image_tag post.get_post_image(250,200) %>
           <div class="text-dark"><%= post.title %></div>

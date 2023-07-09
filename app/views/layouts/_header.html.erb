@@ -1,32 +1,12 @@
 <nav class="navbar navbar-expand-lg navbar-light pt-2">
-  <a class="navbar-brand mx-5" href="/"><%= image_tag 'Tabekiro-uo-mini-logo.svg', class:"mt-3" %></a><br>
+  <a class="navbar-brand mx-5" data-toggle="collapse" href="#headerLogo" role="button" aria-expanded="false" aria-controls="#headerLogo"><%= image_tag 'Tabekiro-uo-mini-logo.svg', class:"mt-3" %></a><br>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto pt-5">
-      <% if member_signed_in? %>
-        <li class="nav-item active mx-2">
-          <%= link_to '通知', root_path, class:"nav-link" %>
-        </li>
-
-        <li class="nav-item active mx-3">
-          <%= link_to 'マップ検索', map_posts_path, class:"nav-link" %>
-        </li>
-
-        <li class="nav-item active mx-3">
-          <%= link_to 'お裾分け一覧', posts_path, class:"nav-link" %>
-        </li>
-
-        <li class="nav-item active mx-3">
-          <%= link_to '新規投稿', new_post_path, class:"nav-link" %>
-        </li>
-
-        <li class="nav-item active mx-3">
-          <%= link_to 'ログアウト', destroy_member_session_path, method: :delete, class:"nav-link" %>
-        </li>
-      <% else %>
+      <% unless member_signed_in? %>
         <li class="nav-item active mx-2">
           <%= link_to 'ログイン', new_member_session_path, class:"nav-link" %>
         </li>
@@ -34,29 +14,19 @@
         <li class="nav-item active mx-3">
           <%= link_to '新規登録', new_member_registration_path, class:"nav-link" %>
         </li>
-
-        <li class="nav-item active mx-3">
-          <%= link_to 'マップ検索', map_posts_path, class:"nav-link" %>
-        </li>
-
-        <li class="nav-item active mx-3">
-          <%= link_to 'お裾分け一覧', posts_path, class:"nav-link" %>
-        </li>
-
-        <li class="nav-item active mx-3">
-          <%= link_to 'About', about_path, class:"nav-link" %>
-        </li>
       <% end %>
     </ul>
   </div>
 
-  <form class="form-inline pt-5 mx-3 my-lg-0">
+  <form class="form-inline pt-5 mx-5 my-lg-0">
     <input class="form-control mr-sm-2" type="search" placeholder="🐟 お魚を検索する" aria-label="Search">
     <button class="btn btn-outline-light my-2 my-sm-0" type="submit">🔍</button>
   </form>
 
+  <%= link_to 'マップから検索する', map_posts_path, class:"text-dark pt-5 mr-5" %>
+
   <ul class="navbar-nav pt-5">
-    <li class="nav-item dropdown active mr-4">
+    <li class="nav-item dropdown active mr-5">
       <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
         お魚ジャンル
       </a>
@@ -76,8 +46,22 @@
   <% end %>
 </nav>
 
-<div class="collapse" id="headerIcon">
-  <div class="p- m-5 bg-light text-right">
-    <%= link_to 'マイページ', members_path %>
+<div class="collapse" id="headerLogo">
+  <div class="p-3 m-3 d-flex">
+    <h5><%= link_to 'TOP', root_path, class:"text-dark ml-5" %></h5>
+    <h5><%= link_to 'ABOUT', about_path, class:"text-dark ml-5" %></h5>
+    <h5><%= link_to 'お裾分け一覧', posts_path, class:"text-dark ml-5" %></h5>
+  </div>
+</div>
+
+<div class="collapse offset-10" id="headerIcon">
+  <div class="py-3 mx-3 border">
+    <h5 class="pb-3"><%= link_to 'マイページ', members_path, class:"text-dark ml-2" %></h5>
+    <h5 class="pb-3"><%= link_to '通知', root_path, class:"text-dark ml-2" %></h5>
+    <h5 class="pb-3"><%= link_to '取引中のお魚', root_path, class:"text-dark ml-2" %></h5>
+    <h5 class="pb-3"><%= link_to 'いいねしたお魚', root_path, class:"text-dark ml-2" %></h5>
+    <h5 class="pb-3"><%= link_to '登録者一覧', root_path, class:"text-dark ml-2" %></h5>
+    <h5 class="pb-3"><%= link_to '登録中一覧', root_path, class:"text-dark ml-2" %></h5>
+    <h5 class="pb-3"><%= link_to 'ログアウト', destroy_member_session_path, method: :delete, class:"text-dark ml-2" %></h5>
   </div>
 </div>

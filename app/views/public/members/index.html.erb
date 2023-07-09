@@ -1,7 +1,18 @@
 <div class="container">
+  <h4>マイページ編集</h4>
   <div class="row">
-    <div class="col">
-      
+    <div class="col-md-2 text-center">
+      <div class="">
+        <%= link_to members_information_path do %>
+          <%= image_tag current_member.get_icon(150,150), class:"rounded-circle" %>
+          <p class="text-dark">編集</p>
+        <% end %>
+      </div>
     </div>
+    <div class="col-md-6">
+
+    </div>
+
+
   </div>
 </div>

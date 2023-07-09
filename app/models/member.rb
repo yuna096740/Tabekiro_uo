@@ -5,4 +5,13 @@ class Member < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_many :posts, dependent: :destroy
+  has_one_attached :icon
+
+  def get_icon(width, height)
+    unless icon.attached?
+      file_path = Rails.root.join('app/assets/images/no-icon.jpg')
+      icon.attach(io:File.open(file_path),filename:'default-image.jpg',content_type:'image/jpeg')
+    end
+    icon.variant(resize_to_fill: [width, height]).processed
+  end
 end

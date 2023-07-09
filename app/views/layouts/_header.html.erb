@@ -19,20 +19,26 @@
   </div>
 
   <form class="form-inline pt-5 mx-5 my-lg-0">
-    <input class="form-control mr-sm-2" type="search" placeholder="🐟 お魚を検索する" aria-label="Search">
-    <button class="btn btn-outline-light my-2 my-sm-0" type="submit">🔍</button>
+    <input class="form-control mr-sm-2" type="search" placeholder="お魚を検索する" aria-label="Search">
+    <button class="btn btn-outline-info my-2 my-sm-0" type="submit"><i class="fas fa-search-location"></i></button>
   </form>
 
-  <%= link_to 'マップから検索する', map_posts_path, class:"text-dark pt-5 mr-5" %>
+  <div class="pt-5">
+    <i class="fas fa-map-marker-alt"></i>
+    <%= link_to 'マップから検索する', map_posts_path, class:"text-dark mr-4" %>
+  </div>
 
   <ul class="navbar-nav pt-5">
     <li class="nav-item dropdown active mr-5">
       <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-        お魚ジャンル
+        <i class="fas fa-fish"></i> お魚ジャンル
       </a>
       <div class="dropdown-menu" aria-labelledby="navbarDropdown">
         <% @tags.each do |tag| %>
-          <%= link_to tag.name, root_path, class:"dropdown-item" %>
+          <div class="text-center d-flex">
+
+            <%= link_to tag.name, root_path, class:"dropdown-item" %>
+          </div>
         <% end %>
       </div>
     </li>
@@ -54,14 +60,4 @@
   </div>
 </div>
 
-<div class="collapse offset-10" id="headerIcon">
-  <div class="py-3 mx-3 border">
-    <h5 class="pb-3"><%= link_to 'マイページ', members_path, class:"text-dark ml-2" %></h5>
-    <h5 class="pb-3"><%= link_to '通知', root_path, class:"text-dark ml-2" %></h5>
-    <h5 class="pb-3"><%= link_to '取引中のお魚', root_path, class:"text-dark ml-2" %></h5>
-    <h5 class="pb-3"><%= link_to 'いいねしたお魚', root_path, class:"text-dark ml-2" %></h5>
-    <h5 class="pb-3"><%= link_to '登録者一覧', root_path, class:"text-dark ml-2" %></h5>
-    <h5 class="pb-3"><%= link_to '登録中一覧', root_path, class:"text-dark ml-2" %></h5>
-    <h5 class="pb-3"><%= link_to 'ログアウト', destroy_member_session_path, method: :delete, class:"text-dark ml-2" %></h5>
-  </div>
-</div>
+<%= render 'layouts/nav_icon' %>

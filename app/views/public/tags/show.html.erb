@@ -1,2 +1,5 @@
-<h1>Public::Tags#show</h1>
-<p>Find me in app/views/public/tags/show.html.erb</p>
+<div class="container">
+  <h4 class="my-5">”<b><%= @tag.name %></b>” 一覧</h4>
+  <%= render 'public/posts/index', posts: @posts %>
+  </div>
+</div>

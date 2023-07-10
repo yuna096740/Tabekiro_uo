@@ -30,9 +30,8 @@
       </a>
       <div class="dropdown-menu" aria-labelledby="navbarDropdown">
         <% @tags.each do |tag| %>
-          <div class="text-center d-flex">
-
-            <%= link_to tag.name, root_path, class:"dropdown-item" %>
+          <div class="ml-2">
+            <%= link_to tag.name, tag_path(tag), class:"dropdown-item" %>
           </div>
         <% end %>
       </div>

@@ -7,7 +7,7 @@ class Public::PostsController < ApplicationController
   def show
     @post = Post.find(params[:id])
     @comment = PostComment.new
-    @comments = @post.post_comments.all
+    #@comments = @post.post_comments.all
   end
 
   def new

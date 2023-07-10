@@ -68,15 +68,13 @@
 
 <script>
   //カウントダウンタイマー機能
-  //if (typeof elmHour == "undefined") {
-    const elmHour = document.querySelector(".hour");
-    const elmMin  = document.querySelector(".min");
-    const elmSec  = document.querySelector(".sec");
-  //}
+  const elmHour = document.querySelector(".hour");
+  const elmMin  = document.querySelector(".min");
+  const elmSec  = document.querySelector(".sec");
 
   const rewriteTime = () => {
     const now = new Date();
-    //
+
     const postCreatedAt = new Date("<%= @post.created_at.iso8601 %>");
     const limit = <%= @post.limit %>
     const limitTime = new Date(postCreatedAt.getTime() + limit * 60 * 60 * 1000);

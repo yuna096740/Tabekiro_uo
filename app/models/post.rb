@@ -1,5 +1,5 @@
 class Post < ApplicationRecord
-  
+
   default_scope -> { order(created_at: "DESC") }
 
   belongs_to :member
@@ -17,5 +17,9 @@ class Post < ApplicationRecord
 
   def favorited_by?(member)
     favorites.exists?(member_id: member.id)
+  end
+
+  def self.search(keyword)
+    where(["title LIKE? or introduction LIKE? or place_name LIKE?", "%#{keyword}%", "%#{keyword}%", "%#{keyword}%"])
   end
 end

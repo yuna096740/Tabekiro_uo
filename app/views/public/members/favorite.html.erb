@@ -2,7 +2,7 @@
   <h5 class="">いいねした投稿</h5>
   <div class="row">
     <% @favorite_posts.each do |post| %>
-      <div class="col-md-8 offset-1">
+      <div class="col-md-8 offset-2">
         <table class="table table-borderless">
           <thead>
             <tr>
@@ -14,7 +14,7 @@
                 <% end %>
               </th>
               <td>
-                <b><%= post.title %></b><br>
+                <b><%= link_to post.title, post_path(post), class:"text-dark" %></b><br>
                 ステータス：<%= post.is_open %><br>
                 limit：あと<%= post.limit %>
               </td>

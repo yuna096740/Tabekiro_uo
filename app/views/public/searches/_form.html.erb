@@ -1,0 +1,8 @@
+<div class="form-inline pt-5 mx-5 my-lg-0">
+  <%= form_with url: searches_path, method: :get do |f| %>
+    <%= f.text_field :keyword, value: @keyword, placeholder:"お魚を検索する", class:"form-control mr-sm-2" %>
+    <%= button_tag type:'submit', class:"btn btn-outline-info my-2 my-sm-0" do %>
+      <i class="fas fa-search-location"></i>
+    <% end %>
+  <% end %>
+</div>

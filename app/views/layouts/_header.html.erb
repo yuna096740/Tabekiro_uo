@@ -39,10 +39,7 @@
     </li>
   </ul>
 
-  <form class="form-inline pt-5 mx-5 my-lg-0">
-    <input class="form-control mr-sm-2" type="search" placeholder="お魚を検索する" aria-label="Search">
-    <button class="btn btn-outline-info my-2 my-sm-0" type="submit"><i class="fas fa-search-location"></i></button>
-  </form>
+  <%= render 'public/searches/form', keyword: @keyword %>
 
   <% if member_signed_in? %>
     <div class="text-right pt-2">

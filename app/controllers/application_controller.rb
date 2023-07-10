@@ -1,6 +1,7 @@
 class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if: :devise_controller?
   before_action :search_tag
+  before_action :search_post
 
   protected
 
@@ -10,5 +11,9 @@ class ApplicationController < ActionController::Base
 
   def search_tag
     @tags = Tag.all
+  end
+
+  def search_post
+    @keyword = params[:keyword]
   end
 end

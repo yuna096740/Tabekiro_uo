@@ -1,0 +1,11 @@
+<% if @post.favorited_by?(current_member) %>
+  <%= link_to post_favorites_path(post), method: :delete, remote: true, class:"text-danger" do %>
+    <i class="fas fa-heart"></i>
+    <%= post.favorites.count %>
+  <% end %>
+<% else %>
+  <%= link_to post_favorites_path(post), method: :post, remote: true do %>
+    <i class="fas fa-heart"></i>
+    <%= post.favorites.count %>
+  <% end %>
+<% end %>

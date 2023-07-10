@@ -2,7 +2,7 @@
   <table class="table table-bordered">
     <thead class="bg-light">
       <tr>
-        <th>コメント数 :<%= comments.count %></th>
+        <th>コメント数 : <%= comments.count %>件</th>
       </tr>
     </thead>
 
@@ -15,7 +15,7 @@
                 <%= link_to member_path(comment.member_id) do %>
                   <%= image_tag comment.member.icon,size:"35x35", class:"rounded-circle mr-1" %>
                 <% end %>
-                <div class="bg-success text-light p-2 rounded-pill">
+                <div class="bg-light text-dark p-2 rounded-pill">
                   <%= comment.comment %><br>
                 </div>
               </div>
@@ -29,9 +29,21 @@
       <tr>
         <th class="d-flex">
           <%= f.text_field :comment, class:"form-control" %>
-          <%= f.submit '送信', class:"btn btn-success ml-3" %>
+          <%= button_tag type:'submit', class:"btn btn-success ml-3" do %>
+            <i class="fas fa-paper-plane"></i>
+          <% end %>
         </th>
       </tr>
     </thead>
   </table>
 <% end %>
+
+<!--<script>-->
+<!--  document.addEventListener("turbolinks:load", () => {-->
+<!--    function scrollToEnd() {-->
+<!--      const messageDetails = document.getElementById('scrollInner');-->
+<!--      messageDetails.scrollTop = messageDetails.scrollHeight;-->
+<!--    }-->
+<!--    scrollToEnd()-->
+<!--  })-->
+<!--</script>-->

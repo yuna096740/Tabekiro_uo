@@ -3,7 +3,11 @@
     <div class="col-md-7">
       <h4 class="mb-4">お裾分け詳細</h4>
       <div class="text-center">
-        <%= image_tag @post.get_post_image(600,350) %>
+        <%= image_tag @post.get_post_image(600,350), class:"rounded" %>
+      </div>
+
+      <div class="text-right mt-3 mr-3" id="favorite">
+        <%= render 'public/favorites/fav' , post: @post%>
       </div>
 
       <table class="table table-borderless">
@@ -37,10 +41,10 @@
       </table>
       <div class="text-center mb-5 mt-3">
         <% if @post.member == current_member %>
-          <%= link_to '編集する', edit_post_path(@post), class:"btn btn-success px-5 mr-5" %>
-          <%= link_to '削除する', post_path(@post), method: :delete, data: { confirm: "本当によろしいですか？"}, class:"btn btn-danger px-5" %>
+          <%= link_to '編集する', edit_post_path(@post), class:"btn btn-success px-5 mr-5 rounded-pill" %>
+          <%= link_to '削除する', post_path(@post), method: :delete, data: { confirm: "本当によろしいですか？"}, class:"btn btn-danger px-5 rounded-pill" %>
         <% else %>
-          <%= link_to '取引する', root_path, class:"btn btn-success px-5" %>
+          <%= link_to '取引する', root_path, class:"btn btn-success px-5 rounded-pill" %>
         <% end %>
       </div>
     </div>
@@ -52,15 +56,19 @@
 
   <div class="row mt-3 mb-5">
     <div class="col-md-10 mx-auto mb-5">
+      <div class="d-flex my-4">
+        <h5>ユーザー登録地名： <%= @post.place_name %></h5>
+      </div>
       <div id="map" class="mapShow"></div>
     </div>
   </div>
 </div>
 <script>
+  //カウントダウンタイマー機能
   //if (typeof elmHour == "undefined") {
-    // const elmHour = document.querySelector(".hour");
-    // const elmMin  = document.querySelector(".min");
-    // const elmSec  = document.querySelector(".sec");
+    const elmHour = document.querySelector(".hour");
+    const elmMin  = document.querySelector(".min");
+    const elmSec  = document.querySelector(".sec");
   //}
 
   const rewriteTime = () => {
@@ -90,11 +98,7 @@
 
   setInterval(rewriteTime, 1000);
 
-
-
-
-
-
+  //コメントスクロール位置固定機能
   document.addEventListener("turbolinks:load", () => {
     function scrollToEnd() {
       const messageDetails = document.getElementById('scrollInner');
@@ -104,11 +108,7 @@
   })
 
 
-
-
-
-
-
+  //Google Map API
   if (typeof map == "undefined") {
     let map
     let marker

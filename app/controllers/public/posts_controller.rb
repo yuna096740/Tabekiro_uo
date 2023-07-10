@@ -1,7 +1,7 @@
 class Public::PostsController < ApplicationController
 
   def index
-    @posts = Post.all.order(created_at: "DESC")
+    @posts = Post.all
   end
 
   def show
@@ -16,10 +16,9 @@ class Public::PostsController < ApplicationController
   end
 
   def create
-    @post = Post.new(post_params)
-    @post.member_id = current_member.id
-    @post.save
-    redirect_to posts_path
+    post = current_member.posts.new(post_params)
+    post.save
+    redirect_to post_path(post)
   end
 
   def edit

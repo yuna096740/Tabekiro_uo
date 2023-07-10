@@ -1,26 +1,15 @@
-<%= form_with model: [ post, comment ]  do |f| %>
+<%= form_with model: [ post, comment ], local: false do |f| %>
   <table class="table table-bordered">
     <thead class="bg-light">
       <tr>
-        <th>コメント数 : <%= comments.count %>件</th>
+        <th id="postCommentCount">コメント数 : <%= @post.post_comments.count %>件</th>
       </tr>
     </thead>
 
     <tbody class="chat-height">
       <tr>
-        <td>
-          <div class="chat-height messageDetails" id="scrollInner">
-            <% comments.each do |comment| %>
-              <div class="d-flex mt-2">
-                <%= link_to member_path(comment.member_id) do %>
-                  <%= image_tag comment.member.icon,size:"35x35", class:"rounded-circle mr-1" %>
-                <% end %>
-                <div class="bg-light text-dark p-2 rounded-pill">
-                  <%= comment.comment %><br>
-                </div>
-              </div>
-            <% end %>
-          </div>
+        <td id="postComments">
+          <%= render 'public/post_comments/comments', post: @post %>
         </td>
       </tr>
     </tbody>
@@ -28,8 +17,8 @@
     <thead>
       <tr>
         <th class="d-flex">
-          <%= f.text_field :comment, class:"form-control" %>
-          <%= button_tag type:'submit', class:"btn btn-success ml-3" do %>
+          <%= f.text_area :comment, rows: 1,class:"form-control" %>
+          <%= button_tag type:'submit', class:"btn btn-success ml-3", id:"commentBtn" do %>
             <i class="fas fa-paper-plane"></i>
           <% end %>
         </th>
@@ -37,13 +26,3 @@
     </thead>
   </table>
 <% end %>
-
-<!--<script>-->
-<!--  document.addEventListener("turbolinks:load", () => {-->
-<!--    function scrollToEnd() {-->
-<!--      const messageDetails = document.getElementById('scrollInner');-->
-<!--      messageDetails.scrollTop = messageDetails.scrollHeight;-->
-<!--    }-->
-<!--    scrollToEnd()-->
-<!--  })-->
-<!--</script>-->

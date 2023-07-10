@@ -1,0 +1,12 @@
+<div class="row mb-5">
+  <% posts.each do |post| %>
+    <div class="col-md-3 mb-5 text-center">
+      <div data-aos="zoom-in" data-aos-duration="2000">
+        <%= link_to post_path(post) do %>
+          <%= image_tag post.get_post_image(250,200) %>
+          <div class="text-dark"><%= post.title %></div>
+        <% end %>
+      </div>
+    </div>
+  <% end %>
+</div>

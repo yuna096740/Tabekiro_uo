@@ -1,7 +1,9 @@
 <div class="container">
   <div class="row my-5">
     <div class="col-md-5 text-right">
-      <%= image_tag @member.get_icon(300,300), class:"rounded-circle" %>
+      <div data-aos="zoom-in" data-aos-duration="2000">
+        <%= image_tag @member.get_icon(300,300), class:"rounded-circle" %>
+      </div>
     </div>
 
     <div class="col-md-6 ml-5 mt-3">
@@ -19,15 +21,5 @@
       <%= @member.introduction %>
     </div>
   </div>
-
-  <div class="row mb-5">
-    <% @posts.each do |post| %>
-      <div class="col-md-3 mb-5 text-center ">
-        <%= link_to post_path(post) do %>
-          <%= image_tag post.get_post_image(250,200) %>
-          <div class="text-dark"><%= post.title %></div>
-        <% end %>
-      </div>
-    <% end %>
-  </div>
+  <%= render 'public/members/member_posts', posts: @posts %>
 </div>

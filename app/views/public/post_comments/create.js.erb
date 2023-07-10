@@ -1,0 +1,4 @@
+$('#postComments').html("<%= j(render "public/post_comments/comments", post: @post) %>");
+$('#postCommentCount').html("コメント数：<%= @post.post_comments.count %>件");
+$('textarea').val('');
+commentsScrollToEnd();

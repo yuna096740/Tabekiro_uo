@@ -3,7 +3,9 @@
     <div class="col-md-7">
       <h4 class="mb-4">お裾分け詳細</h4>
       <div class="text-center">
-        <%= image_tag @post.get_post_image(600,350), class:"rounded" %>
+        <div data-aos="zoom-in" data-aos-duration="2000">
+          <%= image_tag @post.get_post_image(600,350), class:"rounded" %>
+        </div>
       </div>
 
       <div class="text-right mt-3 mr-3" id="favorite">
@@ -50,7 +52,7 @@
     </div>
 
     <div class="col-md-4 offset-1 mt-5">
-      <%= render 'public/post_comments/comment_bar', comment: @comment, comments: @comments, post: @post  %>
+      <%= render 'public/post_comments/comment_bar', comment: @comment, post: @post  %>
     </div>
   </div>
 
@@ -63,6 +65,7 @@
     </div>
   </div>
 </div>
+
 <script>
   //カウントダウンタイマー機能
   //if (typeof elmHour == "undefined") {
@@ -100,13 +103,8 @@
 
   //コメントスクロール位置固定機能
   document.addEventListener("turbolinks:load", () => {
-    function scrollToEnd() {
-      const messageDetails = document.getElementById('scrollInner');
-      messageDetails.scrollTop = messageDetails.scrollHeight;
-    }
-    scrollToEnd()
-  })
-
+    commentsScrollToEnd();
+  });
 
   //Google Map API
   if (typeof map == "undefined") {

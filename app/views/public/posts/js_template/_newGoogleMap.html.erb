@@ -1,0 +1,52 @@
+<script>
+  // もしmapが定義されていなかったら
+  if (typeof map == "undefined") {
+    let map;
+    let marker;
+    var geocoder;
+    var afterPinned;
+  }
+
+  function initMap(){
+    geocoder = new google.maps.Geocoder()
+
+    map = new google.maps.Map(document.getElementById('map'),{
+      center: { lat: 35.6803997, lng: 139.7690174 }, //Tokyo
+      zoom: 10,
+
+    });
+  }
+
+  afterPinned = false
+  //一度ピンを刺す処理を行なった後にcreateせず他ページにいき戻ってきた時の対策
+
+  function codeAddress(){
+    let inputAddress = document.getElementById('address').value;
+    geocoder.geocode( { 'address': inputAddress }, function(results, status) {
+      if (status == 'OK') {
+        if (afterPinned == true) {
+          marker.setMap(null);
+        }
+        map.setCenter(results[0].geometry.location);
+          var marker = new google.maps.Marker({
+            map: map,
+            position: results[0].geometry.location,
+            draggable: true
+          });
+
+        afterPinned = true
+        // ピンは一本しか刺せない
+
+        document.getElementById('latitude').value = results[0].geometry.location.lat();
+        document.getElementById('longitube').value = results[0].geometry.location.lng();
+
+        google.maps.event.addListener(marker, 'dragend', function(ev){
+          document.getElementById('latitude').value = ev.latLng.lat();
+          document.getElementById('longitube').value = ev.latLng.lng();
+        });
+      } else {
+        alert('該当する結果はありませんでした:' + status);
+      }
+    });
+  }
+</script>

@@ -3,10 +3,21 @@
     <div class="col-4 mb-5">
       <div data-aos="zoom-in" data-aos-duration="2000">
         <%= link_to post_path(post) do %>
+          <div class="text-dark"><b><%= post.title %></b></div>
           <%= image_tag post.get_post_image(350,300), class:"rounded" %>
-          <div class="text-dark"><%= post.title %></div>
         <% end %>
+        <%#<div class="timeLimit">
+          あと
+          <span class="hour"></span>時間
+          <span class="min"></span>分
+          <span class="sec"></span>秒です。
+        </div>
+        <div class="hideLimit">
+          取引は終了しました。
+        </div> %>
       </div>
     </div>
   <% end %>
 </div>
+<%#カウントダウンタイマー機能 %>
+<%#= render 'public/posts/js_template/countTimer', post: @post %>

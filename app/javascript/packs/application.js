@@ -13,14 +13,8 @@ import "popper.js";
 import "bootstrap";
 import "../stylesheets/application";
 
+import "./scrollComment";
+
 Rails.start()
 Turbolinks.start()
 ActiveStorage.start()
-
-function scrollToEnd() {
-  const messageDetails = document.getElementById('scrollInner');
-  if (messageDetails) {
-    messageDetails.scrollTop = messageDetails.scrollHeight;
-  }
-}
-window.commentsScrollToEnd = scrollToEnd;

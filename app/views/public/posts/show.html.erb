@@ -3,11 +3,11 @@
     <div class="col-md-7">
       <h4 class="mb-4">お裾分け詳細</h4>
         <div data-aos="zoom-in" data-aos-duration="1500">
-      <div class="text-center bg-dark rounded pb-3">
+      <div class="text-center bg-light rounded pb-3">
         <div class="d-flex px-3 py-2">
           <%= image_tag @post.member.get_icon(50,50), class:"rounded-circle mx-3" %>
           <h5 class="my-auto">
-            <%= link_to @post.member.nickname, member_path(@post.member_id), class:"text-light ml-2" %>
+            <%= link_to @post.member.nickname, member_path(@post.member_id), class:"text-dark ml-2" %>
           </h5>
         </div>
           <%= image_tag @post.get_post_image(600,350), class:"rounded" %>
@@ -73,63 +73,16 @@
     </div>
   </div>
 </div>
+<%# Google Map API %>
+<%= render 'public/posts/js_template/googleMap', post: @post %>
+
+<%#カウントダウンタイマー機能 %>
+<%= render 'public/posts/js_template/countTimer', post: @post %>
 
 <script>
-  //カウントダウンタイマー機能
-  const elmHour = document.querySelector(".hour");
-  const elmMin  = document.querySelector(".min");
-  const elmSec  = document.querySelector(".sec");
-
-  const rewriteTime = () => {
-    const now = new Date();
-
-    const postCreatedAt = new Date("<%= @post.created_at.iso8601 %>");
-    const limit = <%= @post.limit %>
-    const limitTime = new Date(postCreatedAt.getTime() + limit * 60 * 60 * 1000);
-
-    const differ = limitTime.getTime() - now.getTime();
-
-    const sec = Math.floor(differ / 1000) % 60;
-    const min = Math.floor(differ / 1000 / 60) % 60;
-    const hour = Math.floor(differ / 1000 / 60 / 60);
-
-    elmHour.textContent = String(hour).padStart(2, "0");
-    elmMin.textContent = String(min).padStart(2, "0");
-    elmSec.textContent = String(sec).padStart(2, "0");
-
-    const timeLimit = document.getElementById("timeLimit");
-    const hideLimit = document.getElementById("hideLimit");
-    if ( differ < 0 ) {
-      timeLimit.style.display = "none";
-      hideLimit.style.display = "block";
-    }
-  };
-
-
-  setInterval(rewriteTime, 1000);
-
   //コメントスクロール位置固定機能
   document.addEventListener("turbolinks:load", () => {
     commentsScrollToEnd();
   });
-
-  //Google Map API
-  if (typeof map == "undefined") {
-    let map
-    let marker
-  }
-  function initMap(){
-    geocoder = new google.maps.Geocoder()
-
-    map = new google.maps.Map(document.getElementById('map'), {
-      center: { lat: <%= @post.latitude %>, lng: <%= @post.longitube %> },
-      zoom: 15,
-    });
-
-    marker = new google.maps.Marker({
-      position: { lat: <%= @post.latitude %>, lng: <%= @post.longitube %> },
-      map: map
-    });
-  }
 </script>
 <script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['API_KEY'] %>&libraries=places&callback=initMap" async defer></script>

@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row my-5">
     <div class="col-md-5 text-right">
-      <div data-aos="zoom-in" data-aos-duration="2000">
+      <div data-aos="zoom-out-left" data-aos-duration="2000">
         <%= image_tag @member.get_icon(300,300), class:"rounded-circle" %>
       </div>
     </div>
@@ -11,7 +11,9 @@
       <p class="mt-5">過去の取引数: ◯回</p>
       <p>登録者数: ◯人</p>
       <%= link_to '＋SUBSCRIBE', root_path, class:"btn btn-danger px-5 mt-5" %><br>
-      <%= link_to '通報する', root_path %>
+      <% if @member != current_member %>
+        <%= link_to '通報する', new_member_report_path(@member) %>
+      <% end %>
     </div>
   </div>
 

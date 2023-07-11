@@ -136,7 +136,7 @@ ActiveRecord::Schema.define(version: 2023_07_07_095936) do
     t.integer "reported_id", null: false
     t.integer "genre", default: 0, null: false
     t.string "reason", null: false
-    t.boolean "is_supported", default: false, null: false
+    t.integer "is_supported", default: 0, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

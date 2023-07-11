@@ -1,2 +1,37 @@
-<h1>Public::Reports#new</h1>
-<p>Find me in app/views/public/reports/new.html.erb</p>
+<div class="container">
+  <%= form_with model: [@member, @report], url: confirm_member_reports_path, method: :post do |f| %>
+  <h4 class="my-2 ml-5">通報フォーム</h4>
+    <div class="row">
+      <div class="col-md-9 mt-5">
+        <table class="table table-borderless">
+          <thead>
+            <tr>
+              <th class="text-right align-middle">ユーザーネーム：</th>
+              <td><h5><%= link_to @member.nickname, member_path(@member), class:"text-dark" %></h5></td>
+            </tr>
+
+            <tr>
+              <th class="text-right align-middle">通報ジャンル：</th>
+              <td><%= f.select :genre, Report.genres_i18n.invert, {}, class:"form-control my-3" %></td>
+            </tr>
+
+            <tr>
+              <th class="align-top text-right">通報内容：</th>
+              <td><%= f.text_area :reason, rows: 5, placeholder: "入力してください", class:"form-control" %></td>
+            </tr>
+
+            <tr>
+              <th></th>
+              <td></td>
+            </tr>
+          </thead>
+        </table>
+      </div>
+    </div>
+    <div class="row">
+      <div class="mx-auto">
+        <%= f.submit '通報内容確認画面へ', class:"btn btn-danger rounded-pill px-5 mb-5" %>
+      </div>
+    </div>
+  <% end %>
+</div>

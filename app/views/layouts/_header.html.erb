@@ -43,7 +43,9 @@
   <% if member_signed_in? %>
     <div class="text-right pt-2">
       <a data-toggle="collapse" href="#headerIcon" role="button" aria-expanded="false" aria-controls="#headerIcon">
-        <%= image_tag current_member.get_icon(70,70), class:"rounded-circle mr-4" %>
+        <div data-aos="zoom-out-left" data-aos-duration="2000">
+          <%= image_tag current_member.get_icon(70,70), class:"rounded-circle mr-4" %>
+        </div>
       </a>
     </div>
   <% end %>

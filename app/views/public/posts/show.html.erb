@@ -2,8 +2,14 @@
   <div class="row">
     <div class="col-md-7">
       <h4 class="mb-4">お裾分け詳細</h4>
-      <div class="text-center">
-        <div data-aos="zoom-in" data-aos-duration="2000">
+        <div data-aos="zoom-in" data-aos-duration="1500">
+      <div class="text-center bg-dark rounded pb-3">
+        <div class="d-flex px-3 py-2">
+          <%= image_tag @post.member.get_icon(50,50), class:"rounded-circle mx-3" %>
+          <h5 class="my-auto">
+            <%= link_to @post.member.nickname, member_path(@post.member_id), class:"text-light ml-2" %>
+          </h5>
+        </div>
           <%= image_tag @post.get_post_image(600,350), class:"rounded" %>
         </div>
       </div>
@@ -13,33 +19,35 @@
       </div>
 
       <table class="table table-borderless">
-        <tr>
-          <th class="col-2">タイトル</th>
-          <td><%= @post.title %></td>
-        </tr>
+        <thead>
+          <tr>
+            <th class="col-2">タイトル</th>
+            <td><%= @post.title %></td>
+          </tr>
 
-        <tr>
-          <th>紹介</th>
-          <td><%= @post.introduction %></td>
-        </tr>
+          <tr>
+            <th>紹介</th>
+            <td><%= @post.introduction %></td>
+          </tr>
 
-        <tr>
-          <th>取引期限</th>
-          <td id="timeLimit">
-            あと
-            <span class="hour"></span>時間
-            <span class="min"></span>分
-            <span class="sec"></span>秒です。
-          </td>
-          <td id="hideLimit">
-            取引は終了しました。
-          </td>
-        </tr>
+          <tr>
+            <th>取引期限</th>
+            <td id="timeLimit">
+              あと
+              <span class="hour"></span>時間
+              <span class="min"></span>分
+              <span class="sec"></span>秒です。
+            </td>
+            <td id="hideLimit">
+              取引は終了しました。
+            </td>
+          </tr>
 
-        <tr>
-          <th></th>
-          <td></td>
-        </tr>
+          <tr>
+            <th></th>
+            <td></td>
+          </tr>
+        </thead>
       </table>
       <div class="text-center mb-5 mt-3">
         <% if @post.member == current_member %>
@@ -96,7 +104,7 @@
       hideLimit.style.display = "block";
     }
   };
-  
+
 
   setInterval(rewriteTime, 1000);
 

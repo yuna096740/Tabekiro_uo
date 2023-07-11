@@ -1,0 +1,12 @@
+ja:
+  enums:
+    report:
+      is_suported:
+        waiting: "未対応"
+        keep:    "対応中"
+        done:    "対応済み"
+      genre:
+        inappropriate_content: "不適切なコンテンツ"
+        aggressive:            "攻撃的な発言"
+        spam:                  "広告スパム"
+        others:                "その他"

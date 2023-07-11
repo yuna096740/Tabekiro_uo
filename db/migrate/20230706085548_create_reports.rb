@@ -6,7 +6,7 @@ class CreateReports < ActiveRecord::Migration[6.1]
       t.integer :reported_id,  null: false
       t.integer :genre,        null: false, default: 0
       t.string  :reason,       null: false
-      t.boolean :is_supported, null: false, default: false
+      t.integer :is_supported, null: false, default: 0
 
       t.timestamps
     end

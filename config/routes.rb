@@ -15,16 +15,21 @@ Rails.application.routes.draw do
     get '/about' => 'homes#about', as: 'about'
 
     resources :members, only: [:index, :show] do
+      collection do
+        get   'favorite'
+        get   'confirm'
+        patch 'quit'
+      end
       resources :relationships, only: [:create, :destroy] do
         collection do
           get 'subscriber'
           get 'subscribed'
         end
       end
-      collection do
-        get   'favorite'
-        get   'confirm'
-        patch 'quit'
+      resources :reports,  only: [:new, :create] do
+        collection do
+          post 'confirm'
+        end
       end
     end
     get   'members/information/edit' => 'members#edit'
@@ -37,16 +42,11 @@ Rails.application.routes.draw do
         get 'map'
       end
     end
+
     resources :searches, only: [:index]
     resources :tags,     only: [:show]
     resources :rooms,    only: [:show, :create, :destroy]
     resources :messages, only: [:create, :destroy]
-    resources :reports,  only: [:new, :create] do
-      collection do
-        get 'confirm'
-      end
-    end
-
   end
 
   namespace :admin do

@@ -5,9 +5,26 @@ class Public::PostsController < ApplicationController
   end
 
   def show
-    @post = Post.find(params[:id])
     @comment = PostComment.new
-    #@comments = @post.post_comments.all
+    @post = Post.find(params[:id])
+    @member = @post.member
+    @current_member_entry = Entry.where(member_id: current_member.id)
+    @member_entry =         Entry.where(member_id: @member.id)
+    unless @member.id == current_member.id
+      @current_member_entry.each do |cm|
+        @member_entry.each do |m|
+          if cm.room_id == m.room_id
+            @is_room = true
+            @room_id = cm.room_id
+          end
+        end
+      end
+      if @is_room
+      else
+        @room =  Room.new
+        @entry = Entry.new
+      end
+    end
   end
 
   def new
@@ -51,7 +68,8 @@ class Public::PostsController < ApplicationController
                                  :longitube,
                                  :place_name,
                                  :is_open,
-                                 :post_image
+                                 :post_image,
+                                 :member_id
                                 )
   end
 end

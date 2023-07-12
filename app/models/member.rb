@@ -3,18 +3,21 @@ class Member < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
+  default_scope -> { order(created_at: "DESC") }
 
-  has_many :posts,         dependent: :destroy
-  has_many :post_comments, dependent: :destroy
-  has_many :favorites,     dependent: :destroy
-  has_many :reports,            class_name: "Report", foreign_key: "reporter_id", dependent: :destroy
-  has_many :reverse_of_reports, class_name: "Report", foreign_key: "reported_id", dependent: :destroy
+  has_many :posts,                 dependent: :destroy
+  has_many :post_comments,         dependent: :destroy
+  has_many :favorites,             dependent: :destroy
+  has_many :mwssages,              dependent: :destroy
+  has_many :entries,               dependent: :destroy
+  
+  has_many :reports,               class_name: "Report", foreign_key: "reporter_id", dependent: :destroy
+  has_many :reverse_of_reports,    class_name: "Report", foreign_key: "reported_id", dependent: :destroy
 
   has_many :subscribes,            class_name: "Relationship", foreign_key: "subscriber_id", dependent: :destroy
   has_many :reverse_of_subscribes, class_name: "Relationship", foreign_key: "subscribed_id", dependent: :destroy
-
-  has_many :subscribings, through: :subscribes, source: :subscribed
-  has_many :subscribers,  through: :reverse_of_subscribes, source: :subscriber
+  has_many :subscribings,          through: :subscribes, source: :subscribed
+  has_many :subscribers,           through: :reverse_of_subscribes, source: :subscriber
 
   has_one_attached :icon
 

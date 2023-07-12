@@ -12,19 +12,20 @@
       <p class="subscribeCount">
         <%= render 'public/relationships/subscribe_count', member: @member %>
       </p>
-      <%# subscribe btn %>
       <div class="subscribeBtn">
         <%= render 'public/relationships/subscribe_btn', member: @member %>
       </div>
       <% if @member != current_member %>
-        <%= link_to '通報する', new_member_report_path(@member) %>
+        <div class="text-center">
+          <%= link_to '通報する', new_member_report_path(@member) %>
+        </div>
       <% end %>
     </div>
   </div>
 
   <div class="row">
     <div class="col-md-9 mb-5 mx-auto">
-      <p>自己紹介</p>
+      <p><b>自己紹介</b></p>
       <%= @member.introduction %>
     </div>
   </div>

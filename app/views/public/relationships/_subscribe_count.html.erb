@@ -1,1 +1,3 @@
-Subscribe：<%= link_to @member.subscribers.count, subscribers_member_relationships_path(@member) %>
+<%= link_to subscribers_member_relationships_path(@member), class:"text-dark" do %>
+  Subscribe：<b><%= @member.subscribers.count %></b>
+<% end %>

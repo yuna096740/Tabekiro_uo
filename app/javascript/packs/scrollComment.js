@@ -1,5 +1,5 @@
 function scrollToEnd() {
-  const messageDetails = document.getElementById('scrollInner');
+  const messageDetails = document.querySelector('.scrollInner');
   if (messageDetails) {
     messageDetails.scrollTop = messageDetails.scrollHeight;
   }

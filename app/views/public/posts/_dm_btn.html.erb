@@ -1,0 +1,12 @@
+<% unless post.member == current_member %>
+  <% if is_room == true %>
+    <%= link_to 'チャット画面へ', room_path(room_id), class:"btn btn-success px-5 rounded-pill" %>
+  <% else %>
+    <%= form_with model: room do |f| %>
+      <%= fields_for entry do |e| %>
+        <%= e.hidden_field :member_id, value: member.id %>
+      <% end %>
+      <%= f.submit '取引する', class:"btn btn-success px-5 rounded-pill" %>
+    <% end %>
+  <% end %>
+<% end %>

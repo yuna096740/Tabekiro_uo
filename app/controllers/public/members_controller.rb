@@ -1,12 +1,12 @@
 class Public::MembersController < ApplicationController
 
   def index
-    @posts = current_member.posts.all.order(created_at: "DESC")
+    @posts = current_member.posts.all
   end
 
   def show
     @member = Member.find(params[:id])
-    @posts = @member.posts.all.order(created_at: "DESC")
+    @posts =  @member.posts.all
   end
 
   def edit

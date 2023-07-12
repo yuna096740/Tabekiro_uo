@@ -1,8 +1,8 @@
 <div class="container">
   <div class="row">
-    <% @favorite_posts.each do |post| %>
-      <div class="col-md-8 offset-2">
-        <h5 class="">いいねした投稿</h5>
+    <div class="col-md-8 offset-2">
+      <h5 class="my-3">いいねした投稿</h5>
+      <% @favorite_posts.each do |post| %>
         <table class="table table-borderless">
           <thead>
             <tr>
@@ -22,7 +22,7 @@
             </tr>
           </thead>
         </table>
-      </div>
-    <% end %>
+      <% end %>
+    </div>
   </div>
 </div>

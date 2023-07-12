@@ -53,9 +53,10 @@
         <% if @post.member == current_member %>
           <%= link_to '編集する', edit_post_path(@post), class:"btn btn-success px-5 mr-5 rounded-pill" %>
           <%= link_to '削除する', post_path(@post), method: :delete, data: { confirm: "本当によろしいですか？"}, class:"btn btn-danger px-5 rounded-pill" %>
-        <% else %>
-          <%= link_to '取引する', root_path, class:"btn btn-success px-5 rounded-pill" %>
         <% end %>
+
+        <%= render 'public/posts/dm_btn', post: @post, is_room: @is_room, room: @room, entry: @entry, member: @member, room_id: @room_id %>
+
       </div>
     </div>
 
@@ -81,6 +82,7 @@
 
 <script>
   //コメントスクロール位置固定機能
+  // packs/scrollComment.jsに記載
   document.addEventListener("turbolinks:load", () => {
     commentsScrollToEnd();
   });

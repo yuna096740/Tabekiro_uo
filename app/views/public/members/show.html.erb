@@ -9,8 +9,13 @@
     <div class="col-md-6 ml-5 mt-3">
       <h2><%= @member.nickname %></h2>
       <p class="mt-5">過去の取引数: ◯回</p>
-      <p>登録者数: ◯人</p>
-      <%= link_to '＋SUBSCRIBE', root_path, class:"btn btn-danger px-5 mt-5" %><br>
+      <p class="subscribeCount">
+        <%= render 'public/relationships/subscribe_count', member: @member %>
+      </p>
+      <%# subscribe btn %>
+      <div class="subscribeBtn">
+        <%= render 'public/relationships/subscribe_btn', member: @member %>
+      </div>
       <% if @member != current_member %>
         <%= link_to '通報する', new_member_report_path(@member) %>
       <% end %>

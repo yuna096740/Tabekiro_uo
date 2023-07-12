@@ -20,10 +20,10 @@ Rails.application.routes.draw do
         get   'confirm'
         patch 'quit'
       end
-      resources :relationships, only: [:create, :destroy] do
+      resource :relationships, only: [:create, :destroy] do
         collection do
-          get 'subscriber'
-          get 'subscribed'
+          get 'subscribings'
+          get 'subscribers'
         end
       end
       resources :reports,  only: [:new, :create] do

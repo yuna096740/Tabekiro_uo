@@ -1,0 +1,8 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-8 offset-2">
+      <h4 class="my-3">登録者一覧：<%= @member.subscribers.count %>人</h4>
+      <%= render 'public/relationships/index', members: @members %>
+    </div>
+  </div>
+</div>

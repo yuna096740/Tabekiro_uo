@@ -1,0 +1,31 @@
+<% if members.exists? %>
+  <% members.each do |member| %>
+    <table class="table table-borderless">
+      <thead>
+        <tr>
+          <th>
+            <%= link_to member_path(member) do %>
+              <div data-aos="zoom-in" data-aos-duration="2000">
+                <%= image_tag member.get_icon(100,100), class:"rounded-circle" %>
+              </div>
+            <% end %>
+          </th>
+          <td>
+            <b><%= link_to member.nickname, member_path(member), class:"text-dark" %></b><br>
+            取引回数：<%#=  %><br>
+            Subscribe：<%= link_to member.subscribers.count, subscribers_member_relationships_path(member) %>
+          </td>
+          <td><%= link_to '詳細ページ', member_path(member), class:"btn btn-light mt-5" %></td>
+        </tr>
+      </thead>
+    </table>
+  <% end %>
+<% else %>
+  <div class="text-center my-5">
+    <% if current_page?(subscribings_member_relationships_path) %>
+      <p>まだ登録していません。</p>
+    <% else %>
+      <p>まだ登録者はいません</p>
+    <% end %>
+  </div>
+<% end %>

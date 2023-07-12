@@ -13,8 +13,8 @@ class Member < ApplicationRecord
   has_many :subscribes,            class_name: "Relationship", foreign_key: "subscriber_id", dependent: :destroy
   has_many :reverse_of_subscribes, class_name: "Relationship", foreign_key: "subscribed_id", dependent: :destroy
 
-  has_many :subscribings, thorough: :subscribes, source: :subscribed_id
-  has_many :subscribers,  thorough: :subscribes, source: :subscriber_id
+  has_many :subscribings, through: :subscribes, source: :subscribed
+  has_many :subscribers,  through: :reverse_of_subscribes, source: :subscriber
 
   has_one_attached :icon
 
@@ -31,7 +31,7 @@ class Member < ApplicationRecord
   end
 
   def unsubscribe(member_id)
-    subscribes.find_by(subscribed_id: user_id).destroy
+    subscribes.find_by(subscribed_id: member_id).destroy
   end
 
   def subscribing?(member)

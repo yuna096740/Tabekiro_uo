@@ -1,9 +1,9 @@
 class Public::RoomsController < ApplicationController
 
   def create
-    @room =                 Room.create
+    @room =                 Room.create(room_params)
     @current_member_entry = Entry.create(room_id: @room.id, member_id: current_member.id)
-    @member_entry =         Entry.create((room_params).merge(room_id: @room.id))
+    @member_entry =         Entry.create((entry_params).merge(room_id: @room.id))
     redirect_to room_path(@room.id)
   end
 
@@ -21,6 +21,11 @@ class Public::RoomsController < ApplicationController
   private
 
   def room_params
+    params.require(:room).permit(:post_id)
+  end
+
+  def entry_params
     params.require(:entry).permit(:member_id, :room_id)
   end
+
 end

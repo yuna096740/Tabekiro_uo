@@ -1,8 +1,12 @@
-<% unless post.member == current_member %>
-  <% if is_room == true %>
-    <%= link_to 'チャット画面へ', room_path(room_id), class:"btn btn-success px-5 rounded-pill" %>
-  <% else %>
+<% if is_room == true %>
+  <% @room_ids.each do |room_id| %>
+    <%# entries = Room.find(room_id).entries.where.not(member_id: current_member.id) %>
+    <%= link_to "#{@entries[room_id].member.nickname}チャット画面へ", room_path(room_id), class:"btn btn-success px-5 rounded-pill" %>
+  <% end %>
+<% else %>
+  <% unless post.member == current_member %>
     <%= form_with model: room do |f| %>
+    <%= f.hidden_field :post_id, value: post.id %>
       <%= fields_for entry do |e| %>
         <%= e.hidden_field :member_id, value: member.id %>
       <% end %>

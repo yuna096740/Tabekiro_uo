@@ -10,12 +10,18 @@ class Public::PostsController < ApplicationController
     @member = @post.member
     @current_member_entry = Entry.where(member_id: current_member.id)
     @member_entry =         Entry.where(member_id: @member.id)
-    unless @member.id == current_member.id
+    ##unless @member.id == current_member.id
+    @room_ids = [] ##配列の宣言
+    @entries = []
       @current_member_entry.each do |cm|
         @member_entry.each do |m|
           if cm.room_id == m.room_id
-            @is_room = true
-            @room_id = cm.room_id
+            if cm.room.post_id == @post.id
+              @is_room = true
+              @room_ids.push(cm.room_id)
+              entries = Room.find(cm.room_id).entries.where.not(member_id: current_member.id)
+              @entries[cm.room_id] = entries[0]
+            end
           end
         end
       end
@@ -24,7 +30,7 @@ class Public::PostsController < ApplicationController
         @room =  Room.new
         @entry = Entry.new
       end
-    end
+    ##end
   end
 
   def new

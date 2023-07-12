@@ -51,4 +51,6 @@
 </nav>
 
 <%= render 'layouts/nav_logo' %>
-<%= render 'layouts/nav_icon' %>
+<% if member_signed_in? %>
+  <%= render 'layouts/nav_icon' %>
+<% end %>

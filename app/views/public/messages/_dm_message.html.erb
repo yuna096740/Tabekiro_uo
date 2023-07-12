@@ -1,0 +1,12 @@
+<div class="chat-height messageDetails scrollInner">
+  <% @messages.each do |message| %>
+    <div class="d-flex mt-2">
+      <%= link_to member_path(message.member_id) do %>
+        <%= image_tag message.member.icon,size:"45x45", class:"rounded-circle mr-1" %>
+      <% end %>
+      <div class="bg-light text-dark p-2 rounded-pill mt-1">
+        <%= message.message %><br>
+      </div>
+    </div>
+  <% end %>
+</div>

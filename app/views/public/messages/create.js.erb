@@ -1,0 +1,4 @@
+$('#dmMessage').html("<%= j(render "public/messages/dm_message", messages: @messages ) %>");
+$('#dmMessageCount').html("メッセージ数：<%= @messages.count %>件");
+$('textarea').val('');
+commentsScrollToEnd();

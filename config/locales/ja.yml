@@ -10,3 +10,9 @@ ja:
         aggressive:            "攻撃的な発言"
         spam:                  "広告スパム"
         others:                "その他"
+
+    post:
+      open_status:
+        open:     "公開"
+        unopened: "下書き保存"
+        complete: "取引終了"

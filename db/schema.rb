@@ -115,11 +115,11 @@ ActiveRecord::Schema.define(version: 2023_07_07_095936) do
     t.integer "tag_id", null: false
     t.string "title", null: false
     t.string "introduction", null: false
-    t.integer "limit", default: 0, null: false
+    t.integer "limit", null: false
     t.float "latitude", null: false
     t.float "longitube", null: false
     t.string "place_name", null: false
-    t.boolean "is_open", default: true, null: false
+    t.integer "open_status", default: 0, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

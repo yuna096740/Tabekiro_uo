@@ -6,31 +6,31 @@ class Public::PostsController < ApplicationController
 
   def show
     @comment = PostComment.new
-    @post = Post.find(params[:id])
-    @member = @post.member
-    @current_member_entry = Entry.where(member_id: current_member.id)
-    @member_entry =         Entry.where(member_id: @member.id)
-    ##unless @member.id == current_member.id
-    @room_ids = [] ##配列の宣言
-    @entries = []
-      @current_member_entry.each do |cm|
-        @member_entry.each do |m|
-          if cm.room_id == m.room_id
-            if cm.room.post_id == @post.id
+    @post =    Post.find(params[:id])
+
+    @member =                 @post.member
+    @current_member_entries = Entry.where(member_id: current_member.id)
+    @member_entries =         Entry.where(member_id: @member.id)
+    @room_ids = [] #配列の宣言
+    @entries =  []
+    #unless @member.id == current_member.id
+      @current_member_entries.each do |cm_entry|
+        @member_entries.each do |m_entry|
+          if cm_entry.room_id == m_entry.room_id
+            if cm_entry.room.post_id == @post.id
               @is_room = true
-              @room_ids.push(cm.room_id)
-              entries = Room.find(cm.room_id).entries.where.not(member_id: current_member.id)
-              @entries[cm.room_id] = entries[0]
+              @room_ids.push(cm_entry.room_id)#破壊的メソッド、配列の末尾に引数を要素に追加。レシーバーであるオブジェクトを変更できている
+              entries = Room.find(cm_entry.room_id).entries.where.not(member_id: current_member.id) #投稿者では無いidを
+              @entries[cm_entry.room_id] = entries[0]#インデックス番号を指定
             end
           end
         end
       end
-      if @is_room
-      else
+      unless @is_room
         @room =  Room.new
         @entry = Entry.new
       end
-    ##end
+    #end
   end
 
   def new
@@ -73,7 +73,7 @@ class Public::PostsController < ApplicationController
                                  :latitude,
                                  :longitube,
                                  :place_name,
-                                 :is_open,
+                                 :open_status,
                                  :post_image,
                                  :member_id
                                 )

@@ -17,6 +17,7 @@ Rails.application.routes.draw do
     resources :members, only: [:index, :show] do
       collection do
         get   'favorite'
+        get   'deal'
         get   'confirm'
         patch 'quit'
       end

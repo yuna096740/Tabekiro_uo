@@ -3,7 +3,7 @@
     const elmHour = document.querySelector(".hour");
     const elmMin  = document.querySelector(".min");
     const elmSec  = document.querySelector(".sec");
-    function test1() {
+    function countDown() {
       const now = new Date();
       const postCreatedAt = new Date("<%= post.created_at.iso8601 %>");
       const limit = <%= post.limit %>;
@@ -26,7 +26,7 @@
         hideLimit.style.display = "block";
       }
     }
-    countDownTimer = test1();
-    setInterval(countDownTimer, 1000);
+    countDown();
+    setInterval(countDown, 1000);
   })
 </script>

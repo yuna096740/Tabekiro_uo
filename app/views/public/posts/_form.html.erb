@@ -40,12 +40,12 @@
 
           <tr>
             <th>期限 :</th>
-            <td><div class="d-flex"><%= f.select :limit, *[1..10], {}, class:"form-control col-6" %><p class="mt-3 ml-1">時間</p></div></td>
+            <td><div class="d-flex"><%= f.select :limit, *[1..24], {}, class:"form-control col-6" %><p class="mt-3 ml-1">時間</p></div></td>
           </tr>
 
           <tr>
             <th>ステータス :</th>
-            <td><%= f.select :is_open, options_for_select([['公開', true],['下書き保存', false]]), {}, {class:"form-control col-6"} %></td>
+            <td><%= f.select :open_status, Post.open_statuses_i18n.invert, {}, {class:"form-control col-6"} %></td>
           </tr>
         </tbody>
       </table>

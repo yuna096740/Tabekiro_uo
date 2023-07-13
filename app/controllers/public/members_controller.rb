@@ -24,6 +24,16 @@ class Public::MembersController < ApplicationController
     @favorite_posts = Post.find(favorites)
   end
 
+  def deal
+    #entrys = Entry.where(member_id: current_member.id)
+    #room_ids = []
+    #entrys.each do |entry|
+     # entries = Room.find(entry.room_id).entries.where.not(member_id: current_member.id)
+      #@entries[entry.room_id] = entries
+    
+    #@deal_posts = Post.where(id: rooms.post_id)
+  end
+
   private
 
   def member_params

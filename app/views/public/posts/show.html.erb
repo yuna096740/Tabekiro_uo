@@ -38,30 +38,23 @@
               <span class="min"></span>分
               <span class="sec"></span>秒です。
             </td>
-            <td class="hideLimit">
+            <%#<td class="hideLimit">
               取引は終了しました。
-            </td>
-          </tr>
-
-          <tr>
-            <th></th>
-            <td></td>
+            </td>%>
           </tr>
         </thead>
       </table>
       <div class="text-center mb-5 mt-3">
-        <% if @post.member == current_member %>
+        <% if @member == current_member %>
           <%= link_to '編集する', edit_post_path(@post), class:"btn btn-success px-5 mr-5 rounded-pill" %>
           <%= link_to '削除する', post_path(@post), method: :delete, data: { confirm: "本当によろしいですか？"}, class:"btn btn-danger px-5 rounded-pill" %>
         <% end %>
-
-        <%= render 'public/posts/dm_btn', post: @post, is_room: @is_room, room: @room, entry: @entry, member: @member, room_id: @room_id %>
-
       </div>
     </div>
 
     <div class="col-md-4 offset-1 mt-5">
       <%= render 'public/post_comments/comment_bar', comment: @comment, post: @post  %>
+      <%= render 'public/posts/dm_btn', post: @post, is_room: @is_room, room: @room, entry: @entry, member: @member, room_id: @room_id %>
     </div>
   </div>
 

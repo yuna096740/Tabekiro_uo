@@ -1,0 +1,28 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-8 offset-2">
+      <h5 class="my-3">取引中の投稿</h5>
+      <% @deal_posts.each do |post| %>
+        <table class="table table-borderless">
+          <thead>
+            <tr>
+              <th>
+                <%= link_to post_path(post) do %>
+                  <div data-aos="zoom-in" data-aos-duration="2000">
+                    <%= image_tag post.get_post_image(100,100), class:"rounded" %>
+                  </div>
+                <% end %>
+              </th>
+              <td>
+                <b><%= link_to post.title, post_path(post), class:"text-dark" %></b><br>
+                ステータス：<%= post.is_open %><br>
+                limit：あと<%= post.limit %>
+              </td>
+              <td><%= link_to '詳細ページ', post_path(post), class:"btn btn-light mt-5" %></td>
+            </tr>
+          </thead>
+        </table>
+      <% end %>
+    </div>
+  </div>
+</div>

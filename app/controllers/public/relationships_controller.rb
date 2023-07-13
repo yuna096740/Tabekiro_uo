@@ -3,13 +3,12 @@ class Public::RelationshipsController < ApplicationController
   def create
     current_member.subscribe(params[:member_id])
     @member = Member.find(params[:member_id])
-    #redirect_to request.referer
+    @member.create_notification_subscribe!(current_member)
   end
 
   def destroy
     current_member.unsubscribe(params[:member_id])
     @member = Member.find(params[:member_id])
-    #redirect_to request.referer
   end
 
   def subscribings

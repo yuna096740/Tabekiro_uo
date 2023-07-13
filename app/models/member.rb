@@ -13,6 +13,9 @@ class Member < ApplicationRecord
   
   has_many :reports,               class_name: "Report", foreign_key: "reporter_id", dependent: :destroy
   has_many :reverse_of_reports,    class_name: "Report", foreign_key: "reported_id", dependent: :destroy
+  
+  has_many :active_notifications,  class_name: "Notification", foreign_key: "visiter_id", dependent: :destroy
+  has_many :passive_notifications, class_name: "Notification", foreign_key: "visited_id", dependent: :destroy
 
   has_many :subscribes,            class_name: "Relationship", foreign_key: "subscriber_id", dependent: :destroy
   has_many :reverse_of_subscribes, class_name: "Relationship", foreign_key: "subscribed_id", dependent: :destroy

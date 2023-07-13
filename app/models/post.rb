@@ -6,7 +6,8 @@ class Post < ApplicationRecord
   belongs_to :member
   belongs_to :tag
   has_many   :post_comments, dependent: :destroy
-  has_many   :favorites, dependent: :destroy
+  has_many   :favorites,     dependent: :destroy
+  has_many   :rooms,         dependent: :destroy
 
   validates :post_image, presence: :true
 

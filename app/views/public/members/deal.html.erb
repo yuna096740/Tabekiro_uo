@@ -2,7 +2,7 @@
   <div class="row">
     <div class="col-md-8 offset-2">
       <h5 class="my-3">取引中の投稿</h5>
-      <% @deal_posts.each do |post| %>
+      <% @posts.each do |post| %>
         <table class="table table-borderless">
           <thead>
             <tr>
@@ -15,7 +15,7 @@
               </th>
               <td>
                 <b><%= link_to post.title, post_path(post), class:"text-dark" %></b><br>
-                ステータス：<%= post.is_open %><br>
+                ステータス：<%#= post.is_open %><br>
                 limit：あと<%= post.limit %>
               </td>
               <td><%= link_to '詳細ページ', post_path(post), class:"btn btn-light mt-5" %></td>

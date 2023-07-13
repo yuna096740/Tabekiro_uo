@@ -25,13 +25,16 @@ class Public::MembersController < ApplicationController
   end
 
   def deal
-    #entrys = Entry.where(member_id: current_member.id)
-    #room_ids = []
-    #entrys.each do |entry|
-     # entries = Room.find(entry.room_id).entries.where.not(member_id: current_member.id)
-      #@entries[entry.room_id] = entries
-    
-    #@deal_posts = Post.where(id: rooms.post_id)
+    @member =  current_member
+    @entries = @member.entries.all
+    rooms = []
+    @posts = []
+    @entries.each do |entry|
+      rooms.push(Room.find(entry.room_id))
+    end
+    rooms.each do |room|
+      @posts.push(Post.find(room.post_id))
+    end
   end
 
   private

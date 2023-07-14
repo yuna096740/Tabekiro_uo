@@ -10,10 +10,10 @@ class Member < ApplicationRecord
   has_many :favorites,             dependent: :destroy
   has_many :mwssages,              dependent: :destroy
   has_many :entries,               dependent: :destroy
-  
+
   has_many :reports,               class_name: "Report", foreign_key: "reporter_id", dependent: :destroy
   has_many :reverse_of_reports,    class_name: "Report", foreign_key: "reported_id", dependent: :destroy
-  
+
   has_many :active_notifications,  class_name: "Notification", foreign_key: "visiter_id", dependent: :destroy
   has_many :passive_notifications, class_name: "Notification", foreign_key: "visited_id", dependent: :destroy
 
@@ -42,5 +42,16 @@ class Member < ApplicationRecord
 
   def subscribing?(member)
     subscribings.include?(member)
+  end
+
+  def create_notification_subscribe!(current_member)
+    temp = Notification.where(["visiter_id = ? and visited_id = ? and action = ?", current_member.id, id, "subscribe"])
+    if temp.blank?
+      notice = current_member.active_notifications.new(
+        visited_id: id,
+        action: "subscribe"
+      )
+      notice.save if notice.valid?
+    end
   end
 end

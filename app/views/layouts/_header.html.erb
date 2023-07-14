@@ -46,6 +46,9 @@
           </div>
         </a>
       </div>
+      <div class="mt-5">
+        <%= render 'layouts/notice_modal', notices: @notices %>
+      </div>
     <% end %>
   </div>
 </nav>
@@ -54,4 +57,3 @@
 <% if member_signed_in? %>
   <%= render 'layouts/nav_icon' %>
 <% end %>
-<%= render 'layouts/notice_modal' %>

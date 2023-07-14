@@ -4,7 +4,7 @@
     <%= post.favorites.count %>
   <% end %>
 <% else %>
-  <%= link_to post_favorites_path(post), method: :post, remote: true do %>
+  <%= link_to post_favorites_path(post), method: :post do %>
     <i class="fas fa-heart"></i>
     <%= post.favorites.count %>
   <% end %>

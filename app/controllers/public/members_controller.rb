@@ -36,17 +36,6 @@ class Public::MembersController < ApplicationController
       @posts.push(Post.find(room.post_id))
     end
   end
-  
-  def create_notification_subscribe!(current_member)
-    temp = Notification.where(["visiter_id = ? and visited_id = ? and action = ?", current_member.id, id, "subscribe"])
-    if temp.blank?
-      notice = current_member.active_notifications.new(
-        visited_id: id,
-        action: "subscribe"
-      )
-      notice.save if notice.valid?
-    end 
-  end
 
   private
 

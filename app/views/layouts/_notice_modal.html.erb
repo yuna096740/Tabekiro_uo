@@ -1,5 +1,5 @@
-<botton type="button" class="btn btn-primary" data-toggle="modal" data-target="#noticeModal">
-  通知一覧
+<botton type="button" class="btn rounded-circle" data-toggle="modal" data-target="#noticeModal">
+  🔔
 </botton>
 <div class="modal fade" id="noticeModal" rabindex="-1"
   role="dialog" aria-labelledby="noticeLabel" ariahidden="true">
@@ -12,7 +12,31 @@
         </button>
       </div>
       <div class="modal-body">
-        Modal body
+        <% notices = notices.where.not(visiter_id: current_member.id) %>
+        <%# binding.pry %>
+        <% if notices.exists? %>
+          <% notices.each do |notice| %>
+            <% visiter = notice.visiter %>
+            <% visited = notice.visited %>
+
+            <%= link_to member_path(visiter) do %>
+              <%= image_tag visiter.icon, size: "30x30", class:"rounded-circle" %>
+            <% end %>
+            <%= visiter.nickname %>さんが
+
+            <% if notice.action == 'subscribe' %>
+              <p>あなたを登録しました</p><br>
+            <% elsif notice.action == 'favorite' %>
+              <%= link_to 'あなたの投稿', post_path(notice.post) %>
+              <p>にいいねしました</p><br>
+            <% else %>
+              <%= link_to notice.post.title, post_path(notice.post) %>
+              <p>にコメントしました</p><br>
+            <% end %>
+          <% end %>
+        <% else %>
+          <p>通知はありません</p>
+        <% end %>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>

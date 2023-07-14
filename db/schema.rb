@@ -96,8 +96,8 @@ ActiveRecord::Schema.define(version: 2023_07_07_095936) do
     t.integer "visited_id", null: false
     t.integer "post_id"
     t.integer "post_comment_id"
-    t.string "action", null: false
-    t.boolean "checked", null: false
+    t.string "action", default: "", null: false
+    t.boolean "checked", default: false, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["post_comment_id"], name: "index_notifications_on_post_comment_id"

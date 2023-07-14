@@ -39,7 +39,7 @@ class Post < ApplicationRecord
         action: "favorite"
       )
       if notice.visiter_id == notice.visited_id
-        notificcation.checked = true
+        notice.checked = true
       end
       notice.save if notice.valid?
     end

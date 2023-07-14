@@ -3,9 +3,13 @@
   <div class="row mt-3 mb-3 mx-auto">
     <div class="col-md-4 text-center">
       <div class="icon" data-aos="zoom-out-left" data-aos-duration="2000">
-        <%= link_to members_information_edit_path do %>
+        <% if current_member.guest_member? %>
           <%= image_tag current_member.get_icon(150,150), class:"rounded-circle" %>
-          <p class="text-dark">編集</p>
+        <% else %>
+          <%= link_to members_information_edit_path do %>
+            <%= image_tag current_member.get_icon(150,150), class:"rounded-circle" %>
+            <p class="text-dark">編集</p>
+          <% end %>
         <% end %>
       </div>
     </div>

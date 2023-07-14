@@ -1,5 +1,9 @@
 <botton type="button" class="btn rounded-circle" data-toggle="modal" data-target="#noticeModal">
-  🔔
+  <% if unchecked_notifications.exists? %>
+    <span class="text-danger"><i class="fas fa-bell"></i></span>
+  <% else %>
+    <span class="text-primary"><i class="fas fa-bell"></i></span>
+  <% end %>
 </botton>
 <div class="modal fade" id="noticeModal" rabindex="-1"
   role="dialog" aria-labelledby="noticeLabel" ariahidden="true">
@@ -13,7 +17,6 @@
       </div>
       <div class="modal-body">
         <% notices = notices.where.not(visiter_id: current_member.id) %>
-        <%# binding.pry %>
         <% if notices.exists? %>
           <% notices.each do |notice| %>
             <% visiter = notice.visiter %>

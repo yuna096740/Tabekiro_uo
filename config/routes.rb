@@ -46,6 +46,11 @@ Rails.application.routes.draw do
         get 'map'
       end
     end
+    resources :notifications, only: [:destroy] do
+      collection do
+        delete 'destroy_all'
+      end
+    end
 
     resources :searches, only: [:index]
     resources :tags,     only: [:show]

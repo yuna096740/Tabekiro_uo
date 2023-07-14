@@ -1,5 +1,5 @@
 <botton type="button" class="btn rounded-circle" data-toggle="modal" data-target="#noticeModal">
-  <% if unchecked_notifications.exists? %>
+  <% if notices.exists? %>
     <span class="text-danger"><i class="fas fa-bell"></i></span>
   <% else %>
     <span class="text-primary"><i class="fas fa-bell"></i></span>
@@ -15,35 +15,23 @@
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <div class="modal-body">
+
+      <div class="modal-body" id="notice">
         <% notices = notices.where.not(visiter_id: current_member.id) %>
         <% if notices.exists? %>
-          <% notices.each do |notice| %>
-            <% visiter = notice.visiter %>
-            <% visited = notice.visited %>
-
-            <%= link_to member_path(visiter) do %>
-              <%= image_tag visiter.icon, size: "30x30", class:"rounded-circle" %>
-            <% end %>
-            <%= visiter.nickname %>さんが
-
-            <% if notice.action == 'subscribe' %>
-              <p>あなたを登録しました</p><br>
-            <% elsif notice.action == 'favorite' %>
-              <%= link_to 'あなたの投稿', post_path(notice.post) %>
-              <p>にいいねしました</p><br>
-            <% else %>
-              <%= link_to notice.post.title, post_path(notice.post) %>
-              <p>にコメントしました</p><br>
-            <% end %>
-          <% end %>
+          <%= render 'public/notifications/notice_content', notices: notices %>
         <% else %>
           <p>通知はありません</p>
         <% end %>
       </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-      </div>
+
+      <% if notices.exists? %>
+        <div class="modal-footer">
+          <%= link_to destroy_all_notifications_path, method: :delete, class:"text-dark" do %>
+            <p class="mx-1">ALL<i class="fas fa-trash"></i></p>
+          <% end %>
+        </div>
+      <% end %>
     </div>
   </div>
 </div>

@@ -1,0 +1,5 @@
+<%= link_to notice.post.title, post_path(notice.post) %>
+<p>にコメントしました</p>
+<%= link_to notification_path(notice), method: :delete, remote: :true, class:"text-dark ml-3" do %>
+  <i class="fas fa-trash"></i>
+<% end %>

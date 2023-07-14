@@ -17,9 +17,13 @@
     <thead>
       <tr>
         <th class="d-flex">
-          <%= f.text_area :comment, rows: 1,class:"form-control" %>
-          <%= button_tag type:'submit', class:"btn btn-success ml-3", id:"commentBtn" do %>
-            <i class="fas fa-paper-plane"></i>
+          <% if member_signed_in? %>
+            <%= f.text_area :comment, rows: 1, placeholder: "コメントを入力", class:"form-control" %>
+            <%= button_tag type:'submit', class:"btn btn-success ml-3", id:"commentBtn" do %>
+              <i class="fas fa-paper-plane"></i>
+            <% end %>
+          <% else %>
+            ※コメント投稿にはログインが必要です。
           <% end %>
         </th>
       </tr>

@@ -1,5 +1,4 @@
 class Public::MembersController < ApplicationController
-
   def index
     @posts = current_member.posts.all
   end

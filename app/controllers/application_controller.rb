@@ -23,6 +23,5 @@ class ApplicationController < ActionController::Base
     @notices.where(checked: false).each do |notice|
       notice.update(checked: true)
     end
-    #byebug
   end
 end

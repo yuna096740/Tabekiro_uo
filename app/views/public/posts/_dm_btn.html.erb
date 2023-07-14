@@ -1,16 +1,18 @@
 <div class="text-center">
-  <% if is_room == true %>
-    <% @room_ids.each do |room_id| %>
-      <%= link_to "#{entries[room_id].member.nickname}チャット画面", room_path(room_id), class:"btn btn-info form-control rounded-pill my-2" %>
-    <% end %>
-  <% else %>
-    <% unless post.member == current_member %>
-      <%= form_with model: room do |f| %>
-        <%= f.hidden_field :post_id, value: post.id %>
-          <%= fields_for entry do |e| %>
-            <%= e.hidden_field :member_id, value: member.id %>
-          <% end %>
-        <%= f.submit '取引する', class:"btn btn-info form-control rounded-pill" %>
+  <% if member_signed_in? %>
+    <% if is_room == true %>
+      <% @room_ids.each do |room_id| %>
+        <%= link_to "#{entries[room_id].member.nickname}チャット画面", room_path(room_id), class:"btn btn-info form-control rounded-pill my-2" %>
+      <% end %>
+    <% else %>
+      <% unless post.member == current_member %>
+        <%= form_with model: room do |f| %>
+          <%= f.hidden_field :post_id, value: post.id %>
+            <%= fields_for entry do |e| %>
+              <%= e.hidden_field :member_id, value: member.id %>
+            <% end %>
+          <%= f.submit '取引する', class:"btn btn-info form-control rounded-pill" %>
+        <% end %>
       <% end %>
     <% end %>
   <% end %>

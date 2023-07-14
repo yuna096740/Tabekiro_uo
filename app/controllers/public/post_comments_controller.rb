@@ -6,7 +6,6 @@ class Public::PostCommentsController < ApplicationController
     @comment.post_id = @post.id
     @comment.save
     @post.create_notification_comment!(current_member, @comment.id)
-    #redirect_to post_path(@post)
   end
 
   private

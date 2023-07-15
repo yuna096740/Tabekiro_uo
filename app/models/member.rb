@@ -8,7 +8,7 @@ class Member < ApplicationRecord
   has_many :posts,                 dependent: :destroy
   has_many :post_comments,         dependent: :destroy
   has_many :favorites,             dependent: :destroy
-  has_many :mwssages,              dependent: :destroy
+  has_many :messages,              dependent: :destroy
   has_many :entries,               dependent: :destroy
 
   has_many :reports,               class_name: "Report", foreign_key: "reporter_id", dependent: :destroy

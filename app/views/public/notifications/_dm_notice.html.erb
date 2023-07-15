@@ -1,0 +1,7 @@
+<p>あなたに<%= link_to 'DM', room_path(notice.room) %>を送りました</p>
+<div class="text-secondary ml-3">
+  <%= truncate(notice.message.message, length: 20) %>
+  <%= link_to notification_path(notice), method: :delete, remote: :true, class:"text-dark" do %>
+    <i class="fas fa-trash"></i>
+  <% end %>
+</div>

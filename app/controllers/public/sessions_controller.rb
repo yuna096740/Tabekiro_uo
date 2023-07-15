@@ -7,7 +7,7 @@ class Public::SessionsController < Devise::SessionsController
   def guest_sign_in
     member = Member.guest
     sign_in member
-    redirect_to member_path(member), notice: "Guestでログインしました。"
+    redirect_to members_path, notice: "Guestでログインしました。"
   end
 
   # GET /resource/sign_in
@@ -16,9 +16,14 @@ class Public::SessionsController < Devise::SessionsController
   # end
 
   # POST /resource/sign_in
-  # def create
-  #   super
-  # end
+  def create
+    if current_member
+      flash[:notice] = "おかえりなさい！#{current_member.nickname}さん"
+    else
+      flash[:notice] = "たべきろ魚へようこそ！プロフィールを完成させてお裾分けしよう！"
+    end
+    super
+  end
 
   # DELETE /resource/sign_out
   # def destroy

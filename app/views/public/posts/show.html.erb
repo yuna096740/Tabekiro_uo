@@ -39,15 +39,21 @@
 
           <tr>
             <th>取引期限</th>
-            <td class="timeLimit">
-              あと
-              <span class="hour"></span>時間
-              <span class="min"></span>分
-              <span class="sec"></span>秒です。
-            </td>
-            <td class="hideLimit">
-              取引は終了しました。
-            </td>
+            <% if @post.open_status == 'open' %>
+              <td class="timeLimit">
+                あと
+                <span class="hour"></span>時間
+                <span class="min"></span>分
+                <span class="sec"></span>秒です。
+              </td>
+              <td class="hideLimit">
+                取引は終了しました。
+              </td>
+            <% elsif @post.open_status == 'unopened' %>
+              <td class="text-success">非公開中</td>
+            <% else %>
+              <td>取引は終了しました。</td>
+            <% end %>
           </tr>
         </thead>
       </table>

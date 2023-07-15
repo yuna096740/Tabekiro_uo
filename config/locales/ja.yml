@@ -13,9 +13,10 @@ ja:
 
     post:
       open_status:
-        open:     "公開"
-        unopened: "下書き保存"
-        complete: "取引終了"
+        open:         "公開"
+        unopened:     "下書き保存"
+        during_trade: "取引中"
+        complete:     "取引終了"
 
     member:
       reason_for_quit_genre:

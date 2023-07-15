@@ -4,10 +4,14 @@ class ApplicationController < ActionController::Base
   before_action :search_tag
   before_action :search_post
 
+  def after_sign_in_path_for(resource)
+    members_path
+  end
+
   protected
 
   def configure_permitted_parameters
-    devise_parameter_sanitizer.permit(:sign_up, keys: [:nickname, :status, ])
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:nickname, :status ])
   end
 
   def search_tag

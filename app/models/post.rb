@@ -1,7 +1,7 @@
 class Post < ApplicationRecord
 
   default_scope ->  { order(created_at: "DESC") }
-  enum open_status: { open: 0, unopened: 1,complete: 2 }
+  enum open_status: { open: 0, unopened: 1, during_trade: 2, complete: 3 }
 
   belongs_to :member
   belongs_to :tag

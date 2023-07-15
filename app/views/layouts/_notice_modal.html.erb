@@ -11,27 +11,22 @@
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="noticeLabel">通知一覧</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
+
+        <% if notices.exists? %>
+          <%= link_to destroy_all_notifications_path, method: :delete, class:"text-dark" do %>
+            <p class="mx-1">ALL<i class="fas fa-trash"></i></p>
+          <% end %>
+        <% end %>
       </div>
 
       <div class="modal-body" id="notice">
         <% notices = notices.where.not(visiter_id: current_member.id) %>
         <% if notices.exists? %>
-          <%= render 'public/notifications/notice_content', notices: notices %>
+          <%= render 'public/notifications/notice', notices: notices %></div>
         <% else %>
-          <p>通知はありません</p>
+          通知はありません
         <% end %>
       </div>
-
-      <% if notices.exists? %>
-        <div class="modal-footer">
-          <%= link_to destroy_all_notifications_path, method: :delete, class:"text-dark" do %>
-            <p class="mx-1">ALL<i class="fas fa-trash"></i></p>
-          <% end %>
-        </div>
-      <% end %>
     </div>
   </div>
 </div>

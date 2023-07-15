@@ -1,5 +1,20 @@
-<%= link_to notice.post.title, post_path(notice.post) %>
-<p>にコメントしました</p>
-<%= link_to notification_path(notice), method: :delete, remote: :true, class:"text-dark ml-3" do %>
-  <i class="fas fa-trash"></i>
-<% end %>
+<div class="">
+  <% if notice.post.member_id == visited.id %>
+    <%= link_to "あなたの投稿", notice.post %>
+  <% else %>
+    <%= link_to post_path(notice.post) do %>
+      <%= image_tag notice.post.member.icon %>
+    <% end %>
+    <%= notice.post.member.nickname %>さんの投稿
+  <% end %>
+    にコメントしました<br>
+
+  <p class="text-secondary text-truncate mt-1" style=" width: 22em;">
+    <%= PostComment.find_by(id: notice.post_comment_id)&.comment %>
+  </p>
+  <div class="d-flex">
+    <%= link_to notification_path(notice), method: :delete, remote: :true, class:"text-dark ml-auto" do %>
+      <i class="fas fa-trash"></i>
+    <% end %>
+  </div>
+</div>

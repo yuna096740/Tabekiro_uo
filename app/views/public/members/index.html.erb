@@ -16,8 +16,12 @@
     <div class="col-md-6 mt-3">
       <h3><%= link_to current_member.nickname, member_path(current_member), class:"text-dark" %></h3>
       <div class="d-flex mt-5">
-        <h5 class="mr-5">過去の取引数: ◯回</h5>
-        <h5 class="ml-5">Subscribe: <%= link_to current_member.subscribers.count, subscribers_member_relationships_path(current_member) %></h5>
+        <h5 class="mr-5">取引数: <%= current_member.entries.count %> 回</h5>
+        <h5 class="ml-5">
+          <%= link_to subscribers_member_relationships_path(current_member) do %>
+            Subscribe: <%= current_member.subscribers.count %>
+          <% end %>
+        </h5>
       </div>
     </div>
   </div>

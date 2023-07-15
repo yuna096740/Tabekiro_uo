@@ -16,7 +16,7 @@ Member.create(
   password:     "123456",
   introduction: "お魚大好きです！",
   status:        0
-  )
+)
 
 Tag.create([
   {name: '小魚'},
@@ -25,4 +25,8 @@ Tag.create([
   {name: '青魚'},
   {name: '白身魚'},
   {name: '赤身魚'}
-  ])
+])
+Admin.create(
+  email:    "mail@gmail.com",
+  password: "123456"
+)

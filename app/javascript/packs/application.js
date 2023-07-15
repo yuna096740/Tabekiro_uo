@@ -12,6 +12,11 @@ import "jquery";
 import "popper.js";
 import "bootstrap";
 import "../stylesheets/application";
+import "../stylesheets/top.scss";
+import "../stylesheets/map.scss";
+import "../stylesheets/chat_bar.scss";
+import "../stylesheets/countdown.scss";
+
 
 import "./scrollComment";
 

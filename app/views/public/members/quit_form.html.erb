@@ -1,6 +1,6 @@
 <div class="container">
-  <%= form_with model: [@member, @report], url: confirm_member_reports_path, method: :post do |f| %>
-  <h4 class="my-2 ml-5">通報フォーム</h4>
+  <%= form_with model: @member, url: confirm_members_path, method: :post do |f| %>
+  <h4 class="my-2 ml-5">退会フォーム</h4>
     <div class="row">
       <div class="col-md-9 mt-5">
         <table class="table table-borderless">
@@ -11,13 +11,13 @@
             </tr>
 
             <tr>
-              <th class="text-right align-middle">通報ジャンル：</th>
-              <td><%= f.select :genre, Report.genres_i18n.invert, {}, class:"form-control my-3" %></td>
+              <th class="text-right align-middle">退会理由：</th>
+              <td><%= f.select :reason_for_quit_genre, Member.reason_for_quit_genres_i18n.invert, {}, class:"form-control my-3" %></td>
             </tr>
 
             <tr>
-              <th class="align-top text-right">通報内容：</th>
-              <td><%= f.text_area :reason, rows: 5, placeholder: "入力してください", class:"form-control" %></td>
+              <th class="align-top text-right">退会理由：</th>
+              <td><%= f.text_area :reason_for_quit, rows: 5, placeholder: "入力してください", class:"form-control" %></td>
             </tr>
           </thead>
         </table>

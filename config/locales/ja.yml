@@ -16,3 +16,9 @@ ja:
         open:     "公開"
         unopened: "下書き保存"
         complete: "取引終了"
+
+    member:
+      reason_for_quit_genre:
+        no_chance_to_use:    "使う機会がないから"
+        hard_to_use:         "使い方が難しい"
+        others:              "その他"

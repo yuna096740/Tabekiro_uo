@@ -21,7 +21,8 @@ Rails.application.routes.draw do
       collection do
         get   'favorite'
         get   'deal'
-        get   'confirm'
+        get   'quit_form'
+        post'confirm'
         patch 'quit'
       end
       resource :relationships, only: [:create, :destroy] do

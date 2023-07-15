@@ -3,7 +3,9 @@ class Member < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
-  default_scope -> { order(created_at: "DESC") }
+  default_scope ->            { order(created_at: "DESC") }
+  enum status:                { active: 0, banned: 1, inactive: 2 }
+  enum reason_for_quit_genre: { no_chance_to_use: 0, hard_to_use: 1, others: 2 }
 
   has_many :posts,                 dependent: :destroy
   has_many :post_comments,         dependent: :destroy
@@ -65,5 +67,9 @@ class Member < ApplicationRecord
 
   def guest_member?
     email == GUEST_MEMBER_EMAIL
+  end
+
+  def active_for_authentication?
+    super && (status == 'active')
   end
 end

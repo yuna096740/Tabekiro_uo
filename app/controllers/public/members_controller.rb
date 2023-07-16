@@ -26,15 +26,7 @@ class Public::MembersController < ApplicationController
   end
 
   def deal
-    @entries = @member.entries.all
-    rooms =  []
-    @posts = []
-    @entries.each do |entry|
-      rooms.push(Room.find(entry.room_id))
-    end
-    rooms.each do |room|
-      @posts.push(Post.find(room.post_id))
-    end
+    @rooms = @member.rooms
   end
 
   def quit_form

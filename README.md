@@ -31,7 +31,7 @@
 [ワイヤーフレーム(顧客側:page1 管理者側:page2)](https://www.figma.com/file/roeRUahKjeQkZs8lQquBrg/Tabekiro-uo?type=design&node-id=5%3A187&mode=design&t=gyYSW8DwNfCEUED0-1)
 ※閲覧にはfigmaの会員登録が必要です。
 
-[ER図](https://drive.google.com/file/d/1VlO9QeujH5XSoMRQki8O-33nmmMsXIOb/view?usp=sharing)
+[ER図](https://drive.google.com/file/d/1E5qW5Zlti4WyXL0614Ff3RB-tzgKgCMi/view?usp=sharing)
 
 [テーブル定義書](https://docs.google.com/spreadsheets/d/1A235kONsI7XAkMbp7-eXr6IIjCJ5Y1rmcjeQ3CKWNvk/edit?usp=sharing)
 

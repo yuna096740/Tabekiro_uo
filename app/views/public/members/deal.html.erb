@@ -2,24 +2,24 @@
   <div class="row">
     <div class="col-md-8 offset-2">
       <h4 class="my-3">取引中の投稿</h4>
-      <% if @posts.present? %>
-        <% @posts.each do |post| %>
+      <% if @rooms.present? %>
+        <% @rooms.each do |room| %>
           <table class="table table-borderless">
             <thead>
               <tr>
                 <th>
-                  <%= link_to post_path(post) do %>
+                  <%= link_to post_path(room.post) do %>
                     <div data-aos="zoom-in" data-aos-duration="2000">
-                      <%= image_tag post.get_post_image(100,100), class:"rounded" %>
+                      <%= image_tag room.post.get_post_image(100,100), class:"rounded" %>
                     </div>
                   <% end %>
                 </th>
                 <td>
-                  <p class="mb-2"><b><%= link_to post.title, post_path(post), class:"text-dark" %></p></b>
-                  <p class="mb-2">ステータス：<%= post.open_status_i18n %></p>
-                  <p class="mb-2">投稿日：<%= time_ago_in_words(post.created_at).upcase %></p>
+                  <p class="mb-2"><b><%= link_to room.post.title, post_path(room.post), class:"text-dark" %></p></b>
+                  <p class="mb-2">ステータス：<%= room.post.open_status_i18n %></p>
+                  <p class="mb-2">投稿日：<%= time_ago_in_words(room.post.created_at).upcase %></p>
                 </td>
-                <td><%= link_to '詳細ページ', post_path(post), class:"btn btn-light mt-5" %></td>
+                <td><%= link_to '詳細ページ', room_path(room), class:"btn btn-light mt-5" %></td>
               </tr>
             </thead>
           </table>

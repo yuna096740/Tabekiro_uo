@@ -1,8 +1,9 @@
 class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if: :devise_controller?
   before_action :notice,                         if: :member_signed_in?
+  before_action :search_member,                  if: :admin_signed_in?
+  before_action :search_post,                    unless: :admin_signed_in?
   before_action :search_tag
-  before_action :search_post
 
   def after_sign_in_path_for(resource)
     members_path
@@ -19,6 +20,10 @@ class ApplicationController < ActionController::Base
   end
 
   def search_post
+    @keyword = params[:keyword]
+  end
+
+  def search_member
     @keyword = params[:keyword]
   end
 

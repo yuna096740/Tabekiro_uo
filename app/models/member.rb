@@ -34,6 +34,10 @@ class Member < ApplicationRecord
     icon.variant(resize_to_fill: [width, height]).processed
   end
 
+  def self.search(keyword)
+    where(["nickname LIKE? or email LIKE? or introduction LIKE?", "%#{keyword}%", "%#{keyword}%", "%#{keyword}%"])
+  end
+
   def subscribe(member_id)
     subscribes.create(subscribed_id: member_id)
   end

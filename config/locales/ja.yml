@@ -1,10 +1,10 @@
 ja:
   enums:
     report:
-      is_suported:
-        waiting: "未対応"
-        keep:    "対応中"
-        done:    "対応済み"
+      is_supported:
+        waiting:    "未対応"
+        keep:       "対応中"
+        done:       "対応済み"
       genre:
         inappropriate_content: "不適切なコンテンツ"
         aggressive:            "攻撃的な発言"
@@ -23,3 +23,7 @@ ja:
         no_chance_to_use:    "使う機会がないから"
         hard_to_use:         "使い方が難しい"
         others:              "その他"
+      status:
+        active:              "有効"
+        banned:              "停止中"
+        inactive:            "無効"

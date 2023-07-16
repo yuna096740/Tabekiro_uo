@@ -1,2 +1,8 @@
-<h1>Admin::Searches#index</h1>
-<p>Find me in app/views/admin/searches/index.html.erb</p>
+<div class="container">
+  <div class="row">
+    <div class="col-md-8 offset-2">
+      <h4>検索結果(<%= @keyword %>)</h4>
+        <%= render 'admin/members/index', members: @members %>
+    </div>
+  </div>
+</div>

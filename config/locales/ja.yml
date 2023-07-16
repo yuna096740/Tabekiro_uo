@@ -27,3 +27,7 @@ ja:
         active:              "有効"
         banned:              "停止中"
         inactive:            "無効"
+
+  time:
+    formats:
+      default: "%Y/%m/%d %H:%M:%S"

@@ -6,8 +6,7 @@ class Admin::MembersController < ApplicationController
 
   def show
     @member = Member.find(params[:id])
-    @report = Report.where(reported_id: @member.id).count
-    #binding.irb
+    @report_count = Report.where(reported_id: @member.id).count
   end
 
   def update

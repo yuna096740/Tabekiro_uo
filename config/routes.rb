@@ -67,7 +67,7 @@ Rails.application.routes.draw do
         get 'report'
       end
     end
-    resources :searches, only: [:index]
+    resources :searches, only: [:index, :show]
     resources :reports,  only: [:show, :update]
   end
 

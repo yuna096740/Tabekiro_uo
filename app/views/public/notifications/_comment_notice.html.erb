@@ -11,6 +11,7 @@
 
   <div class="text-secondary ml-3">
     <%= truncate(notice.post_comment.comment, length: 20) %>
+    <%= time_ago_in_words(notice.created_at).upcase %>
     <%= link_to notification_path(notice), method: :delete, remote: :true, class:"text-dark" do %>
       <i class="fas fa-trash"></i>
     <% end %>

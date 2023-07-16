@@ -1,5 +1,6 @@
 <%= link_to 'あなたの投稿', post_path(notice.post) %>
 <p>にいいねしました</p>
+<%= time_ago_in_words(notice.created_at).upcase %>
 <%= link_to notification_path(notice), method: :delete, remote: :true, class:"text-dark ml-3" do %>
   <i class="fas fa-trash"></i>
 <% end %>

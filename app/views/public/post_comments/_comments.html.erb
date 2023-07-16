@@ -5,7 +5,8 @@
         <%= image_tag comment.member.icon,size:"35x35", class:"rounded-circle mr-1" %>
       <% end %>
       <div class="bg-light text-dark p-2 rounded-pill">
-        <%= comment.comment %><br>
+        <%= comment.comment %>
+        <%= l comment.created_at, format: :short %><br>
       </div>
     </div>
   <% end %>

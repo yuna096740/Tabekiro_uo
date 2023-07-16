@@ -5,8 +5,10 @@
         <%= image_tag message.member.icon,size:"45x45", class:"rounded-circle mr-1 mt-2" %>
       <% end %>
       <div class="bg-light text-dark p-2 rounded-pill mt-2">
-        <%= message.message %><br>
+        <%= message.message %>
+        <%= l message.created_at, format: :short %>
       </div>
+      <%= time_ago_in_words(notice.created_at).upcase %>
     </div>
   <% end %>
 </div>

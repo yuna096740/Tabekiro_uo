@@ -13,6 +13,7 @@
           <% elsif post.open_status == 'complete' %>
             <p class="text-danger">取引終了</p>
           <% end %>
+          <%= time_ago_in_words(post.created_at).upcase %>
         </div>
       </div>
     <% end %>

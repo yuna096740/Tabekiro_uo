@@ -55,6 +55,11 @@
               <td>取引は終了しました。</td>
             <% end %>
           </tr>
+
+          <tr>
+            <th></th>
+            <td><%= time_ago_in_words(@post.created_at).upcase %></td>
+          </tr>
         </thead>
       </table>
       <div class="text-center mb-5 mt-3">

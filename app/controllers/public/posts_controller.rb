@@ -1,12 +1,11 @@
 class Public::PostsController < ApplicationController
-
+  before_action :set_post, only: [:show, :edit]
   def index
     @posts = Post.all
   end
 
   def show
     @comment = PostComment.new
-    @post =    Post.find(params[:id])
     if member_signed_in?
       @member =                 @post.member
       @current_member_entries = Entry.where(member_id: current_member.id)
@@ -44,13 +43,11 @@ class Public::PostsController < ApplicationController
   end
 
   def edit
-    @post = Post.find(params[:id])
     @tags = Tag.all
   end
 
   def update
-    post = Post.find(params[:id])
-    post.update(post_params)
+    Post.find(params[:id]).update(post_params)
     redirect_to post_path(post)
   end
 
@@ -77,5 +74,9 @@ class Public::PostsController < ApplicationController
                                  :post_image,
                                  :member_id
                                 )
+  end
+
+  def set_post
+    @post = Post.find(params[:id])
   end
 end

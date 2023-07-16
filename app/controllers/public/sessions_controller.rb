@@ -16,14 +16,9 @@ class Public::SessionsController < Devise::SessionsController
   # end
 
   # POST /resource/sign_in
-  def create
-    if current_member
-      flash[:notice] = "おかえりなさい！#{current_member.nickname}さん"
-    else
-      flash[:notice] = "たべきろ魚へようこそ！プロフィールを完成させてお裾分けしよう！"
-    end
-    super
-  end
+  # def create
+  #   super
+  # end
 
   # DELETE /resource/sign_out
   # def destroy

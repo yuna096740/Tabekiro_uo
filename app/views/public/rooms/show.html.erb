@@ -1,11 +1,48 @@
 <div class="container">
   <div class="row mb-5">
-    <div class="col-md-6 offset-3 my-5">
+    <div class="col-md-4 my-5">
+      <table class="table table-borderless">
+        <thead>
+          <tr>
+            <th>
+              <%= link_to post_path(@room.post), class:"text-dark" do %>
+                <%= image_tag @room.post.get_post_image(100,100), class:"rounded" %>
+              <% end %>
+            </th>
+            <th></th>
+          </tr>
+
+          <tr>
+            <th>投稿名</th>
+            <th>
+              <%= link_to post_path(@room.post), class:"text-dark" do %>
+                <%= truncate(@room.post.title, length: 8) %>
+              <% end %>
+            </th>
+          </tr>
+
+          <tr>
+            <th>取引開始日</th>
+            <th><%= l @room.created_at %></th>
+          </tr>
+        </thead>
+      </table>
+
+
+    </div>
+    <div class="col-md-7 mb-5 mt-3">
+      <div class="d-flex ml-3 mb-2 text-dark">
+        <%= link_to member_path(@member), class:"text-dark" do %>
+          <%= image_tag @member.get_icon(40,40), class:"rounded-circle mr-1" %>
+          <b><%= truncate(@member.nickname, length: 12) %></b>
+        <% end %>
+      </div>
+
       <%= form_with model: @new_message, local: false do |f| %>
         <table class="table table-bordered">
           <thead class="bg-light">
             <tr>
-              <th id="dmMessageCount">メッセージ数：<%= @messages.count %>件</th>
+              <th id="dmMessageCount" class="text-right">メッセージ数：<%= @messages.count %>件</th>
             </tr>
           </thead>
 

@@ -12,7 +12,8 @@ class Public::RoomsController < ApplicationController
     if Entry.where(member_id: current_member.id, room_id: @room.id).exists?
       @messages =     @room.messages
       @new_message  = Message.new
-      @entries  =     @room.entries
+      @member_id =    @room.entries.where.not(member_id: current_member.id).pluck(:member_id)
+      @member =       Member.find_by(id: @member_id)
     else
       redirect_back(fallback_location: root_path)
     end

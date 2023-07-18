@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
 
+  namespace :admin do
+    get 'tags/index'
+  end
   devise_for :members, controllers: {
     registrations: "public/registrations",
     sessions:      "public/sessions",
@@ -69,6 +72,7 @@ Rails.application.routes.draw do
     end
     resources :searches, only: [:index, :show]
     resources :reports,  only: [:show, :update]
+    resources :tags,     only: [:index, :create, :edit, :update, :destroy]
   end
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html

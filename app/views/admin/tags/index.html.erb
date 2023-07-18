@@ -1,0 +1,32 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-7 offset-2 my-5">
+      <h4>ジャンル投稿・一覧</h4>
+      <%= form_with model: @tag, url: admin_tags_path, method: :post do |f| %>
+        <table class="table mb-5">
+          <thead class="table-borderless">
+            <tr>
+              <th></th>
+              <th><%= f.text_field :name, placeholder: "ジャンル名", class:"form-control" %></th>
+              <th><%= f.submit '登録', class:"btn btn-outline-info" %></th>
+              <th></th>
+            </tr>
+
+            <% @tags.each do |tag| %>
+              <tr>
+                <th><%= l tag.created_at %></th>
+                <th><%= tag.name %></th>
+                <th><%= link_to '編集', edit_admin_tag_path(tag), class:"btn btn-outline-success" %></th>
+                <th>
+                  <%= link_to '削除', admin_tag_path(tag), method: :delete,
+                    data: { confirm: "[重要]削除すると関連する投稿が全て削除されます。本当によろしいですか？" },
+                    class:"btn btn-outline-danger" %>
+                </th>
+              </tr>
+            <% end %>
+          </thead>
+        </table>
+      <% end %>
+    </div>
+  </div>
+</div>

@@ -6,7 +6,13 @@ class ApplicationController < ActionController::Base
   before_action :search_tag
 
   def after_sign_in_path_for(resource)
-    members_path
+    if current_member
+      flash[:notice] = "おかえりなさい！"
+      posts_path
+    else
+      flash[:notice] = "ようこそ！たべきろ魚へ！自己紹介を完成させて取引してみましょう！"
+      members_path
+    end
   end
 
   protected

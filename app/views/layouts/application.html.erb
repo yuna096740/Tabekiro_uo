@@ -14,12 +14,12 @@
   </head>
 
   <body>
-    <div class="backgroundImage">
-      <%= render 'layouts/header' %>
-      <%= flash[:notice] %>
+    <%= render 'layouts/header' %>
+    <main>
+      <%= render 'layouts/flash' %>
       <%= yield %>
-      <%= render 'layouts/footer' %>
-    </div>
+    </main>
+    <%= render 'layouts/footer' %>
   </body>
   <script>
     AOS.init();

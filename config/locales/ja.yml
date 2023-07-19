@@ -77,3 +77,8 @@ ja:
       previous: "&lsaquo;"
       next:     "&rsaquo;"
       truncate: "..."
+
+  activerecord:
+    errors:
+      messages:
+        record_invalid: "バリデーションに失敗しました: %{errors}"

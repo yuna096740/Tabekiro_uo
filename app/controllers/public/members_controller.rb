@@ -17,7 +17,7 @@ class Public::MembersController < ApplicationController
 
   def update
     @member.update(member_params)
-    redirect_to members_path(@member)
+    redirect_to members_path
   end
 
   def favorite

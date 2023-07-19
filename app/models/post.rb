@@ -10,7 +10,14 @@ class Post < ApplicationRecord
   has_many   :rooms,         dependent: :destroy
   has_many   :notifications, dependent: :destroy
 
-  validates :post_image, presence: :true
+  validates :tag_id,       presence: :true
+  validates :post_image,   presence: :true
+  validates :title,        presence: :true, length: { in: 1..15 }
+  validates :introduction, presence: :true, length: { in: 1..150 }
+  validates :place_name,   presence: :true, length: { in: 1..10 }
+  validates :latitude,     presence: :true
+  validates :longitube,    presence: :true
+
 
   has_one_attached :post_image
 

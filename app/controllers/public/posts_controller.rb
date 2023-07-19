@@ -1,5 +1,7 @@
 class Public::PostsController < ApplicationController
-  before_action :set_post, only: [:show, :edit]
+  before_action :authenticate_member!, except: [:index, :show, :map]
+  before_action :set_post, only: [:show, :edit, :update]
+
   def index
     @posts = Post.all
   end
@@ -48,7 +50,7 @@ class Public::PostsController < ApplicationController
 
   def update
     Post.find(params[:id]).update(post_params)
-    redirect_to post_path(post)
+    redirect_to post_path(@post)
   end
 
   def destroy

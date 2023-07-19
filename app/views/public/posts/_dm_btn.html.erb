@@ -1,9 +1,14 @@
 <div class="text-center">
   <% if member_signed_in? %>
     <% if is_room == true %>
-      <% @room_ids.each do |room_id| %>
-        <%= link_to "#{entries[room_id].member.nickname}チャット画面", room_path(room_id), class:"btn btn-info form-control rounded-pill my-2" %>
-      <% end %>
+      <a data-toggle="collapse" href="#pullDownBtn" role="button" aria-expanded="false" aria-controls="#pullDownBtn">
+        <h5 class="btn btn-light form-control">取引チャット一覧 ▼</h5>
+      </a>
+      <div class="collapse" id="pullDownBtn">
+        <% @room_ids.each do |room_id| %>
+          <%= link_to "#{entries[room_id].member.nickname}チャット画面", room_path(room_id), class:"btn btn-info form-control rounded-pill my-2" %>
+        <% end %>
+      </div>
     <% else %>
       <% unless post.open_status == 'unopened' %>
         <% unless post.member == current_member %>

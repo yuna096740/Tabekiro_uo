@@ -3,10 +3,12 @@
     const elmHour = document.querySelector(".hour");
     const elmMin  = document.querySelector(".min");
     const elmSec  = document.querySelector(".sec");
+    let postCreatedAt = new Date("<%= post.updated_at.iso8601 %>");
+
     function countDown() {
       const now = new Date();
-      const postCreatedAt = new Date("<%= post.updated_at.iso8601 %>");
       const limit = <%= post.limit %>;
+      postCreatedAt = new Date("<%= post.updated_at.iso8601 %>");
       const limitTime = new Date(postCreatedAt.getTime() + limit * 60 * 60 * 1000);
 
       const differ = limitTime.getTime() - now.getTime();

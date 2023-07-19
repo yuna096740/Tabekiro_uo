@@ -1,14 +1,19 @@
 /* pagenation layouts */
+$pagenation_color: rgb(169,169,169);
 
 .page-item.active .page-link {
-  background-color: rgb(105,105,105);
-  border-color: rgb(105,105,105);
+  background-color: $pagenation_color;
+  border-color: $pagenation_color;
 }
 
 .apage-link {
-  color: rgb(105,105,105);
+  color: $pagenation_color;
 }
 
 .page-item a:hover {
-  color: rgb(105,105,105);
+  color: $pagenation_color;
 }
+.page-item a {
+   color: $pagenation_color;
+}
+

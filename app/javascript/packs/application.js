@@ -16,7 +16,8 @@ import "../stylesheets/top.scss";
 import "../stylesheets/map.scss";
 import "../stylesheets/chat_bar.scss";
 import "../stylesheets/countdown.scss";
-
+import "../stylesheets/notice.scss";
+import "../stylesheets/layouts.scss";
 
 import "./scrollComment";
 

@@ -1,6 +1,6 @@
 <div class="collapse offset-10" id="headerIcon">
   <div>
-  <%= render 'layouts/notice_modal', notices: notices %>
+  <%= render 'layouts/notice_modal', notices: notices, notice_counts: @notice_counts %>
     <%= link_to members_path do %>
       <h5 class="dropdown-item py-2">
         <i class="fas fa-user-circle"></i>
@@ -31,7 +31,7 @@
 
     <%= link_to subscribings_member_relationships_path(current_member) do %>
       <h5 class="dropdown-item py-2">
-        <i class="fas fa-user-tie"></i>
+        <i class="fas fa-user-tie mr-2"></i>
         登録中一覧
       </h5>
     <% end %>

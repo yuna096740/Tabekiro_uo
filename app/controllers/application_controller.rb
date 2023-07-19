@@ -34,10 +34,10 @@ class ApplicationController < ActionController::Base
   end
 
   def notice
-    notices = current_member.passive_notifications
-    notices.where(checked: false).each do |notice|
-      notice.update(checked: true)
-    end
-    @notices = current_member.passive_notifications.where(checked: false)
+    @notices = current_member.passive_notifications
+    @notice_counts = current_member.passive_notifications.where(checked: false)
+    # @notices.where(checked: false).each do |notice|
+    #   notice.update(checked: true)
+    # end
   end
 end

@@ -1,3 +1,3 @@
 $('#notice').html("<%= j( render "public/notifications/notice", notices: @notices ) %>");
-$('.notice-count-container').html("<%=j( render 'layouts/notice_count', notices: @notices ) %>");
+$('.notice-count-container').html("<%=j( render 'layouts/notice_count', notice_counts: @notice_counts ) %>");
 

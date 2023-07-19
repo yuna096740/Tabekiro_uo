@@ -1,11 +1,13 @@
-<div class="rounded-circle" data-toggle="modal" data-target="#noticeModal">
-  <% if notices.exists? %>
+<div data-toggle="modal" data-target="#noticeModal">
+  <% if notice_counts.exists? %>
     <h5 class="dropdown-item py-2">
-      <span class="text-danger"><i class="fas fa-bell"></i>通知</span>
+      <%= link_to notice_notifications_path, method: :patch, remote: true do %>
+        <span class="text-danger" id="testButton"><i class="fas fa-bell text-danger"></i>通知</span>
+      <% end %>
     </h5>
   <% else %>
     <h5 class="dropdown-item py-2">
-      <span class="text-primary"><i class="fas fa-bell"></i>通知</span>
+      <span class="text-dark"><i class="fas fa-bell mr-2"></i>通知</span>
     </h5>
   <% end %>
 </div>
@@ -24,9 +26,9 @@
       </div>
 
       <div class="modal-body" id="notice">
-        <% notices = notices.where.not(visiter_id: current_member.id) %>
+        <% notices = notices.where.not(visiter_id: current_member.id) %><%#<--これ問題！！！！　%>
         <% if notices.exists? %>
-          <%= render 'public/notifications/notice', notices: notices %></div>
+          <%= render 'public/notifications/notice', notices: notices, notice_counts: notice_counts %></div>
         <% else %>
           通知はありません
         <% end %>
@@ -34,3 +36,4 @@
     </div>
   </div>
 </div>
+

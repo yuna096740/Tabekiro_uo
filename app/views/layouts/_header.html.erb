@@ -56,7 +56,7 @@
             <span class="d-flex">
               <%= image_tag current_member.get_icon(70,70), class:"rounded-circle mr-4" %>
               <div class="notice-count-container">
-                <%= render 'layouts/notice_count', notices: @notices %>
+                <%= render 'layouts/notice_count', notices: @notices, notice_counts: @notice_counts %>
               </div>
             </span>
           </div>

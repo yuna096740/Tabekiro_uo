@@ -1,0 +1,9 @@
+<div class="collapse" id="headerTag">
+  <div class="p-3 m-3 d-flex">
+    <% tags.each do |tag| %>
+      <div class="ml-2">
+        <h5><%= link_to tag.name, tag_path(tag), class:"text-dark ml-5" %></h5>
+      </div>
+    <% end %>
+  </div>
+</div>

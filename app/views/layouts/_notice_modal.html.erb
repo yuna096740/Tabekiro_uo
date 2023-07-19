@@ -1,10 +1,14 @@
-<botton type="button" class="btn rounded-circle" data-toggle="modal" data-target="#noticeModal">
+<div class="rounded-circle" data-toggle="modal" data-target="#noticeModal">
   <% if notices.exists? %>
-    <span class="text-danger"><i class="fas fa-bell"></i></span>
+    <h5 class="dropdown-item py-2">
+      <span class="text-danger"><i class="fas fa-bell"></i>通知</span>
+    </h5>
   <% else %>
-    <span class="text-primary"><i class="fas fa-bell"></i></span>
+    <h5 class="dropdown-item py-2">
+      <span class="text-primary"><i class="fas fa-bell"></i>通知</span>
+    </h5>
   <% end %>
-</botton>
+</div>
 <div class="modal fade" id="noticeModal" rabindex="-1"
   role="dialog" aria-labelledby="noticeLabel" ariahidden="true">
   <div class="modal-dialog modal-lg" role="document">

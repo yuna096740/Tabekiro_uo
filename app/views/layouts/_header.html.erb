@@ -43,39 +43,31 @@
         <%= link_to 'マップから検索する', map_posts_path, class:"text-dark mr-4" %>
       </div>
 
-      <ul class="navbar-nav pt-5">
-        <li class="nav-item dropdown active">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            <i class="fas fa-fish"></i> お魚ジャンル
-          </a>
-          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <% @tags.each do |tag| %>
-              <div class="ml-2">
-                <%= link_to tag.name, tag_path(tag), class:"dropdown-item" %>
-              </div>
-            <% end %>
-          </div>
-        </li>
-      </ul>
+      <a data-toggle="collapse" class="pt-5 text-dark" href="#headerTag" aria-expanded="false" aria-controls="#headerTag">
+        <i class="fas fa-fish"></i>お魚ジャンル ▼
+      </a>
     <% end %>
     <%= render 'public/searches/form', keyword: @keyword %>
 
     <% if member_signed_in? %>
-      <div class="text-right pt-2">
+      <div class="pt-2">
         <a data-toggle="collapse" href="#headerIcon" role="button" aria-expanded="false" aria-controls="#headerIcon">
           <div data-aos="zoom-out-left" data-aos-duration="2000">
-            <%= image_tag current_member.get_icon(70,70), class:"rounded-circle mr-4" %>
+            <span class="d-flex">
+              <%= image_tag current_member.get_icon(70,70), class:"rounded-circle mr-4" %>
+              <div class="notice-count-container">
+                <%= render 'layouts/notice_count', notices: @notices %>
+              </div>
+            </span>
           </div>
         </a>
-      </div>
-      <div class="mt-5">
-        <%= render 'layouts/notice_modal', notices: @notices %>
       </div>
     <% end %>
   </div>
 </nav>
 
 <%= render 'layouts/nav_logo' %>
+<%= render 'layouts/nav_tags', tags: @tags %>
 <% if member_signed_in? %>
-  <%= render 'layouts/nav_icon' %>
+  <%= render 'layouts/nav_icon', notices: @notices %>
 <% end %>

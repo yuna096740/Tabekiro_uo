@@ -2,11 +2,13 @@
   <% post.post_comments.each do |comment| %>
     <div class="d-flex mt-2">
       <%= link_to member_path(comment.member_id) do %>
-        <%= image_tag comment.member.icon,size:"35x35", class:"rounded-circle mr-1" %>
+        <%= image_tag comment.member.get_icon(35,35), class:"rounded-circle mr-1" %>
       <% end %>
       <div class="bg-light text-dark p-2 rounded-pill">
         <%= comment.comment %>
-        <%= l comment.created_at, format: :short %><br>
+        <span class="time-text-size">
+          <%= l comment.created_at, format: :short %>
+        </span>
       </div>
     </div>
   <% end %>

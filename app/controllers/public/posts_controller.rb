@@ -1,6 +1,6 @@
 class Public::PostsController < ApplicationController
   before_action :authenticate_member!, except: [:index, :show, :map]
-  before_action :set_post, only: [:show, :edit, :update]
+  before_action :set_post,             only: [:show, :edit, :update]
 
   def index
     @posts = Post.all

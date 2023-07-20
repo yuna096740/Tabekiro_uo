@@ -19,6 +19,11 @@ class Public::RoomsController < ApplicationController
     end
   end
 
+  def destroy
+    Room.find(params[:id]).destroy
+    redirect_to posts_path, notice: "取引をキャンセルしました。"
+  end
+
   private
 
   def room_params

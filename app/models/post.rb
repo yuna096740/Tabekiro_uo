@@ -1,6 +1,6 @@
 class Post < ApplicationRecord
 
-  default_scope ->  { order(created_at: "DESC") }
+  default_scope ->  { order(updated_at: "DESC") }
   enum open_status: { open: 0, unopened: 1, during_trade: 2, complete: 3 }
 
   belongs_to :member

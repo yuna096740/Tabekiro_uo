@@ -27,6 +27,9 @@
           </tr>
         </thead>
       </table>
+      <div class="text-center">
+        <%= link_to '取引を中止する', room_path(@room), method: :delete, data: { confirm: "本当によろしいですか？※今までの取引内容が全て失われます。" }, class:"text-danger" %>
+      </div>
 
     </div>
     <div class="col-md-7 mb-5 mt-3">

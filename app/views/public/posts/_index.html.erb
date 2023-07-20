@@ -3,20 +3,26 @@
     <% unless post.open_status == 'unopened' %>
       <div class="col-4 mb-5">
         <div data-aos="zoom-in" data-aos-duration="2000">
+          <div class="text-dark"><b><%= post.title %></b></div>
           <%= link_to post_path(post) do %>
-            <div class="text-dark"><b><%= post.title %></b></div>
             <%= image_tag post.get_post_image(350,300), class:"rounded" %>
           <% end %>
 
-          <% if post.open_status == 'during_trade' %>
-            <p class="text-success">取引中</p>
-          <% elsif post.open_status == 'complete' %>
-            <p class="text-danger">取引終了</p>
-          <% end %>
-          <%= time_ago_in_words(post.created_at).upcase %>
+          <div class="d-flex">
+            <% if post.open_status == 'during_trade' %>
+              <p class="text-success mt-1">取引中</p>
+            <% elsif post.open_status == 'complete' %>
+              <p class="text-danger mt-1">取引終了</p>
+            <% elsif post.open_status == 'open' %>
+              <p class="text-success mt-1">取引受付中</p>
+            <% end %>
+
+            <span class="time-text-size mt-2 ml-auto">
+              <%= time_ago_in_words(post.updated_at).upcase %>
+            </span>
+          </div>
         </div>
       </div>
     <% end %>
   <% end %>
 </div>
-

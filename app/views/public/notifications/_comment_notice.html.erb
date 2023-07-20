@@ -3,15 +3,17 @@
     <%= link_to "あなたの投稿", notice.post %>
   <% else %>
     <%= link_to post_path(notice.post) do %>
-      <%= image_tag notice.post.member.icon, size: "20x20", class:"rounded-circle" %>
+      <%= notice.post.member.nickname %>さんの投稿
+      <%= image_tag notice.post.get_post_image(20,20), class:"rounded" %>
     <% end %>
-    <%= notice.post.member.nickname %>さんの投稿
   <% end %>
     <p>にコメントしました</p>
 
   <div class="text-secondary ml-3">
     <%= truncate(notice.post_comment.comment, length: 20) %>
-    <%= time_ago_in_words(notice.created_at).upcase %>
+    <span class="time-text-size">
+      <%= time_ago_in_words(notice.created_at).upcase %>
+    </span>
     <%= link_to notification_path(notice), method: :delete, remote: :true, class:"text-dark" do %>
       <i class="fas fa-trash"></i>
     <% end %>

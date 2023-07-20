@@ -14,7 +14,7 @@ ja:
     post:
       open_status:
         open:         "公開"
-        unopened:     "下書き保存"
+        unopened:     "非公開"
         during_trade: "取引中"
         complete:     "取引終了"
 

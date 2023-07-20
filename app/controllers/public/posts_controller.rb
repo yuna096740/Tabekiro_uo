@@ -41,7 +41,7 @@ class Public::PostsController < ApplicationController
   def create
     post = current_member.posts.new(post_params)
     post.save
-    redirect_to post_path(post)
+    redirect_to post_path(post), notice: "投稿しました。"
   end
 
   def edit
@@ -50,12 +50,12 @@ class Public::PostsController < ApplicationController
 
   def update
     Post.find(params[:id]).update(post_params)
-    redirect_to post_path(@post)
+    redirect_to post_path(@post), notice: "投稿内容を更新しました。"
   end
 
   def destroy
     Post.find(params[:id]).destroy
-    redirect_to posts_path
+    redirect_to posts_path, notice: "投稿を削除しました"
   end
 
   def map

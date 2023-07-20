@@ -1,5 +1,5 @@
 <div data-toggle="modal" data-target="#noticeModal">
-  <% if notice_counts.exists? %>
+  <% if notice.exists? %>
     <h5 class="dropdown-item py-2">
       <%= link_to notice_notifications_path, method: :patch, remote: true do %>
         <span class="text-danger" id="testButton"><i class="fas fa-bell text-danger"></i>通知</span>
@@ -26,7 +26,7 @@
       </div>
 
       <div class="modal-body" id="notice">
-        <% notices = notices.where.not(visiter_id: current_member.id) %><%#<--これ問題！！！！　%>
+        <% notices = notices.where.not(visiter_id: current_member.id) %>
         <% if notices.exists? %>
           <%= render 'public/notifications/notice', notices: notices, notice_counts: notice_counts %></div>
         <% else %>

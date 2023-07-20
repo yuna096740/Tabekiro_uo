@@ -3,6 +3,10 @@ class Member < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
+  
+  validates :nickname,        presence: :true, length: { in: 1..15 }
+  validates :introduction,    presence: :true, length: { in: 1..80 }
+  
   default_scope ->            { order(created_at: "DESC") }
   enum status:                { active: 0, banned: 1, inactive: 2 }
   enum reason_for_quit_genre: { no_chance_to_use: 0, hard_to_use: 1, others: 2 }

@@ -5,3 +5,32 @@
 footer {
   margin-top: 150px;
 }
+.parallax_content{
+  display: flex;
+  height: 600px;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+
+  background-attachment: fixed;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+.parallax_content h1{
+  color:white;
+  font-size:65px;
+}
+.parallax_content p{
+  font-size:25px;
+}
+.img_bg_01{
+  background-image: url('../../assets/images/back.jpg');
+}
+.img_bg_02{
+  background-image: url('../../assets/images/back.jpg');
+}
+.img_bg_03{
+  background-image: url('../../assets/images/back.jpg');
+  color:white;
+}

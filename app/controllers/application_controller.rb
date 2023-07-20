@@ -6,13 +6,7 @@ class ApplicationController < ActionController::Base
   before_action :search_tag
 
   def after_sign_in_path_for(resource)
-    if current_member
-      flash[:notice] = "おかえりなさい！"
-      posts_path
-    else
-      flash[:notice] = "ようこそ！たべきろ魚へ！自己紹介を完成させて取引してみましょう！"
-      members_path
-    end
+    posts_path
   end
 
   protected
@@ -35,9 +29,6 @@ class ApplicationController < ActionController::Base
 
   def notice
     @notices = current_member.passive_notifications
-    @notice_counts = current_member.passive_notifications.where(checked: false)
-    # @notices.where(checked: false).each do |notice|
-    #   notice.update(checked: true)
-    # end
+    @notice = current_member.passive_notifications.where(checked: false)
   end
 end

@@ -1,5 +1,7 @@
 <% flash.each do |key, value| %>
   <p class="alert alert-<%= key %>">
-    <%= value %>
+    <div class="bg-light py-3 pl-5 ">
+      <%= value %>
+    </div>
   </p>
 <% end %>

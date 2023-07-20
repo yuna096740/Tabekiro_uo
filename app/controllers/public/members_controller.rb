@@ -17,7 +17,7 @@ class Public::MembersController < ApplicationController
 
   def update
     @member.update(member_params)
-    redirect_to members_path
+    redirect_to members_path, notice: "変更しました。"
   end
 
   def favorite
@@ -47,7 +47,7 @@ class Public::MembersController < ApplicationController
       reason_for_quit:       params[:member][:reason_for_quit]
     )
     reset_session
-    redirect_to root_path
+    redirect_to root_path, notice: "またのご利用お待ちしております"
   end
 
   private

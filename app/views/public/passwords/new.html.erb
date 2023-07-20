@@ -2,7 +2,7 @@
   <div class="row mx-auto my-5">
     <div class="col-md-5 offset-3">
       <%= form_with model: @member, url: password_path(resource_name), method: :post do |f| %>
-          <%= render "public/shared/error_messages", resource: resource %>
+        <%= render "layouts/errors", model: f.object %>
 
         <div class="card">
           <div class="text-center">

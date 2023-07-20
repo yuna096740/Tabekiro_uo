@@ -2,8 +2,7 @@
   <div class="row mx-auto my-5">
     <div class="col-md-5 offset-3 mb-5">
       <%= form_with model: @member, url: registration_path(resource_name) do |f| %>
-        <%= render "public/shared/error_messages", resource: resource %>
-
+        <%= render "layouts/errors", model: f.object %>
         <div class="card">
           <div class="text-center">
             <div class="session_logo">

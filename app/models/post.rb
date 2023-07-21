@@ -1,6 +1,7 @@
 class Post < ApplicationRecord
 
-  default_scope ->  { order(updated_at: "DESC") }
+  default_scope          -> { order(updated_at: "DESC") }
+  scope :recentry_posts, -> { order(updated_at: :desc ).limit(3) }
   enum open_status: { open: 0, unopened: 1, during_trade: 2, complete: 3 }
 
   belongs_to :member

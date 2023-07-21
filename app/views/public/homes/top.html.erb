@@ -1,16 +1,52 @@
-<div class="container">
-  <div class="row">
-    <div class="head">
+<div class="parallax_box">
+  <div class="parallax_content img_bg">
+    <p class="head" data-aos="zoom-in" data-aos-duration="600">
       <%= image_tag 'Tabekiro-uo-logo.svg' %>
-    </div>
-    <%= link_to 'お裾分けを見てみる ＞', posts_path, class:"ml-auto text-dark mb-5" %>
+    </p>
   </div>
 
-</div>
-  <div class="parallax_box">
-    <div class="parallax_content img_bg_01">
-    
-    </div>
-    <div class="parallax_content img_bg_02"><p>Want to photograph this moment that will never come again</p></div>
-    <div class="parallax_content img_bg_03"><p>Want to photograph this moment that will never come again</p></div>
+  <div class="text-center scrollbox py-5">
+    <p><%= image_tag 'Tabekiro-uo-midle-logo.svg' %><span class="pt-5">とは...</span></p>
+
+    <p>釣りすぎて食べきれないお魚を無駄にしないためにお魚好きにお裾分けしよう！<br>
+       をコンセプトにしたWEBサイトです！</p>
+    <p>釣り人なら一度はありませんか？</p>
+    <p><b>・せっかくたくさん釣れたけど食べきれない。<br>
+          ・お裾分けしたくても近所に知り合いがいない。</b></p>
+    <p>など。</p>
+    <h5><b>是非！</b></h5>
+    <p class="m-0"><b>このお裾分けアプリでお魚を鮮度の良い状態で食べてあげましょう！</b></p>
+
   </div>
+
+  <div class="parallax_content img_bg text-center py-5">
+    <h3><b><%= link_to 'お裾分け一覧を見てみる ＞', posts_path, class:"ml-auto text-dark py-5" %></b></h3>
+  </div>
+
+
+
+  <div class="scrollbox d-flex">
+    <% @posts.each do |post| %>
+      <div class="row-md-6 my-5 mx-auto" data-aos="zoom-in" data-aos-duration="2000">
+        <div class="text-dark my-5">
+          <%= link_to post_path(post) do %>
+            <%= image_tag post.get_post_image(350,300), class:"rounded" %><br>
+          <% end %>
+          <b><%= post.title %></b>
+        </div>
+      </div>
+    <% end %>
+  </div>
+
+  <div class="parallax_content img_bg text-center py-5 session-btn">
+    <p><%= link_to '新規登録はこちらから', new_member_registration_path, class:"btn btn-success px-5 m-5" %></p>
+    <p><%= link_to 'ログインはこちらから', new_member_session_path, class:"btn btn-info px-5 m-5" %></p>
+  </div>
+
+  <div class="scrollbox">
+
+  </div>
+
+
+
+</div>

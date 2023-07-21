@@ -1,13 +1,11 @@
 <% if members.exists? %>
   <% members.each do |member| %>
-    <table class="table table-borderless">
+    <table class="table table-borderless bg-light rounded" data-aos="zoom-in" data-aos-duration="1000">
       <thead>
         <tr>
           <th>
             <%= link_to member_path(member) do %>
-              <div data-aos="zoom-in" data-aos-duration="2000">
-                <%= image_tag member.get_icon(100,100), class:"rounded-circle" %>
-              </div>
+              <%= image_tag member.get_icon(100,100), class:"rounded-circle ml-3" %>
             <% end %>
           </th>
           <td>
@@ -15,11 +13,11 @@
             <p class="mb-2">取引回数：<%= member.entries.count %></p>
             <p class="mb-2">Subscribe：<%= link_to member.subscribers.count, subscribers_member_relationships_path(member) %></p>
           </td>
-          <td><%= link_to '詳細ページ', member_path(member), class:"btn btn-light mt-5" %></td>
+          <td><%= link_to '詳細ページ', member_path(member), class:"btn btn-outline-secondary mt-5 px-5" %></td>
         </tr>
       </thead>
     </table>
-    
+
   <% end %>
 <% else %>
   <div class="text-center my-5">

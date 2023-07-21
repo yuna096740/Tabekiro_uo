@@ -4,14 +4,12 @@
     <div class="col-md-8 offset-2">
       <h4 class="my-3">取引中の投稿</h4>
       <% @rooms.each do |room| %>
-        <table class="table table-borderless">
+        <table class="table table-borderless bg-light rounded" data-aos="zoom-in" data-aos-duration="1000">
           <thead>
             <tr>
               <th>
                 <%= link_to post_path(room.post) do %>
-                  <div data-aos="zoom-in" data-aos-duration="2000">
-                    <%= image_tag room.post.get_post_image(100,100), class:"rounded" %>
-                  </div>
+                  <%= image_tag room.post.get_post_image(100,100), class:"rounded ml-3" %>
                 <% end %>
               </th>
               <td>

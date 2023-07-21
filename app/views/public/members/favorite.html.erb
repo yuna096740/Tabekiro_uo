@@ -4,14 +4,12 @@
       <div class="col-md-8 offset-2">
         <h4 class="my-3">いいねした投稿</h4>
         <% @favorite_posts.each do |post| %>
-          <table class="table table-borderless">
+          <table class="table table-borderless bg-light rounded" data-aos="zoom-in" data-aos-duration="1000">
             <thead>
               <tr>
                 <th>
                   <%= link_to post_path(post) do %>
-                    <div data-aos="zoom-in" data-aos-duration="2000">
-                      <%= image_tag post.get_post_image(100,100), class:"rounded" %>
-                    </div>
+                    <%= image_tag post.get_post_image(100,100), class:"rounded ml-3" %>
                   <% end %>
                 </th>
                 <td>
@@ -19,7 +17,7 @@
                   <p class="mb-2">ステータス：<%= post.open_status_i18n %></p>
                   <p class="mb-2">投稿日：<%= time_ago_in_words(post.created_at).upcase %></p>
                 </td>
-                <td><%= link_to '詳細ページ', post_path(post), class:"btn btn-light mt-5" %></td>
+                <td><%= link_to '詳細ページ', post_path(post), class:"btn btn-light mt-5 px-5" %></td>
               </tr>
             </thead>
           </table>

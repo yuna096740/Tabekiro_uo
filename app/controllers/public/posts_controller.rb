@@ -40,8 +40,14 @@ class Public::PostsController < ApplicationController
 
   def create
     post = current_member.posts.new(post_params)
-    post.save
-    redirect_to post_path(post), notice: "投稿しました。"
+    if post.save
+      redirect_to post_path(post), notice: "投稿しました。"
+    else
+      @post = current_member.posts.new(post_params)
+      @tags = Tag.all
+      flash[:notice] = "地図のマーカーは必須です。"
+      render :new
+    end
   end
 
   def edit

@@ -2,9 +2,9 @@
 <!-- Created with Inkscape (http://www.inkscape.org/) -->
 
 <svg
-   width="25.000999mm"
+   width="35.000999mm"
    height="7mm"
-   viewBox="0 0 25.000998 7"
+   viewBox="0 0 35.000998 7"
    version="1.1"
    id="svg5"
    inkscape:version="1.2.2 (b0a8486, 2022-12-01)"
@@ -26,7 +26,7 @@
      showgrid="false"
      inkscape:zoom="4.7488465"
      inkscape:cx="99.603135"
-     inkscape:cy="16.951485"
+     inkscape:cy="17.162062"
      inkscape:window-width="1440"
      inkscape:window-height="771"
      inkscape:window-x="1080"
@@ -71,15 +71,15 @@
        style="font-size:53.3333px;font-family:KouzanBrushFontGyousyoOTF;-inkscape-font-specification:KouzanBrushFontGyousyoOTF;white-space:pre;shape-inside:url(#rect268);display:inline;fill:#000000" />
     <text
        xml:space="preserve"
-       style="font-size:6.01597px;font-family:KouzanBrushFontGyousyoOTF;-inkscape-font-specification:KouzanBrushFontGyousyoOTF;fill:#000000;stroke-width:0.112799"
-       x="-1.2109476"
-       y="4.753109"
+       style="font-size:7.08323px;font-family:KouzanBrushFontGyousyoOTF;-inkscape-font-specification:KouzanBrushFontGyousyoOTF;fill:#000000;stroke-width:0.13281"
+       x="-1.4312372"
+       y="5.5967941"
        id="text932"
-       transform="scale(0.73114757,1.3677129)"><tspan
+       transform="scale(0.86776971,1.1523795)"><tspan
          sodipodi:role="line"
          id="tspan930"
-         style="stroke-width:0.112799"
-         x="-1.2109476"
-         y="4.753109">お裾分け作成</tspan></text>
+         style="stroke-width:0.13281"
+         x="-1.4312372"
+         y="5.5967941">お裾分け作成</tspan></text>
   </g>
 </svg>

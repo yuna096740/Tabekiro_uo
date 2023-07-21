@@ -41,8 +41,8 @@
       </div>
 
       <%= form_with model: @new_message, local: false do |f| %>
-        <table class="table table-bordered">
-          <thead class="bg-light">
+        <table class="table table-bordered bg-light">
+          <thead>
             <tr>
               <th id="dmMessageCount" class="text-right">メッセージ数：<%= @messages.count %>件</th>
             </tr>

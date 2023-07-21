@@ -2,9 +2,9 @@
 <!-- Created with Inkscape (http://www.inkscape.org/) -->
 
 <svg
-   width="25.000999mm"
+   width="35.000999mm"
    height="7mm"
-   viewBox="0 0 25.000998 7"
+   viewBox="0 0 35.000998 7"
    version="1.1"
    id="svg5"
    inkscape:version="1.2.2 (b0a8486, 2022-12-01)"
@@ -71,15 +71,15 @@
        style="font-size:53.3333px;font-family:KouzanBrushFontGyousyoOTF;-inkscape-font-specification:KouzanBrushFontGyousyoOTF;white-space:pre;shape-inside:url(#rect268);display:inline;fill:#000000" />
     <text
        xml:space="preserve"
-       style="font-size:5.42031px;font-family:KouzanBrushFontGyousyoOTF;-inkscape-font-specification:KouzanBrushFontGyousyoOTF;fill:#000000;stroke-width:0.101631"
-       x="-0.45546341"
-       y="5.365911"
+       style="font-size:7.64064px;font-family:KouzanBrushFontGyousyoOTF;-inkscape-font-specification:KouzanBrushFontGyousyoOTF;fill:#000000;stroke-width:0.143262"
+       x="-0.75328922"
+       y="6.0210433"
        id="text932"
-       transform="scale(0.96031091,1.0413294)"><tspan
+       transform="scale(0.96047086,1.041156)"><tspan
          sodipodi:role="line"
          id="tspan930"
-         style="stroke-width:0.101631"
-         x="-0.45546341"
-         y="5.365911">登録中一覧</tspan></text>
+         style="stroke-width:0.143262"
+         x="-0.75328922"
+         y="6.0210433">登録中一覧</tspan></text>
   </g>
 </svg>

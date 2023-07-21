@@ -4,7 +4,7 @@
     <%= link_to members_path do %>
       <h5 class="dropdown-item py-2">
         <i class="fas fa-user-circle"></i>
-        <%= image_tag 'topMyPageLOGO.svg' %>
+        <%= image_tag 'topMyPageLOGO.svg', class:"mb-1" %>
       </h5>
     <% end %>
 
@@ -18,14 +18,14 @@
     <%= link_to favorite_members_path do %>
       <h5 class="dropdown-item py-2">
         <i class="fas fa-heart"></i>
-        <%= image_tag 'topMyFavoLOGO.svg' %>
+        <%= image_tag 'topMyFavoLOGO.svg', class:"mb-1" %>
       </h5>
     <% end %>
 
     <%= link_to subscribers_member_relationships_path(current_member) do %>
       <h5 class="dropdown-item py-2">
         <i class="fas fa-user-plus"></i>
-        <%= image_tag 'topMySubscriberLOGO.svg' %>
+        <%= image_tag 'topMySubscriberLOGO.svg', class:"mb-1" %>
       </h5>
     <% end %>
 
@@ -39,7 +39,7 @@
     <%= link_to destroy_member_session_path, method: :delete do %>
       <h5 class="dropdown-item py-2">
         <i class="fas fa-sign-out-alt"></i>
-        <%= image_tag 'topSignOutLOGO.svg' %>
+        <%= image_tag 'topSignOutLOGO.svg', class:"mb-1" %>
       </h5>
     <% end %>
   </div>

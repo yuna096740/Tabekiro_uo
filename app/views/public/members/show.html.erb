@@ -1,9 +1,7 @@
 <div class="container">
-  <div class="row my-5">
+  <div class="row" data-aos="zoom-out-left" data-aos-duration="2000">
     <div class="col-md-5 text-right">
-      <div data-aos="zoom-out-left" data-aos-duration="2000">
-        <%= image_tag @member.get_icon(300,300), class:"rounded-circle" %>
-      </div>
+      <%= image_tag @member.get_icon(300,300), class:"rounded-circle" %>
     </div>
 
     <div class="col-md-6 ml-5 mt-5">
@@ -25,7 +23,7 @@
   </div>
 
   <div class="row">
-    <div class="col-md-9 mb-5 mx-auto">
+    <div class="col-md-9 mb-2 mx-auto">
       <p><b>自己紹介</b></p>
       <%= @member.introduction %>
     </div>

@@ -1,81 +1,79 @@
 <% unless @post.open_status == 'unopened' && @post.member != current_member %>
-  <div class="container my-5">
+  <div class="container mb-5">
     <div class="row">
       <div class="col-md-7">
         <h4 class="mb-4">お裾分け詳細</h4>
-        <div data-aos="zoom-in" data-aos-duration="1500">
-          <div class="bg-light rounded">
-            <div class="d-flex px-3 py-2">
-              <%= image_tag @post.member.get_icon(50,50), class:"rounded-circle mx-3" %>
-              <h5 class="my-auto">
-                <%= link_to @post.member.nickname, member_path(@post.member_id), class:"text-dark ml-2" %>
-              </h5>
-            </div>
-
-            <div class="text-center">
-              <%= image_tag @post.get_post_image(600,350), class:"rounded" %>
-            </div>
-
-            <div class="text-right mt-3 mr-3" id="favorite">
-              <% if member_signed_in? %>
-                <%= render 'public/favorites/fav' , post: @post%>
-              <% else %>
-                <%= link_to new_member_session_path, class:"text-danger" do %>
-                  <i class="fas fa-heart"></i>
-                  <%= @post.favorites.count %>
-                <% end %>
-              <% end %>
-            </div>
-
-            <table class="table table-borderless ml-5">
-              <thead>
-                <tr>
-                  <th class="col-2">タイトル</th>
-                  <td><%= @post.title %></td>
-                </tr>
-
-                <tr>
-                  <th>紹介</th>
-                  <td><%= @post.introduction %></td>
-                </tr>
-
-                <tr>
-                  <th>取引期限</th>
-                  <% if @post.open_status == 'open' %>
-                    <td class="timeLimit">
-                      あと
-                      <span class="hour"></span>時間
-                      <span class="min"></span>分
-                      <span class="sec"></span>秒です。
-                    </td>
-                    <td class="hideLimit">
-                      取引は終了しました。
-                    </td>
-                  <% elsif @post.open_status == 'unopened' %>
-                    <td class="text-success">非公開中</td>
-                  <% else %>
-                    <td>取引は終了しました。</td>
-                  <% end %>
-                </tr>
-
-                <tr>
-                  <th></th>
-                  <td><%= time_ago_in_words(@post.updated_at).upcase %></td>
-                </tr>
-              </thead>
-            </table>
+        <div class="bg-light rounded" data-aos="zoom-in" data-aos-duration="1500">
+          <div class="d-flex px-3 py-2">
+            <%= image_tag @post.member.get_icon(50,50), class:"rounded-circle mx-3" %>
+            <h5 class="my-auto">
+              <%= link_to @post.member.nickname, member_path(@post.member_id), class:"text-dark ml-2" %>
+            </h5>
           </div>
-        </div>
 
-        <div class="text-center mb-5 mt-3">
-          <% if @member == current_member %>
-            <%= link_to '編集する', edit_post_path(@post), class:"btn btn-success px-5 mr-5 rounded-pill" %>
-            <%= link_to '削除する', post_path(@post), method: :delete, data: { confirm: "本当によろしいですか？"}, class:"btn btn-danger px-5 rounded-pill" %>
-          <% end %>
+          <div class="text-center">
+            <%= image_tag @post.get_post_image(600,350), class:"rounded" %>
+          </div>
+
+          <div class="text-right mt-3 mr-3" id="favorite">
+            <% if member_signed_in? %>
+              <%= render 'public/favorites/fav' , post: @post%>
+            <% else %>
+              <%= link_to new_member_session_path, class:"text-danger" do %>
+                <i class="fas fa-heart"></i>
+                <%= @post.favorites.count %>
+              <% end %>
+            <% end %>
+          </div>
+
+          <table class="table table-borderless ml-5">
+            <thead>
+              <tr>
+                <th class="col-2">タイトル</th>
+                <td><%= @post.title %></td>
+              </tr>
+
+              <tr>
+                <th>紹介</th>
+                <td><%= @post.introduction %></td>
+              </tr>
+
+              <tr>
+                <th>取引期限</th>
+                <% if @post.open_status == 'open' %>
+                  <td class="timeLimit">
+                    あと
+                    <span class="hour"></span>時間
+                    <span class="min"></span>分
+                    <span class="sec"></span>秒です。
+                  </td>
+                  <td class="hideLimit">
+                    取引は終了しました。
+                  </td>
+                <% elsif @post.open_status == 'unopened' %>
+                  <td class="text-success">非公開中</td>
+                <% else %>
+                  <td>取引は終了しました。</td>
+                <% end %>
+              </tr>
+
+              <tr>
+                <th></th>
+                <td><%= time_ago_in_words(@post.updated_at).upcase %></td>
+              </tr>
+            </thead>
+          </table>
+
+          <div class="text-center">
+            <% if @member == current_member %>
+              <%= link_to '編集する', edit_post_path(@post), class:"btn btn-success px-5 mr-5 mb-3 rounded-pill" %>
+              <%= link_to '削除する', post_path(@post), method: :delete, data: { confirm: "本当によろしいですか？"}, class:"btn btn-danger px-5 mb-3 rounded-pill" %>
+            <% end %>
+          </div>
         </div>
       </div>
 
-      <div class="col-md-4 offset-1 mt-5">
+      <div class="col-md-4 offset-1 mt-5" data-aos="zoom-in" data-aos-duration="1500">
         <%= render 'public/post_comments/comment_bar', comment: @comment, post: @post  %>
         <%= render 'public/posts/dm_btn', post: @post, is_room: @is_room, room: @room, entry: @entry, member: @member, room_id: @room_id, entries: @entries %>
       </div>
@@ -84,7 +82,7 @@
     <div class="row mt-3 mb-5">
       <div class="col-md-10 mx-auto mb-5">
         <div class="d-flex my-4">
-          <h5>ユーザー登録地名： <%= @post.place_name %></h5>
+          <h5 class="bg-light p-3 rounded-pill">ユーザー登録地名： <%= @post.place_name %></h5>
         </div>
         <div id="map" class="mapShow"></div>
       </div>

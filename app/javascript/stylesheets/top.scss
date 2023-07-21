@@ -24,8 +24,6 @@ body {
 }
 
 .about-background {
-  background-image: url('../../assets/images/aboutuo.jpg');
-  background-size: cover;
   height: 80vh;
   width: 100%;
 }
@@ -39,4 +37,7 @@ body {
 }
 .top-btn img {
   width: 400px;
+}
+footer {
+  background-color: #0000004D;
 }

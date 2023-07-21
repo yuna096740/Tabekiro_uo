@@ -1,6 +1,6 @@
 <%= form_with model: [ post, comment ], local: false do |f| %>
-  <table class="table table-bordered">
-    <thead class="bg-light">
+  <table class="table table-bordered bg-light">
+    <thead>
       <tr>
         <th id="postCommentCount">コメント数 : <%= @post.post_comments.count %>件</th>
       </tr>

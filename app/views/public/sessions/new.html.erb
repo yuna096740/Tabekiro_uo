@@ -1,8 +1,7 @@
 <div class="container">
-  <div class="row mx-auto my-5">
-    <div class="col-md-5 offset-3">
+  <div class="row mx-auto mb-5">
+    <div class="col-md-6 offset-3">
       <%= form_with model: @member, url: session_path(resource_name) do |f| %>
-        <div class="card">
           <div class="text-center">
             <div class="session_logo">
               <%= image_tag 'Tabekiro-uo-logo.svg' %>
@@ -31,7 +30,6 @@
               <%= f.submit "ログイン", class:"btn btn-outline-secondary form-control" %><br>
             </div>
           </div>
-        </div>
       <% end %>
       <%= render "public/shared/links" %>
     </div>

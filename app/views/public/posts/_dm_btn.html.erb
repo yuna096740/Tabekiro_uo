@@ -2,7 +2,7 @@
   <% if member_signed_in? %>
     <% if is_room == true %>
       <a data-toggle="collapse" href="#pullDownBtnDM" role="button" aria-expanded="false" aria-controls="#pullDownBtnDM">
-        <h5 class="btn btn-light form-control">取引チャット一覧 ▼</h5>
+        <h5 class="btn btn-light form-control mt-2">取引チャット一覧 ▼</h5>
       </a>
       <div class="collapse" id="pullDownBtnDM">
         <% @room_ids.each do |room_id| %>

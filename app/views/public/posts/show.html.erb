@@ -70,6 +70,9 @@
               <%= link_to '削除する', post_path(@post), method: :delete, data: { confirm: "本当によろしいですか？"}, class:"btn btn-danger px-5 mb-3 rounded-pill" %>
             <% end %>
           </div>
+          <a data-toggle="collapse" href="#pullDownBtnMap" role="button" aria-expanded="false" aria-controls="#pullDownBtnMap">
+            <h4 class="btn btn-light form-control"><b>地図の開閉はこちらから。</b>ユーザー登録地名：<b> <%= @post.place_name %> ▼</b></h4>
+          </a>
         </div>
       </div>
 
@@ -79,12 +82,8 @@
       </div>
     </div>
 
-    <div class="row mt-3 my-5">
-      <div class="col-md-10 mx-auto">
-        <a data-toggle="collapse" href="#pullDownBtnMap" role="button" aria-expanded="false" aria-controls="#pullDownBtnMap">
-          <h4 class="btn btn-light px-5"><b>地図の開閉はこちらから。</b>ユーザー登録地名：<b> <%= @post.place_name %> ▼</b></h4>
-        </a>
-
+    <div class="row my-5">
+      <div class="col mx-auto">
         <div class="collapse" id="pullDownBtnMap">
           <div id="map" class="mapShow"></div>
         </div>

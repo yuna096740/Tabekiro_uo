@@ -18,7 +18,6 @@
   <% end %>
 </div>
 
-
 <div class="modal fade" id="noticeModal" rabindex="-1"
   role="dialog" aria-labelledby="noticeLabel" ariahidden="true">
   <div class="modal-dialog modal-lg" role="document">
@@ -34,7 +33,6 @@
       </div>
 
       <div class="modal-body" id="notice">
-
         <% notices = notices.where.not(visiter_id: current_member.id) %>
 
         <% if notices.exists? %>
@@ -46,6 +44,7 @@
               <%= link_to member_path(visiter) do %>
                 <%= image_tag visiter.icon, size: "20x20", class:"rounded-circle" %>
               <% end %>
+              
               <%= visiter.nickname %>さんが
               <% if notice.action == 'subscribe' %>
                 <%= render 'public/notifications/subscribe_notice', notice: notice %>

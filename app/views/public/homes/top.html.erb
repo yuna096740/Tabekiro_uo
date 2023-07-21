@@ -16,37 +16,32 @@
     <p>など。</p>
     <h5><b>是非！</b></h5>
     <p class="m-0"><b>このお裾分けアプリでお魚を鮮度の良い状態で食べてあげましょう！</b></p>
-
   </div>
 
-  <div class="parallax_content img_bg text-center py-5">
+  <div class="parallax_content img_bg py-5">
+    <div class="d-flex">
+      <% @posts.each do |post| %>
+        <div class="row-md-6 mx-auto" data-aos="zoom-in" data-aos-duration="2000">
+          <div class="text-dark my-5 mx-5 bg-light p-3">
+            <%= link_to post_path(post) do %>
+              <%= image_tag post.get_post_image(350,300), class:"rounded mb-1" %><br>
+            <% end %>
+            <b><%= post.title %></b><br>
+            <span class="time-text-size mt-2 ml-auto">
+              <%= time_ago_in_words(post.updated_at).upcase %>
+            </span>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="scrollbox text-center py-5">
     <h3><b><%= link_to 'お裾分け一覧を見てみる ＞', posts_path, class:"ml-auto text-dark py-5" %></b></h3>
   </div>
 
-
-
-  <div class="scrollbox d-flex">
-    <% @posts.each do |post| %>
-      <div class="row-md-6 my-5 mx-auto" data-aos="zoom-in" data-aos-duration="2000">
-        <div class="text-dark my-5">
-          <%= link_to post_path(post) do %>
-            <%= image_tag post.get_post_image(350,300), class:"rounded" %><br>
-          <% end %>
-          <b><%= post.title %></b>
-        </div>
-      </div>
-    <% end %>
-  </div>
-
-  <div class="parallax_content img_bg text-center py-5 session-btn">
+  <div class="parallax_content img_bg text-center py-5">
     <p><%= link_to '新規登録はこちらから', new_member_registration_path, class:"btn btn-success px-5 m-5" %></p>
     <p><%= link_to 'ログインはこちらから', new_member_session_path, class:"btn btn-info px-5 m-5" %></p>
   </div>
-
-  <div class="scrollbox">
-
-  </div>
-
-
-
 </div>

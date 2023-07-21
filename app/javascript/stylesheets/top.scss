@@ -5,7 +5,7 @@
 
 .parallax_content{
   display: flex;
-  height: 100%;
+  height: 80vh;
   width: 100%;
   justify-content: center;
   align-items: center;
@@ -21,4 +21,19 @@
 .scrollbox {
   background-color: seashell;
   padding: 80px, 0;
+}
+
+.about-background {
+  background-image: url('../../assets/images/aboutuo.jpg');
+  background-size: cover;
+  height: 80vh;
+  width: 100%;
+}
+
+.about-logo img{
+  margin-top: 15vh;
+}
+
+.about-logo .about-body {
+  margin-top: 25vh;
 }

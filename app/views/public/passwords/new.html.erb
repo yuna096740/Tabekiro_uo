@@ -1,6 +1,6 @@
 <div class="container">
   <div class="row mx-auto mb-5">
-    <div class="col-md-6 offset-3">
+    <div class="col-md-6 offset-3" data-aos="zoom-in" data-aos-duration="1000">
       <%= form_with model: @member, url: password_path(resource_name), method: :post do |f| %>
         <%= render "layouts/errors", model: f.object %>
         <div class="text-center">

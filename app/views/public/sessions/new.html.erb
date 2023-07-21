@@ -1,35 +1,35 @@
 <div class="container">
   <div class="row mx-auto mb-5">
-    <div class="col-md-6 offset-3">
+    <div class="col-md-6 offset-3" data-aos="zoom-in" data-aos-duration="1000">
       <%= form_with model: @member, url: session_path(resource_name) do |f| %>
-          <div class="text-center">
-            <div class="session_logo">
-              <%= image_tag 'Tabekiro-uo-logo.svg' %>
-            </div>
+        <div class="text-center">
+          <div class="session_logo">
+            <%= image_tag 'Tabekiro-uo-logo.svg' %>
           </div>
+        </div>
 
-          <div class="card-body">
-            <span class="card-text">
-              <%= f.label :email, 'メールアドレス' %><br />
-              <%= f.email_field :email, autofocus: true, autocomplete: "email", class:"form-control" %>
-            </span>
+        <div class="card-body">
+          <span class="card-text">
+            <%= f.label :email, 'メールアドレス' %><br />
+            <%= f.email_field :email, autofocus: true, autocomplete: "email", class:"form-control" %>
+          </span>
 
-            <span class="card-text">
-              <%= f.label :password, 'パスワード' %><br />
-              <%= f.password_field :password, autocomplete: "current-password", class:"form-control" %>
-            </span>
+          <span class="card-text">
+            <%= f.label :password, 'パスワード' %><br />
+            <%= f.password_field :password, autocomplete: "current-password", class:"form-control" %>
+          </span>
 
-            <span class="card-text">
-              <% if devise_mapping.rememberable? %>
-                <%= f.check_box :remember_me %>
-                <%= f.label :remember_me, '保存する' %><br>
-              <% end %>
-            </span>
+          <span class="card-text">
+            <% if devise_mapping.rememberable? %>
+              <%= f.check_box :remember_me %>
+              <%= f.label :remember_me, '保存する' %><br>
+            <% end %>
+          </span>
 
-            <div class="card-text">
-              <%= f.submit "ログイン", class:"btn btn-outline-secondary form-control" %><br>
-            </div>
+          <div class="card-text">
+            <%= f.submit "ログイン", class:"btn btn-outline-secondary form-control" %><br>
           </div>
+        </div>
       <% end %>
       <%= render "public/shared/links" %>
     </div>

@@ -4,7 +4,7 @@ class Public::RoomsController < ApplicationController
     @room =                 Room.create(room_params)
     @current_member_entry = Entry.create(room_id: @room.id, member_id: current_member.id)
     @member_entry =         Entry.create((entry_params).merge(room_id: @room.id))
-    redirect_to room_path(@room.id), notice: "取引を開始しました"
+    redirect_to room_path(@room.id)
   end
 
   def show

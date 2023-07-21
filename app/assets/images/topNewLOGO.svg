@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="25.000999mm"
+   height="7mm"
+   viewBox="0 0 25.000998 7"
+   version="1.1"
+   id="svg5"
+   inkscape:version="1.2.2 (b0a8486, 2022-12-01)"
+   sodipodi:docname="topNewLOGO.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview7"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:document-units="mm"
+     showgrid="false"
+     inkscape:zoom="4.7488465"
+     inkscape:cx="99.603135"
+     inkscape:cy="16.951485"
+     inkscape:window-width="1440"
+     inkscape:window-height="771"
+     inkscape:window-x="1080"
+     inkscape:window-y="1616"
+     inkscape:window-maximized="0"
+     inkscape:current-layer="layer1" />
+  <defs
+     id="defs2">
+    <rect
+       x="-1.8951972"
+       y="4.0009718"
+       width="213.31496"
+       height="77.703079"
+       id="rect268" />
+  </defs>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <path
+       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:0.21864px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m 4.4186655,7.736698 v 0"
+       id="path208"
+       inkscape:connector-type="polyline"
+       inkscape:connector-curvature="0" />
+    <text
+       xml:space="preserve"
+       style="font-size:8.85995px;font-family:KouzanBrushFontGyousyoOTF;-inkscape-font-specification:KouzanBrushFontGyousyoOTF;fill:#000000;stroke-width:0.166124"
+       x="-1.3619121"
+       y="8.4681635"
+       id="text214"
+       transform="scale(0.67763293,1.4757252)"><tspan
+         sodipodi:role="line"
+         id="tspan212"
+         style="stroke-width:0.166124"
+         x="-1.3619121"
+         y="8.4681635" /></text>
+    <text
+       xml:space="preserve"
+       transform="scale(0.26458333)"
+       id="text266"
+       style="font-size:53.3333px;font-family:KouzanBrushFontGyousyoOTF;-inkscape-font-specification:KouzanBrushFontGyousyoOTF;white-space:pre;shape-inside:url(#rect268);display:inline;fill:#000000" />
+    <text
+       xml:space="preserve"
+       style="font-size:6.01597px;font-family:KouzanBrushFontGyousyoOTF;-inkscape-font-specification:KouzanBrushFontGyousyoOTF;fill:#000000;stroke-width:0.112799"
+       x="-1.2109476"
+       y="4.753109"
+       id="text932"
+       transform="scale(0.73114757,1.3677129)"><tspan
+         sodipodi:role="line"
+         id="tspan930"
+         style="stroke-width:0.112799"
+         x="-1.2109476"
+         y="4.753109">お裾分け作成</tspan></text>
+  </g>
+</svg>

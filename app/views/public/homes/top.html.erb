@@ -37,11 +37,23 @@
   </div>
 
   <div class="scrollbox text-center py-5">
-    <h3><b><%= link_to 'お裾分け一覧を見てみる ＞', posts_path, class:"ml-auto text-dark py-5" %></b></h3>
+    <h3 class="top-btn">
+      <%= link_to posts_path, class:"ml-auto text-dark py-5" do %>
+        <%= image_tag 'topToIndexLOGO.svg' %>
+      <% end %>
+    </h3>
   </div>
 
-  <div class="parallax_content img_bg text-center py-5">
-    <p><%= link_to '新規登録はこちらから', new_member_registration_path, class:"btn btn-success px-5 m-5" %></p>
-    <p><%= link_to 'ログインはこちらから', new_member_session_path, class:"btn btn-info px-5 m-5" %></p>
+  <div class="parallax_content img_bg text-center py-5"  data-aos="zoom-in" data-aos-duration="1000">
+    <p class="top-btn">
+      <%= link_to new_member_registration_path, class:"btn px-5 m-5 bg-light rounded-pill" do %>
+        <%= image_tag 'topregistrationLOGO.svg' %>
+      <% end %>
+    </p>
+    <p class="top-btn">
+      <%= link_to new_member_session_path, class:"btn px-5 m-5 bg-light rounded-pill" do %>
+        <%= image_tag 'topLoginLOGO.svg' %>
+      <% end %>
+    </p>
   </div>
 </div>

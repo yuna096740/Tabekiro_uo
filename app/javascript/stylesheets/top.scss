@@ -11,7 +11,7 @@
   align-items: center;
 }
 
-.img_bg{
+body {
   background-image: url('../../assets/images/backuo-neo.jpg');
   background-attachment: fixed;
   background-position: center;
@@ -19,8 +19,8 @@
   background-repeat: no-repeat;
 }
 .scrollbox {
-  background-color: seashell;
   padding: 80px, 0;
+  background-color: #00000033;
 }
 
 .about-background {
@@ -36,4 +36,7 @@
 
 .about-logo .about-body {
   margin-top: 25vh;
+}
+.top-btn img {
+  width: 400px;
 }

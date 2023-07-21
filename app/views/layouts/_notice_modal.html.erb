@@ -2,15 +2,23 @@
   <% if notice.exists? %>
     <h5 class="dropdown-item py-2">
       <%= link_to notice_notifications_path, method: :patch, remote: true do %>
-        <span class="text-danger" id="testButton"><i class="fas fa-bell text-danger"></i>通知</span>
+        <span class="text-danger" id="testButton">
+          <i class="fas fa-bell text-danger"></i>
+          <%= image_tag 'topNoticeLOGO.svg' %>
+        </span>
       <% end %>
     </h5>
   <% else %>
     <h5 class="dropdown-item py-2">
-      <span class="text-dark"><i class="fas fa-bell mr-2"></i>通知</span>
+      <span class="text-dark">
+        <i class="fas fa-bell mr-2"></i>
+        <%= image_tag 'topNoticeLOGO.svg' %>
+      </span>
     </h5>
   <% end %>
 </div>
+
+
 <div class="modal fade" id="noticeModal" rabindex="-1"
   role="dialog" aria-labelledby="noticeLabel" ariahidden="true">
   <div class="modal-dialog modal-lg" role="document">
@@ -26,9 +34,30 @@
       </div>
 
       <div class="modal-body" id="notice">
+
         <% notices = notices.where.not(visiter_id: current_member.id) %>
+
         <% if notices.exists? %>
-          <%= render 'public/notifications/notice', notices: notices, notice_counts: notice_counts %></div>
+          <% notices.each do |notice| %>
+            <% visiter = notice.visiter %>
+            <% visited = notice.visited %>
+
+            <div class="d-flex">
+              <%= link_to member_path(visiter) do %>
+                <%= image_tag visiter.icon, size: "20x20", class:"rounded-circle" %>
+              <% end %>
+              <%= visiter.nickname %>さんが
+              <% if notice.action == 'subscribe' %>
+                <%= render 'public/notifications/subscribe_notice', notice: notice %>
+              <% elsif notice.action == 'favorite' %>
+                <%= render 'public/notifications/fav_notice', notice: notice %>
+              <% elsif notice.action == 'comment' %>
+                <%= render 'public/notifications/comment_notice', notice: notice, visited: visited %>
+              <% else %>
+                <%= render 'public/notifications/dm_notice', notice: notice, visited: visited %>
+              <% end %>
+            </div>
+          <% end %>
         <% else %>
           通知はありません
         <% end %>

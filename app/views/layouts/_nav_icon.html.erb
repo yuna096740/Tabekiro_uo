@@ -4,42 +4,42 @@
     <%= link_to members_path do %>
       <h5 class="dropdown-item py-2">
         <i class="fas fa-user-circle"></i>
-        マイページ
+        <%= image_tag 'topMyPageLOGO.svg' %>
       </h5>
     <% end %>
 
     <%= link_to deal_members_path do %>
       <h5 class="dropdown-item py-2">
         <i class="fas fa-fish"></i>
-        取引中のお魚
+        <%= image_tag 'topMyDealLOGO.svg' %>
       </h5>
     <% end %>
 
     <%= link_to favorite_members_path do %>
       <h5 class="dropdown-item py-2">
         <i class="fas fa-heart"></i>
-        いいねしたお魚
+        <%= image_tag 'topMyFavoLOGO.svg' %>
       </h5>
     <% end %>
 
     <%= link_to subscribers_member_relationships_path(current_member) do %>
       <h5 class="dropdown-item py-2">
         <i class="fas fa-user-plus"></i>
-        登録者一覧
+        <%= image_tag 'topMySubscriberLOGO.svg' %>
       </h5>
     <% end %>
 
     <%= link_to subscribings_member_relationships_path(current_member) do %>
       <h5 class="dropdown-item py-2">
         <i class="fas fa-user-tie mr-2"></i>
-        登録中一覧
+        <%= image_tag 'topMySubscribedLOGO.svg' %>
       </h5>
     <% end %>
 
     <%= link_to destroy_member_session_path, method: :delete do %>
       <h5 class="dropdown-item py-2">
         <i class="fas fa-sign-out-alt"></i>
-        ログアウト
+        <%= image_tag 'topSignOutLOGO.svg' %>
       </h5>
     <% end %>
   </div>

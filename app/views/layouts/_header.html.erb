@@ -34,25 +34,18 @@
             <%= image_tag 'newsessionsLOGO.svg' %>
           <% end %>
         </li>
-
-        <li class="nav-item active mx-3">
-          <%= link_to members_guest_sign_in_path, method: :post, class:"nav-link sign_in" do %>
-            <%= image_tag 'guestLoginLOGO.svg' %>
-          <% end %>
-        </li>
       <% end %>
     </ul>
 
     <% unless admin_signed_in? %>
       <div class="pt-5">
-        <i class="fas fa-map-marker-alt"></i>
-        <%= link_to map_posts_path, class:"text-dark mr-4" do %>
+        <%= link_to map_posts_path, class:"text-dark mr-5" do %>
           <%= image_tag 'mapsearchLOGO.svg' %>
         <% end %>
       </div>
 
       <a data-toggle="collapse" class="pt-5 text-dark" href="#headerTag" aria-expanded="false" aria-controls="#headerTag">
-        <i class="fas fa-fish"></i><%= image_tag 'topGenreLOGO.svg' %> ▼
+        <%= image_tag 'topGenreLOGO.svg' %>
       </a>
     <% end %>
     <%= render 'public/searches/form', keyword: @keyword %>

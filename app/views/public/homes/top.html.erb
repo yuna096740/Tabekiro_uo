@@ -1,5 +1,5 @@
 <div class="parallax_box">
-  <div class="parallax_content img_bg">
+  <div class="parallax_content">
     <p class="head" data-aos="zoom-in" data-aos-duration="600">
       <%= image_tag 'Tabekiro-uo-logo.svg' %>
     </p>
@@ -18,7 +18,11 @@
     <p class="m-0"><b>このお裾分けアプリでお魚を鮮度の良い状態で食べてあげましょう！</b></p>
   </div>
 
-  <div class="parallax_content img_bg py-5">
+  <div class="mt-5 pt-5 text-center">
+    <h2><%= image_tag 'newPostLOGO.svg' %></h2>
+  </div>
+
+  <div class="parallax_content">
     <div class="d-flex">
       <% @posts.each do |post| %>
         <div class="row-md-6 mx-auto" data-aos="zoom-in" data-aos-duration="2000">
@@ -37,14 +41,14 @@
   </div>
 
   <div class="scrollbox text-center py-5">
-    <h3 class="top-btn">
+    <h3 class="top-to-index-btn">
       <%= link_to posts_path, class:"ml-auto text-dark py-5" do %>
         <%= image_tag 'topToIndexLOGO.svg' %>
       <% end %>
     </h3>
   </div>
 
-  <div class="parallax_content img_bg text-center py-5"  data-aos="zoom-in" data-aos-duration="1000">
+  <div class="parallax_content text-center py-5" data-aos="zoom-in" data-aos-duration="1000">
     <p class="top-btn">
       <%= link_to new_member_registration_path, class:"btn px-5 m-5 bg-light rounded-pill" do %>
         <%= image_tag 'topregistrationLOGO.svg' %>

@@ -2,9 +2,9 @@
 <!-- Created with Inkscape (http://www.inkscape.org/) -->
 
 <svg
-   width="35.000999mm"
+   width="45.000999mm"
    height="7mm"
-   viewBox="0 0 35.000998 7"
+   viewBox="0 0 45.000998 7"
    version="1.1"
    id="svg5"
    inkscape:version="1.2.2 (b0a8486, 2022-12-01)"
@@ -26,7 +26,7 @@
      showgrid="false"
      inkscape:zoom="4.7488465"
      inkscape:cx="100.02429"
-     inkscape:cy="17.162062"
+     inkscape:cy="17.37264"
      inkscape:window-width="1440"
      inkscape:window-height="771"
      inkscape:window-x="1080"
@@ -71,15 +71,29 @@
        style="font-size:53.3333px;font-family:KouzanBrushFontGyousyoOTF;-inkscape-font-specification:KouzanBrushFontGyousyoOTF;white-space:pre;shape-inside:url(#rect268);display:inline;fill:#000000" />
     <text
        xml:space="preserve"
-       style="font-size:7.47456px;font-family:KouzanBrushFontGyousyoOTF;-inkscape-font-specification:KouzanBrushFontGyousyoOTF;fill:#000000;stroke-width:0.140148"
-       x="-1.4443949"
-       y="5.7311611"
+       style="font-size:7.63622px;font-family:KouzanBrushFontGyousyoOTF;-inkscape-font-specification:KouzanBrushFontGyousyoOTF;fill:#000000;stroke-width:0.143179"
+       x="-1.5441313"
+       y="5.8559465"
        id="text932"
-       transform="scale(0.84114684,1.1888531)"><tspan
+       transform="scale(0.87321724,1.1451904)"><tspan
          sodipodi:role="line"
          id="tspan930"
-         style="stroke-width:0.140148"
-         x="-1.4443949"
-         y="5.7311611">お魚ジャンル</tspan></text>
+         style="stroke-width:0.143179"
+         x="-1.5441313"
+         y="5.8559465">お魚ジャンル<tspan
+   style="font-size:4.58611px"
+   id="tspan219" /></tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:3.84276px;font-family:KouzanBrushFontGyousyoOTF;-inkscape-font-specification:KouzanBrushFontGyousyoOTF;fill:#241c1c;stroke-width:0.221698"
+       x="41.876297"
+       y="5.1589999"
+       id="text277"
+       transform="scale(0.9752875,1.0253387)"><tspan
+         sodipodi:role="line"
+         id="tspan275"
+         style="fill:#241c1c;stroke-width:0.221698"
+         x="41.876297"
+         y="5.1589999">▼</tspan></text>
   </g>
 </svg>

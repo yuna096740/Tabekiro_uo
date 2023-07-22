@@ -2,13 +2,13 @@
 <!-- Created with Inkscape (http://www.inkscape.org/) -->
 
 <svg
-   width="40mm"
-   height="7mm"
-   viewBox="0 0 40 7"
+   width="60.000999mm"
+   height="15mm"
+   viewBox="0 0 60.000999 15"
    version="1.1"
    id="svg5"
    inkscape:version="1.2.2 (b0a8486, 2022-12-01)"
-   sodipodi:docname="guestLoginLOGO.svg"
+   sodipodi:docname="newPostLOGO.svg"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns="http://www.w3.org/2000/svg"
@@ -24,13 +24,13 @@
      inkscape:deskcolor="#d1d1d1"
      inkscape:document-units="mm"
      showgrid="false"
-     inkscape:zoom="4.7488465"
-     inkscape:cx="125.08301"
-     inkscape:cy="36.324611"
+     inkscape:zoom="2.6959044"
+     inkscape:cx="100.89378"
+     inkscape:cy="30.601975"
      inkscape:window-width="1440"
      inkscape:window-height="771"
-     inkscape:window-x="1080"
-     inkscape:window-y="1616"
+     inkscape:window-x="1101"
+     inkscape:window-y="1674"
      inkscape:window-maximized="0"
      inkscape:current-layer="layer1" />
   <defs
@@ -54,16 +54,16 @@
        inkscape:connector-curvature="0" />
     <text
        xml:space="preserve"
-       style="font-size:7.51527px;font-family:KouzanBrushFontGyousyoOTF;-inkscape-font-specification:KouzanBrushFontGyousyoOTF;fill:#000000;stroke-width:0.140911"
-       x="-1.4341906"
-       y="5.5985012"
+       style="font-size:16.6642px;font-family:KouzanBrushFontGyousyoOTF;-inkscape-font-specification:KouzanBrushFontGyousyoOTF;fill:#000000;stroke-width:0.312455"
+       x="-1.8614594"
+       y="13.080889"
        id="text214"
-       transform="scale(0.80675687,1.2395308)"><tspan
+       transform="scale(0.947401,1.0555193)"><tspan
          sodipodi:role="line"
          id="tspan212"
-         style="stroke-width:0.140911"
-         x="-1.4341906"
-         y="5.5985012">ゲストログイン</tspan></text>
+         style="stroke-width:0.312455"
+         x="-1.8614594"
+         y="13.080889">新着投稿</tspan></text>
     <text
        xml:space="preserve"
        transform="scale(0.26458333)"

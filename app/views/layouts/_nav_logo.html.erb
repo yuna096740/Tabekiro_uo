@@ -27,6 +27,11 @@
           <%= image_tag 'topAdminLoginLOGO.svg' %>
         <% end %>
       </h5>
+      <h5>
+        <%= link_to admin_session_path, method: :post, class:"text-dark ml-5" do %>
+          <%= image_tag 'guestLoginLOGO.svg' %>
+        <% end %>
+      </h5>
     <% end %>
   </div>
 </div>

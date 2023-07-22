@@ -2,9 +2,9 @@
 <!-- Created with Inkscape (http://www.inkscape.org/) -->
 
 <svg
-   width="356mm"
+   width="350mm"
    height="25mm"
-   viewBox="0 0 356 25"
+   viewBox="0 0 350 25"
    version="1.1"
    id="svg5"
    inkscape:version="1.2.2 (b0a8486, 2022-12-01)"
@@ -24,9 +24,9 @@
      inkscape:deskcolor="#d1d1d1"
      inkscape:document-units="mm"
      showgrid="false"
-     inkscape:zoom="0.79560868"
-     inkscape:cx="539.2098"
-     inkscape:cy="202.98924"
+     inkscape:zoom="0.39494402"
+     inkscape:cx="513.9969"
+     inkscape:cy="196.23034"
      inkscape:window-width="1440"
      inkscape:window-height="771"
      inkscape:window-x="1080"
@@ -71,15 +71,15 @@
        style="font-size:53.3333px;font-family:KouzanBrushFontGyousyoOTF;-inkscape-font-specification:KouzanBrushFontGyousyoOTF;white-space:pre;shape-inside:url(#rect268);display:inline;fill:#000000" />
     <text
        xml:space="preserve"
-       style="font-size:29.2045px;font-family:KouzanBrushFontGyousyoOTF;-inkscape-font-specification:KouzanBrushFontGyousyoOTF;fill:#000000;stroke-width:0.547575"
-       x="-5.3758607"
-       y="23.054014"
+       style="font-size:29.0453px;font-family:KouzanBrushFontGyousyoOTF;-inkscape-font-specification:KouzanBrushFontGyousyoOTF;fill:#000000;stroke-width:0.54459"
+       x="-5.3365512"
+       y="22.92609"
        id="text932"
-       transform="scale(0.95918404,1.0425528)"><tspan
+       transform="scale(0.94806535,1.0547796)"><tspan
          sodipodi:role="line"
          id="tspan930"
-         style="stroke-width:0.547575"
-         x="-5.3758607"
-         y="23.054014">お裾分け一覧はこちらから＞</tspan></text>
+         style="stroke-width:0.54459"
+         x="-5.3365512"
+         y="22.92609">お裾分け一覧はこちらから＞</tspan></text>
   </g>
 </svg>

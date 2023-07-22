@@ -4,12 +4,12 @@ class Public::MembersController < ApplicationController
   before_action :set_current_member,  only: [:edit, :update, :deal, :quit_form, :confirm, :quit]
 
   def index
-    @posts = current_member.posts.all
+    @posts = current_member.posts.all.page(params[:page]).per(24)
   end
 
   def show
     @member = Member.find(params[:id])
-    @posts =  @member.posts.all
+    @posts =  @member.posts.all.page(params[:page]).per(24)
   end
 
   def edit

@@ -1,0 +1,21 @@
+<% notices.each do |notice| %>
+  <% visiter = notice.visiter %>
+  <% visited = notice.visited %>
+
+  <div class="d-flex">
+    <%= link_to member_path(visiter) do %>
+      <%= image_tag visiter.icon, size: "20x20", class:"rounded-circle" %>
+    <% end %>
+
+    <%= visiter.nickname %>さんが
+    <% if notice.action == 'subscribe' %>
+      <%= render 'public/notifications/subscribe_notice', notice: notice %>
+    <% elsif notice.action == 'favorite' %>
+      <%= render 'public/notifications/fav_notice', notice: notice %>
+    <% elsif notice.action == 'comment' %>
+      <%= render 'public/notifications/comment_notice', notice: notice, visited: visited %>
+    <% else %>
+      <%= render 'public/notifications/dm_notice', notice: notice, visited: visited %>
+    <% end %>
+  </div>
+<% end %>

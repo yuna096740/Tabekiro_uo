@@ -59,7 +59,7 @@
           <thead>
             <tr>
               <th class="d-flex">
-                <%= f.text_area :message, rows: 1, required: true, class:"form-control" %>
+                <%= f.text_area :message, rows: 1, required: true, autofocus: true, class:"form-control" %>
                 <%= f.hidden_field :room_id, value: @room.id %>
                 <%= button_tag type:'submit', class:"btn btn-success ml-3" do %>
                   <i class="fas fa-paper-plane"></i>

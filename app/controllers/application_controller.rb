@@ -29,6 +29,6 @@ class ApplicationController < ActionController::Base
 
   def notice
     @notices = current_member.passive_notifications
-    @notice = current_member.passive_notifications.where(checked: false)
+    @unchecked_notices = current_member.passive_notifications.where(checked: false)
   end
 end

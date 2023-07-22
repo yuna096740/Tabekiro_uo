@@ -18,7 +18,7 @@
       <tr>
         <th class="d-flex">
           <% if member_signed_in? %>
-            <%= f.text_area :comment, rows: 1, placeholder: "コメントを入力", required: true, class:"form-control" %>
+            <%= f.text_area :comment, rows: 1, placeholder: "コメントを入力", required: true, autofocus: true, class:"form-control" %>
             <%= button_tag type:'submit', class:"btn btn-success ml-3", id:"commentBtn" do %>
               <i class="fas fa-paper-plane"></i>
             <% end %>

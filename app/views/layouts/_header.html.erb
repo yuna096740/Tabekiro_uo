@@ -64,7 +64,7 @@
             <span class="d-flex">
               <%= image_tag current_member.get_icon(70,70), class:"rounded-circle mr-4" %>
               <div class="notice-count-container">
-                <%= render 'layouts/notice_count', notices: @notices, notice: @notice %>
+                <%= render 'layouts/notice_count', notices: @notices, unchecked_notices: @unchecked_notices %>
               </div>
             </span>
           </div>
@@ -77,5 +77,5 @@
 <%= render 'layouts/nav_logo' %>
 <%= render 'layouts/nav_tags', tags: @tags %>
 <% if member_signed_in? %>
-  <%= render 'layouts/nav_icon', notices: @notices %>
+  <%= render 'layouts/nav_icon', notices: @notices, unchecked_notices: @unchecked_notices %>
 <% end %>

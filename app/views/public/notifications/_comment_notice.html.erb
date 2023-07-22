@@ -10,7 +10,7 @@
   <p>にコメントしました</p>
 
   <div class="text-secondary ml-3">
-    <%#= truncate(notice.post_comment.comment, length: 20) %>
+    <%= truncate(notice.post_comment.comment, length: 20) %>
     <span class="time-text-size">
       <%= time_ago_in_words(notice.created_at).upcase %>
     </span>

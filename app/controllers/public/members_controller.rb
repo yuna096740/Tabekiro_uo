@@ -41,8 +41,8 @@ class Public::MembersController < ApplicationController
   end
 
   def quit
-    @member.update(
-      status: :inactive,
+    @member.update!(
+      status: 2, # inactive
       reason_for_quit_genre: params[:member][:reason_for_quit_genre],
       reason_for_quit:       params[:member][:reason_for_quit]
     )

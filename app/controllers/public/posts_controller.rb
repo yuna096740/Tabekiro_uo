@@ -3,8 +3,8 @@ class Public::PostsController < ApplicationController
   before_action :set_post,             only: [:show, :edit, :update]
 
   def index
-    post =   Post.where.not(open_status: "unopened")
-    @posts = post.page(params[:page]).per(24)
+    posts =   Post.where.not(open_status: "unopened")
+    @posts = posts.page(params[:page]).per(24)
   end
 
   def show

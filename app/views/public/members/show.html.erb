@@ -26,7 +26,7 @@
     <div class="row">
       <div class="col-md-9 mb-2 mx-auto">
         <p><b>自己紹介</b></p>
-        <%= @member.introduction %>
+        <%= safe_join(@member.introduction.split("\n"), tag(:br)) %>
       </div>
     </div>
     <%= render 'public/members/member_posts', posts: @posts %>

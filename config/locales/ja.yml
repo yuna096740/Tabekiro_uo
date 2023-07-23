@@ -85,10 +85,17 @@ ja:
         restrict_dependent_destroy:
           has_one:      "%{record}が存在しているので削除できません"
           has_many:     "%{record}が存在しているので削除できません"
+      models:
+        post_comment:
+          too_short:    "入力してください"
+          too_long:     "60字以内で入力してください"
+
     attributes:
       member:
         email:          "メールアドレス"
         password:       "パスワード"
+      post_comment:
+          comment:      "コメント:"
 
   helpers:
     select:

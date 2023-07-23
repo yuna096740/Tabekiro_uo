@@ -5,8 +5,11 @@ class Public::PostCommentsController < ApplicationController
     @comment = current_member.post_comments.new(post_comment_params)
     @comment.post_id = @post.id
     ActiveRecord::Base.transaction do
-      @comment.save
-      @post.create_notification_comment!(current_member, @comment.id)
+      if @comment.save
+        @post.create_notification_comment!(current_member, @comment.id)
+      else
+        render 'errors'
+      end
     end
   end
 

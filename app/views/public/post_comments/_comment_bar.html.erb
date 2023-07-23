@@ -1,12 +1,12 @@
 <%= form_with model: [ post, comment ], local: false do |f| %>
-  <table class="table table-bordered bg-light">
+  <table class="table table-bordered bg-light mt-5">
     <thead>
-      <tr>
+      <tr class="text-right">
         <th id="postCommentCount">コメント数 : <%= @post.post_comments.count %>件</th>
       </tr>
     </thead>
 
-    <tbody class="chat-height">
+    <tbody class="chat-height py-3">
       <tr>
         <td id="postComments">
           <%= render 'public/post_comments/comments', post: @post %>
@@ -29,4 +29,4 @@
     </thead>
   </table>
 <% end %>
-<div id="errorComment" class="text-center my-1"></div>
+<div class="errorComment text-center my-1"></div>

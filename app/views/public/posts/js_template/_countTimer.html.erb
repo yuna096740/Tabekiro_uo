@@ -21,16 +21,20 @@
 
       const timeLimit = document.getElementById("timeLimit");
       const hideLimit = document.getElementById("hideLimit");
-
-      elmHour.textContent = String(hour).padStart(2, "0");
-      elmMin.textContent = String(min).padStart(2, "0");
-      elmSec.textContent = String(sec).padStart(2, "0");
-      if ( differ < 0 ) {
-        timeLimit.style.display = "none";
-        hideLimit.style.display = "block";
+      if ( timeLimit && hideLimit ){
+        elmHour.textContent = String(hour).padStart(2, "0");
+        elmMin.textContent = String(min).padStart(2, "0");
+        elmSec.textContent = String(sec).padStart(2, "0");
+        if ( differ < 0 ) {
+          timeLimit.style.display = "none";
+          hideLimit.style.display = "block";
+        }
+      }
+      else{
+        clearInterval(countDownTimerId);
       }
     }
     countDown();
-    setInterval(countDown, 1000);
+    const countDownTimerId = setInterval(countDown, 1000);
   })
 </script>

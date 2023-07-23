@@ -6,7 +6,9 @@
           <%= image_tag message.member.get_icon(35,35), class:"rounded-circle ml-1" %>
         <% end %>
         <div class="text-dark p-2 rounded message-frame">
-          <span class="px-2"><%= message.message %></span>
+          <span class="px-2">
+            <%= safe_join(message.message.split("\n"), tag(:br)) %>
+          </span>
           <span class="time-text-size">
             <%= l message.created_at, format: :short %>
           </span>
@@ -18,7 +20,9 @@
           <%= image_tag message.member.get_icon(35,35), class:"rounded-circle mr-1" %>
         <% end %>
         <div class="text-dark p-2 rounded message-frame">
-          <span class="px-2"><%= message.message %></span>
+          <span class="px-2">
+            <%= safe_join(message.message.split("\n"), tag(:br)) %>
+          </span>
           <span class="time-text-size">
             <%= l message.created_at, format: :short %>
           </span>

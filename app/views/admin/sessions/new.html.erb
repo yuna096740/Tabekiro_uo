@@ -1,23 +1,30 @@
 <div class="container">
-  <div class="row">
-    <div class="col-md-8">
-      <h2>管理者ログイン</h2>
-
-        <%= form_with model: @admin , url: session_path(resource_name) do |f| %>
-        <div class="field">
-          <%= f.label :email, "メールアドレス" %><br />
-          <%= f.email_field :email, autofocus: true, autocomplete: "email", class:"form-control" %>
+  <div class="row mx-auto mb-5">
+    <div class="col-md-6 offset-3" data-aos="zoom-in" data-aos-duration="1000">
+      <%= form_with model: @admin , url: session_path(resource_name) do |f| %>
+        <div class="text-center">
+          <div class="session_logo">
+            <%= image_tag 'Tabekiro-uo-logo.svg' %>
+            <h4>管理者ログイン</h4>
+          </div>
         </div>
 
-        <div class="field">
-          <%= f.label :password,"パスワード" %><br />
-          <%= f.password_field :password, autocomplete: "current-password", class:"form-control" %>
-        </div>
+        <div class="card-body">
+          <span class="card-text">
+            <%= f.label :email, 'メールアドレス' %><br />
+            <%= f.email_field :email, autofocus: true, autocomplete: "email", class:"form-control" %>
+          </span>
 
-        <div class="actions">
-          <%= f.submit "Log in", class:"btn btn-primary mt-3" %>
+          <span class="card-text">
+            <%= f.label :password, 'パスワード' %><br />
+            <%= f.password_field :password, autocomplete: "current-password", class:"form-control" %>
+          </span>
+
+          <div class="card-text">
+            <%= f.submit "ログイン", class:"btn btn-outline-secondary form-control mt-2" %><br>
+          </div>
         </div>
-        <% end %>
+      <% end %>
       <%= render "admin/shared/links" %>
     </div>
   </div>

@@ -1,4 +1,5 @@
 class Public::ReportsController < ApplicationController
+  before_action :authenticate_member!
 
   def new
     @report = Report.new

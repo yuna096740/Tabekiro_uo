@@ -1,4 +1,5 @@
 class Public::RoomsController < ApplicationController
+  before_action :authenticate_member!
 
   def create
     @room =                 Room.create(room_params)

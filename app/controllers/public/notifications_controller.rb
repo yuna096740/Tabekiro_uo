@@ -1,4 +1,5 @@
 class Public::NotificationsController < ApplicationController
+  before_action :authenticate_member!
 
   def destroy
     @notices = current_member.passive_notifications

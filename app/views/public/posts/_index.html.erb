@@ -5,6 +5,7 @@
 
         <div class="text-dark"><b><%= post.title %></b></div>
         <%= link_to post_path(post) do %>
+        <%#= link_to(post_path(post), data: {turbolinks: false}) do %> <!--　Google Map Multiple API Call対応する場合 -->
           <%= image_tag post.get_post_image(220,200), class:"rounded" %>
         <% end %>
 

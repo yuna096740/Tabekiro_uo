@@ -41,13 +41,13 @@
               <tr>
                 <th>取引期限</th>
                 <% if @post.open_status == 'open' %>
-                  <td class="timeLimit">
+                  <td id="timeLimit">
                     あと
                     <span class="hour"></span>時間
                     <span class="min"></span>分
                     <span class="sec"></span>秒です。
                   </td>
-                  <td class="hideLimit">
+                  <td id="hideLimit">
                     取引は終了しました。
                   </td>
                 <% elsif @post.open_status == 'unopened' %>
@@ -90,20 +90,6 @@
       </div>
     </div>
   </div>
-  <%# Google Map API %>
-  <%= render 'public/posts/js_template/googleMap', post: @post %>
-
-  <%#カウントダウンタイマー機能 %>
-  <%= render 'public/posts/js_template/countTimer', post: @post %>
-
-  <script>
-    //コメントスクロール位置固定機能
-    // packs/scrollComment.jsに記載
-    document.addEventListener("turbolinks:load", () => {
-      commentsScrollToEnd();
-    });
-  </script>
-  <script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['API_KEY'] %>&libraries=places&callback=initMap" async defer></script>
 <% else %>
   <div class="container">
     <div class="text-center mt-5">
@@ -114,3 +100,18 @@
     </div>
   </div>
 <% end %>
+
+<%# Google Map API %>
+<%= render 'public/posts/js_template/googleMap', post: @post %>
+
+<%#カウントダウンタイマー機能 %>
+<%= render 'public/posts/js_template/countTimer', post: @post %>
+
+<script>
+  //コメントスクロール位置固定機能
+  // packs/scrollComment.jsに記載
+  document.addEventListener("turbolinks:load", () => {
+    commentsScrollToEnd();
+  });
+</script>
+<%= javascript_include_tag "https://maps.googleapis.com/maps/api/js?key=#{ENV['API_KEY']}&libraries=places&callback=initMap", 'data-turbolinks-track': 'reload', async: true %>

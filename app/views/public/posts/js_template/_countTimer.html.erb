@@ -3,12 +3,14 @@
     const elmHour = document.querySelector(".hour");
     const elmMin  = document.querySelector(".min");
     const elmSec  = document.querySelector(".sec");
-    let postUpdatedAt = new Date("<%= post.updated_at.iso8601 %>");
 
     function countDown() {
+      if (elmHour == null) {
+        return false;
+      }
       const now = new Date();
       const limit = <%= post.limit %>;
-      postUpdatedAt = new Date("<%= post.updated_at.iso8601 %>");
+      const postUpdatedAt = new Date("<%= post.updated_at.iso8601 %>");
       const limitTime = new Date(postUpdatedAt.getTime() + limit * 60 * 60 * 1000);
 
       const differ = limitTime.getTime() - now.getTime();
@@ -17,8 +19,8 @@
       const min = Math.floor(differ / 1000 / 60) % 60;
       const hour = Math.floor(differ / 1000 / 60 / 60);
 
-      const timeLimit = document.querySelector(".timeLimit");
-      const hideLimit = document.querySelector(".hideLimit");
+      const timeLimit = document.getElementById("timeLimit");
+      const hideLimit = document.getElementById("hideLimit");
 
       elmHour.textContent = String(hour).padStart(2, "0");
       elmMin.textContent = String(min).padStart(2, "0");

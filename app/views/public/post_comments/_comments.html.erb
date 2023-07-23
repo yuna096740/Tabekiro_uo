@@ -5,7 +5,7 @@
         <%= link_to member_path(comment.member_id) do %>
           <%= image_tag comment.member.get_icon(35,35), class:"rounded-circle ml-1" %>
         <% end %>
-        <div class="text-dark p-2 rounded message-frame">
+        <div class="text-dark py-2 px-3 rounded message-frame">
           <%= comment.comment %>
           <span class="time-text-size">
             <%= l comment.created_at, format: :short %>
@@ -17,7 +17,7 @@
         <%= link_to member_path(comment.member_id) do %>
           <%= image_tag comment.member.get_icon(35,35), class:"rounded-circle mr-1" %>
         <% end %>
-        <div class="text-dark p-2 rounded message-frame">
+        <div class="text-dark py-1 px-2 rounded message-frame">
           <%= comment.comment %>
           <span class="time-text-size">
             <%= l comment.created_at, format: :short %>

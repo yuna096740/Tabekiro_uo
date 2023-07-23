@@ -6,6 +6,13 @@ class Public::ReportsController < ApplicationController
     @member = Member.find(params[:member_id])
   end
 
+  def show# リロード対策
+    if params[:id].to_s == "confirm"
+      redirect_to request.referer, notice: "確認画面でのリロードは処理が無効となります。"
+      return
+    end
+  end
+
   def confirm
     @member = Member.find(params[:member_id])
     @report = Report.new(report_params)

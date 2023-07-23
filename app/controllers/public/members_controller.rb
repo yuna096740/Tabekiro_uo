@@ -8,6 +8,11 @@ class Public::MembersController < ApplicationController
   end
 
   def show
+    # リロード対策
+    if params[:id].to_s == "confirm"
+      redirect_to request.referer, notice: "確認画面でのリロードは処理が無効となります。"
+      return
+    end
     @member = Member.find(params[:id])
     @posts =  @member.posts.all.page(params[:page]).per(24)
   end

@@ -1,32 +1,43 @@
-<div class="container">
-  <div class="row" data-aos="zoom-out-left" data-aos-duration="2000">
-    <div class="col-md-5 text-right">
-      <%= image_tag @member.get_icon(300,300), class:"rounded-circle" %>
+<% if @member.status == 'active' %>
+  <div class="container">
+    <div class="row" data-aos="zoom-out-left" data-aos-duration="2000">
+      <div class="col-md-5 text-right">
+        <%= image_tag @member.get_icon(300,300), class:"rounded-circle" %>
+      </div>
+
+      <div class="col-md-6 ml-5 mt-5">
+        <h2><%= @member.nickname %></h2>
+        <p class="mt-5">取引数: <%= @member.entries.count %> 回</p>
+        <p class="subscribeCount">
+          <%= render 'public/relationships/subscribe_count', member: @member %>
+        </p>
+        <% if @member != current_member %>
+          <div class="subscribeBtn">
+            <%= render 'public/relationships/subscribe_btn', member: @member %>
+          </div>
+
+          <div class="text-center">
+            <%= link_to '通報する', new_member_report_path(@member) %>
+          </div>
+        <% end %>
+      </div>
     </div>
 
-    <div class="col-md-6 ml-5 mt-5">
-      <h2><%= @member.nickname %></h2>
-      <p class="mt-5">取引数: <%= @member.entries.count %> 回</p>
-      <p class="subscribeCount">
-        <%= render 'public/relationships/subscribe_count', member: @member %>
-      </p>
-      <% if @member != current_member %>
-        <div class="subscribeBtn">
-          <%= render 'public/relationships/subscribe_btn', member: @member %>
-        </div>
-
-        <div class="text-center">
-          <%= link_to '通報する', new_member_report_path(@member) %>
-        </div>
-      <% end %>
+    <div class="row">
+      <div class="col-md-9 mb-2 mx-auto">
+        <p><b>自己紹介</b></p>
+        <%= @member.introduction %>
+      </div>
+    </div>
+    <%= render 'public/members/member_posts', posts: @posts %>
+  </div>
+<% else %>
+  <div class="container">
+    <div class="text-center mt-5">
+      <h4 class="text-danger my-3">
+        ※現在このユーザーは利用を停止しています。
+      </h4>
+      <%= link_to '戻る', :back %>
     </div>
   </div>
-
-  <div class="row">
-    <div class="col-md-9 mb-2 mx-auto">
-      <p><b>自己紹介</b></p>
-      <%= @member.introduction %>
-    </div>
-  </div>
-  <%= render 'public/members/member_posts', posts: @posts %>
-</div>
+<% end %>

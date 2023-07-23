@@ -6,7 +6,7 @@ class Admin::ReportsController < ApplicationController
 
   def update
     Report.find(params[:id]).update(report_params)
-    redirect_to request.referer
+    redirect_to request.referer, notice: "ステータスを更新しました。"
   end
 
   private

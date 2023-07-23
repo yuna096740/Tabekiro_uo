@@ -11,7 +11,7 @@ class Admin::MembersController < ApplicationController
 
   def update
     Member.find(params[:id]).update(member_params)
-    redirect_to request.referer
+    redirect_to request.referer, notice: "ステータスを更新しました。"
   end
 
   private

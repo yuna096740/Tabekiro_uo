@@ -23,6 +23,7 @@ class Public::MembersController < ApplicationController
   def favorite
     favorites = Favorite.where(member_id: current_member.id).pluck(:post_id)
     @favorite_posts = Post.find(favorites)
+    @favorite_posts = Kaminari.paginate_array(@favorite_posts).page(params[:page]).per(5)
   end
 
   def deal
@@ -42,7 +43,7 @@ class Public::MembersController < ApplicationController
 
   def quit
     @member.update!(
-      status: 2, # inactive
+      status: :inactive,
       reason_for_quit_genre: params[:member][:reason_for_quit_genre],
       reason_for_quit:       params[:member][:reason_for_quit]
     )

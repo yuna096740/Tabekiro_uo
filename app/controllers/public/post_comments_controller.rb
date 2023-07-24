@@ -1,11 +1,17 @@
 class Public::PostCommentsController < ApplicationController
+  before_action :authenticate_member!
 
   def create
     @post = Post.find(params[:post_id])
     @comment = current_member.post_comments.new(post_comment_params)
     @comment.post_id = @post.id
-    @comment.save
-    @post.create_notification_comment!(current_member, @comment.id)
+    ActiveRecord::Base.transaction do
+      if @comment.save
+        @post.create_notification_comment!(current_member, @comment.id)
+      else
+        render 'errors'
+      end
+    end
   end
 
   private

@@ -1,21 +1,33 @@
- <div class="row my-5">
+<div class="row mt-5">
   <% posts.each do |post| %>
-    <% unless post.open_status == 'unopened' %>
-      <div class="col-4 mb-5">
-        <div data-aos="zoom-in" data-aos-duration="2000">
-          <%= link_to post_path(post) do %>
-            <div class="text-dark"><b><%= post.title %></b></div>
-            <%= image_tag post.get_post_image(350,300), class:"rounded" %>
+    <div class="col-3 mb-5" data-aos="zoom-in" data-aos-duration="2000">
+      <div class="mx-auto ml-5 bg-light px-3 py-2 mx-3 rounded">
+
+        <div class="text-dark"><b><%= post.title %></b></div>
+        <%= link_to post_path(post) do %>
+        <%#= link_to(post_path(post), data: {turbolinks: false}) do %> <!--　Google Map Multiple API Call対応する場合 -->
+          <%= image_tag post.get_post_image(220,200), class:"rounded" %>
+        <% end %>
+
+        <div class="d-flex">
+          <% if post.open_status == 'during_trade' %>
+            <p class="text-success mt-1">取引中</p>
+          <% elsif post.open_status == 'complete' %>
+            <p class="text-danger mt-1">取引終了</p>
+          <% elsif post.open_status == 'open' %>
+            <p class="text-success mt-1">取引受付中</p>
           <% end %>
 
-          <% if post.open_status == 'during_trade' %>
-            <p class="text-success">取引中</p>
-          <% elsif post.open_status == 'complete' %>
-            <p class="text-danger">取引終了</p>
-          <% end %>
-          <%= time_ago_in_words(post.created_at).upcase %>
+          <span class="time-text-size mt-2 ml-auto">
+            <%= time_ago_in_words(post.updated_at).upcase %>
+          </span>
         </div>
       </div>
-    <% end %>
+    </div>
   <% end %>
+</div>
+<div class="row mb-5">
+  <div class="mx-auto mb-5">
+    <%= paginate @posts, theme: 'bootstrap-5' %>
+  </div>
 </div>

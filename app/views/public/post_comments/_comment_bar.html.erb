@@ -1,12 +1,12 @@
 <%= form_with model: [ post, comment ], local: false do |f| %>
-  <table class="table table-bordered">
-    <thead class="bg-light">
-      <tr>
+  <table class="table table-bordered bg-light mt-5">
+    <thead>
+      <tr class="text-right">
         <th id="postCommentCount">コメント数 : <%= @post.post_comments.count %>件</th>
       </tr>
     </thead>
 
-    <tbody class="chat-height">
+    <tbody class="chat-height py-3">
       <tr>
         <td id="postComments">
           <%= render 'public/post_comments/comments', post: @post %>
@@ -14,11 +14,10 @@
       </tr>
     </tbody>
 
-    <thead>
       <tr>
         <th class="d-flex">
           <% if member_signed_in? %>
-            <%= f.text_area :comment, rows: 1, placeholder: "コメントを入力", class:"form-control" %>
+            <%= f.text_area :comment, rows: 1, placeholder: "コメントを入力", required: true, autofocus: true, class:"form-control" %>
             <%= button_tag type:'submit', class:"btn btn-success ml-3", id:"commentBtn" do %>
               <i class="fas fa-paper-plane"></i>
             <% end %>
@@ -30,3 +29,4 @@
     </thead>
   </table>
 <% end %>
+<div class="errorComment text-center my-1"></div>

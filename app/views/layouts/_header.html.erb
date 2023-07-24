@@ -8,74 +8,74 @@
     <ul class="navbar-nav mr-auto pt-5">
       <% if admin_signed_in? %>
         <li class="nav-item active mx-2">
-          <%= link_to '通報一覧', admin_path, class:"nav-link" %>
+          <%= link_to admin_path, class:"nav-link" do %>
+            <%= image_tag 'topReportIndexLOGO.svg' %>
+          <% end %>
         </li>
 
         <li class="nav-item active mx-2">
-          <%= link_to 'ユーザ一覧', admin_members_path, class:"nav-link" %>
+          <%= link_to admin_members_path, class:"nav-link" do %>
+            <%= image_tag 'topMemberIndexLOGO.svg' %>
+          <% end %>
         </li>
 
         <li class="nav-item active mx-2">
-          <%= link_to 'ジャンル登録', admin_tags_path, class:"nav-link" %>
+          <%= link_to admin_tags_path, class:"nav-link" do %>
+            <%= image_tag 'topCreateTagLOGO.svg' %>
+          <% end %>
         </li>
 
         <li class="nav-item active mx-2">
-          <%= link_to '管理者ログアウト', destroy_admin_session_path, method: :delete, class:"nav-link" %>
+          <%= link_to destroy_admin_session_path, method: :delete, class:"nav-link" do %>
+            <%= image_tag 'topAdminLogOutLOGO.svg' %>
+          <% end %>
         </li>
       <% elsif not member_signed_in? %>
         <li class="nav-item active mx-2">
-          <%= link_to 'ログイン', new_member_session_path, class:"nav-link" %>
+          <%= link_to new_member_session_path, class:"nav-link" do %>
+            <%= image_tag 'loginLOGO.svg' %>
+          <% end %>
         </li>
 
         <li class="nav-item active mx-3">
-          <%= link_to '新規登録', new_member_registration_path, class:"nav-link" %>
-        </li>
-
-        <li class="nav-item active mx-3">
-          <%= link_to 'ゲストログイン', members_guest_sign_in_path, method: :post, class:"nav-link sign_in" %>
+          <%= link_to new_member_registration_path, class:"nav-link" do %>
+            <%= image_tag 'newsessionsLOGO.svg' %>
+          <% end %>
         </li>
       <% end %>
     </ul>
 
     <% unless admin_signed_in? %>
       <div class="pt-5">
-        <i class="fas fa-map-marker-alt"></i>
-        <%= link_to 'マップから検索する', map_posts_path, class:"text-dark mr-4" %>
+        <%= link_to map_posts_path, class:"text-dark mr-5" do %>
+          <%= image_tag 'mapsearchLOGO.svg' %>
+        <% end %>
       </div>
 
-      <ul class="navbar-nav pt-5">
-        <li class="nav-item dropdown active">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            <i class="fas fa-fish"></i> お魚ジャンル
-          </a>
-          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <% @tags.each do |tag| %>
-              <div class="ml-2">
-                <%= link_to tag.name, tag_path(tag), class:"dropdown-item" %>
-              </div>
-            <% end %>
-          </div>
-        </li>
-      </ul>
+      <a data-toggle="collapse" class="pt-5 text-dark" href="#headerTag" aria-expanded="false" aria-controls="#headerTag">
+        <%= image_tag 'topGenreLOGO.svg' %>
+      </a>
     <% end %>
     <%= render 'public/searches/form', keyword: @keyword %>
 
     <% if member_signed_in? %>
-      <div class="text-right pt-2">
+      <div class="pt-2">
         <a data-toggle="collapse" href="#headerIcon" role="button" aria-expanded="false" aria-controls="#headerIcon">
           <div data-aos="zoom-out-left" data-aos-duration="2000">
-            <%= image_tag current_member.get_icon(70,70), class:"rounded-circle mr-4" %>
+            <span class="d-flex">
+              <%= image_tag current_member.get_icon(70,70), class:"rounded-circle mr-4" %>
+              <div class="notice-count-container">
+                <%= render 'layouts/notice_count', notices: @notices, unchecked_notices: @unchecked_notices %>
+              </div>
+            </span>
           </div>
         </a>
-      </div>
-      <div class="mt-5">
-        <%= render 'layouts/notice_modal', notices: @notices %>
       </div>
     <% end %>
   </div>
 </nav>
-
 <%= render 'layouts/nav_logo' %>
+<%= render 'layouts/nav_tags', tags: @tags %>
 <% if member_signed_in? %>
-  <%= render 'layouts/nav_icon' %>
+  <%= render 'layouts/nav_icon', notices: @notices, unchecked_notices: @unchecked_notices %>
 <% end %>

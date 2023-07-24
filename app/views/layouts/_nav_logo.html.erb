@@ -1,12 +1,37 @@
 <div class="collapse" id="headerLogo">
   <div class="p-3 m-3 d-flex">
-    <h5><%= link_to 'TOP', root_path, class:"text-dark ml-5" %></h5>
-    <h5><%= link_to 'ABOUT', about_path, class:"text-dark ml-5" %></h5>
-    <h5><%= link_to 'お裾分け一覧', posts_path, class:"text-dark ml-5" %></h5>
+    <h5>
+      <%= link_to root_path, class:"text-dark ml-5" do %>
+        <%= image_tag 'topTopLOGO.svg' %>
+      <% end %>
+    </h5>
+    <h5>
+      <%= link_to about_path, class:"text-dark ml-5" do %>
+        <%= image_tag 'topAboutLOGO.svg' %>
+      <% end %>
+    </h5>
+    <h5>
+      <%= link_to posts_path, class:"text-dark ml-5" do %>
+        <%= image_tag 'topIndexLOGO.svg' %>
+      <% end %>
+    </h5>
     <% if member_signed_in? %>
-      <h5><%= link_to 'お裾分け作成', new_post_path, class:"text-dark ml-5" %></h5>
+      <h5>
+        <%= link_to new_post_path, class:"text-dark ml-5" do %>
+          <%= image_tag 'topNewLOGO.svg' %>
+        <% end %>
+      </h5>
     <% elsif not admin_signed_in? %>
-      <h5><%= link_to '管理者ログイン', admin_session_path, method: :post, class:"text-dark ml-5" %></h5>
+      <h5>
+        <%= link_to admin_session_path, method: :post, class:"text-dark ml-5" do %>
+          <%= image_tag 'topAdminLoginLOGO.svg' %>
+        <% end %>
+      </h5>
+      <h5>
+        <%= link_to members_guest_sign_in_path, method: :post, class:"text-dark ml-5" do %>
+          <%= image_tag 'guestLoginLOGO.svg' %>
+        <% end %>
+      </h5>
     <% end %>
   </div>
 </div>

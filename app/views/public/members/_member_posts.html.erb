@@ -1,14 +1,37 @@
-<div class="row mb-5">
+<div class="row my-5">
   <% posts.each do |post| %>
     <% unless post.open_status == 'unopened' && post.member != current_member %>
-      <div class="col-md-3 mb-5 text-center">
-        <div data-aos="zoom-in" data-aos-duration="2000">
+      <div class="col-3 mb-5" data-aos="zoom-in" data-aos-duration="2000">
+        <div class="mx-auto ml-5 bg-light px-3 py-2 mx-3 rounded">
+
+          <div class="text-dark"><b><%= post.title %></b></div>
           <%= link_to post_path(post) do %>
-            <%= image_tag post.get_post_image(250,200) %>
-            <div class="text-dark"><%= post.title %></div>
+            <%= image_tag post.get_post_image(220,200), class:"rounded" %>
           <% end %>
+
+          <div class="d-flex">
+            <% if post.open_status == 'during_trade' %>
+              <p class="text-success mt-1">取引中</p>
+            <% elsif post.open_status == 'complete' %>
+              <p class="text-danger mt-1">取引終了</p>
+            <% elsif post.open_status == 'open' %>
+              <p class="text-success mt-1">取引受付中</p>
+            <% elsif post.open_status == 'unopened' %>
+              <p class="text-success mt-1">非公開中</p>
+            <% end %>
+
+            <span class="time-text-size mt-2 ml-auto">
+              <%= time_ago_in_words(post.updated_at).upcase %>
+            </span>
+          </div>
         </div>
       </div>
     <% end %>
   <% end %>
 </div>
+<div class="row mb-5">
+  <div class="mx-auto mb-5">
+    <%= paginate @posts, theme: 'bootstrap-5' %>
+  </div>
+</div>
+

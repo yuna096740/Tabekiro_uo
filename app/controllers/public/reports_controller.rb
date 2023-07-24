@@ -1,8 +1,16 @@
 class Public::ReportsController < ApplicationController
+  before_action :authenticate_member!
 
   def new
     @report = Report.new
     @member = Member.find(params[:member_id])
+  end
+
+  def show# リロード対策
+    if params[:id].to_s == "confirm"
+      redirect_to request.referer, notice: "確認画面でのリロードは処理が無効となります。"
+      return
+    end
   end
 
   def confirm
@@ -15,7 +23,7 @@ class Public::ReportsController < ApplicationController
   def create
     @report = Report.new(report_params)
     @report.save
-    redirect_to posts_path
+    redirect_to posts_path, notice: "通報が完了しました"
   end
 
   private

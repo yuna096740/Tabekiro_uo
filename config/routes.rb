@@ -18,14 +18,14 @@ Rails.application.routes.draw do
 
   scope module: :public do
     root to: 'homes#top'
-    get '/about' => 'homes#about', as: 'about'
+    get '/about'          => 'homes#about', as: 'about'
 
     resources :members, only: [:index, :show] do
       collection do
         get   'favorite'
         get   'deal'
         get   'quit_form'
-        post'confirm'
+        post  'confirm'
         patch 'quit'
       end
       resource :relationships, only: [:create, :destroy] do
@@ -34,7 +34,7 @@ Rails.application.routes.draw do
           get 'subscribers'
         end
       end
-      resources :reports,  only: [:new, :create] do
+      resources :reports,  only: [:new, :create, :show] do
         collection do
           post 'confirm'
         end
@@ -53,6 +53,7 @@ Rails.application.routes.draw do
     resources :notifications, only: [:destroy] do
       collection do
         delete 'destroy_all'
+        patch  'notice'
       end
     end
 

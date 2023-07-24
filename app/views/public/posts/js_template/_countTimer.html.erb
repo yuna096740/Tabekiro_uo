@@ -3,11 +3,15 @@
     const elmHour = document.querySelector(".hour");
     const elmMin  = document.querySelector(".min");
     const elmSec  = document.querySelector(".sec");
+
     function countDown() {
+      if (elmHour == null) {
+        return false;
+      }
       const now = new Date();
-      const postCreatedAt = new Date("<%= post.created_at.iso8601 %>");
       const limit = <%= post.limit %>;
-      const limitTime = new Date(postCreatedAt.getTime() + limit * 60 * 60 * 1000);
+      const postUpdatedAt = new Date("<%= post.updated_at.iso8601 %>");
+      const limitTime = new Date(postUpdatedAt.getTime() + limit * 60 * 60 * 1000);
 
       const differ = limitTime.getTime() - now.getTime();
 
@@ -15,18 +19,22 @@
       const min = Math.floor(differ / 1000 / 60) % 60;
       const hour = Math.floor(differ / 1000 / 60 / 60);
 
-      const timeLimit = document.querySelector(".timeLimit");
-      const hideLimit = document.querySelector(".hideLimit");
-
-      elmHour.textContent = String(hour).padStart(2, "0");
-      elmMin.textContent = String(min).padStart(2, "0");
-      elmSec.textContent = String(sec).padStart(2, "0");
-      if ( differ < 0 ) {
-        timeLimit.style.display = "none";
-        hideLimit.style.display = "block";
+      const timeLimit = document.getElementById("timeLimit");
+      const hideLimit = document.getElementById("hideLimit");
+      if ( timeLimit && hideLimit ){
+        elmHour.textContent = String(hour).padStart(2, "0");
+        elmMin.textContent = String(min).padStart(2, "0");
+        elmSec.textContent = String(sec).padStart(2, "0");
+        if ( differ < 0 ) {
+          timeLimit.style.display = "none";
+          hideLimit.style.display = "block";
+        }
+      }
+      else{
+        clearInterval(countDownTimerId);
       }
     }
     countDown();
-    setInterval(countDown, 1000);
+    const countDownTimerId = setInterval(countDown, 1000);
   })
 </script>

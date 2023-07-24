@@ -4,12 +4,17 @@ class Public::MembersController < ApplicationController
   before_action :set_current_member,  only: [:edit, :update, :deal, :quit_form, :confirm, :quit]
 
   def index
-    @posts = current_member.posts.all
+    @posts = current_member.posts.all.page(params[:page]).per(24)
   end
 
   def show
+    # リロード対策
+    if params[:id].to_s == "confirm"
+      redirect_to request.referer, notice: "確認画面でのリロードは処理が無効となります。"
+      return
+    end
     @member = Member.find(params[:id])
-    @posts =  @member.posts.all
+    @posts =  @member.posts.all.page(params[:page]).per(24)
   end
 
   def edit
@@ -17,16 +22,17 @@ class Public::MembersController < ApplicationController
 
   def update
     @member.update(member_params)
-    redirect_to members_path(@member)
+    redirect_to members_path, notice: "変更しました。"
   end
 
   def favorite
     favorites = Favorite.where(member_id: current_member.id).pluck(:post_id)
     @favorite_posts = Post.find(favorites)
+    @favorite_posts = Kaminari.paginate_array(@favorite_posts).page(params[:page]).per(5)
   end
 
   def deal
-    @rooms = @member.rooms
+    @rooms = @member.rooms.page(params[:page]).per(5)
   end
 
   def quit_form
@@ -41,13 +47,13 @@ class Public::MembersController < ApplicationController
   end
 
   def quit
-    @member.update(
+    @member.update!(
       status: :inactive,
       reason_for_quit_genre: params[:member][:reason_for_quit_genre],
       reason_for_quit:       params[:member][:reason_for_quit]
     )
     reset_session
-    redirect_to root_path
+    redirect_to root_path, notice: "またのご利用お待ちしております"
   end
 
   private

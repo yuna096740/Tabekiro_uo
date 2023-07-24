@@ -5,4 +5,9 @@
         <%= render 'admin/members/index', members: @members %>
     </div>
   </div>
+  <div class="row mb-5">
+    <div class="mx-auto mb-5">
+      <%= paginate @members, theme: 'bootstrap-5' %>
+    </div>
+  </div>
 </div>

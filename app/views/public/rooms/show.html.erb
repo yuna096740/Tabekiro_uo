@@ -27,7 +27,9 @@
           </tr>
         </thead>
       </table>
-
+      <div class="text-center">
+        <%= link_to '取引を中止する', room_path(@room), method: :delete, data: { confirm: "本当によろしいですか？※今までの取引内容が全て失われます。" }, class:"text-danger" %>
+      </div>
 
     </div>
     <div class="col-md-7 mb-5 mt-3">
@@ -39,8 +41,8 @@
       </div>
 
       <%= form_with model: @new_message, local: false do |f| %>
-        <table class="table table-bordered">
-          <thead class="bg-light">
+        <table class="table table-bordered bg-light">
+          <thead>
             <tr>
               <th id="dmMessageCount" class="text-right">メッセージ数：<%= @messages.count %>件</th>
             </tr>
@@ -57,7 +59,7 @@
           <thead>
             <tr>
               <th class="d-flex">
-                <%= f.text_area :message, rows: 1,class:"form-control" %>
+                <%= f.text_area :message, rows: 1, required: true, autofocus: true, class:"form-control" %>
                 <%= f.hidden_field :room_id, value: @room.id %>
                 <%= button_tag type:'submit', class:"btn btn-success ml-3" do %>
                   <i class="fas fa-paper-plane"></i>

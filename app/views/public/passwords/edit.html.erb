@@ -1,32 +1,36 @@
 <div class="container">
-  <div class="row">
-    <div class="col-md-8">
-      <h2>パスワード変更</h2>
+  <div class="row mx-auto my-5">
+    <div class="col-md-6 offset-3" data-aos="zoom-in" data-aos-duration="1000">
+      <%= form_with model: @member, url: password_path(resource_name), method: :put  do |f| %>
+        <%= render "layouts/errors", model: f.object %>
+        <%= f.hidden_field :reset_password_token %>
 
-        <%= form_with model: @member, url: password_path(resource_name), method: :put  do |f| %>
-          <%= render "public/shared/error_messages", resource: resource %>
-          <%= f.hidden_field :reset_password_token %>
+        <div class="text-center">
+          <div class="session_logo">
+            <%= image_tag 'Tabekiro-uo-logo.svg' %>
+          </div>
+        </div>
 
-          <div class="field">
+        <div class="card-body">
+          <span class="card-text">
             <%= f.label :password, "新しいパスワード" %><br />
             <% if @minimum_password_length %>
               <em>(<%= @minimum_password_length %>桁以上の半角英数字)</em><br />
             <% end %>
-            <%= f.password_field :password, autofocus: true, autocomplete: "new-password", class:"form-control col-6" %>
-          </div>
+            <%= f.password_field :password, autofocus: true, autocomplete: "new-password", class:"form-control" %>
+          </span>
 
-          <div class="field">
+          <span class="card-text">
             <%= f.label :password_confirmation, "新しいパスワード(確認用)" %><br />
-            <%= f.password_field :password_confirmation, autocomplete: "new-password", class:"form-control col-6" %>
+            <%= f.password_field :password_confirmation, autocomplete: "new-password", class:"form-control" %>
+          </span>
+
+          <div class="card-text">
+            <%= f.submit "パスワードを更新", class:"btn btn-outline-primary form-control mt-3" %>
           </div>
-
-          <div class="actions">
-            <%= f.submit "パスワードを更新", class:"btn btn-success" %>
-          </div>
-        <% end %>
-
-        <%= render "public/shared/links" %>
-
+        </div>
+      <% end %>
+      <%= render "public/shared/links" %>
     </div>
   </div>
 </div>

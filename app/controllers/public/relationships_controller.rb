@@ -1,6 +1,7 @@
 class Public::RelationshipsController < ApplicationController
+  before_action :authenticate_member!
   before_action :set_member
-  
+
   def create
     current_member.subscribe(params[:member_id])
     @member.create_notification_subscribe!(current_member)
@@ -11,11 +12,11 @@ class Public::RelationshipsController < ApplicationController
   end
 
   def subscribings
-    @members = @member.subscribings
+    @members = @member.subscribings.page(params[:page]).per(8)
   end
 
   def subscribers
-    @members = @member.subscribers
+    @members = @member.subscribers.page(params[:page]).per(8)
   end
 
   private

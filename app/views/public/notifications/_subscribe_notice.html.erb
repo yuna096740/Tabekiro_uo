@@ -1,5 +1,9 @@
 <p>あなたを登録しました</p>
-<%= time_ago_in_words(notice.created_at).upcase %>
-<%= link_to notification_path(notice), method: :delete, remote: :true, class:"text-dark ml-3" do %>
-  <i class="fas fa-trash"></i>
-<% end %>
+<div class="text-secondary ml-3">
+  <span class="time-text-size">
+    <%= time_ago_in_words(notice.created_at).upcase %>
+  </span>
+  <%= link_to notification_path(notice), method: :delete, remote: :true, class:"text-dark ml-3" do %>
+    <i class="fas fa-trash"></i>
+  <% end %>
+</div>

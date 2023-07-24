@@ -1,10 +1,23 @@
-<botton type="button" class="btn rounded-circle" data-toggle="modal" data-target="#noticeModal">
-  <% if notices.exists? %>
-    <span class="text-danger"><i class="fas fa-bell"></i></span>
+<div data-toggle="modal" data-target="#noticeModal">
+  <% if unchecked_notices.present? %>
+    <h5 class="dropdown-item py-2">
+      <%= link_to notice_notifications_path, method: :patch, remote: true do %>
+        <span class="text-danger">
+          <i class="fas fa-bell text-danger"></i>
+          <%= image_tag 'topNoticeRedLOGO.svg', class:"mb-1", id:"noticeRedLOGO" %>
+        </span>
+      <% end %>
+    </h5>
   <% else %>
-    <span class="text-primary"><i class="fas fa-bell"></i></span>
+    <h5 class="dropdown-item py-2">
+      <span class="text-dark">
+        <i class="fas fa-bell mr-2"></i>
+        <%= image_tag 'topNoticeLOGO.svg', class:"mb-1" %>
+      </span>
+    </h5>
   <% end %>
-</botton>
+</div>
+
 <div class="modal fade" id="noticeModal" rabindex="-1"
   role="dialog" aria-labelledby="noticeLabel" ariahidden="true">
   <div class="modal-dialog modal-lg" role="document">
@@ -21,12 +34,15 @@
 
       <div class="modal-body" id="notice">
         <% notices = notices.where.not(visiter_id: current_member.id) %>
+
         <% if notices.exists? %>
-          <%= render 'public/notifications/notice', notices: notices %></div>
+          <%= render 'layouts/notice_modal_contents', unchecked_notices: unchecked_notices, notices: notices %>
+          <%#= paginate notices, theme: 'bootstrap-5', remote: true, url: notice_notifications_path, method: :patch %>
         <% else %>
-          通知はありません
+          <p id="nonNotice">通知はありません</p>
         <% end %>
       </div>
     </div>
   </div>
 </div>
+

@@ -1,21 +1,21 @@
 <div class="container">
-  <h4 class="my-2 ml-5">通報内容確認</h4>
   <div class="row">
     <div class="col-md-6 offset-1 mt-5">
-      <table class="table table-borderless text-center">
+      <h4 class="my-2 ml-5">通報内容確認</h4>
+      <table class="table table-borderless">
         <thead>
           <tr>
-            <th>ユーザーネーム：</th>
+            <th class="text-right">ユーザーネーム：</th>
             <td><h5><%= link_to @member.nickname, member_path(@member), class:"text-dark" %></h5></td>
           </tr>
 
           <tr>
-            <th>通報ジャンル：</th>
+            <th class="text-right">通報ジャンル：</th>
             <td><%= @report.genre_i18n %></td>
           </tr>
 
           <tr>
-            <th>通報内容：</th>
+            <th class="text-right">通報内容：</th>
             <td><%= @report.reason %></td>
           </tr>
         </thead>
@@ -23,14 +23,15 @@
     </div>
   </div>
   <div class="row">
-    <div class="mx-auto">
+    <div class="mx-auto d-flex my-3">
       <%= form_with model: @report, url: member_reports_path, method: :post do |f| %>
         <%= f.hidden_field :reporter_id %>
         <%= f.hidden_field :reported_id %>
         <%= f.hidden_field :genre %>
         <%= f.hidden_field :reason %>
-        <%= f.submit '通報する', class:"btn btn-danger rounded-pill px-5 mb-5" %>
+        <%= f.submit '通報する', class:"btn btn-danger rounded-pill px-5" %>
       <% end %>
+      <%= link_to '通報をやめる', members_path, class:"btn btn-info rounded-pill px-5 ml-3" %>
     </div>
   </div>
 </div>

@@ -1,7 +1,10 @@
 class Public::PostsController < ApplicationController
-  before_action :set_post, only: [:show, :edit]
+  before_action :authenticate_member!, except: [:index, :show, :map]
+  before_action :set_post,             only: [:show, :edit, :update]
+
   def index
-    @posts = Post.all
+    posts =   Post.where.not(open_status: "unopened")
+    @posts = posts.page(params[:page]).per(24)
   end
 
   def show
@@ -38,8 +41,14 @@ class Public::PostsController < ApplicationController
 
   def create
     post = current_member.posts.new(post_params)
-    post.save
-    redirect_to post_path(post)
+    if post.save
+      redirect_to post_path(post), notice: "投稿しました。"
+    else
+      @post = current_member.posts.new(post_params)
+      @tags = Tag.all
+      flash[:notice] = "地図のマーカーは必須です。"
+      render :new
+    end
   end
 
   def edit
@@ -48,12 +57,12 @@ class Public::PostsController < ApplicationController
 
   def update
     Post.find(params[:id]).update(post_params)
-    redirect_to post_path(post)
+    redirect_to post_path(@post), notice: "投稿内容を更新しました。"
   end
 
   def destroy
     Post.find(params[:id]).destroy
-    redirect_to posts_path
+    redirect_to posts_path, notice: "投稿を削除しました"
   end
 
   def map

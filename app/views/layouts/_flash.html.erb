@@ -1,0 +1,7 @@
+<% flash.each do |key, value| %>
+  <p class="alert alert-<%= key %>">
+    <div class="text-center py-3 pl-5 ">
+      <%= value %>
+    </div>
+  </p>
+<% end %>

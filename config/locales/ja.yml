@@ -14,7 +14,7 @@ ja:
     post:
       open_status:
         open:         "公開"
-        unopened:     "下書き保存"
+        unopened:     "非公開"
         during_trade: "取引中"
         complete:     "取引終了"
 
@@ -69,3 +69,38 @@ ja:
       over_x_years:
         one:               "1年以上"
         other:             "%{count}年以上"
+
+  views:
+    pagination:
+      first:      "&laquo;"
+      last:       "&raquo;"
+      previous:   "&lsaquo;"
+      next:       "&rsaquo;"
+      truncate:   "..."
+
+  activerecord:
+    errors:
+      messages:
+        record_invalid: 'バリデーションに失敗しました: %{errors}'
+        restrict_dependent_destroy:
+          has_one:      "%{record}が存在しているので削除できません"
+          has_many:     "%{record}が存在しているので削除できません"
+      models:
+        post_comment:
+          too_short:    "入力してください"
+          too_long:     "60字以内で入力してください"
+
+    attributes:
+      member:
+        email:          "メールアドレス"
+        password:       "パスワード"
+      post_comment:
+          comment:      "コメント:"
+
+  helpers:
+    select:
+      prompt: "選択してください"
+    submit:
+      create: "登録する"
+      submit: "保存する"
+      update: "更新する"

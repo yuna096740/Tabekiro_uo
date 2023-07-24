@@ -1,23 +1,26 @@
 <div class="container">
-  <div class="row">
-    <div class="col-md-8">
-      <h2>パスワードリセット</h2>
+  <div class="row mx-auto mb-5">
+    <div class="col-md-6 offset-3" data-aos="zoom-in" data-aos-duration="1000">
+      <%= form_with model: @member, url: password_path(resource_name), method: :post do |f| %>
+        <%= render "layouts/errors", model: f.object %>
+        <div class="text-center">
+          <div class="session_logo">
+            <%= image_tag 'Tabekiro-uo-logo.svg' %>
+          </div>
+        </div>
 
-        <%= form_with model: @member, url: password_path(resource_name), method: :post do |f| %>
-          <%= render "public/shared/error_messages", resource: resource %>
-
-          <div class="field">
+        <div class="card-body">
+          <span class="card-text">
             <%= f.label :email, 'メールアドレス' %><br />
             <%= f.email_field :email, placeholder:"PC・携帯どちらでも可", autofocus: true, autocomplete: "email", class:"form-control" %>
+          </span>
+
+          <div class="card-text">
+            <%= f.submit "パスワード変更メールを送信", class:"btn btn-outline-primary form-control mt-3" %>
           </div>
-
-          <div class="actions">
-            <%= f.submit "パスワード変更メールを送信", class:"btn btn-primary" %>
-          </div>
-        <% end %>
-
-        <%= render "public/shared/links" %>
-
+        </div>
+      <% end %>
+      <%= render "public/shared/links" %>
     </div>
   </div>
 </div>

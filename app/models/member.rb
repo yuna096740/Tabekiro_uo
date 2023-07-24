@@ -3,6 +3,10 @@ class Member < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
+
+  validates :nickname,        presence: :true, length: { in: 1..15 }
+  validates :introduction,    length: { maximum: 80 }
+
   default_scope ->            { order(created_at: "DESC") }
   enum status:                { active: 0, banned: 1, inactive: 2 }
   enum reason_for_quit_genre: { no_chance_to_use: 0, hard_to_use: 1, others: 2 }
@@ -29,7 +33,7 @@ class Member < ApplicationRecord
 
   def get_icon(width, height)
     unless icon.attached?
-      file_path = Rails.root.join('app/assets/images/no-icon.jpg')
+      file_path = Rails.root.join('app/assets/images/no-ion.jpg')
       icon.attach(io:File.open(file_path),filename:'default-image.jpg',content_type:'image/jpeg')
     end
     icon.variant(resize_to_fill: [width, height]).processed

@@ -1,7 +1,8 @@
 class Admin::MembersController < ApplicationController
+  before_action :authenticate_admin!
 
   def index
-    @members = Member.all
+    @members = Member.all.page(params[:page]).per(2)
   end
 
   def show
@@ -11,7 +12,7 @@ class Admin::MembersController < ApplicationController
 
   def update
     Member.find(params[:id]).update(member_params)
-    redirect_to request.referer
+    redirect_to request.referer, notice: "ステータスを更新しました。"
   end
 
   private

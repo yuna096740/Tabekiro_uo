@@ -1,4 +1,5 @@
 class Public::RoomsController < ApplicationController
+  before_action :authenticate_member!
 
   def create
     @room =                 Room.create(room_params)
@@ -17,6 +18,11 @@ class Public::RoomsController < ApplicationController
     else
       redirect_back(fallback_location: root_path)
     end
+  end
+
+  def destroy
+    Room.find(params[:id]).destroy
+    redirect_to posts_path, notice: "取引をキャンセルしました。"
   end
 
   private

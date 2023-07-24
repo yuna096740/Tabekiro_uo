@@ -14,7 +14,7 @@
 
             <% @tags.each do |tag| %>
               <tr>
-                <th><%= l tag.created_at %></th>
+                <th><%= l tag.updated_at %></th>
                 <th><%= tag.name %></th>
                 <th><%= link_to '編集', edit_admin_tag_path(tag), class:"btn btn-outline-success" %></th>
                 <th>

@@ -65,8 +65,10 @@
           </table>
 
           <div class="text-center">
-            <% if @post.member == current_member || current_admin %>
+            <% if @post.member == current_member %>
               <%= link_to '編集する', edit_post_path(@post), class:"btn btn-success px-5 mr-5 mb-3 rounded-pill" %>
+              <%= link_to '削除する', post_path(@post), method: :delete, data: { confirm: "本当によろしいですか？"}, class:"btn btn-danger px-5 mb-3 rounded-pill" %>
+            <% elsif current_admin %>
               <%= link_to '削除する', post_path(@post), method: :delete, data: { confirm: "本当によろしいですか？"}, class:"btn btn-danger px-5 mb-3 rounded-pill" %>
             <% end %>
           </div>

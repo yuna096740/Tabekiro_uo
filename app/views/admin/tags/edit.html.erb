@@ -9,7 +9,7 @@
               <th><%= f.text_field :name, class:"form-control" %></th>
               <th><%= f.submit '更新', class:"btn btn-outline-success form-control" %></th>
               <th>
-                <%= link_to '削除', admin_tag_path(tag), method: :delete,
+                <%= link_to '削除', admin_tag_path(@tag), method: :delete,
                   data: { confirm: "[重要]削除すると関連する投稿が全て削除されます。本当によろしいですか？" },
                   class:"btn btn-outline-danger form-control" %>
               </th>

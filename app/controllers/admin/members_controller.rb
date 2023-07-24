@@ -2,7 +2,7 @@ class Admin::MembersController < ApplicationController
   before_action :authenticate_admin!
 
   def index
-    @members = Member.all.page(params[:page]).per(2)
+    @members = Member.all.page(params[:page]).per(8)
   end
 
   def show

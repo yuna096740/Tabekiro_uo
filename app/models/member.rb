@@ -4,6 +4,8 @@ class Member < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
+  VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
+  validates :email,           presence: :true, format: { with: VALID_EMAIL_REGEX }, uniqueness: { case_sensitive: false }
   validates :nickname,        presence: :true, length: { in: 1..15 }
   validates :introduction,    length: { maximum: 80 }
 

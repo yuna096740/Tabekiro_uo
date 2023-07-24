@@ -14,12 +14,12 @@
       </div>
     </div>
     <div class="col-md-4 mt-5">
-      <h3 class="mt-5"><%= link_to current_member.nickname, member_path(current_member), class:"text-dark" %></h3>
+      <h4 class="mt-5"><b><%= link_to current_member.nickname, member_path(current_member), class:"text-dark" %></b></h4>
       <div class="d-flex mt-5">
         <h5 class="mr-5">取引数: <%= current_member.entries.count %> 回</h5>
         <h5 class="ml-5">
           <%= link_to subscribers_member_relationships_path(current_member) do %>
-            Subscribe: <%= current_member.subscribers.count %>
+            登録者: <%= current_member.subscribers.count %> 人
           <% end %>
         </h5>
       </div>
@@ -28,8 +28,8 @@
 
   <div class="row">
     <div class="col-md-8 offset-3 mb-3 mr-5">
-      <h5><%= link_to '取引中のお魚一覧', deal_members_path, class:"text-dark" %> ＞</h5>
-      <h5><%= link_to 'いいねしたお魚一覧', favorite_members_path, class:"text-dark" %> ＞</h5>
+      <h5><%= link_to '取引中のお魚', deal_members_path, class:"text-dark" %> ＞</h5>
+      <h5><%= link_to 'いいねしたお魚', favorite_members_path, class:"text-dark" %> ＞</h5>
       <h5><%= link_to '登録者一覧', subscribers_member_relationships_path(current_member), class:"text-dark" %> ＞</h5>
     </div>
   </div>

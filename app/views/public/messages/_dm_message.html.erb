@@ -1,10 +1,7 @@
 <div class="dm-height messageDetails scrollInner">
   <% @messages.each do |message| %>
     <% if message.member == current_member %>
-      <div class="d-flex flex-row-reverse my-2">
-        <%= link_to member_path(message.member_id) do %>
-          <%= image_tag message.member.get_icon(35,35), class:"rounded-circle ml-1" %>
-        <% end %>
+      <div class="d-flex flex-row-reverse my-2 mr-2">
         <div class="text-dark p-2 rounded message-frame">
           <span class="px-2">
             <%= safe_join(message.message.split("\n"), tag(:br)) %>

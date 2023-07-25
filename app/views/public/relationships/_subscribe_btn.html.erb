@@ -1,5 +1,5 @@
 <% if current_member.subscribing?(member) %>
-  <%= link_to '- UNSUBSCRIBE', member_relationships_path(member), method: :delete, remote: true, class:"btn btn-danger px-5 mt-5 rounded-pill" %><br/>
+  <%= link_to '- UNSUBSCRIBE', member_relationships_path(member), method: :delete, remote: true, class:"btn btn-info px-5 mt-5 rounded-pill" %><br/>
 <% else %>
-  <%= link_to '＋ SUBSCRIBE', member_relationships_path(member), method: :post, remote: true, class:"btn btn-info px-5 mt-5 rounded-pill" %><br/>
+  <%= link_to '＋ SUBSCRIBE', member_relationships_path(member), method: :post, remote: true, class:"btn btn-danger px-5 mt-5 rounded-pill" %><br/>
 <% end %>

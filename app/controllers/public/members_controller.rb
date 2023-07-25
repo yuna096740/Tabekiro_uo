@@ -1,5 +1,6 @@
 class Public::MembersController < ApplicationController
   before_action :authenticate_member!
+  before_action :valid_id?,           only: [:show]
   before_action :ensure_guest_member, only: [:edit]
   before_action :set_current_member,  only: [:edit, :update, :deal, :quit_form, :confirm, :quit]
 
@@ -8,11 +9,6 @@ class Public::MembersController < ApplicationController
   end
 
   def show
-    # リロード対策
-    if params[:id].to_s == "confirm"
-      redirect_to request.referer, notice: "確認画面でのリロードは処理が無効となります。"
-      return
-    end
     @member = Member.find(params[:id])
     @posts =  @member.posts.all.page(params[:page]).per(24)
   end
@@ -21,8 +17,16 @@ class Public::MembersController < ApplicationController
   end
 
   def update
-    @member.update(member_params)
-    redirect_to members_path, notice: "変更しました。"
+    if @member.update(member_params)
+      redirect_to members_path, notice: "プロフィールを変更しました。"
+    else
+      if @member.nickname.blank?
+        flash[:notice] = "ニックネームを入力してください。"
+      else
+        flash[:notice] = "このメールアドレスは既に使われています。"
+      end
+      render :edit
+    end
   end
 
   def favorite
@@ -77,5 +81,12 @@ class Public::MembersController < ApplicationController
 
   def set_current_member
     @member = current_member
+  end
+
+  def valid_id? # リロード対策
+    if params[:id].to_s == "confirm" || params[:id].to_s == "information"
+      redirect_to request.referer, notice:"現在のページでのリロードは処理が無効となります。"
+      return
+    end
   end
 end

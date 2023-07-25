@@ -29,6 +29,7 @@ ja:
 
     models:
       member: 会員情報
+      
 
   devise:
     confirmations:
@@ -105,7 +106,7 @@ ja:
         we_need_your_current_password_to_confirm_your_changes: 変更を反映するには現在のパスワードを入力してください
       new:
         sign_up: アカウント登録
-      signed_up: アカウント登録が完了しました。
+      signed_up: 食べきろ魚へようこそ！プロフィールを完成させて早速取引してみましょう。
       signed_up_but_inactive: ログインするためには、アカウントを有効化してください。
       signed_up_but_locked: アカウントがロックされているためログインできません。
       signed_up_but_unconfirmed: 本人確認用のメールを送信しました。メール内のリンクからアカウントを有効化させてください。

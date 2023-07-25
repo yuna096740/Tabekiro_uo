@@ -4,7 +4,9 @@
       <%= link_to notice_notifications_path, method: :patch, remote: true do %>
         <span class="text-danger">
           <i class="fas fa-bell text-danger"></i>
-          <%= image_tag 'topNoticeRedLOGO.svg', class:"mb-1", id:"noticeRedLOGO" %>
+          <span id="noticeRedLOGO">
+            <%= image_tag 'topNoticeRedLOGO.svg', class:"mb-1" %>
+          </span>
         </span>
       <% end %>
     </h5>
@@ -23,7 +25,9 @@
   <div class="modal-dialog modal-lg" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="noticeLabel">通知一覧</h5>
+        <div class="modal-title ml-3" id="noticeLabel">
+          <%= image_tag 'topNoticeLOGO.svg' %>
+        </div>
 
         <% if notices.exists? %>
           <%= link_to destroy_all_notifications_path, method: :delete, class:"text-dark" do %>
@@ -37,7 +41,6 @@
 
         <% if notices.exists? %>
           <%= render 'layouts/notice_modal_contents', unchecked_notices: unchecked_notices, notices: notices %>
-          <%#= paginate notices, theme: 'bootstrap-5', remote: true, url: notice_notifications_path, method: :patch %>
         <% else %>
           <p id="nonNotice">通知はありません</p>
         <% end %>

@@ -2,7 +2,7 @@
   <div class="container mb-5">
     <div class="row">
       <div class="col-md-7">
-        <h4 class="mb-4">お裾分け詳細</h4>
+        <%= image_tag 'postDetail.svg', class:"my-4" %>
         <div class="bg-light rounded" data-aos="zoom-in" data-aos-duration="1500">
           <div class="d-flex px-3 py-2">
             <%= image_tag @post.member.get_icon(50,50), class:"rounded-circle mx-3" %>
@@ -26,7 +26,7 @@
             <% end %>
           </div>
 
-          <table class="table table-borderless ml-5">
+          <table class="table table-borderless ml-2">
             <thead>
               <tr>
                 <th class="col-2">タイトル</th>
@@ -40,7 +40,7 @@
 
               <tr>
                 <th>取引期限</th>
-                <% if @post.open_status == 'open' %>
+                <% if @post.open_status == 'open' || @post.open_status == 'during_trade' %>
                   <td id="timeLimit">
                     あと
                     <span class="hour"></span>時間
@@ -65,8 +65,10 @@
           </table>
 
           <div class="text-center">
-            <% if @post.member == current_member || current_admin %>
+            <% if @post.member == current_member %>
               <%= link_to '編集する', edit_post_path(@post), class:"btn btn-success px-5 mr-5 mb-3 rounded-pill" %>
+              <%= link_to '削除する', post_path(@post), method: :delete, data: { confirm: "本当によろしいですか？"}, class:"btn btn-danger px-5 mb-3 rounded-pill" %>
+            <% elsif current_admin %>
               <%= link_to '削除する', post_path(@post), method: :delete, data: { confirm: "本当によろしいですか？"}, class:"btn btn-danger px-5 mb-3 rounded-pill" %>
             <% end %>
           </div>

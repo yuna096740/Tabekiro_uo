@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row">
     <div class="col-md-8 offset-2">
-      <h4>登録中：<%= @member.subscribings.count %>人</h4>
+      <%= image_tag 'topMySubscribedLOGO.svg', class:"my-4" %>
       <%= render 'public/relationships/index', members: @members %>
     </div>
   </div>

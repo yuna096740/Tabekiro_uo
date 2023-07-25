@@ -23,7 +23,7 @@
       </h5>
     <% elsif not admin_signed_in? %>
       <h5>
-        <%= link_to admin_session_path, method: :post, class:"text-dark ml-5" do %>
+        <%= link_to new_admin_session_path, class:"text-dark ml-5" do %>
           <%= image_tag 'topAdminLoginLOGO.svg' %>
         <% end %>
       </h5>

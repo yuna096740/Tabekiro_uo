@@ -2,7 +2,7 @@
   <% if @favorite_posts.present? %>
     <div class="row">
       <div class="col-md-8 offset-2">
-        <h4 class="my-3">いいねした投稿</h4>
+        <%= image_tag 'topMyFavoLOGO.svg', class:"my-4" %>
         <% @favorite_posts.each do |post| %>
           <table class="table table-borderless bg-light rounded" data-aos="zoom-in" data-aos-duration="1000">
             <thead>
@@ -17,7 +17,9 @@
                   <p class="mb-2">ステータス：<%= post.open_status_i18n %></p>
                   <p class="mb-2">投稿日：<%= time_ago_in_words(post.created_at).upcase %></p>
                 </td>
-                <td><%= link_to '詳細ページ', post_path(post), class:"btn btn-light mt-5 px-5" %></td>
+                <td class="text-right">
+                  <%= link_to '詳細ページ', post_path(post), class:"btn btn-outline-secondary mt-5 px-5" %>
+                </td>
               </tr>
             </thead>
           </table>

@@ -11,20 +11,20 @@ class ApplicationController < ActionController::Base
     devise_parameter_sanitizer.permit(:sign_up, keys: [:nickname, :status ])
   end
 
-  def search_tag
-    @tags = Tag.all
-  end
-
-  def search_post
-    @keyword = params[:keyword]
+  def notice
+    @notices = current_member.passive_notifications
+    @unchecked_notices = current_member.passive_notifications.where(checked: false)
   end
 
   def search_member
     @keyword = params[:keyword]
   end
 
-  def notice
-    @notices = current_member.passive_notifications
-    @unchecked_notices = current_member.passive_notifications.where(checked: false)
+  def search_post
+    @keyword = params[:keyword]
+  end
+
+  def search_tag
+    @tags = Tag.all
   end
 end

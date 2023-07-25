@@ -31,7 +31,7 @@
         <%= f.hidden_field :reason %>
         <%= f.submit '通報する', class:"btn btn-danger rounded-pill px-5" %>
       <% end %>
-      <%= link_to '通報をやめる', members_path, class:"btn btn-info rounded-pill px-5 ml-3" %>
+      <%= link_to '通報をやめる', members_path, data: { confirm: "入力した内容は破棄されます。本当によろしいですか？" }, class:"btn btn-info rounded-pill px-5 ml-3" %>
     </div>
   </div>
 </div>

@@ -8,8 +8,11 @@
       <div class="col-md-6 ml-5 mt-5">
         <h2><%= @member.nickname %></h2>
         <p class="mt-5">取引数: <%= @member.entries.count %> 回</p>
-        <p class="subscribeCount">
-          <%= render 'public/relationships/subscribe_count', member: @member %>
+        <p>
+          <%= link_to subscribers_member_relationships_path(@member), class:"text-dark" do %>
+            登録者：
+            <span class="subscribeCount"><b><%= @member.subscribers.count %></b></span>
+          <% end %>
         </p>
         <% if @member != current_member %>
           <div class="subscribeBtn">
@@ -26,11 +29,13 @@
     <div class="row my-2">
       <div class="col-md-9 mx-auto">
         <p><%= image_tag 'introductionLOGO.svg' %></p>
-        <% if @member.introduction.present? %>
-          <%= safe_join(@member.introduction.split("\n"), tag(:br)) %>
-        <% else %>
-          自己紹介はまだありません
-        <% end %>
+        <p class="ml-4">
+          <% if @member.introduction.present? %>
+            <%= safe_join(@member.introduction.split("\n"), tag(:br)) %>
+          <% else %>
+            自己紹介はまだありません
+          <% end %>
+        </p>
       </div>
     </div>
     <%= render 'public/members/member_posts', posts: @posts %>

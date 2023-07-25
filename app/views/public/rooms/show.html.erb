@@ -1,77 +1,89 @@
-<div class="container">
-  <div class="row mb-5">
-    <div class="col-md-4 my-5">
-      <table class="table table-borderless">
-        <thead>
-          <tr>
-            <th>
-              <%= link_to post_path(@room.post), class:"text-dark" do %>
-                <%= image_tag @room.post.get_post_image(100,100), class:"rounded" %>
-              <% end %>
-            </th>
-            <th></th>
-          </tr>
-
-          <tr>
-            <th>投稿名</th>
-            <th>
-              <%= link_to post_path(@room.post), class:"text-dark" do %>
-                <%= truncate(@room.post.title, length: 8) %>
-              <% end %>
-            </th>
-          </tr>
-
-          <tr>
-            <th>取引開始日</th>
-            <th><%= l @room.created_at %></th>
-          </tr>
-        </thead>
-      </table>
-      <div class="text-center">
-        <%= link_to '取引を中止する', room_path(@room), method: :delete, data: { confirm: "本当によろしいですか？※今までの取引内容が全て失われます。" }, class:"text-danger" %>
-      </div>
-
-    </div>
-    <div class="col-md-7 mb-5 mt-3">
-      <div class="d-flex ml-3 mb-2 text-dark">
-        <%= link_to member_path(@member), class:"text-dark" do %>
-          <%= image_tag @member.get_icon(40,40), class:"rounded-circle mr-1" %>
-          <b><%= truncate(@member.nickname, length: 12) %></b>
-        <% end %>
-      </div>
-
-      <%= form_with model: @new_message, local: false do |f| %>
-        <table class="table table-bordered bg-light">
+<% if @member.status == 'active' %>
+  <div class="container">
+    <div class="row mb-5">
+      <div class="col-md-4 my-5">
+        <table class="table table-borderless">
           <thead>
             <tr>
-              <th id="dmMessageCount" class="text-right">メッセージ数：<%= @messages.count %>件</th>
+              <th>
+                <%= link_to post_path(@room.post), class:"text-dark" do %>
+                  <%= image_tag @room.post.get_post_image(100,100), class:"rounded" %>
+                <% end %>
+              </th>
+              <th></th>
             </tr>
-          </thead>
-
-          <tbody>
+  
             <tr>
-              <td id="dmMessage">
-                <%= render "public/messages/dm_message", messages: @messages %>
-              </td>
-            </tr>
-          </tbody>
-
-          <thead>
-            <tr>
-              <th class="d-flex">
-                <%= f.text_area :message, rows: 1, required: true, autofocus: true, class:"form-control" %>
-                <%= f.hidden_field :room_id, value: @room.id %>
-                <%= button_tag type:'submit', class:"btn btn-success ml-3" do %>
-                  <i class="fas fa-paper-plane"></i>
+              <th>タイトル</th>
+              <th>
+                <%= link_to post_path(@room.post), class:"text-dark" do %>
+                  <%= truncate(@room.post.title, length: 8) %>
                 <% end %>
               </th>
             </tr>
+  
+            <tr>
+              <th>取引開始日</th>
+              <th><%= l @room.created_at %></th>
+            </tr>
           </thead>
         </table>
-      <% end %>
+        <div class="text-center">
+          <%= link_to '取引を中止する', room_path(@room), method: :delete, data: { confirm: "本当によろしいですか？※今までの取引内容が全て失われます。" }, class:"text-danger" %>
+        </div>
+  
+      </div>
+      <div class="col-md-7 mb-5 mt-3">
+        <div class="d-flex ml-3 mb-2 text-dark">
+          <%= link_to member_path(@member), class:"text-dark" do %>
+            <%= image_tag @member.get_icon(40,40), class:"rounded-circle mr-1" %>
+            <b><%= truncate(@member.nickname, length: 12) %></b>
+          <% end %>
+        </div>
+  
+        <%= form_with model: @new_message, local: false do |f| %>
+          <table class="table table-bordered bg-light">
+            <thead>
+              <tr>
+                <th id="dmMessageCount" class="text-right">メッセージ数：<%= @messages.count %>件</th>
+              </tr>
+            </thead>
+  
+            <tbody>
+              <tr>
+                <td id="dmMessage">
+                  <%= render "public/messages/dm_message", messages: @messages %>
+                </td>
+              </tr>
+            </tbody>
+  
+            <thead>
+              <tr>
+                <th class="d-flex">
+                  <%= f.text_area :message, rows: 1, required: true, autofocus: true, class:"form-control" %>
+                  <%= f.hidden_field :room_id, value: @room.id %>
+                  <%= button_tag type:'submit', class:"btn btn-success ml-3" do %>
+                    <i class="fas fa-paper-plane"></i>
+                  <% end %>
+                </th>
+              </tr>
+            </thead>
+          </table>
+        <% end %>
+      </div>
     </div>
   </div>
-</div>
+<% else %>
+  <div class="container">
+    <div class="text-center mt-5">
+      <h4 class="text-danger my-3">
+        ※現在このユーザーは利用を停止しています。
+      </h4>
+      <%= link_to '戻る', :back %>
+    </div>
+  </div>
+<% end %>
+
 <script>
   //コメントスクロール位置固定機能
   // packs/scrollComment.jsに記載

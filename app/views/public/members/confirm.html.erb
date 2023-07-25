@@ -32,7 +32,7 @@
         <%= form_with model: @member, url: quit_members_path, method: :patch do |f| %>
           <%= f.hidden_field :reason_for_quit_genre %>
           <%= f.hidden_field :reason_for_quit %>
-          <%= f.submit '退会する', class:"btn btn-danger rounded-pill px-5" %>
+          <%= f.submit '退会する', data: { confirm: "本当によろしいですか？" }, class:"btn btn-danger rounded-pill px-5" %>
         <% end %>
         <%= link_to 'マイページに戻る', members_path, class:"btn btn-info rounded-pill px-5 ml-3" %>
       </div>

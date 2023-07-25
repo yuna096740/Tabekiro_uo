@@ -40,7 +40,7 @@
 
               <tr>
                 <th>取引期限</th>
-                <% if @post.open_status == 'open' %>
+                <% if @post.open_status == 'open' || @post.open_status == 'during_trade' %>
                   <td id="timeLimit">
                     あと
                     <span class="hour"></span>時間

@@ -3,17 +3,12 @@
     <table class="table table-borderless bg-light rounded" data-aos="zoom-in" data-aos-duration="1000">
       <thead>
         <tr>
-          <th>
-            <%= link_to member_path(member) do %>
-              <%= image_tag member.get_icon(100,100), class:"rounded-circle ml-3" %>
-            <% end %>
-          </th>
+          <th><%= image_tag member.get_icon(100,100), class:"rounded-circle ml-3" %></th>
           <td>
             <p class="mb-2"><b><%= link_to member.nickname, member_path(member), class:"text-dark" %></b></p>
             <p class="mb-2">取引回数：<%= member.entries.count %></p>
             <p class="mb-2">
-              登録者：
-              <%= link_to member.subscribers.count, subscribers_member_relationships_path(member) %>
+              登録者：<%= link_to member.subscribers.count, subscribers_member_relationships_path(member) %>
             </p>
           </td>
           <td class="text-right">

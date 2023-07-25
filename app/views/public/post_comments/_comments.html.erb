@@ -2,9 +2,6 @@
   <% post.post_comments.each do |comment| %>
     <% if comment.member == current_member %>
       <div class="d-flex flex-row-reverse my-2">
-        <%= link_to member_path(comment.member_id) do %>
-          <%= image_tag comment.member.get_icon(35,35), class:"rounded-circle ml-1" %>
-        <% end %>
         <div class="text-dark py-1 px-2 rounded message-frame">
           <%= safe_join(comment.comment.split("\n"), tag(:br)) %>
           <span class="time-text-size">

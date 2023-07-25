@@ -65,7 +65,11 @@
             <span class="d-flex">
               <%= image_tag current_member.get_icon(70,70), class:"rounded-circle mr-4" %>
               <div class="notice-count-container">
-                <%= render 'layouts/notice_count', notices: @notices, unchecked_notices: @unchecked_notices %>
+                <% if @unchecked_notices.present? %>
+                  <div class="notice-count-box">
+                    <p class="notice-count"><%= @unchecked_notices.count %></p>
+                  </div>
+                <% end %>
               </div>
             </span>
           </div>

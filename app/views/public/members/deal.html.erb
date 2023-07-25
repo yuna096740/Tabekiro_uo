@@ -2,7 +2,7 @@
   <% if @rooms.present? %>
   <div class="row">
     <div class="col-md-8 offset-2">
-      <h4 class="my-3">取引中の投稿</h4>
+      <%= image_tag 'topMyDealLOGO.svg', class:"my-4" %>
       <% @rooms.each do |room| %>
         <table class="table table-borderless bg-light rounded" data-aos="zoom-in" data-aos-duration="1000">
           <thead>
@@ -17,8 +17,8 @@
                 <p class="mb-2">ステータス：<%= room.post.open_status_i18n %></p>
                 <p class="mb-2">投稿日：<%= time_ago_in_words(room.post.created_at).upcase %></p>
               </td>
-              <td>
-                <%= link_to room_path(room), class:"btn btn-light mt-5" do %>
+              <td class="text-right">
+                <%= link_to room_path(room), class:"btn btn-outline-secondary mt-5" do %>
                   <% others_id = room.entries.where.not(member_id: @member.id).pluck(:member_id) %>
                   <% others = Member.find_by(id: others_id) %>
                   <%= truncate(others.nickname, length: 15) %>さんのDMへ

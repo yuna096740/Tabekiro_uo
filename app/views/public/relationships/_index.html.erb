@@ -11,9 +11,14 @@
           <td>
             <p class="mb-2"><b><%= link_to member.nickname, member_path(member), class:"text-dark" %></b></p>
             <p class="mb-2">取引回数：<%= member.entries.count %></p>
-            <p class="mb-2">Subscribe：<%= link_to member.subscribers.count, subscribers_member_relationships_path(member) %></p>
+            <p class="mb-2">
+              登録者：
+              <%= link_to member.subscribers.count, subscribers_member_relationships_path(member) %>
+            </p>
           </td>
-          <td><%= link_to '詳細ページ', member_path(member), class:"btn btn-outline-secondary mt-5 px-5" %></td>
+          <td class="text-right">
+            <%= link_to '詳細ページ', member_path(member), class:"btn btn-outline-secondary mt-5 px-5" %>
+          </td>
         </tr>
       </thead>
     </table>

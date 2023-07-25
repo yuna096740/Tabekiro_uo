@@ -2,11 +2,13 @@
   <%= render "layouts/errors", model: f.object %>
   <div class="row mt-3">
     <div class="col-md-6">
-      <% if post.id == nil %>
-        <h4>お裾分け準備</h4>
-      <% else %>
-        <h4>お裾分け編集</h4>
-      <% end %>
+      <div class="my-2">
+        <% if post.id == nil %>
+          <%= image_tag 'topNewLOGO.svg' %>
+        <% else %>
+          <%= image_tag 'editPostLOGO.svg' %>
+        <% end %>
+      </div>
 
       <table class="table table-borderless">
         <tbody>

@@ -23,9 +23,9 @@
       </div>
     </div>
 
-    <div class="row">
-      <div class="col-md-9 mb-2 mx-auto">
-        <p><b>自己紹介</b></p>
+    <div class="row my-2">
+      <div class="col-md-9 mx-auto">
+        <p><%= image_tag 'introductionLOGO.svg' %></p>
         <% if @member.introduction.present? %>
           <%= safe_join(@member.introduction.split("\n"), tag(:br)) %>
         <% else %>

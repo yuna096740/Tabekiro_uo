@@ -1,7 +1,7 @@
 <div class="container">
-  <h4 class="mt-3">プロフィール編集</h4>
   <%= form_with model: @member, url: members_information_path, method: :patch do |f| %>
-    <div class="row mx-auto mt-5">
+    <%= image_tag 'editProfile.svg', class:"my-4 offset-2" %>
+    <div class="row mx-auto">
       <div class="col-md-2 offset-2 text-center" data-aos="zoom-in">
         <%= image_tag @member.get_icon(150,150), class:"rounded-circle" %>
       </div>

@@ -26,7 +26,3 @@ Tag.create([
   {name: '白身魚'},
   {name: '赤身魚'}
 ])
-Admin.create(
-  email:    "mail@gmail.com",
-  password: "123456"
-)

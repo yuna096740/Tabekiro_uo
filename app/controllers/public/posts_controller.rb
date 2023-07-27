@@ -46,7 +46,7 @@ class Public::PostsController < ApplicationController
     else
       @post = current_member.posts.new(post_params)
       @tags = Tag.all
-      flash[:notice] = "地図のマーカーは必須です。"
+      flash[:notice] = "正しく入力してください。"
       render :new
     end
   end

@@ -1,8 +1,8 @@
 class Public::MembersController < ApplicationController
-  before_action :authenticate_member!
+  before_action :authenticate_member!, unless: :admin_signed_in?
+  before_action :set_current_member,  except: [:index, :show, :favorite]
   before_action :valid_id?,           only: [:show]
   before_action :ensure_guest_member, only: [:edit]
-  before_action :set_current_member,  only: [:edit, :update, :deal, :quit_form, :confirm, :quit]
 
   def index
     @posts = current_member.posts.all.page(params[:page]).per(24)
@@ -85,7 +85,7 @@ class Public::MembersController < ApplicationController
 
   def valid_id? # リロード対策
     if params[:id].to_s == "confirm" || params[:id].to_s == "information"
-      redirect_to request.referer, notice:"現在のページでのリロードは処理が無効となります。"
+      redirect_to request.referer, notice: "現在のページでのリロードは処理が無効となります。"
       return
     end
   end

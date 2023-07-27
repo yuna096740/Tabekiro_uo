@@ -3,19 +3,21 @@
     <div class="col-3 mb-5" data-aos="zoom-in" data-aos-duration="2000">
       <div class="mx-auto ml-5 bg-light px-3 py-2 mx-3 rounded">
 
-        <div class="text-dark"><b><%= post.title %></b></div>
+        <div class="text-dark">
+          <b><%= truncate(post.title, length: 15) %></b>
+        </div>
         <%= link_to post_path(post) do %>
         <%#= link_to(post_path(post), data: {turbolinks: false}) do %> <!--　Google Map Multiple API Call対応する場合 -->
           <%= image_tag post.get_post_image(220,200), class:"rounded" %>
         <% end %>
 
         <div class="d-flex">
-          <% if post.open_status == 'during_trade' %>
+          <% if post.rooms.present? %>
             <p class="text-success mt-1">取引中</p>
-          <% elsif post.open_status == 'complete' %>
-            <p class="text-danger mt-1">取引終了</p>
           <% elsif post.open_status == 'open' %>
             <p class="text-success mt-1">取引受付中</p>
+          <% elsif post.open_status == 'complete' %>
+            <p class="text-danger mt-1">取引終了</p>
           <% end %>
 
           <span class="time-text-size mt-2 ml-auto">

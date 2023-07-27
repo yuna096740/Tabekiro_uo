@@ -1,9 +1,11 @@
-# Tabekiro_uo
-​
+# たべきろ魚(うお)
+
+<img width="1440" alt="readme_image" src="https://github.com/yuna096740/Tabekiro_uo/assets/129647184/ab7aac04-385c-4131-b02a-f89d27484ec6">
+
 ## サイト概要
+お魚 ×︎ コミュニティサイト
 ### サイトテーマ
 
-##### [分類]お魚 ✖︎ コミュニティサイト
 ##### 釣りすぎて食べきれないお魚を無駄にしないためにお魚好きにお裾分けしよう！
 
 ### テーマを選んだ理由
@@ -24,29 +26,18 @@
 
 ## 設計書
 
-[機能一覧](https://docs.google.com/spreadsheets/d/1xB_VbF1xzTttDybN7bOVm6l5Wq2XuzerVdZIANuzClQ/edit?usp=sharing)
-
-[画面遷移図](https://drive.google.com/file/d/12SnRoY9mpu7as7agOrWoqpRSFYKlzHmF/view?usp=drive_link)
-
-[ワイヤーフレーム(顧客側:page1 管理者側:page2)](https://www.figma.com/file/roeRUahKjeQkZs8lQquBrg/Tabekiro-uo?type=design&node-id=5%3A187&mode=design&t=gyYSW8DwNfCEUED0-1)
-※閲覧にはfigmaの会員登録が必要です。
-
-[ER図](https://drive.google.com/file/d/1E5qW5Zlti4WyXL0614Ff3RB-tzgKgCMi/view?usp=sharing)
-
-[テーブル定義書](https://docs.google.com/spreadsheets/d/1A235kONsI7XAkMbp7-eXr6IIjCJ5Y1rmcjeQ3CKWNvk/edit?usp=sharing)
-
-[アプリケーション詳細設計書](https://docs.google.com/spreadsheets/d/1AvM6cj21TKzerAOfxBnuOC09eEFcXxuFVbkQd1fMXJU/edit?usp=sharing)
+- [機能一覧](https://docs.google.com/spreadsheets/d/1xB_VbF1xzTttDybN7bOVm6l5Wq2XuzerVdZIANuzClQ/edit?usp=sharing)
+- [画面遷移図](https://drive.google.com/file/d/12SnRoY9mpu7as7agOrWoqpRSFYKlzHmF/view?usp=drive_link)
+- [ER図](https://drive.google.com/file/d/1E5qW5Zlti4WyXL0614Ff3RB-tzgKgCMi/view?usp=sharing)
+- [テーブル定義書](https://docs.google.com/spreadsheets/d/1A235kONsI7XAkMbp7-eXr6IIjCJ5Y1rmcjeQ3CKWNvk/edit?usp=sharing)
+- [アプリケーション詳細設計書](https://docs.google.com/spreadsheets/d/1AvM6cj21TKzerAOfxBnuOC09eEFcXxuFVbkQd1fMXJU/edit?usp=sharing)
+- [ワイヤーフレーム(顧客側:page1 管理者側:page2)](https://www.figma.com/file/roeRUahKjeQkZs8lQquBrg/Tabekiro-uo?type=design&node-id=5%3A187&mode=design&t=gyYSW8DwNfCEUED0-1)
+> ※閲覧にはfigmaの会員登録が必要です。
 ​
 ## 開発環境
 - OS：Linux(CentOS)
 - 言語：HTML,CSS,JavaScript,Ruby,SQL
 - フレームワーク：Ruby on Rails
 - JSライブラリ：jQuery
+- API：[Google Maps API](https://developers.google.com/maps/documentation/javascript?hl=ja)
 - IDE：Cloud9
-​
-<!--使用素材 -->
-
-<!--外部サービスの画像素材・音声素材を使用した場合は、必ずサービス名とURLを明記してください。-->
-<!--アプリケーションの実装に使用したgem/bootstrapのリファレンスなどの記載は不要です。
-- 使用しない場合は、使用素材の項目をREADMEから削除してください。
-折りたたむ -->

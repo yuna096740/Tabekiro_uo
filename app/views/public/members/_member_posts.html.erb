@@ -4,7 +4,9 @@
       <div class="col-3 mb-5" data-aos="zoom-in" data-aos-duration="2000">
         <div class="mx-auto ml-5 bg-light px-3 py-2 mx-3 rounded">
 
-          <div class="text-dark"><b><%= post.title %></b></div>
+          <div class="text-dark">
+            <b><%= truncate(post.title, length: 15) %></b>
+          </div>
           <%= link_to post_path(post) do %>
             <%= image_tag post.get_post_image(220,200), class:"rounded" %>
           <% end %>

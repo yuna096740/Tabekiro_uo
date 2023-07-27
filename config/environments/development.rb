@@ -34,8 +34,8 @@ Rails.application.configure do
   config.active_storage.service = :local
 
   # Don't care if the mailer can't send.
-  host = '0056c8db2da442e5bc494267ec81f209.vfs.cloud9.ap-northeast-1.amazonaws.com'
-  config.action_mailer.default_url_options = { host: host, protocol: 'https' }
+  host = 'http://tabekirouo.com/'
+  config.action_mailer.default_url_options = { host: host, protocol: 'http' }
   config.action_mailer.raise_delivery_errors = true
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {

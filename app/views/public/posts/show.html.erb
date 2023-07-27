@@ -19,7 +19,7 @@
             <% if member_signed_in? %>
               <%= render 'public/favorites/fav' , post: @post%>
             <% else %>
-              <%= link_to new_member_session_path, class:"text-danger" do %>
+              <%= link_to post_favorites_path(@post), method: :post, class:"text-danger" do %>
                 <i class="fas fa-heart"></i>
                 <%= @post.favorites.count %>
               <% end %>

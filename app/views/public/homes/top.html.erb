@@ -30,7 +30,7 @@
             <%= link_to post_path(post) do %>
               <%= image_tag post.get_post_image(350,300), class:"rounded mb-1" %><br>
             <% end %>
-            <b><%= post.title %></b><br>
+            <b><%= truncate(post.title, length: 22) %></b><br>
             <span class="time-text-size mt-2 ml-auto">
               <%= time_ago_in_words(post.updated_at).upcase %>
             </span>

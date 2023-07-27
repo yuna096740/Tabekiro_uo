@@ -15,7 +15,7 @@ class Public::ReportsController < ApplicationController
       @report.reported_id = @member.id
     else
       @report = Report.new
-      flash[:notice] = "通報内容を入力してください"
+      flash.now[:notice] = "通報内容を入力してください"
       render :new
     end
   end

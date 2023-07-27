@@ -1,6 +1,6 @@
 <%= form_with model: post do |f| %>
   <%= render "layouts/errors", model: f.object %>
-  <div class="row mt-3" data-aos="zoom-in" data-aos-duration="1500">
+  <div class="row mt-3" data-aos="zoom-in" data-aos-duration="1000">
     <div class="col-md-6">
       <div class="my-2">
         <% if post.id == nil %>
@@ -33,12 +33,12 @@
 
           <tr>
             <th>タイトル :</th>
-            <td><%= f.text_field :title, placeholder: "入力してください", required: true, class:"form-control" %></td>
+            <td><%= f.text_field :title, placeholder: "入力してください(60字以内)", required: true, class:"form-control" %></td>
           </tr>
 
           <tr>
             <th>紹介 :</th>
-            <td><%= f.text_area :introduction, rows: "3", placeholder: "入力してください", required: true, class:"form-control" %></td>
+            <td><%= f.text_area :introduction, rows: "3", placeholder: "入力してください(150字以内)", required: true, class:"form-control" %></td>
           </tr>
 
           <tr>
@@ -61,27 +61,22 @@
     </div>
 
     <div class="col-md-6 mt-5">
+      <div class="d-flex mb-3">
+        <input id="address" type="textbox" placeholder="ピンを刺したい地名を検索" class="form-control col-7">
+        <input type="button" value="ピンを刺す" onclick="codeAddress()" class="form-control ml-4 btn btn-outline-secondary rounded-pill">
+      </div>
+
       <div id="map" class="mapForm"></div>
-      <p class="mt-1">
-        ※ ピンの位置の調整ができます。<br>
-        ※ ピンは一度しか刺せません。
-      </p>
+      ※ ピンの位置の調整ができます。※ ピンは一度しか刺せません。
 
-      <div class="d-flex">
-        <%= f.hidden_field :latitude, id: :latitude %>
-        <%= f.hidden_field :longitube, id: :longitube %>
-      </div>
-
-      <div class="d-flex">
-        <input id="address" type="textbox" placeholder="土地名を検索" class="form-control col-8">
-        <input type="button" value="ピンを刺す" onclick="codeAddress()" class="form-control ml-4 btn btn-info rounded-pill">
-      </div>
-
-      <%= f.text_field :place_name, placeholder: "登録する地名を入力", required: true, class:"form-control my-3" %>
+      <%= f.text_field :place_name, placeholder: "登録する地名を入力(15字以内)", required: true, class:"form-control my-3" %>
 
     </div>
     <div class="mx-auto">
-      <div class="mt-5">
+      <div class="my-5">
+        <%= f.hidden_field :latitude, id: :latitude %>
+        <%= f.hidden_field :longitube, id: :longitube %>
+
         <% if post.id == nil %>
           <%= f.submit '投稿する', class:"btn btn-success px-5 rounded-pill" %>
         <% else %>
@@ -91,6 +86,7 @@
     </div>
   </div>
 <% end %>
+
 <%# Google Map API %>
 <%= render 'public/posts/js_template/newGoogleMap' %>
 <script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['API_KEY'] %>&libraries=places&callback=initMap" async defer></script>

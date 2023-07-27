@@ -15,7 +15,7 @@ class Post < ApplicationRecord
   validates :post_image,   presence: :true
   validates :title,        presence: :true, length: { in: 1..60 }
   validates :introduction, presence: :true, length: { in: 1..150 }
-  validates :place_name,   presence: :true, length: { in: 1..10 }
+  validates :place_name,   presence: :true, length: { in: 1..15 }
   validates :latitude,     presence: :true
   validates :longitube,    presence: :true
 

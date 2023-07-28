@@ -23,7 +23,7 @@ ja:
         no_chance_to_use:      "使う機会がないから"
         hard_to_use:           "使い方が難しい"
         others:                "その他"
-      status:  
+      status:
         active:                "有効"
         banned:                "停止中"
         inactive:              "無効"
@@ -36,37 +36,37 @@ ja:
   datetime:
     distance_in_words:
       half_a_minute:            "一分未満"
-      less_than_x_seconds:      
+      less_than_x_seconds:
         one:                    "1秒前"
         other:                  "%{count}秒前"
-      x_seconds:      
+      x_seconds:
         one:                    "1秒前"
         other:                  "%{count}秒前"
-      less_than_x_minutes:      
+      less_than_x_minutes:
         one:                    "1分前"
         other:                  "%{count}分前"
-      x_minutes:      
+      x_minutes:
         one:                    "1分"
         other:                  "%{count}分前"
-      about_x_hours:      
+      about_x_hours:
         one:                    "1時間前"
         other:                  "%{count}時間前"
-      x_days:     
+      x_days:
         one:                    "1日前"
         other:                  "%{count}日前"
-      about_x_months:     
+      about_x_months:
         one:                    "1ヶ月前"
         other:                  "%{count}ヶ月前"
-      x_months:     
+      x_months:
         one:                    "1ヶ月前"
         other:                  "%{count}ヶ月前"
-      almost_x_years:     
+      almost_x_years:
         one:                    "１年弱"
         other:                  "%{count}年弱"
-      about_x_years:      
+      about_x_years:
         one:                    "1年"
         other:                  "%{count}年"
-      over_x_years:     
+      over_x_years:
         one:                    "1年以上"
         other:                  "%{count}年以上"
 
@@ -81,7 +81,7 @@ ja:
   activerecord:
     errors:
       format:                   "%{attribute}%{message}"
-      messages:       
+      messages:
         accepted:               "を受諾してください"
         blank:                  "を入力してください"
         confirmation:           "と%{attribute}の入力が一致しません"
@@ -98,29 +98,29 @@ ja:
         too_long:               "%{count}文字以内で入力してください"
         too_short:              "は%{count}文字以上で入力してください"
         wrong_length:           "は%{count}文字で入力してください"
-      template:       
+      template:
         body:                   "次の項目を確認してください"
         header:                 "%{model}に%{count}個のエラーが発生しました"
-    helpers:        
-      select:       
+    helpers:
+      select:
         prompt:                 "選択してください"
-      submit:       
+      submit:
         create:                 "登録する"
         submit:                 "保存する"
         update:                 "更新する"
-        
-    attributes:       
-      member:       
+
+    attributes:
+      member:
         email:                  "メールアドレス"
         password:               "パスワード"
         nickname:               "ニックネーム"
-      post_comment:       
+      post_comment:
           comment:              "コメント:"
 
   helpers:
     select:
       prompt:                   "選択してください"
-    submit:                 
+    submit:
       create:                   "登録する"
       submit:                   "保存する"
       update:                   "更新する"

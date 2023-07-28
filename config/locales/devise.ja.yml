@@ -1,7 +1,7 @@
 ja:
   activerecord:
     attributes:
-      member:
+      members:
         confirmation_sent_at:   "パスワード確認送信時刻"
         confirmation_token:     "パスワード確認用トークン"
         confirmed_at:           "パスワード確認時刻"
@@ -26,11 +26,18 @@ ja:
         unlock_token:           "ロック解除用トークン"
         updated_at:             "更新日"
         email:                  "メールアドレス"
+      mailer:
+      reset_password_instructions:
+        title:                      "こんにちは、"
+        reset_password_explanation: "パスワードの変更を受け付けました。以下のリンクから変更できます。"
+        reset_password_link:        "パスワードを変更する。"
+        please_ignore:              "もしリクエストしていない場合は、このメールを無視してください。"
+        wont_change:                "上記リンクをクリックして新しいパスワードを作成しない限り、パスワードは変更されません。"
 
     models:
       member:                   "会員情報"
 
-
+  
   devise:
     confirmations:
       confirmed:                  "メールアドレスが確認できました。"
@@ -64,12 +71,11 @@ ja:
         message:                  "パスワードが再設定されました。"
         subject:                  "パスワードの変更について"
       reset_password_instructions:
-        action:                   "パスワード変更"
-        greeting:                 "%{recipient}様"
-        instruction:              "パスワード再設定の依頼を受けたため、メールを送信しています。下のリンクからパスワードの再設定ができます"
-        instruction_2:            "パスワード再設定の依頼をしていない場合、このメールを無視してください"
-        instruction_3:            "パスワードの再設定は、上のリンクから新しいパスワードを登録するまで完了しません"
-        subject:                  "パスワードの再設定について"
+        title:                      "こんにちは、"
+        reset_password_explanation: "パスワードの変更を受け付けました。以下のリンクから変更できます。"
+        reset_password_link:        "パスワードを変更する。"
+        please_ignore:              "もしリクエストしていない場合は、このメールを無視してください。"
+        wont_change:                "上記リンクをクリックして新しいパスワードを作成しない限り、パスワードは変更されません。"
       unlock_instructions:
         action:                   "アカウントのロック解除"
         greeting:                 "%{recipient}様"

@@ -35,7 +35,7 @@ Rails.application.configure do
 
   # Don't care if the mailer can't send.
   host = 'tabekirouo.com'
-  config.action_mailer.default_url_options[:host] = host
+  config.action_mailer.default_url_options = { protocol: 'https', host: host }
   config.action_mailer.raise_delivery_errors = true
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {

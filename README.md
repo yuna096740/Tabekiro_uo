@@ -1,5 +1,6 @@
 # たべきろ魚(うお)
 ![readme_image](https://github.com/yuna096740/Tabekiro_uo/assets/129647184/b08b804b-5a2f-4cc8-89f4-373a02b00b48)
+https://tabekirouo.com/
 ## サイト概要
 お魚 ×︎ コミュニティサイト
 ### サイトテーマ

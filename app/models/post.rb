@@ -1,8 +1,8 @@
 class Post < ApplicationRecord
 
   default_scope          -> { order(updated_at: "DESC") }
+  enum open_status:         { open: 0, unopened: 1, during_trade: 2, complete: 3 }
   scope :recentry_posts, -> { where.not(open_status: "unopened").order(updated_at: :desc ).limit(3) }
-  enum open_status: { open: 0, unopened: 1, during_trade: 2, complete: 3 }
 
   belongs_to :member
   belongs_to :tag
@@ -13,12 +13,11 @@ class Post < ApplicationRecord
 
   validates :tag_id,       presence: :true
   validates :post_image,   presence: :true
-  validates :title,        presence: :true, length: { in: 1..60 }
-  validates :introduction, presence: :true, length: { in: 1..150 }
-  validates :place_name,   presence: :true, length: { in: 1..15 }
-  validates :latitude,     presence: :true
   validates :longitube,    presence: :true
-
+  validates :latitude,     presence: :true
+  validates :title,        presence: :true, length: { in: 1..60 }
+  validates :place_name,   presence: :true, length: { in: 1..15 }
+  validates :introduction, presence: :true, length: { in: 1..150 }
 
   has_one_attached :post_image
 

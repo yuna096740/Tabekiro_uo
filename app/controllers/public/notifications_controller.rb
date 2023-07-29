@@ -3,8 +3,7 @@ class Public::NotificationsController < ApplicationController
 
   def destroy
     @notices = current_member.passive_notifications
-    notice = Notification.find(params[:id])
-    notice.destroy
+    Notification.find(params[:id]).destroy
   end
 
   def destroy_all
@@ -18,8 +17,5 @@ class Public::NotificationsController < ApplicationController
       notice.update(checked: true)
     end
     @unchecked_notice = current_member.passive_notifications.where(checked: false)
-    # respond_to do |format|
-    #   format.json { head :ok } # JSONを想定
-    # end
   end
 end

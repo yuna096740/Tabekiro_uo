@@ -14,7 +14,9 @@
       </div>
     </div>
     <div class="col-md-4 mt-5">
-      <h4 class="mt-5"><b><%= link_to current_member.nickname, member_path(current_member), class:"text-dark" %></b></h4>
+      <h4 class="mt-5">
+        <b><%= link_to current_member.nickname, member_path(current_member), class:"text-dark" %></b>
+      </h4>
       <div class="d-flex mt-5">
         <h5 class="mr-5">取引数: <%= current_member.entries.count %> 回</h5>
         <h5 class="ml-5">

@@ -11,8 +11,8 @@ class Public::RoomsController < ApplicationController
   def show
     @room = Room.find(params[:id])
     if Entry.where(member_id: current_member.id, room_id: @room.id).exists?
+      @new_message =  Message.new
       @messages =     @room.messages
-      @new_message  = Message.new
       @member_id =    @room.entries.where.not(member_id: current_member.id).pluck(:member_id)
       @member =       Member.find_by(id: @member_id)
     else

@@ -1,19 +1,19 @@
 <script>
- if (typeof map == "undefined") {
-  let map
-  let marker
-}
-function initMap(){
-  geocoder = new google.maps.Geocoder()
-
-  map = new google.maps.Map(document.getElementById('map'), {
-    center: { lat: <%= post.latitude %>, lng: <%= post.longitube %> },
-    zoom: 15,
-  });
-
-  marker = new google.maps.Marker({
-    position: { lat: <%= post.latitude %>, lng: <%= post.longitube %> },
-    map: map
-  });
-}
+  if (typeof map == "undefined") {
+    let map
+    let marker
+  }
+  function initMap(){
+    geocoder = new google.maps.Geocoder()
+  
+    map = new google.maps.Map(document.getElementById('map'), {
+      center: { lat: <%= post.latitude %>, lng: <%= post.longitube %> },
+      zoom: 15,
+    });
+  
+    marker = new google.maps.Marker({
+      position: { lat: <%= post.latitude %>, lng: <%= post.longitube %> },
+      map: map
+    });
+  }
 </script>

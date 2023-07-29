@@ -2,10 +2,12 @@
   height: 54vh;
   width: 20em;
   overflow-y: scroll;
+  word-break: break-all;
 }
 .dm-height {
   height: 50vh;
   overflow-y: scroll;
+  word-break: break-all;
 }
 .message-frame {
   background-color: #dcdcdc33;

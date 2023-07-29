@@ -1,5 +1,5 @@
 <div class="container">
-  <%= form_with model: @member, url: confirm_members_path, method: :post, data: {turbolinks: false} do |f| %>
+  <%= form_with model: @member, url: confirm_members_path, method: :post do |f| %>
     <div class="row">
       <div class="col-md-9">
       <%= image_tag 'quitForm.svg', class:"my-5 offset-3" %>

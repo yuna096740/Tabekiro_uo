@@ -7,7 +7,7 @@
   </h4>
   <%= form_with model: @member, url: admin_member_path, method: :patch do |f| %>
     <div class="row mx-auto mt-5">
-      <div class="col-md-2 offset-2 text-center" data-aos="zoom-in">
+      <div class="col-md-2 offset-2 text-center">
         <%= image_tag @member.get_icon(130,130), class:"rounded-circle" %>
       </div>
 

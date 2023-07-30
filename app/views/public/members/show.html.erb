@@ -14,14 +14,16 @@
             <span class="subscribeCount"><b><%= @member.subscribers.count %></b></span>
           <% end %>
         </p>
-        <% if @member != current_member %>
-          <div class="subscribeBtn">
-            <%= render 'public/relationships/subscribe_btn', member: @member %>
-          </div>
+        <% unless admin_signed_in? %>
+          <% if @member != current_member %>
+            <div class="subscribeBtn">
+              <%= render 'public/relationships/subscribe_btn', member: @member %>
+            </div>
 
-          <div class="text-center">
-            <%= link_to '通報する', new_member_report_path(@member) %>
-          </div>
+            <div class="text-center">
+              <%= link_to '通報する', new_member_report_path(@member) %>
+            </div>
+          <% end %>
         <% end %>
       </div>
     </div>

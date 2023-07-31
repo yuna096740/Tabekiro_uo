@@ -1,6 +1,6 @@
 <div class="container">
   <h4 class="mt-3">
-    "<%= @member.nickname %>" (通報された回数：
+    "<%= link_to @member.nickname, member_path(@member) %>" (通報された回数：
     <%= link_to admin_search_path(@member.id) do %>
       <%= @report_count %>
     <% end %>回)
@@ -27,7 +27,9 @@
 
         <div class="my-5">
           <h5>ユーザーネーム</h5>
-          <p class="bg-light py-2 px-3 rounded-pill"><%= @member.nickname %></p>
+          <p class="bg-light py-2 px-3 rounded-pill">
+            <%= @member.nickname %>
+          </p>
         </div>
 
         <div class="my-5">

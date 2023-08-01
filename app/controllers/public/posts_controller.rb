@@ -22,7 +22,7 @@ class Public::PostsController < ApplicationController
               @is_room = true
               @room_ids.push(cm_entry.room_id)
               entries = Room.find(cm_entry.room_id).entries.where.not(member_id: current_member.id)
-              @entries[cm_entry.room_id] = entries[0]#インデックス番号を指定
+              @entries[cm_entry.room_id] = entries[0] # インデックス番号を指定
             end
           end
         end

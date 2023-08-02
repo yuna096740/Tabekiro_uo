@@ -10,26 +10,19 @@
         <% end %>
       </div>
 
+      <!--<div id="image_preview" style="max-width:150px max-height:100px">-->
+      <!--  <%# if @post.post_image.attached? %>-->
+      <!--    <span style="height: 150px; width: 150px;">-->
+      <!--      <%#= image_tag @post.post_image, class:"rounded" %>-->
+      <!--    </span>-->
+      <!--  <%# end %>-->
+      <!--</div>-->
       <table class="table table-borderless">
         <tbody>
-          <% unless post.id == nil %>
-            <tr>
-              <th></th>
-              <td class="text-center">
-                <%= image_tag @post.get_post_image(150,100), class:"rounded" %>
-              </td>
-            </tr>
-
-            <tr>
-              <th>画像 :</th>
-              <td><%= f.file_field :post_image %></td>
-            </tr>
-          <% else %>
-            <tr>
-              <th>画像 :</th>
-              <td><%= f.file_field :post_image, required: true %></td>
-            </tr>
-          <% end %>
+          <tr>
+            <th>画像 :</th>
+            <td><%= f.file_field :post_image, required: true %></td> <!--, accept: 'image/*', onchange: "previewImage(this);"-->
+          </tr>
 
           <tr>
             <th>タイトル :</th>
@@ -87,6 +80,8 @@
   </div>
 <% end %>
 
+<%# image preview 機能 %>
+<%#= render 'public/posts/js_template/imagePreview' %>
 <%# Google Map API %>
 <%= render 'public/posts/js_template/newGoogleMap' %>
 <script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['API_KEY'] %>&libraries=places&callback=initMap" async defer></script>

@@ -10,6 +10,7 @@ class Post < ApplicationRecord
   has_many   :favorites,     dependent: :destroy
   has_many   :rooms,         dependent: :destroy
   has_many   :notifications, dependent: :destroy
+  has_many   :vision_tags,   dependent: :destroy
 
   validates :tag_id,       presence: :true
   validates :post_image,   presence: :true

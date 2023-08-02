@@ -13,6 +13,13 @@
 
           <div class="text-center">
             <%= image_tag @post.get_post_image(600,350), class:"rounded" %>
+            <div class="mt-2">
+              <% @post.vision_tags.each do |vision_tag| %>
+                <span class="mx-1 px-2 py-1 bg-secondary text-light rounded">
+                  <%= vision_tag.name %>
+                </span>
+              <% end %>
+            </div>
           </div>
 
           <div class="text-right mt-3 mr-3" id="favorite">

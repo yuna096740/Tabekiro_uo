@@ -22,7 +22,7 @@ class Public::PostsController < ApplicationController
               @is_room = true
               @room_ids.push(cm_entry.room_id)
               entries = Room.find(cm_entry.room_id).entries.where.not(member_id: current_member.id)
-              @entries[cm_entry.room_id] = entries[0]#インデックス番号を指定
+              @entries[cm_entry.room_id] = entries[0] # インデックス番号を指定
             end
           end
         end
@@ -40,11 +40,14 @@ class Public::PostsController < ApplicationController
   end
 
   def create
-    post = current_member.posts.new(post_params)
-    if post.save
-      redirect_to post_path(post), notice: "投稿しました。"
+    @post = current_member.posts.new(post_params)
+    vision_tags = Vision.get_image_data(post_params[:post_image])
+    if @post.save
+      vision_tags.each do |vision_tag|
+        @post.vision_tags.create(name: vision_tag)
+      end
+      redirect_to post_path(@post), notice: "投稿しました。"
     else
-      @post = current_member.posts.new(post_params)
       @tags = Tag.all
       flash[:notice] = "正しく入力してください。"
       render :new
@@ -56,8 +59,14 @@ class Public::PostsController < ApplicationController
   end
 
   def update
-    Post.find(params[:id]).update(post_params)
-    redirect_to post_path(@post), notice: "投稿内容を更新しました。"
+    if Post.find(params[:id]).update(post_params)
+      redirect_to post_path(@post), notice: "投稿内容を更新しました。"
+    else
+      @post = current_member.posts.new(post_params)
+      @tags = Tag.all
+      flash[:notice] = "正しく入力してください。"
+      render :new
+    end
   end
 
   def destroy

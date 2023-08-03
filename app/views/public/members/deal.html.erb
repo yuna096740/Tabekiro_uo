@@ -1,7 +1,7 @@
 <div class="container">
   <% if @rooms.present? %>
     <div class="row">
-      <div class="col-md-8 offset-2">
+      <div class="col-md-8 col-sm-8 col-xs-12 offset-md-2">
         <%= image_tag 'topMyDealLOGO.svg', class:"my-4" %>
         <% @rooms.each do |room| %>
           <table class="table table-borderless bg-light rounded" data-aos="zoom-in" data-aos-duration="1000">

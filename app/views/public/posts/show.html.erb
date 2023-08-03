@@ -1,10 +1,10 @@
 <% unless @post.open_status == 'unopened' && @post.member != current_member %>
   <div class="container mb-5">
     <div class="row">
-      <div class="col-md-7">
+      <div class="col-md-7 col-sm-10 col-xs-12">
         <%= image_tag 'postDetail.svg', class:"my-4" %>
-        <div class="bg-light rounded" data-aos="zoom-in" data-aos-duration="1500">
-          <div class="d-flex px-3 py-2">
+        <div class="bg-light rounded py-3" data-aos="zoom-in" data-aos-duration="1500">
+          <div class="d-flex px-3">
             <%= image_tag @post.member.get_icon(50,50), class:"rounded-circle mx-3" %>
             <h5 class="my-auto">
               <%= link_to @post.member.nickname, member_path(@post.member_id), class:"text-dark ml-2" %>
@@ -12,7 +12,7 @@
           </div>
 
           <div class="text-center">
-            <%= image_tag @post.get_post_image(600,350), class:"rounded" %>
+            <%= image_tag @post.get_post_image(600,350), class:"rounded img-fluid px-2" %>
             <div class="mt-2">
               <% @post.vision_tags.each do |vision_tag| %>
                 <span class="mx-1 px-2 py-1 bg-secondary text-light rounded">
@@ -79,15 +79,17 @@
               <%= link_to '削除する', post_path(@post), method: :delete, data: { confirm: "本当によろしいですか？"}, class:"btn btn-danger px-5 mb-3 rounded-pill" %>
             <% end %>
           </div>
-          <a data-toggle="collapse" href="#pullDownBtnMap" role="button" aria-expanded="false" aria-controls="#pullDownBtnMap">
-            <h4 class="btn btn-light form-control"><b>地図の開閉はこちらから。</b>ユーザー登録地名：<b> <%= @post.place_name %> ▼</b></h4>
-          </a>
         </div>
       </div>
 
-      <div class="col-md-4 offset-1 mt-5" data-aos="zoom-in" data-aos-duration="1500">
+      <div class="col-md-4 col-sm-10 col-xs-12 offset-md-1 mt-5" data-aos="zoom-in" data-aos-duration="1500">
         <%= render 'public/post_comments/comment_bar', comment: @comment, post: @post  %>
         <%= render 'public/posts/dm_btn', post: @post, is_room: @is_room, room: @room, entry: @entry, member: @member, room_id: @room_id, entries: @entries %>
+        <a data-toggle="collapse" href="#pullDownBtnMap" role="button" aria-expanded="false" aria-controls="#pullDownBtnMap">
+          <h4 class="btn btn-light form-control rounded my-2">
+            ユーザー登録地名：<b><%= @post.place_name %> ▼</b>
+          </h4>
+        </a>
       </div>
     </div>
 

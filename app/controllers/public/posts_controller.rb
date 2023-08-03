@@ -59,13 +59,20 @@ class Public::PostsController < ApplicationController
   end
 
   def update
-    if Post.find(params[:id]).update(post_params)
-      redirect_to post_path(@post), notice: "投稿内容を更新しました。"
-    else
-      @post = current_member.posts.new(post_params)
-      @tags = Tag.all
-      flash[:notice] = "正しく入力してください。"
-      render :new
+    vision_tags = Vision.get_image_data(post_params[:post_image])
+    
+    ActiveRecord::Base.transaction do
+      if Post.find(params[:id]).update(post_params)
+        vision_tags.each do |vision_tag|
+          @post.vision_tags.update(name: vision_tag)
+        end
+        redirect_to post_path(@post), notice: "投稿内容を更新しました。"
+      else
+        @post = current_member.posts.new(post_params)
+        @tags = Tag.all
+        flash[:notice] = "正しく入力してください。"
+        render :new
+      end
     end
   end
 

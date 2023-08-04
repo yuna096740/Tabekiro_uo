@@ -23,10 +23,8 @@
             <% end %>
           <% end %>
 
-          <% unless admin_signed_in? %>
-            <%= link_to map_posts_path do %>
-              <%= image_tag 'mapsearchLOGO.svg', class:"m-2" %>
-            <% end %>
+          <%= link_to map_posts_path do %>
+            <%= image_tag 'mapsearchLOGO.svg', class:"m-2" %>
           <% end %>
         </div>
       </div>

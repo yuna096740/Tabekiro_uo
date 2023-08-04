@@ -11,7 +11,7 @@
     <% end %>
   </li>
 
-  <% unless member_signed_in? %>
+  <% unless member_signed_in? || admin_signed_in? %>
     <li class="nav-item">
       <%= link_to new_member_session_path, class:"nav-link" do %>
         <%= image_tag 'loginLOGO.svg' %>

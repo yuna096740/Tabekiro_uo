@@ -29,7 +29,7 @@
   <div class="row">
     <% @posts.each do |post| %>
       <div class="col-md-4 col-sm-8 col-xs-12 mt-5 parallax_content" data-aos="zoom-in" data-aos-duration="2000">
-        <div class="mx-auto ml-5 bg-light px-3 py-2 mx-3 rounded">
+        <div class="mx-auto ml-5 bg-light px-3 mx-3 rounded">
           <div class="text-dark ml-1">
             <b><%= truncate(post.title, length: 15) %></b>
           </div>
@@ -59,10 +59,10 @@
 
 <div class="container" data-aos="zoom-in" data-aos-duration="1000">
   <div class="row">
-    <div class="col-xs-12 mx-auto my-5">
+    <div class="col-xs-8 mx-auto my-5">
       <p class="top-btn">
         <%= link_to new_member_registration_path, class:"rounded-pill" do %>
-          <%= image_tag 'topregistrationLOGO.svg', class:"img-fluid" %>
+          <%= image_tag 'topregistrationLOGO.svg', class:"img-fluid px-xs-5" %>
         <% end %>
       </p>
       <p class="top-btn">

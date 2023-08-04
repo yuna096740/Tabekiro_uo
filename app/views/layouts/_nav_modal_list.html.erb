@@ -1,0 +1,60 @@
+<div data-toggle="modal" data-target="#exampleModal">
+  <%= image_tag 'Tabekiro-uo-mini-logo.svg', style:"width:160px;" %>
+</div>
+
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h5 class="modal-title" id="exampleModalLabel"><%= image_tag 'navModal.svg', class:"file-fluid" %></h5>
+        <button type="button" class="btn-close btn btn-outline-secondary" data-dismiss="modal" aria-label="Close">
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="container">
+          <%= link_to posts_path do %>
+            <%= image_tag 'topIndexLOGO.svg', class:"m-2" %>
+          <% end %>
+
+          <% if member_signed_in? %>
+            <%= link_to new_post_path do %>
+              <%= image_tag 'topNewLOGO.svg', class:"m-2" %>
+            <% end %>
+          <% end %>
+
+          <% unless admin_signed_in? %>
+            <%= link_to map_posts_path do %>
+              <%= image_tag 'mapsearchLOGO.svg', class:"m-2" %>
+            <% end %>
+          <% end %>
+        </div>
+      </div>
+
+      <div class="modal-body">
+        <div class="container-fluid">
+          <a data-toggle="collapse" href="#headerTag" aria-expanded="false" aria-controls="#headerTag">
+            <%= image_tag 'topGenreLOGO.svg', class:"ml-2" %>
+          </a>
+        </div>
+      </div>
+
+      <div class="modal-body">
+        <div class="container-fluid">
+          <div class="collapse" id="headerTag">
+            <div class="d-flex">
+              <% tags.each do |tag| %>
+                <hr>
+                <h5><%= link_to tag.name, tag_path(tag), class:"text-dark mx-lg-3" %></h5>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="modal-footer">
+        <%= render 'public/searches/form', keyword: @keyword %>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,65 @@
+<ul class="navbar-nav mx-5">
+  <li class="nav-item">
+    <%= link_to root_path, class:"nav-link" do %>
+      <%= image_tag 'topTopLOGO.svg' %>
+    <% end %>
+  </li>
+
+  <li class="nav-item">
+    <%= link_to about_path, class:"nav-link" do %>
+      <%= image_tag 'topAboutLOGO.svg' %>
+    <% end %>
+  </li>
+
+  <% unless member_signed_in? %>
+    <li class="nav-item">
+      <%= link_to new_member_session_path, class:"nav-link" do %>
+        <%= image_tag 'loginLOGO.svg' %>
+      <% end %>
+    </li>
+
+    <li class="nav-item">
+      <%= link_to new_member_registration_path, class:"nav-link" do %>
+        <%= image_tag 'newsessionsLOGO.svg' %>
+      <% end %>
+    </li>
+  <% end %>
+
+  <% if admin_signed_in? %>
+    <li class="nav-item">
+      <%= link_to admin_path, class:"nav-link" do %>
+        <%= image_tag 'topReportIndexLOGO.svg' %>
+      <% end %>
+    </li>
+
+    <li class="nav-item">
+      <%= link_to admin_members_path, class:"nav-link" do %>
+        <%= image_tag 'topMemberIndexLOGO.svg' %>
+      <% end %>
+    </li>
+
+    <li class="nav-item">
+      <%= link_to admin_tags_path, class:"nav-link" do %>
+        <%= image_tag 'topCreateTagLOGO.svg' %>
+      <% end %>
+    </li>
+
+    <li class="nav-item">
+      <%= link_to destroy_admin_session_path, method: :delete, class:"nav-link" do %>
+        <%= image_tag 'topAdminLogOutLOGO.svg' %>
+      <% end %>
+    </li>
+  <% elsif not admin_signed_in? || member_signed_in? %>
+    <li class="nav-item">
+      <%= link_to new_admin_session_path, class:"nav-link" do %>
+        <%= image_tag 'topAdminLoginLOGO.svg' %>
+      <% end %>
+    </li>
+
+    <li class="nav-item">
+      <%= link_to members_guest_sign_in_path, method: :post, class:"nav-link" do %>
+        <%= image_tag 'guestLoginLOGO.svg' %>
+      <% end %>
+    </li>
+  <% end %>
+</ul>

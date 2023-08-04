@@ -1,63 +1,75 @@
-<div class="parallax_box">
-  <div class="parallax_content">
-    <p class="head" data-aos="zoom-in" data-aos-duration="600">
-      <%= image_tag 'Tabekiro-uo-logo.svg' %>
-    </p>
-  </div>
-
-  <div class="text-center scrollbox py-5">
-    <p><%= image_tag 'Tabekiro-uo-midle-logo.svg' %><span class="pt-5">とは...</span></p>
-
-    <p>釣りすぎて食べきれないお魚を無駄にしないためにお魚好きにお裾分けしよう！<br>
-       をコンセプトにしたWEBサイトです！</p>
-    <p>釣り人なら一度はありませんか？</p>
-    <p><b>・せっかくたくさん釣れたけど食べきれない。<br>
-          ・お裾分けしたくても近所に知り合いがいない。</b></p>
-    <p>など。</p>
-    <h5><b>是非！</b></h5>
-    <p class="m-0"><b>このお裾分けアプリでお魚を鮮度の良い状態で食べてあげましょう！</b></p>
-  </div>
-
-  <div class="mt-5 pt-5 text-center">
-    <h2><%= image_tag 'newPostLOGO.svg' %></h2>
-  </div>
-
-  <div class="parallax_content">
-    <div class="d-flex">
-      <% @posts.each do |post| %>
-        <div class="row-md-6 mx-auto" data-aos="zoom-in" data-aos-duration="2000">
-          <div class="text-dark my-5 mx-5 bg-light p-3">
-            <%= link_to post_path(post) do %>
-              <%= image_tag post.get_post_image(350,300), class:"rounded mb-1" %><br>
-            <% end %>
-            <b><%= truncate(post.title, length: 22) %></b><br>
-            <span class="time-text-size mt-2 ml-auto">
-              <%= time_ago_in_words(post.updated_at).upcase %>
-            </span>
-          </div>
-        </div>
-      <% end %>
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12">
+      <p class="head" data-aos="zoom-in" data-aos-duration="600">
+        <%= image_tag 'Tabekiro-uo-logo.svg', class:"img-fluid" %>
+      </p>
     </div>
   </div>
+</div>
 
-  <div class="scrollbox text-center py-5">
-    <h3 class="top-to-index-btn">
-      <%= link_to posts_path, class:"ml-auto text-dark py-5" do %>
-        <%= image_tag 'topToIndexLOGO.svg' %>
-      <% end %>
-    </h3>
+<div class="text-center scrollbox py-5">
+  <p><%= image_tag 'Tabekiro-uo-midle-logo.svg' %><span class="pt-5">とは...</span></p>
+
+  <p>釣りすぎて食べきれないお魚を無駄にしないためにお魚好きにお裾分けしよう！<br>
+     をコンセプトにしたWEBサイトです！</p>
+  <p>釣り人なら一度はありませんか？</p>
+  <p><b>・せっかくたくさん釣れたけど食べきれない。<br>
+        ・お裾分けしたくても近所に知り合いがいない。</b></p>
+  <p>など。</p>
+  <h5><b>是非！</b></h5>
+  <p class="m-0"><b>このお裾分けアプリでお魚を鮮度の良い状態で食べてあげましょう！</b></p>
+</div>
+
+<div class="my-5 pt-5 text-center">
+  <h2><%= image_tag 'newPostLOGO.svg' %></h2>
+</div>
+
+<div class="container">
+  <div class="row">
+    <% @posts.each do |post| %>
+      <div class="col-md-4 col-sm-8 col-xs-12 mt-5 parallax_content" data-aos="zoom-in" data-aos-duration="2000">
+        <div class="mx-auto ml-5 bg-light px-3 mx-3 rounded">
+          <div class="text-dark ml-1">
+            <b><%= truncate(post.title, length: 15) %></b>
+          </div>
+          <div class="text-center">
+            <%= link_to post_path(post) do %>
+              <%= image_tag post.get_post_image(320,250), class:"rounded img-fluid" %>
+            <% end %>
+          </div>
+          <span class="time-text-size mt-2 ml-auto">
+            <%= time_ago_in_words(post.updated_at).upcase %>
+          </span>
+        </div>
+      </div>
+    <% end %>
   </div>
+</div>
 
-  <div class="parallax_content text-center py-5" data-aos="zoom-in" data-aos-duration="1000">
-    <p class="top-btn">
-      <%= link_to new_member_registration_path, class:"btn px-5 m-5 bg-light rounded-pill" do %>
-        <%= image_tag 'topregistrationLOGO.svg' %>
-      <% end %>
-    </p>
-    <p class="top-btn">
-      <%= link_to new_member_session_path, class:"btn px-5 m-5 bg-light rounded-pill" do %>
-        <%= image_tag 'topLoginLOGO.svg' %>
-      <% end %>
-    </p>
+<div class="scrollbox text-center py-5">
+  <h3 class="top-to-index-btn">
+    <%= link_to posts_path, class:"ml-auto text-dark py-5" do %>
+      <%= image_tag 'topToIndexLOGO.svg', class:"img-fluid" %>
+    <% end %>
+  </h3>
+</div>
+
+
+
+<div class="container" data-aos="zoom-in" data-aos-duration="1000">
+  <div class="row">
+    <div class="col-xs-8 mx-auto my-5">
+      <p class="top-btn">
+        <%= link_to new_member_registration_path, class:"rounded-pill" do %>
+          <%= image_tag 'topregistrationLOGO.svg', class:"img-fluid px-xs-5" %>
+        <% end %>
+      </p>
+      <p class="top-btn">
+        <%= link_to new_member_session_path, class:"rounded-pill" do %>
+          <%= image_tag 'topLoginLOGO.svg', class:"img-fluid" %>
+        <% end %>
+      </p>
+    </div>
   </div>
 </div>

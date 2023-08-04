@@ -1,19 +1,17 @@
-<% if admin_signed_in? %>
-  <div class="form-inline pt-5 mx-5 my-lg-0">
-  <%= form_with url: admin_searches_path, method: :get do |f| %>
-    <%= f.text_field :keyword, value: @keyword, placeholder:"ユーザを検索",required: true, class:"form-control mr-sm-2" %>
-    <%= button_tag type:'submit', class:"btn btn-outline-dark my-2 my-sm-0" do %>
-      <i class="fas fa-search"></i>
-    <% end %>
-  <% end %>
-</div>
-<% else %>
-  <div class="form-inline pt-5 mx-5 my-lg-0">
-    <%= form_with url: searches_path, method: :get do |f| %>
-      <%= f.text_field :keyword, value: @keyword, placeholder:"お魚を検索",required: true, class:"form-control mr-sm-2" %>
-      <%= button_tag type:'submit', class:"btn btn-outline-secondary my-2 my-sm-0" do %>
+<form class="form-inline my-2 my-lg-0">
+  <% if admin_signed_in? %>
+    <%= form_with url: admin_searches_path, method: :get do |f| %>
+      <%= f.text_field :keyword, value: @keyword, placeholder:"ユーザを検索",required: true, class:"form-control col-9" %>
+      <%= button_tag type:'submit', class:"btn btn-outline-dark mx-2" do %>
         <i class="fas fa-search"></i>
       <% end %>
     <% end %>
-  </div>
-<% end %>
+  <% else %>
+    <%= form_with url: searches_path, method: :get do |f| %>
+      <%= f.text_field :keyword, value: @keyword, placeholder:"お魚を検索",required: true, class:"form-control col-9" %>
+      <%= button_tag type:'submit', class:"btn btn-outline-secondary mx-2" do %>
+        <i class="fas fa-search"></i>
+      <% end %>
+    <% end %>
+  <% end %>
+</form>

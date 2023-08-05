@@ -1,7 +1,7 @@
 <% if members.exists? %>
   <div class="d-md-flex">
     <% members.each do |member| %>
-      <div class="card mb-3 py-3 mx-md-3 bg-light col-md-4" data-aos="zoom-in" data-aos-duration="1000">
+      <div class="card mb-3 py-3 mx-md-3 bg-light col-md-4" data-aos="zoom-in" data-aos-duration="800">
         <div class="text-center">
           <%= link_to member_path(member) do %>
             <%= image_tag member.get_icon(200,120), class:"rounded", style:"width:100%;" %>

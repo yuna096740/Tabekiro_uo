@@ -1,25 +1,27 @@
 <div class="container">
-  <div class="row">
-    <div class="col-md-6 offset-1 mt-5">
-      <%= image_tag 'reportFormConfirm.svg', class:"mb-5 offset-2" %>
-      <table class="table table-borderless">
-        <thead>
-          <tr>
-            <th class="text-right">ユーザーネーム：</th>
-            <td><h5><%= link_to @member.nickname, member_path(@member), class:"text-dark" %></h5></td>
-          </tr>
+  <div class="row ml-md-5">
+    <div class="col-md-10 col-xs-12">
+      <%= image_tag 'quitReasonConfirm.svg', class:"mt-5 offset-md-3" %>
+      <div class="row offset-md-4">
+        <div class="col-md-8 my-2">
+          <p>ユーザーネーム</p>
+          <h4><%= @member.nickname %></h4>
+        </div>
 
-          <tr>
-            <th class="text-right">通報ジャンル：</th>
-            <td><%= @report.genre_i18n %></td>
-          </tr>
+        <div class="col-md-8 my-2">
+          <p>通報ジャンル</p>
+          <p class="bg-light py-2 px-3 rounded">
+            <%= @report.genre_i18n %>
+          </p>
+        </div>
 
-          <tr>
-            <th class="text-right">通報内容：</th>
-            <td><%= @report.reason %></td>
-          </tr>
-        </thead>
-      </table>
+        <div class="col-md-8 my-2">
+          <p>通報内容</p>
+          <p class="bg-light py-2 px-3 rounded">
+            <%= @report.reason %>
+          </p>
+        </div>
+      </div>
     </div>
   </div>
   <div class="row">
@@ -29,9 +31,9 @@
         <%= f.hidden_field :reported_id %>
         <%= f.hidden_field :genre %>
         <%= f.hidden_field :reason %>
-        <%= f.submit '通報する', class:"btn btn-danger rounded-pill px-5" %>
+        <%= f.submit '通報する', class:"btn btn-danger form-control col-xs-12" %>
       <% end %>
-      <%= link_to '通報をやめる', members_path, data: { confirm: "入力した内容は破棄されます。本当によろしいですか？" }, class:"btn btn-info rounded-pill px-5 ml-3" %>
+      <%= link_to '通報をやめる', members_path, data: { confirm: "入力した内容は破棄されます。本当によろしいですか？" }, class:"btn btn-info form-control col-xs-12 ml-3" %>
     </div>
   </div>
 </div>

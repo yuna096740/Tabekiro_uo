@@ -1,24 +1,27 @@
 <% if members.exists? %>
-  <% members.each do |member| %>
-    <table class="table table-borderless bg-light rounded" data-aos="zoom-in" data-aos-duration="1000">
-      <thead>
-        <tr>
-          <th><%= image_tag member.get_icon(100,100), class:"rounded-circle ml-3" %></th>
-          <td>
-            <p class="mb-2"><b><%= link_to member.nickname, member_path(member), class:"text-dark" %></b></p>
-            <p class="mb-2">取引回数：<%= member.entries.count %></p>
-            <p class="mb-2">
-              登録者：<%= link_to member.subscribers.count, subscribers_member_relationships_path(member) %>
-            </p>
-          </td>
-          <td class="text-right">
-            <%= link_to '詳細ページ', member_path(member), class:"btn btn-outline-secondary mt-5 px-5" %>
-          </td>
-        </tr>
-      </thead>
-    </table>
+  <div class="d-md-flex">
+    <% members.each do |member| %>
+      <div class="card mb-3 py-3 mx-md-3 bg-light col-md-4" data-aos="zoom-in" data-aos-duration="800">
+        <div class="text-center">
+          <%= link_to member_path(member) do %>
+            <%= image_tag member.get_icon(200,120), class:"rounded", style:"width:100%;" %>
+          <% end %>
+        </div>
 
-  <% end %>
+        <div class="card-body p-0">
+          <h5 class="card-title text-dark mt-2"><b>
+            <%= truncate(member.nickname, length: 12) %>
+          </b></h5>
+          <p class="card-text">取引回数：<%= member.entries.count %></p>
+          <p class="card-text">登録者：<%= link_to member.subscribers.count, subscribers_member_relationships_path(member) %></p>
+
+          <div class="text-right">
+            <%= link_to '詳細ページ', member_path(member), class:"btn btn-outline-secondary" %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
 <% else %>
   <div class="text-center my-5">
     <% if current_page?(subscribings_member_relationships_path) %>

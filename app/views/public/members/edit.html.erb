@@ -1,18 +1,21 @@
 <div class="container">
   <%= form_with model: @member, url: members_information_path, method: :patch do |f| %>
-    <%= image_tag 'editProfile.svg', class:"my-4 offset-2" %>
+    <%= image_tag 'editProfile.svg', class:"my-4 offset-md-2" %>
     <div class="row mx-auto">
-      <div class="col-md-2 offset-2 text-center" data-aos="zoom-in">
+      <div class="col-md-2 offset-md-3 text-center" data-aos="zoom-in">
         <%= image_tag @member.get_icon(150,150), class:"rounded-circle" %>
       </div>
       <div class="col-md-6 mt-5">
-        <%= f.file_field :icon %>
-        <%= link_to '退会する', quit_form_members_path, class:"btn btn-danger px-5 rounded-pill" %>
+        <div class="custom-file col-md-8">
+          <%= f.label :icon, 'ファイルを選択orドロップ', class:"custom-file-label" %>
+          <%= f.file_field :icon, class:"custom-file-input" %>
+        </div>
+        <%= link_to '退会フォームへ', quit_form_members_path, class:"btn btn-outline-danger my-2 form-control col-md-6" %>
       </div>
     </div>
 
     <div class="row mt-5 mb-5">
-      <div class="col-md-8 mx-auto">
+      <div class="col-md-6 col-xs-12 mx-auto">
         <b><%= f.label :email, 'メールアドレス' %></b>
         <%= f.text_field :email, class:"form-control mb-3" %>
 

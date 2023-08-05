@@ -43,17 +43,17 @@
               <% end %>
             </div>
 
-            <div class="card-body">
+            <div class="card-body py-2">
               <h5>タイトル</h5>
               <%= @post.title %><br>
             </div>
 
-            <div class="card-body">
+            <div class="card-body py-2">
               <h5>紹介</h5>
               <%= @post.introduction %><br>
             </div>
 
-            <div class="card-body">
+            <div class="card-body py-2">
               <h5>取引期限</h5>
               <% if @post.open_status == 'open' || @post.open_status == 'during_trade' %>
                 <div id="timeLimit">
@@ -88,7 +88,9 @@
 
       <div class="col-md-4 col-sm-10 col-xs-12 offset-md-1 mt-5" data-aos="zoom-in" data-aos-duration="1500">
         <%= render 'public/post_comments/comment_bar', comment: @comment, post: @post  %>
+
         <%= render 'public/posts/dm_btn', post: @post, is_room: @is_room, room: @room, entry: @entry, member: @member, room_id: @room_id, entries: @entries %>
+
         <a data-toggle="collapse" href="#pullDownBtnMap" role="button" aria-expanded="false" aria-controls="#pullDownBtnMap">
           <h4 class="btn btn-light form-control rounded my-2">
             ユーザー登録地名：<b><%= @post.place_name %> ▼</b>

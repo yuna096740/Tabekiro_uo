@@ -1,25 +1,31 @@
 <div class="container">
-  <div class="row">
-    <div class="col-md-6 offset-1">
-      <%= image_tag 'quitReasonConfirm.svg', class:"my-5 offset-3" %>
-      <table class="table table-borderless">
-        <thead>
-          <tr>
-            <th class="text-right">ユーザーネーム：</th>
-            <td><h5><%= @member.nickname %></h5></td>
-          </tr>
+  <div class="row ml-md-5">
+    <div class="col-md-10 col-xs-12">
+      <%= image_tag 'quitReasonConfirm.svg', class:"mt-5 offset-md-3" %>
+      <div class="row offset-md-4">
+        <div class="col-md-8 my-2">
+          <p>ユーザーネーム</p>
+          <h4><%= @member.nickname %></h4>
+        </div>
 
-          <tr>
-            <th class="text-right">通報ジャンル：</th>
-            <td><%= @member.reason_for_quit_genre_i18n %></td>
-          </tr>
+        <div class="col-md-8 my-2">
+          <p>退会理由ジャンル</p>
+          <p class="bg-light py-2 px-3 rounded">
+            <%= @member.reason_for_quit_genre_i18n %>
+          </p>
+        </div>
 
-          <tr>
-            <th class="text-right">通報内容：</th>
-            <td><%= @member.reason_for_quit %></td>
-          </tr>
-        </thead>
-      </table>
+        <div class="col-md-8 my-2">
+          <p>退会理由</p>
+          <p class="bg-light py-2 px-3 rounded">
+            <% if @member.reason_for_quit.present? %>
+              <%= @member.reason_for_quit %>
+            <% else %>
+              退会理由未入力
+            <% end %>
+          </p>
+        </div>
+      </div>
     </div>
   </div>
   <div class="row">
@@ -32,9 +38,9 @@
         <%= form_with model: @member, url: quit_members_path, method: :patch do |f| %>
           <%= f.hidden_field :reason_for_quit_genre %>
           <%= f.hidden_field :reason_for_quit %>
-          <%= f.submit '退会する', data: { confirm: "本当によろしいですか？" }, class:"btn btn-danger rounded-pill px-5" %>
+          <%= f.submit '退会する', data: { confirm: "本当によろしいですか？" }, class:"btn btn-danger form-control col-xs-12" %>
         <% end %>
-        <%= link_to 'マイページに戻る', members_path, class:"btn btn-info rounded-pill px-5 ml-3" %>
+        <%= link_to 'マイページに戻る', members_path, class:"btn btn-info form-control col-xs-12 ml-3" %>
       </div>
     </div>
   </div>

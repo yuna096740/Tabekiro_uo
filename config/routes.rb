@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  get 'vision_tags/index'
   namespace :admin do
     get 'tags/index'
   end
@@ -57,10 +58,11 @@ Rails.application.routes.draw do
       end
     end
 
-    resources :searches, only: [:index]
-    resources :tags,     only: [:show]
-    resources :rooms,    only: [:show, :create, :destroy]
-    resources :messages, only: [:create, :destroy]
+    resources :searches,    only: [:index]
+    resources :tags,        only: [:show]
+    resources :rooms,       only: [:show, :create, :destroy]
+    resources :messages,    only: [:create, :destroy]
+    resources :vision_tags, only: [:show]
   end
 
   namespace :admin do

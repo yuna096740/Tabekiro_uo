@@ -60,7 +60,7 @@ class Public::PostsController < ApplicationController
 
   def update
     vision_tags = Vision.get_image_data(post_params[:post_image])
-    
+
     ActiveRecord::Base.transaction do
       if Post.find(params[:id]).update(post_params)
         vision_tags.each do |vision_tag|

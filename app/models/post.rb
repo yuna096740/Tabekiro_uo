@@ -6,11 +6,12 @@ class Post < ApplicationRecord
 
   belongs_to :member
   belongs_to :tag
-  has_many   :post_comments, dependent: :destroy
-  has_many   :favorites,     dependent: :destroy
-  has_many   :rooms,         dependent: :destroy
-  has_many   :notifications, dependent: :destroy
-  has_many   :vision_tags,   dependent: :destroy
+  has_many   :post_comments,            dependent: :destroy
+  has_many   :favorites,                dependent: :destroy
+  has_many   :rooms,                    dependent: :destroy
+  has_many   :notifications,            dependent: :destroy
+  has_many   :vision_tag_relationships, dependent: :destroy
+  has_many   :vision_tags,              through: :vision_tag_relationships
 
   validates :tag_id,       presence: :true
   validates :post_image,   presence: :true

@@ -1,3 +1,3 @@
 class VisionTag < ApplicationRecord
-  belongs_to :post
+  has_many :vision_tag_relationships, dependent: :destroy
 end

@@ -2,7 +2,10 @@ class Public::VisionTagsController < ApplicationController
 
   def show
     @vision_tag = VisionTag.find(params[:id])
-    posts = Post.where(id: params[:post_id])
-    @posts = posts.page(params[:page]).per(24)
+    tags = VisionTag.search(@vision_tag.name)
+    @posts = tags.map do |tag|
+      tag.posts
+    end.flatten
+    @posts = Kaminari.paginate_array(@posts).page(params[:page]).per(5)
   end
 end

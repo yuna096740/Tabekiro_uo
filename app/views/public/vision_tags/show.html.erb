@@ -1,5 +1,5 @@
 <div class="container">
-  <h4 class="my-5">”<b><%= @vision_tag.name %></b>” 一覧</h4>
+  <h4 class="my-5">"<b><%= @vision_tag.name %></b>" 一覧 (<%= @posts.count %>)件</h4>
   <%= render 'public/posts/index', posts: @posts %>
   </div>
 </div>

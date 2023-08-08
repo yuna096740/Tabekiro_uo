@@ -34,7 +34,7 @@
           <div class="bg-light">
             <div class="card-body">
               <h5>AI自動認識タグ</h5>
-              <% @post.vision_tags.each do |vision_tag| %>
+              <% @vision_tags.each do |vision_tag| %>
                 <span class="mr-2">
                   <%= link_to vision_tag_path(vision_tag), class:"text-secondary" do %>
                     #<%= vision_tag.name %>

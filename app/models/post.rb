@@ -23,18 +23,24 @@ class Post < ApplicationRecord
 
   has_one_attached :post_image
 
+  # <!---- ActiveStrage method ----!>
   def get_post_image(width, height)
     post_image.variant(resize_to_fill: [width, height]).processed
   end
 
+  # <!---- Favorite method ----!>
   def favorited_by?(member)
     favorites.exists?(member_id: member.id)
   end
 
+  # <!---- Search method ---!>
   def self.search(keyword)
     where(["title LIKE? or introduction LIKE? or place_name LIKE?", "%#{keyword}%", "%#{keyword}%", "%#{keyword}%"])
   end
 
+
+  # <!---- Notification method ----!>
+  # Faborite method
   def create_notification_favorite!(current_member)
     myfav = Notification.where(["visiter_id = ? and Visited_id = ? and post_id = ? and action = ?", current_member.id, member_id, id, "favorite"])
     if myfav.blank?
@@ -50,6 +56,7 @@ class Post < ApplicationRecord
     end
   end
 
+  # PostComment method (create)
   def create_notification_comment!(current_member, post_comment_id)
      # 自分以外にコメントしている人をすべて取得し、全員に通知を送る
     others_comment_ids = PostComment.select(:member_id).where(post_id: id).where.not(member_id: current_member.id).distinct #distinctする場合は、selectとしてから
@@ -59,6 +66,7 @@ class Post < ApplicationRecord
     save_notification_comment!(current_member, post_comment_id, member_id) if others_comment_ids.blank?
   end
 
+  # PostComment method (save)
   def save_notification_comment!(current_member, post_comment_id, visited_id)
     notice = current_member.active_notifications.new(
       post_id: id,
@@ -70,5 +78,27 @@ class Post < ApplicationRecord
       notice.checked = true
     end
     notice.save if notice.valid?
+  end
+
+  # <!---- Vision_tag method ----!>
+  def save_vision_tags(vision_tags)
+    vision_tags.each do |new_tags|
+      self.vision_tags.find_or_create_by(name: new_tags)
+    end
+  end
+
+  def update_vision_tags(latest_tags)
+    current_tags = self.vision_tags.pluck(:name)
+    old_tags =     current_tags - latest_tags
+    new_tags =     latest_tags - current_tags
+
+    old_tags.each do |old_tag|
+      tag = self.vision_tags.find_by(name: old_tag)
+      self.vision_tags.delete(tag) if tag.present?
+    end
+
+    new_tags.each do |new_tag|
+      self.vision_tags.find_or_create_by(name: new_tag)
+    end
   end
 end

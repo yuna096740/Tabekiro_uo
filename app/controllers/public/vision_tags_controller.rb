@@ -6,6 +6,6 @@ class Public::VisionTagsController < ApplicationController
     @posts = tags.map do |tag|
       tag.posts
     end.flatten
-    @posts = Kaminari.paginate_array(@posts).page(params[:page]).per(5)
+    @posts = Kaminari.paginate_array(@posts).page(params[:page]).per(24)
   end
 end

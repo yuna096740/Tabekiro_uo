@@ -26,18 +26,11 @@ ja:
         unlock_token:           "ロック解除用トークン"
         updated_at:             "更新日"
         email:                  "メールアドレス"
-      mailer:
-      reset_password_instructions:
-        title:                      "こんにちは、"
-        reset_password_explanation: "パスワードの変更を受け付けました。以下のリンクから変更できます。"
-        reset_password_link:        "パスワードを変更する。"
-        please_ignore:              "もしリクエストしていない場合は、このメールを無視してください。"
-        wont_change:                "上記リンクをクリックして新しいパスワードを作成しない限り、パスワードは変更されません。"
 
     models:
       member:                   "会員情報"
 
-  
+
   devise:
     confirmations:
       confirmed:                  "メールアドレスが確認できました。"
@@ -56,11 +49,13 @@ ja:
       unauthenticated:            "この機能を使用するには会員登録が必要です"
       unconfirmed:                "メールアドレスの本人確認が必要です。"
     mailer:
-      confirmation_instructions:
-        action:                   "メールアドレスの確認"
-        greeting:                 "%{recipient}様"
-        instruction:              "以下のリンクをクリックし、メールアドレスの確認手続を完了させてください。"
-        subject:                  "メールアドレス確認メール"
+      reset_password_instructions:
+        subject:                    "パスワードの再設定"
+        title:                      "こんにちは、"
+        reset_password_explanation: "パスワードの変更を受け付けました。以下のリンクから変更できます。"
+        reset_password_link:        "パスワード変更"
+        please_ignore:              "※パスワードリセットの申請に心当たりがない場合は、以降の対応は不要となります。"
+        wont_change:                "上記リンクをクリックして新しいパスワードを作成しない限り、パスワードは変更されません。"
       email_changed:
         greeting:                 "こんにちは、%{recipient}様。"
         message:                  "メールアドレスの（%{email}）変更が完了したため、メールを送信しています。"

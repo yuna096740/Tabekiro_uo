@@ -77,6 +77,16 @@ ja:
       previous:                 "&lsaquo;"
       next:                     "&rsaquo;"
       truncate:                 "..."
+  public:
+    mailer:
+      reset_password_instructions:
+        subject:                    "パスワードの再設定"
+        title:                      "こんにちは、"
+        reset_password_explanation: "パスワードの変更を受け付けました。以下のリンクから変更できます。"
+        reset_password_link:        "パスワードを変更する"
+        please_ignore:              "※パスワードリセットの申請に心当たりがない場合は、以降の対応は不要となります。"
+        wont_change:                "※上記リンクをクリックして新しいパスワードを作成しない限り、パスワードは変更されません。"
+        reset_password_within:      "※リンクの有効期限は1時間です。"
 
   activerecord:
     errors:

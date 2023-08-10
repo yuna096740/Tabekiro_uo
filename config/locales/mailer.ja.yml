@@ -1,9 +1,0 @@
-ja:
-  members:
-    mailer:
-      reset_password_instructions:
-        title:                      "こんにちは、"
-        reset_password_explanation: "パスワードの変更を受け付けました。以下のリンクから変更できます。"
-        reset_password_link:        "パスワードを変更する。"
-        please_ignore:              "もしリクエストしていない場合は、このメールを無視してください。"
-        wont_change:                "上記リンクをクリックして新しいパスワードを作成しない限り、パスワードは変更されません。"

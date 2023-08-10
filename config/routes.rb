@@ -1,8 +1,5 @@
 Rails.application.routes.draw do
 
-  namespace :admin do
-    get 'tags/index'
-  end
   devise_for :members, controllers: {
     registrations: "public/registrations",
     sessions:      "public/sessions",
@@ -50,6 +47,7 @@ Rails.application.routes.draw do
         get 'map'
       end
     end
+
     resources :notifications, only: [:destroy] do
       collection do
         delete 'destroy_all'
@@ -57,10 +55,11 @@ Rails.application.routes.draw do
       end
     end
 
-    resources :searches, only: [:index]
-    resources :tags,     only: [:show]
-    resources :rooms,    only: [:show, :create, :destroy]
-    resources :messages, only: [:create, :destroy]
+    resources :searches,    only: [:index]
+    resources :tags,        only: [:show]
+    resources :rooms,       only: [:show, :create, :destroy]
+    resources :messages,    only: [:create, :destroy]
+    resources :vision_tags, only: [:show]
   end
 
   namespace :admin do
@@ -75,6 +74,5 @@ Rails.application.routes.draw do
     resources :reports,  only: [:show, :update]
     resources :tags,     only: [:index, :create, :edit, :update, :destroy]
   end
-
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

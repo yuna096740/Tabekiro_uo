@@ -1,6 +1,6 @@
 class Public::PostsController < ApplicationController
   before_action :authenticate_member!, except: [:index, :show, :map], unless: :admin_signed_in?
-  before_action :set_post,             only: [:show, :edit, :update]
+  before_action :set_post,             only: [:show, :edit, :update, :destroy]
 
   def index
     posts =   Post.where.not(open_status: "unopened")
@@ -8,7 +8,8 @@ class Public::PostsController < ApplicationController
   end
 
   def show
-    @comment = PostComment.new
+    @comment =     PostComment.new
+    @vision_tags = @post.vision_tags
     if member_signed_in?
       @member =                 @post.member
       @current_member_entries = Entry.where(member_id: current_member.id)
@@ -43,9 +44,7 @@ class Public::PostsController < ApplicationController
     @post = current_member.posts.new(post_params)
     vision_tags = Vision.get_image_data(post_params[:post_image])
     if @post.save
-      vision_tags.each do |vision_tag|
-        @post.vision_tags.create(name: vision_tag)
-      end
+      @post.save_vision_tags(vision_tags)
       redirect_to post_path(@post), notice: "投稿しました。"
     else
       @tags = Tag.all
@@ -60,12 +59,10 @@ class Public::PostsController < ApplicationController
 
   def update
     vision_tags = Vision.get_image_data(post_params[:post_image])
-    
+
     ActiveRecord::Base.transaction do
-      if Post.find(params[:id]).update(post_params)
-        vision_tags.each do |vision_tag|
-          @post.vision_tags.update(name: vision_tag)
-        end
+      if @post.update(post_params)
+        @post.update_vision_tags(vision_tags)
         redirect_to post_path(@post), notice: "投稿内容を更新しました。"
       else
         @post = current_member.posts.new(post_params)
@@ -77,7 +74,7 @@ class Public::PostsController < ApplicationController
   end
 
   def destroy
-    Post.find(params[:id]).destroy
+    @post.destroy
     redirect_to posts_path, notice: "投稿を削除しました"
   end
 

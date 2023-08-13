@@ -36,7 +36,7 @@ class Public::MembersController < ApplicationController
   end
 
   def deal
-    @rooms = @member.rooms.page(params[:page]).per(5)
+    @rooms = @member.rooms.page(params[:page]).per(10)
   end
 
   def quit_form

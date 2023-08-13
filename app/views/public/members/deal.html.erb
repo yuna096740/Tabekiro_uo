@@ -1,11 +1,11 @@
 <div class="container">
   <% if @rooms.present? %>
     <div class="row">
-      <div class="col-md-8">
+      <div class="col-md-12 offset-md-1">
         <%= image_tag 'topMyDealLOGO.svg', class:"my-4" %>
-        <div class="d-md-flex">
+        <div class="d-flex flex-wrap">
           <% @rooms.each do |room| %>
-            <div class="card mb-3 py-3 mx-md-3 bg-light col-md-4" data-aos="zoom-in" data-aos-duration="1000">
+            <div class="card mb-3 py-3 mx-md-3 bg-light col-md-3" data-aos="zoom-in" data-aos-duration="1000">
               <div class="text-center">
                 <%= link_to post_path(room.post) do %>
                   <%= image_tag room.post.get_post_image(200,120), class:"rounded", style:"width:100%;" %>

@@ -10,7 +10,7 @@ Admin.create(
 )
 
 Member.create([
-  { nickname: "うお太郎", email: "mail@tabekiro.com",  password: "123456", introduction: "お魚大好きです！",   status: 0 },
+  { nickname: "test太郎", email: "test@tabekiro.com",  password: "123456", introduction: "お魚大好きです！",   status: 0 },
   { nickname: "うお一郎", email: "mail1@tabekiro.com", password: "123456", introduction: "お魚LOVEです！",     status: 0 },
   { nickname: "うお二郎", email: "mail2@tabekiro.com", password: "123456", introduction: "お魚好物です！",     status: 0 },
   { nickname: "うお三郎", email: "mail3@tabekiro.com", password: "123456", introduction: "お魚マニアです！",   status: 0 },
@@ -23,7 +23,7 @@ Member.create([
 ])
 
 Tag.create([
-  { name: '小魚' }, { name: '中型魚' }, { name: '大型魚' }, { name: '青魚' }, { name: '白身魚' }, { name: '赤身魚' }
+  { name: '小魚' }, { name: '大型魚' }, { name: '青魚' }, { name: '白身魚' }, { name: '赤身魚' }
 ])
 
 Post.create([

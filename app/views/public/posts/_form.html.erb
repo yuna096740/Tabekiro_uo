@@ -17,15 +17,15 @@
 
           <div class="col-md-10 my-1">
             <div class="custom-file">
-              <%= f.label :post_image, '画像', class:"custom-file-label" %>
-              <%= f.file_field :post_image, class:"custom-file-input" %>
+              <%= f.label :post_image, '更新画像を選択', class:"custom-file-label" %>
+              <%= f.file_field :post_image, value: @post.post_image, class:"custom-file-input" %>
             </div>
           </div>
         <% else %>
           <div class="col-md-10 my-1">
             <div class="custom-file">
               <%= f.label :post_image, 'ファイルを選択orドロップ', class:"custom-file-label" %>
-              <%= f.file_field :post_image, class:"custom-file-input" %>
+              <%= f.file_field :post_image, required: true, class:"custom-file-input" %>
             </div>
           </div>
         <% end %>

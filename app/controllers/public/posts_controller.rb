@@ -43,12 +43,12 @@ class Public::PostsController < ApplicationController
   def create
     @post = current_member.posts.new(post_params)
     vision_tags = Vision.get_image_data(post_params[:post_image])
-    if @post.save
+    if @post.valid?
+      @post.save!
       @post.save_vision_tags(vision_tags)
       redirect_to post_path(@post), notice: "投稿しました。"
     else
       @tags = Tag.all
-      flash[:notice] = "正しく入力してください。"
       render :new
     end
   end
@@ -61,14 +61,15 @@ class Public::PostsController < ApplicationController
     vision_tags = Vision.get_image_data(post_params[:post_image])
 
     ActiveRecord::Base.transaction do
-      if @post.update(post_params)
+      if @post.invalid?
+        @post.update(post_params)
+        binding.irb
         @post.update_vision_tags(vision_tags)
         redirect_to post_path(@post), notice: "投稿内容を更新しました。"
       else
         @post = current_member.posts.new(post_params)
         @tags = Tag.all
-        flash[:notice] = "正しく入力してください。"
-        render :new
+        render :edit
       end
     end
   end

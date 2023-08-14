@@ -1,4 +1,5 @@
 class Public::MembersController < ApplicationController
+
   before_action :authenticate_member!, unless: :admin_signed_in?
   before_action :set_current_member,  except: [:index, :show, :favorite]
   before_action :valid_id?,           only: [:show]

@@ -96,7 +96,7 @@ class Public::PostsController < ApplicationController
                                  :open_status,
                                  :post_image,
                                  :member_id
-                                )
+    )
   end
 
   def set_post

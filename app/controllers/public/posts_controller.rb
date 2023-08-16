@@ -1,5 +1,5 @@
 class Public::PostsController < ApplicationController
-  
+
   before_action :authenticate_member!, except: [:index, :show, :map], unless: :admin_signed_in?
   before_action :set_post,             only: [:show, :edit, :update, :destroy]
 
@@ -60,9 +60,10 @@ class Public::PostsController < ApplicationController
 
   def update
     ActiveRecord::Base.transaction do
+      @post.attributes = post_params
       if @post.valid?
         @post.update(post_params)
-        if @post.post_image.attached?
+        if post_params[:post_image].present?
           vision_tags = Vision.get_image_data(post_params[:post_image])
           @post.update_vision_tags(vision_tags)
         end
@@ -103,3 +104,5 @@ class Public::PostsController < ApplicationController
     @post = Post.find(params[:id])
   end
 end
+
+

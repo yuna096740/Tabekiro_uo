@@ -99,9 +99,9 @@ class Post < ApplicationRecord
       vision_tag = self.vision_tags.find_by(name: old_tag)
       self.vision_tags.delete(vision_tag) if vision_tag.present?
     end
-
+    
     new_tags.each do |new_tag|
-      tag = self.tags.find_or_create_by(name: new_tag)
+      tag = self.vision_tags.find_or_create_by(name: new_tag)
       self.vision_tags << tag
     end
   end

@@ -1,17 +1,17 @@
 class Admin::MembersController < ApplicationController
   before_action :authenticate_admin!
+  before_action :set_member, except: [:index]
 
   def index
     @members = Member.all.page(params[:page]).per(8)
   end
 
   def show
-    @member = Member.find(params[:id])
     @report_count = Report.where(reported_id: @member.id).count
   end
 
   def update
-    Member.find(params[:id]).update(member_params)
+    @member.update(member_params)
     redirect_to request.referer, notice: "ステータスを更新しました。"
   end
 
@@ -19,5 +19,9 @@ class Admin::MembersController < ApplicationController
 
   def member_params
     params.require(:member).permit(:status)
+  end
+
+  def set_member
+    @member = Member.find(params[:id])
   end
 end

@@ -58,16 +58,15 @@ class Public::PostsController < ApplicationController
   end
 
   def update
-    vision_tags = Vision.get_image_data(post_params[:post_image])
-
     ActiveRecord::Base.transaction do
-      if @post.invalid?
+      if @post.valid?
         @post.update(post_params)
-        binding.irb
-        @post.update_vision_tags(vision_tags)
+        if @post.post_image.attached?
+          vision_tags = Vision.get_image_data(post_params[:post_image])
+          @post.update_vision_tags(vision_tags)
+        end
         redirect_to post_path(@post), notice: "投稿内容を更新しました。"
       else
-        @post = current_member.posts.new(post_params)
         @tags = Tag.all
         render :edit
       end

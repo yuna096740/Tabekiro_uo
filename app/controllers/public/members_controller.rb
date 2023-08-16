@@ -6,12 +6,12 @@ class Public::MembersController < ApplicationController
   before_action :ensure_guest_member, only: [:edit]
 
   def index
-    @posts = current_member.posts.all.page(params[:page]).per(24)
+    @posts = current_member.posts.all.page(params[:page]).per(12)
   end
 
   def show
     @member = Member.find(params[:id])
-    @posts =  @member.posts.all.page(params[:page]).per(24)
+    @posts =  @member.posts.all.page(params[:page]).per(12)
   end
 
   def edit
@@ -33,11 +33,11 @@ class Public::MembersController < ApplicationController
   def favorite
     favorites = Favorite.where(member_id: current_member.id).pluck(:post_id)
     @favorite_posts = Post.find(favorites)
-    @favorite_posts = Kaminari.paginate_array(@favorite_posts).page(params[:page]).per(5)
+    @favorite_posts = Kaminari.paginate_array(@favorite_posts).page(params[:page]).per(6)
   end
 
   def deal
-    @rooms = @member.rooms.page(params[:page]).per(10)
+    @rooms = @member.rooms.page(params[:page]).per(6)
   end
 
   def quit_form

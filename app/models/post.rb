@@ -38,7 +38,6 @@ class Post < ApplicationRecord
     where(["title LIKE? or introduction LIKE? or place_name LIKE?", "%#{keyword}%", "%#{keyword}%", "%#{keyword}%"])
   end
 
-
   # <!---- Notification method ----!>
   # Faborite method
   def create_notification_favorite!(current_member)

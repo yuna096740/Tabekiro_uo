@@ -32,6 +32,7 @@ class Member < ApplicationRecord
 
   has_one_attached :icon
 
+  # <!---- ActiveStrage method ----!>
   def get_icon(width, height)
     unless icon.attached?
       file_path = Rails.root.join('app/assets/images/no-ion.jpg')
@@ -40,10 +41,12 @@ class Member < ApplicationRecord
     icon.variant(resize_to_fill: [width, height]).processed
   end
 
+  # <!---- Search method (for Admin) ----!>
   def self.search(keyword)
     where(["nickname LIKE? or email LIKE? or introduction LIKE?", "%#{keyword}%", "%#{keyword}%", "%#{keyword}%"])
   end
 
+  # <!---- Relationship method ----!>
   def subscribe(member_id)
     subscribes.create(subscribed_id: member_id)
   end
@@ -56,6 +59,8 @@ class Member < ApplicationRecord
     subscribings.include?(member)
   end
 
+  # <!---- Notification method ----!>
+  # Relationship method
   def create_notification_subscribe!(current_member)
     mysub = Notification.where(["visiter_id = ? and visited_id = ? and action = ?", current_member.id, id, "subscribe"])
     if mysub.blank?
@@ -67,6 +72,7 @@ class Member < ApplicationRecord
     end
   end
 
+  # <!---- Guest Login method ----!>
   GUEST_MEMBER_EMAIL = "guest@example.com"
   def self.guest
     find_or_create_by!(email: GUEST_MEMBER_EMAIL) do |member|
@@ -79,6 +85,7 @@ class Member < ApplicationRecord
     email == GUEST_MEMBER_EMAIL
   end
 
+  # <!---- Member's authentication (status) ----!>
   def active_for_authentication?
     super && (status == 'active')
   end

@@ -1,4 +1,5 @@
 class Public::PostsController < ApplicationController
+  
   before_action :authenticate_member!, except: [:index, :show, :map], unless: :admin_signed_in?
   before_action :set_post,             only: [:show, :edit, :update, :destroy]
 
@@ -8,9 +9,9 @@ class Public::PostsController < ApplicationController
   end
 
   def show
-    @comment =     PostComment.new
     @vision_tags = @post.vision_tags
     if member_signed_in?
+      @comment =                PostComment.new
       @member =                 @post.member
       @current_member_entries = Entry.where(member_id: current_member.id)
       @member_entries =         Entry.where(member_id: @member.id)

@@ -31,7 +31,7 @@ class Public::MembersController < ApplicationController
   end
 
   def favorite
-    favorites = Favorite.where(member_id: current_member.id).pluck(:post_id)
+    favorites =       Favorite.where(member_id: current_member.id).pluck(:post_id)
     @favorite_posts = Post.find(favorites)
     @favorite_posts = Kaminari.paginate_array(@favorite_posts).page(params[:page]).per(6)
   end
@@ -71,7 +71,7 @@ class Public::MembersController < ApplicationController
                                    :status,
                                    :reason_for_quit_genre,
                                    :reason_for_quit
-                                  )
+    )
   end
 
   def ensure_guest_member

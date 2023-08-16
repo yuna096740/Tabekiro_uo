@@ -1,4 +1,5 @@
 class Public::PostsController < ApplicationController
+
   before_action :authenticate_member!, except: [:index, :show, :map], unless: :admin_signed_in?
   before_action :set_post,             only: [:show, :edit, :update, :destroy]
 
@@ -8,9 +9,9 @@ class Public::PostsController < ApplicationController
   end
 
   def show
-    @comment =     PostComment.new
     @vision_tags = @post.vision_tags
     if member_signed_in?
+      @comment =                PostComment.new
       @member =                 @post.member
       @current_member_entries = Entry.where(member_id: current_member.id)
       @member_entries =         Entry.where(member_id: @member.id)
@@ -43,12 +44,12 @@ class Public::PostsController < ApplicationController
   def create
     @post = current_member.posts.new(post_params)
     vision_tags = Vision.get_image_data(post_params[:post_image])
-    if @post.save
+    if @post.valid?
+      @post.save!
       @post.save_vision_tags(vision_tags)
       redirect_to post_path(@post), notice: "投稿しました。"
     else
       @tags = Tag.all
-      flash[:notice] = "正しく入力してください。"
       render :new
     end
   end
@@ -58,17 +59,18 @@ class Public::PostsController < ApplicationController
   end
 
   def update
-    vision_tags = Vision.get_image_data(post_params[:post_image])
-
     ActiveRecord::Base.transaction do
-      if @post.update(post_params)
-        @post.update_vision_tags(vision_tags)
+      @post.attributes = post_params
+      if @post.valid?
+        @post.update(post_params)
+        if post_params[:post_image].present?
+          vision_tags = Vision.get_image_data(post_params[:post_image])
+          @post.update_vision_tags(vision_tags)
+        end
         redirect_to post_path(@post), notice: "投稿内容を更新しました。"
       else
-        @post = current_member.posts.new(post_params)
         @tags = Tag.all
-        flash[:notice] = "正しく入力してください。"
-        render :new
+        render :edit
       end
     end
   end
@@ -95,10 +97,12 @@ class Public::PostsController < ApplicationController
                                  :open_status,
                                  :post_image,
                                  :member_id
-                                )
+    )
   end
 
   def set_post
     @post = Post.find(params[:id])
   end
 end
+
+

@@ -5,7 +5,7 @@
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-lg">
     <div class="modal-content">
-      <div class="modal-header text-center">
+      <div class="modal-header">
         <h5 class="modal-title" id="exampleModalLabel"><%= image_tag 'navModal.svg', class:"file-fluid" %></h5>
         <button type="button" class="btn-close btn btn-outline-secondary" data-dismiss="modal" aria-label="Close">
           <i class="fas fa-times"></i>
@@ -14,7 +14,7 @@
       <div class="modal-body">
         <div class="container-fluid">
           <%= link_to posts_path do %>
-            <%= image_tag 'topIndexLOGO.svg', class:"m-2" %>
+            <%= image_tag 'topIndexLOGO.svg', class:"m-2", style:"width:80%;" %>
           <% end %>
 
           <% if member_signed_in? %>

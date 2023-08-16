@@ -1,16 +1,17 @@
 class Public::MembersController < ApplicationController
+
   before_action :authenticate_member!, unless: :admin_signed_in?
   before_action :set_current_member,  except: [:index, :show, :favorite]
   before_action :valid_id?,           only: [:show]
   before_action :ensure_guest_member, only: [:edit]
 
   def index
-    @posts = current_member.posts.all.page(params[:page]).per(24)
+    @posts = current_member.posts.all.page(params[:page]).per(12)
   end
 
   def show
     @member = Member.find(params[:id])
-    @posts =  @member.posts.all.page(params[:page]).per(24)
+    @posts =  @member.posts.all.page(params[:page]).per(12)
   end
 
   def edit
@@ -30,13 +31,13 @@ class Public::MembersController < ApplicationController
   end
 
   def favorite
-    favorites = Favorite.where(member_id: current_member.id).pluck(:post_id)
+    favorites =       Favorite.where(member_id: current_member.id).pluck(:post_id)
     @favorite_posts = Post.find(favorites)
-    @favorite_posts = Kaminari.paginate_array(@favorite_posts).page(params[:page]).per(5)
+    @favorite_posts = Kaminari.paginate_array(@favorite_posts).page(params[:page]).per(6)
   end
 
   def deal
-    @rooms = @member.rooms.page(params[:page]).per(5)
+    @rooms = @member.rooms.page(params[:page]).per(6)
   end
 
   def quit_form
@@ -70,7 +71,7 @@ class Public::MembersController < ApplicationController
                                    :status,
                                    :reason_for_quit_genre,
                                    :reason_for_quit
-                                  )
+    )
   end
 
   def ensure_guest_member

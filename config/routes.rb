@@ -5,6 +5,7 @@ Rails.application.routes.draw do
     sessions:      "public/sessions",
     passwords:     "public/passwords"
   }
+  
   devise_scope :member do
     post "members/guest_sign_in", to: "public/sessions#guest_sign_in"
   end

@@ -19,6 +19,7 @@ import "../stylesheets/countdown.scss";
 import "../stylesheets/notice.scss";
 import "../stylesheets/layouts.scss";
 import "../stylesheets/session.scss";
+import "../stylesheets/image-preview.scss";
 
 import "./scrollComment";
 

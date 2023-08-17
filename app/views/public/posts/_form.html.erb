@@ -10,23 +10,28 @@
         <% end %>
       </div>
       <div class="row">
-        <% unless post.id == nil %>
-          <div class="col-md-10">
-            <%= image_tag @post.get_post_image(80,80), class:"rounded mb-2" %>
-
-            <div class="custom-file">
-              <%= f.label :post_image, '更新画像を選択', class:"custom-file-label" %>
-              <%= f.file_field :post_image, value: @post.post_image, class:"custom-file-input" %>
-            </div>
+        <div class="col-md-10 my-1">
+          <div id="image_preview" class="image-preview text-center">
+            <% if @post.post_image.attached? %>
+              <%= image_tag @post.post_image, class:"rounded" %>
+            <% else %>
+              <div style="height:10vh"></div>
+              ※画像が表示されます
+            <% end %>
           </div>
-        <% else %>
-          <div class="col-md-10 my-1">
-            <div class="custom-file">
+        </div>
+
+        <div class="col-md-10 my-1">
+          <div class="custom-file">
+            <% unless post.id == nil %>
+              <%= f.label :post_image, '更新画像を選択', class:"custom-file-label" %>
+              <%= f.file_field :post_image, class:"custom-file-input" %>
+            <% else %>
               <%= f.label :post_image, 'ファイルを選択orドロップ', class:"custom-file-label" %>
               <%= f.file_field :post_image, required: true, class:"custom-file-input" %>
-            </div>
+            <% end %>
           </div>
-        <% end %>
+        </div>
 
         <div class="col-md-10 my-1">
           <%= f.label :title, 'タイトル' %>
@@ -56,7 +61,7 @@
     </div>
 
     <div class="col-md-6 col-sm-10 col-xs-12 mt-5">
-      <div class="d-flex mb-3">
+      <div class="d-flex my-4">
         <input id="address" type="textbox" placeholder="ピンを刺したい地名を検索" class="form-control col-7">
         <input type="button" value="ピンを刺す" onclick="codeAddress()" class="form-control ml-4 btn btn-outline-secondary rounded-pill">
       </div>
@@ -64,7 +69,7 @@
       <div id="map" class="mapForm"></div>
       ※ ピンの位置の調整ができます。※ ピンは一度しか刺せません。
 
-      <%= f.text_field :place_name, placeholder: "登録する地名を入力(15字以内)", required: true, class:"form-control my-3" %>
+      <%= f.text_field :place_name, placeholder: "登録する地名を入力(15字以内)", required: true, class:"form-control my-4" %>
 
     </div>
     <div class="mx-auto">
@@ -82,6 +87,8 @@
   </div>
 <% end %>
 
+<%# image preview 機能 %>
+<%= render 'public/posts/js_template/imagePreview' %>
 <%# Google Map API %>
 <%= render 'public/posts/js_template/newGoogleMap' %>
 <script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['API_KEY'] %>&libraries=places&callback=initMap" async defer></script>

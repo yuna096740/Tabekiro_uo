@@ -89,7 +89,9 @@
       <div class="col-md-4 col-sm-10 col-xs-12 offset-md-1 mt-5" data-aos="zoom-in" data-aos-duration="1500">
         <%= render 'public/post_comments/comment_bar', comment: @comment, post: @post  %>
 
-        <%= render 'public/posts/dm_btn', post: @post, is_room: @is_room, room: @room, entry: @entry, member: @member, room_id: @room_id, entries: @entries %>
+        <% if member_signed_in? %>
+          <%= render 'public/posts/dm_btn', post: @post, is_room: @is_room, room: @room, entry: @entry, member: @member, room_id: @room_id, entries: @entries %>
+        <% end %>
 
         <a data-toggle="collapse" href="#pullDownBtnMap" role="button" aria-expanded="false" aria-controls="#pullDownBtnMap">
           <h4 class="btn btn-light form-control rounded my-2">

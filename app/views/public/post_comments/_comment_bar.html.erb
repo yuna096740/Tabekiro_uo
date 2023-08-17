@@ -1,5 +1,5 @@
 <%= form_with model: [ post, comment ], local: false do |f| %>
-  <table class="table table-bordered bg-light mt-4">
+  <table class="table table-bordered bg-light my-4" data-aos="zoom-in-left" data-aos-duration="800">
     <thead>
       <tr class="text-right">
         <th id="postCommentCount">コメント数 : <%= @post.post_comments.count %>件</th>

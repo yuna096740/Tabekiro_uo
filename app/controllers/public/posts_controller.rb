@@ -44,6 +44,7 @@ class Public::PostsController < ApplicationController
   def create
     @post = current_member.posts.new(post_params)
     vision_tags = Vision.get_image_data(post_params[:post_image])
+    @post.attributes = post_params
     if @post.valid?
       @post.save!
       @post.save_vision_tags(vision_tags)

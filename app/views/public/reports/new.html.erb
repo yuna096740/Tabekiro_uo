@@ -1,30 +1,28 @@
 <div class="container">
   <%= form_with model: [@member, @report], url: confirm_member_reports_path, method: :post do |f| %>
-    <div class="row">
-      <div class="col-md-9 mt-5">
-      <%= image_tag 'reportForm.svg', class:"mb-5 offset-3" %>
-        <table class="table table-borderless">
-          <thead>
-            <tr>
-              <th class="text-right align-middle">ユーザーネーム：</th>
-              <td><h5><%= link_to @member.nickname, member_path(@member), class:"text-dark" %></h5></td>
-            </tr>
+    <div class="row ml-md-5">
+      <div class="col-md-10 col-xs-12">
+      <%= image_tag 'quitForm.svg', class:"my-3 offset-md-3" %>
+        <div class="row offset-md-4">
+          <div class="col-md-8 my-2">
+            <p>ユーザーネーム</p>
+            <h4><%= link_to @member.nickname, member_path(@member), class:"text-dark ml-3" %></h4>
+          </div>
 
-            <tr>
-              <th class="text-right align-middle">通報ジャンル：</th>
-              <td><%= f.select :genre, Report.genres_i18n.invert, {}, class:"form-control my-3" %></td>
-            </tr>
+          <div class="col-md-8 my-2">
+            <%= f.label :genre, '通報ジャンル選択(必須)' %>
+            <%= f.select :genre, Report.genres_i18n.invert, {}, class:"form-control my-3" %>
+          </div>
 
-            <tr>
-              <th class="align-top text-right">通報内容：</th>
-              <td><%= f.text_area :reason, rows: 5, placeholder: "入力してください", class:"form-control" %></td>
-            </tr>
-          </thead>
-        </table>
+          <div class="col-md-8 my-2">
+            <%= f.label :reason, '通報内容入力' %>
+            <%= f.text_area :reason, rows: 3, placeholder: "入力してください", class:"form-control" %>
+          </div>
+        </div>
       </div>
     </div>
     <div class="row">
-      <div class="mx-auto">
+      <div class="mx-auto mt-3">
         <%= f.submit '通報内容確認画面へ', class:"btn btn-danger rounded-pill px-5 mb-5" %>
       </div>
     </div>

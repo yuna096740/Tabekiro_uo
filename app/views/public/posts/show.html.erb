@@ -1,90 +1,107 @@
 <% unless @post.open_status == 'unopened' && @post.member != current_member %>
   <div class="container mb-5">
     <div class="row">
-      <div class="col-md-7">
+      <div class="col-md-7 col-sm-10 col-xs-12">
         <%= image_tag 'postDetail.svg', class:"my-4" %>
-        <div class="bg-light rounded" data-aos="zoom-in" data-aos-duration="1500">
-          <div class="d-flex px-3 py-2">
-            <%= image_tag @post.member.get_icon(50,50), class:"rounded-circle mx-3" %>
+        <div class="bg-light rounded py-2" data-aos="zoom-in" data-aos-duration="1500">
+          <div class="d-flex px-3">
+            <%= image_tag @post.member.get_icon(50,50), class:"rounded-circle mx-2 mb-2" %>
             <h5 class="my-auto">
               <%= link_to @post.member.nickname, member_path(@post.member_id), class:"text-dark ml-2" %>
             </h5>
           </div>
 
           <div class="text-center">
-            <%= image_tag @post.get_post_image(600,350), class:"rounded" %>
+            <%= image_tag @post.get_post_image(600,350), class:"rounded img-fluid px-2" %>
           </div>
+          <div class="d-flex justify-content-between mx-3 mt-1">
+            <span class="text-secondary">
+              <%= time_ago_in_words(@post.updated_at).upcase %>
+            </span>
 
-          <div class="text-right mt-3 mr-3" id="favorite">
-            <% if member_signed_in? %>
-              <%= render 'public/favorites/fav' , post: @post%>
-            <% else %>
-              <%= link_to post_favorites_path(@post), method: :post, class:"text-danger" do %>
-                <i class="fas fa-heart"></i>
-                <%= @post.favorites.count %>
-              <% end %>
-            <% end %>
-          </div>
-
-          <table class="table table-borderless ml-2">
-            <thead>
-              <tr>
-                <th class="col-2">タイトル</th>
-                <td><%= @post.title %></td>
-              </tr>
-
-              <tr>
-                <th>紹介</th>
-                <td><%= @post.introduction %></td>
-              </tr>
-
-              <tr>
-                <th>取引期限</th>
-                <% if @post.open_status == 'open' || @post.open_status == 'during_trade' %>
-                  <td id="timeLimit">
-                    あと
-                    <span class="hour"></span>時間
-                    <span class="min"></span>分
-                    <span class="sec"></span>秒です。
-                  </td>
-                  <td id="hideLimit">
-                    取引期限は終了しました。
-                  </td>
-                <% elsif @post.open_status == 'unopened' %>
-                  <td class="text-success">非公開中</td>
-                <% else %>
-                  <td>取引は終了しました。</td>
+            <div id="favorite">
+              <% if member_signed_in? %>
+                <%= render 'public/favorites/fav' , post: @post%>
+              <% else %>
+                <%= link_to post_favorites_path(@post), method: :post, class:"text-danger" do %>
+                  <i class="fas fa-heart"></i>
+                  <%= @post.favorites.count %>
                 <% end %>
-              </tr>
+              <% end %>
+            </div>
+          </div>
 
-              <tr>
-                <th></th>
-                <td><%= time_ago_in_words(@post.updated_at).upcase %></td>
-              </tr>
-            </thead>
-          </table>
+          <div class="bg-light">
+            <div class="card-body">
+              <h5>AI自動認識タグ</h5>
+              <% @vision_tags.each do |vision_tag| %>
+                <span class="mr-2">
+                  <%= link_to vision_tag_path(vision_tag), class:"text-secondary" do %>
+                    #<%= vision_tag.name %>
+                  <% end %>
+                </span>
+              <% end %>
+            </div>
+
+            <div class="card-body py-2">
+              <h5>タイトル</h5>
+              <%= @post.title %><br>
+            </div>
+
+            <div class="card-body py-2">
+              <h5>紹介</h5>
+              <%= @post.introduction %><br>
+            </div>
+
+            <div class="card-body py-2">
+              <h5>取引期限</h5>
+              <% if @post.open_status == 'open' || @post.open_status == 'during_trade' %>
+                <div id="timeLimit">
+                  あと
+                  <span class="hour"></span>時間
+                  <span class="min"></span>分
+                  <span class="sec"></span>秒です。
+                </div>
+                <div id="hideLimit">
+                  取引期限は終了しました。
+                </div>
+              <% elsif @post.open_status == 'unopened' %>
+                <p class="text-success">非公開中</p>
+              <% else %>
+                <p>取引は終了しました。</p>
+              <% end %>
+            </div>
+          </div>
 
           <div class="text-center">
             <% if @post.member == current_member %>
-              <%= link_to '編集する', edit_post_path(@post), class:"btn btn-success px-5 mr-5 mb-3 rounded-pill" %>
-              <%= link_to '削除する', post_path(@post), method: :delete, data: { confirm: "本当によろしいですか？"}, class:"btn btn-danger px-5 mb-3 rounded-pill" %>
+              <div class="d-flex">
+                <%= link_to '編集する', edit_post_path(@post), class:"btn btn-outline-success form-control mb-1 mx-2" %>
+                <%= link_to '削除する', post_path(@post), method: :delete, data: { confirm: "本当によろしいですか？"}, class:"btn btn-outline-danger form-control mx-2" %>
+              </div>
             <% elsif current_admin %>
-              <%= link_to '削除する', post_path(@post), method: :delete, data: { confirm: "本当によろしいですか？"}, class:"btn btn-danger px-5 mb-3 rounded-pill" %>
+              <%= link_to '削除する', post_path(@post), method: :delete, data: { confirm: "本当によろしいですか？"}, class:"btn btn-outline-danger form-control col-6" %>
             <% end %>
           </div>
-          <a data-toggle="collapse" href="#pullDownBtnMap" role="button" aria-expanded="false" aria-controls="#pullDownBtnMap">
-            <h4 class="btn btn-light form-control"><b>地図の開閉はこちらから。</b>ユーザー登録地名：<b> <%= @post.place_name %> ▼</b></h4>
-          </a>
         </div>
       </div>
 
-      <div class="col-md-4 offset-1 mt-5" data-aos="zoom-in" data-aos-duration="1500">
+      <div class="col-md-4 col-sm-10 col-xs-12 offset-md-1 mt-5" data-aos="zoom-in" data-aos-duration="1500">
         <%= render 'public/post_comments/comment_bar', comment: @comment, post: @post  %>
-        <%= render 'public/posts/dm_btn', post: @post, is_room: @is_room, room: @room, entry: @entry, member: @member, room_id: @room_id, entries: @entries %>
+
+        <% if member_signed_in? %>
+          <%= render 'public/posts/dm_btn', post: @post, is_room: @is_room, room: @room, entry: @entry, member: @member, room_id: @room_id, entries: @entries %>
+        <% end %>
+
+        <a data-toggle="collapse" href="#pullDownBtnMap" role="button" aria-expanded="false" aria-controls="#pullDownBtnMap">
+          <h4 class="btn btn-light form-control rounded my-2">
+            ユーザー登録地名：<b><%= @post.place_name %> ▼</b>
+          </h4>
+        </a>
       </div>
     </div>
 
-    <div class="row my-5">
+    <div class="row my-3">
       <div class="col mx-auto">
         <div class="collapse" id="pullDownBtnMap">
           <div id="map" class="mapShow"></div>

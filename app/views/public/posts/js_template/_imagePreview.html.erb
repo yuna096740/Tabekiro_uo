@@ -1,7 +1,6 @@
 <script>
   $(document).on("turbolinks:load", function() {
     $("#post_post_image").on("change", function(e){
-    console.log("hello")
       var files = e.target.files;
       var d = new $.Deferred().resolve();
       $.each(files, function(i, file) {

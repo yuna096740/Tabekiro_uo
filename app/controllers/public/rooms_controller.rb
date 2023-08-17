@@ -1,5 +1,6 @@
 class Public::RoomsController < ApplicationController
   before_action :authenticate_member!
+  before_action :set_room, only: [:show, :destroy]
 
   def create
     @room =                 Room.create(room_params)
@@ -9,7 +10,6 @@ class Public::RoomsController < ApplicationController
   end
 
   def show
-    @room = Room.find(params[:id])
     if Entry.where(member_id: current_member.id, room_id: @room.id).exists?
       @new_message =  Message.new
       @messages =     @room.messages
@@ -21,7 +21,7 @@ class Public::RoomsController < ApplicationController
   end
 
   def destroy
-    Room.find(params[:id]).destroy
+    @room.destroy
     redirect_to posts_path, notice: "取引をキャンセルしました。"
   end
 
@@ -35,4 +35,7 @@ class Public::RoomsController < ApplicationController
     params.require(:entry).permit(:member_id, :room_id)
   end
 
+  def set_room
+    @room = Room.find(params[:id])
+  end
 end

@@ -1,6 +1,7 @@
 class Public::PostsController < ApplicationController
+
   before_action :authenticate_member!, except: [:index, :show, :map], unless: :admin_signed_in?
-  before_action :set_post,             only: [:show, :edit, :update]
+  before_action :set_post,             only: [:show, :edit, :update, :destroy]
 
   def index
     posts =   Post.where.not(open_status: "unopened")
@@ -8,8 +9,9 @@ class Public::PostsController < ApplicationController
   end
 
   def show
-    @comment = PostComment.new
+    @vision_tags = @post.vision_tags
     if member_signed_in?
+      @comment =                PostComment.new
       @member =                 @post.member
       @current_member_entries = Entry.where(member_id: current_member.id)
       @member_entries =         Entry.where(member_id: @member.id)
@@ -40,13 +42,15 @@ class Public::PostsController < ApplicationController
   end
 
   def create
-    post = current_member.posts.new(post_params)
-    if post.save
-      redirect_to post_path(post), notice: "投稿しました。"
+    @post = current_member.posts.new(post_params)
+    vision_tags = Vision.get_image_data(post_params[:post_image])
+    @post.attributes = post_params
+    if @post.valid?
+      @post.save!
+      @post.save_vision_tags(vision_tags)
+      redirect_to post_path(@post), notice: "投稿しました。"
     else
-      @post = current_member.posts.new(post_params)
       @tags = Tag.all
-      flash[:notice] = "正しく入力してください。"
       render :new
     end
   end
@@ -56,12 +60,24 @@ class Public::PostsController < ApplicationController
   end
 
   def update
-    Post.find(params[:id]).update(post_params)
-    redirect_to post_path(@post), notice: "投稿内容を更新しました。"
+    ActiveRecord::Base.transaction do
+      @post.attributes = post_params
+      if @post.valid?
+        @post.update(post_params)
+        if post_params[:post_image].present?
+          vision_tags = Vision.get_image_data(post_params[:post_image])
+          @post.update_vision_tags(vision_tags)
+        end
+        redirect_to post_path(@post), notice: "投稿内容を更新しました。"
+      else
+        @tags = Tag.all
+        render :edit
+      end
+    end
   end
 
   def destroy
-    Post.find(params[:id]).destroy
+    @post.destroy
     redirect_to posts_path, notice: "投稿を削除しました"
   end
 
@@ -82,10 +98,12 @@ class Public::PostsController < ApplicationController
                                  :open_status,
                                  :post_image,
                                  :member_id
-                                )
+    )
   end
 
   def set_post
     @post = Post.find(params[:id])
   end
 end
+
+

@@ -1,39 +1,30 @@
 <% if @member.status == 'active' %>
   <div class="container">
     <div class="row mb-5">
-      <div class="col-md-4 my-5" data-aos="zoom-in" data-aos-duration="1000">
-        <table class="table table-borderless">
-          <thead>
-            <tr>
-              <th>
-                <%= link_to post_path(@room.post), class:"text-dark" do %>
-                  <%= image_tag @room.post.get_post_image(100,100), class:"rounded" %>
-                <% end %>
-              </th>
-              <th></th>
-            </tr>
+      <div class="col-md-5 my-5" data-aos="zoom-in" data-aos-duration="600">
+        <div class="card mb-3 mt-3 py-4 mx-md-1 bg-light col-md-9">
+          <div class="text-center">
+            <%= link_to post_path(@room.post) do %>
+              <%= image_tag @room.post.get_post_image(300,300), class:"rounded", style:"width:100%;" %>
+            <% end %>
+          </div>
+          <p class="text-secondary text-right">最終更新:<%= time_ago_in_words(@room.post.created_at).upcase %></p>
 
-            <tr>
-              <th>タイトル</th>
-              <th>
-                <%= link_to post_path(@room.post), class:"text-dark" do %>
-                  <%= truncate(@room.post.title, length: 8) %>
-                <% end %>
-              </th>
-            </tr>
-
-            <tr>
-              <th>取引開始日</th>
-              <th><%= l @room.created_at %></th>
-            </tr>
-          </thead>
-        </table>
-        <div class="text-center">
-          <%= link_to '取引を中止する', room_path(@room), method: :delete, data: { confirm: "本当によろしいですか？※今までの取引内容が全て失われます。" }, class:"text-danger" %>
+          <div class="card-body p-0">
+            <h5 class="card-title"><b>
+              <%= link_to post_path(@room.post), class:"text-dark" do %>
+                <%= truncate(@room.post.title, length: 8) %>
+              <% end %>
+            </b></h5>
+            <p class="card-text">取引開始日：<%= l @room.created_at %></p>
+            <p class="card-text text-center">
+              <%= link_to '取引を中止する', room_path(@room), method: :delete, data: { confirm: "本当によろしいですか？※今までの取引内容が全て失われます。" }, class:"text-danger" %>
+            </p>
+          </div>
         </div>
 
       </div>
-      <div class="col-md-7 mb-5 mt-3" data-aos="zoom-in" data-aos-duration="1000">
+      <div class="col-md-7 mb-5 mt-3" data-aos="zoom-in" data-aos-duration="600">
         <div class="d-flex ml-3 mb-2 text-dark">
           <%= link_to member_path(@member), class:"text-dark" do %>
             <%= image_tag @member.get_icon(40,40), class:"rounded-circle mr-1" %>

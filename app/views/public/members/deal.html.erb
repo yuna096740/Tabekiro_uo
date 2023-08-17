@@ -1,33 +1,37 @@
 <div class="container">
   <% if @rooms.present? %>
     <div class="row">
-      <div class="col-md-8 offset-2">
+      <div class="col-md-12 offset-md-1">
         <%= image_tag 'topMyDealLOGO.svg', class:"my-4" %>
-        <% @rooms.each do |room| %>
-          <table class="table table-borderless bg-light rounded" data-aos="zoom-in" data-aos-duration="1000">
-            <thead>
-              <tr>
-                <th>
-                  <%= link_to post_path(room.post) do %>
-                    <%= image_tag room.post.get_post_image(100,100), class:"rounded ml-3" %>
+        <div class="d-flex flex-wrap">
+          <% @rooms.each do |room| %>
+            <div class="card mb-3 py-3 mx-md-3 bg-light col-md-3" data-aos="zoom-in" data-aos-duration="1000">
+              <div class="text-center">
+                <%= link_to post_path(room.post) do %>
+                  <%= image_tag room.post.get_post_image(200,120), class:"rounded", style:"width:100%;" %>
+                <% end %>
+              </div>
+              <p class="text-secondary text-right">最終更新:<%= time_ago_in_words(room.post.created_at).upcase %></p>
+
+              <div class="card-body p-0">
+                <h5 class="card-title"><b>
+                  <%= link_to post_path(room.post), class:"text-dark" do %>
+                    <%= truncate(room.post.title, length: 12) %>
                   <% end %>
-                </th>
-                <td>
-                  <p class="mb-2"><b><%= link_to room.post.title, post_path(room.post), class:"text-dark" %></p></b>
-                  <p class="mb-2">ステータス：<%= room.post.open_status_i18n %></p>
-                  <p class="mb-2">投稿日：<%= time_ago_in_words(room.post.created_at).upcase %></p>
-                </td>
-                <td class="text-right">
-                  <%= link_to room_path(room), class:"btn btn-outline-secondary mt-5" do %>
+                </b></h5>
+                <p class="card-text">ステータス：<%= room.post.open_status_i18n %></p>
+
+                <div class="text-right">
+                  <%= link_to room_path(room), class:"btn btn-outline-secondary mt-1" do %>
                     <% others_id = room.entries.where.not(member_id: @member.id).pluck(:member_id) %>
                     <% others = Member.find_by(id: others_id) %>
-                    <%= truncate(others.nickname, length: 15) %>さんのDMへ
+                    <%= truncate(others.nickname, length: 12) %>さんのDMへ
                   <% end %>
-                </td>
-              </tr>
-            </thead>
-          </table>
-        <% end %>
+                </div>
+              </div>
+            </div>
+          <% end %>
+        </div>
       </div>
     </div>
     <div class="row mb-5">

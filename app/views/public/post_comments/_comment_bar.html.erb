@@ -1,4 +1,4 @@
-<%= form_with model: [ post, comment ], remote: :true do |f| %>
+<%= form_with model: [ post, comment ], local: false do |f| %>
   <table class="table table-bordered bg-light my-4" data-aos="zoom-in-left" data-aos-duration="800">
     <thead>
       <tr class="text-right">

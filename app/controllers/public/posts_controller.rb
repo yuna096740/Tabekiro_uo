@@ -4,14 +4,14 @@ class Public::PostsController < ApplicationController
   before_action :set_post,             only: [:show, :edit, :update, :destroy]
 
   def index
-    posts =   Post.where.not(open_status: "unopened")
+    posts =  Post.where.not(open_status: "unopened")
     @posts = posts.page(params[:page]).per(24)
   end
 
   def show
     @vision_tags = @post.vision_tags
+    @comment =     PostComment.new
     if member_signed_in?
-      @comment =                PostComment.new
       @member =                 @post.member
       @current_member_entries = Entry.where(member_id: current_member.id)
       @member_entries =         Entry.where(member_id: @member.id)

@@ -1,15 +1,15 @@
-<%= form_with model: [ post, comment ], local: false do |f| %>
-  <table class="table table-bordered bg-light mt-4">
+<%= form_with model: [ post, comment ], remote: :true do |f| %>
+  <table class="table table-bordered bg-light my-4" data-aos="zoom-in-left" data-aos-duration="800">
     <thead>
       <tr class="text-right">
-        <th id="postCommentCount">コメント数 : <%= @post.post_comments.count %>件</th>
+        <th id="postCommentCount">コメント数 : <%= post.post_comments.count %>件</th>
       </tr>
     </thead>
 
     <tbody class="chat-height py-3">
       <tr>
         <td id="postComments">
-          <%= render 'public/post_comments/comments', post: @post %>
+          <%= render 'public/post_comments/comments', post: post %>
         </td>
       </tr>
     </tbody>

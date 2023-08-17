@@ -75,3 +75,12 @@ Post.create([
     latitude: 32.7226093995921, longitube: 129.82433045039062, place_name: "長崎市", open_status: 0,
     post_image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/10kinmedai.jpg"), filename:"10kinmedai.jpg")},
   ])
+
+Member.all.each do |member|
+  Post.all.each do |post|
+    member.post_comments.create!([
+      { member_id: member.id, post_id: post.id, comment: "こんにちは！" },
+      { member_id: member.id, post_id: post.id, comment: "こちらのお魚はまだお裾分け可能でしょうか。" },
+    ])
+  end
+end

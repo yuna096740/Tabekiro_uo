@@ -10,8 +10,8 @@ class Public::PostsController < ApplicationController
 
   def show
     @vision_tags = @post.vision_tags
+    @comment =     PostComment.new
     if member_signed_in?
-      @comment =                PostComment.new
       @member =                 @post.member
       @current_member_entries = Entry.where(member_id: current_member.id)
       @member_entries =         Entry.where(member_id: @member.id)

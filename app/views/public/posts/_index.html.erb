@@ -14,7 +14,7 @@
         </div>
 
         <div class="d-flex">
-          <% if post.rooms.present? %>
+          <% if post.rooms.present? || post.open_status == 'during_trade' %>
             <p class="text-success mt-1">取引中</p>
           <% elsif post.open_status == 'open' %>
             <p class="text-success mt-1">取引受付中</p>

@@ -2,20 +2,15 @@
   <% if unchecked_notices.present? %>
     <h5 class="dropdown-item py-2">
       <%= link_to notice_notifications_path, method: :patch, remote: true do %>
-        <span class="text-danger">
-          <i class="fas fa-bell text-danger"></i>
-          <span id="noticeRedLOGO">
+        <span class="text-danger" id="noticeRedLOGO">
+          <i class="fas fa-bell text-danger mr-2"></i>
             <%= image_tag 'topNoticeRedLOGO.svg', class:"mb-1" %>
-          </span>
         </span>
       <% end %>
     </h5>
   <% else %>
     <h5 class="dropdown-item py-2">
-      <span class="text-dark">
-        <i class="fas fa-bell mr-2"></i>
-        <%= image_tag 'topNoticeLOGO.svg', class:"mb-1" %>
-      </span>
+      <%= render 'public/notifications/notice_logo' %>
     </h5>
   <% end %>
 </div>

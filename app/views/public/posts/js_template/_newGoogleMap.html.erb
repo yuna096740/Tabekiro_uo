@@ -2,7 +2,7 @@
   // もしmapが定義されていなかったら
   if (typeof map == "undefined") {
     let map;
-    let marker;
+    var marker;
     var geocoder;
     var afterPinned;
   }
@@ -16,9 +16,6 @@
     });
   }
 
-  afterPinned = false
-  //一度ピンを刺す処理を行なった後にcreateせず他ページにいき戻ってきた時の対策
-
   function codeAddress(){
     let inputAddress = document.getElementById('address').value;
     geocoder.geocode( { 'address': inputAddress }, function(results, status) {
@@ -27,7 +24,7 @@
           marker.setMap(null);
         }
         map.setCenter(results[0].geometry.location);
-          var marker = new google.maps.Marker({
+          marker = new google.maps.Marker({
             map: map,
             position: results[0].geometry.location,
             draggable: true

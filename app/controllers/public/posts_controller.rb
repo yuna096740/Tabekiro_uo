@@ -2,6 +2,7 @@ class Public::PostsController < ApplicationController
 
   before_action :authenticate_member!, except: [:index, :show, :map], unless: :admin_signed_in?
   before_action :set_post,             only: [:show, :edit, :update, :destroy]
+  before_action :own_post,             only: [:edit]
 
   def index
     posts =  Post.where.not(open_status: "unopened")
@@ -104,6 +105,10 @@ class Public::PostsController < ApplicationController
   def set_post
     @post = Post.find(params[:id])
   end
+  
+  def own_post
+    unless @post.member_id == current_member.id
+      redirect_to posts_path
+    end 
+  end
 end
-
-

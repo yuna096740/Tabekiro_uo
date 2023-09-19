@@ -5,7 +5,7 @@ class Public::PostsController < ApplicationController
   before_action :own_post,             only: [:edit]
 
   def index
-    posts =  Post.where.not(open_status: "unopened")
+    posts =  Post.where(open_status: "open")
     @posts = posts.page(params[:page]).per(24)
   end
 
@@ -83,7 +83,7 @@ class Public::PostsController < ApplicationController
   end
 
   def map
-    @posts = Post.all
+    @posts = Post.where(open_status: "open")
   end
 
   private
@@ -105,10 +105,10 @@ class Public::PostsController < ApplicationController
   def set_post
     @post = Post.find(params[:id])
   end
-  
+
   def own_post
     unless @post.member_id == current_member.id
       redirect_to posts_path
-    end 
+    end
   end
 end

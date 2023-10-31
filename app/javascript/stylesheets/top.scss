@@ -40,3 +40,17 @@ body:before {
 .top-to-index-btn img {
   width: 700px;
 }
+
+.topToIndexLOGO img {
+  width: 50%;
+}
+
+@media screen and (max-width: 620px) {
+  .parallax_content {
+    height: 50vh;
+  }
+
+  .topToIndexLOGO img {
+    width: 90%;
+  }
+}
